@@ -21,8 +21,8 @@ print_stars () {
 
 pdflatex_comm () {
   # pdflatex.exe \
-  # pdflatex -synctex=1 -interaction=nonstopmode -file-line-error 00_main_manuscript
-  pdflatex.exe -synctex=1 -interaction=nonstopmode -file-line-error 00_main_manuscript
+  pdflatex -synctex=1 -interaction=nonstopmode -file-line-error 00_main_manuscript
+  # pdflatex.exe -synctex=1 -interaction=nonstopmode -file-line-error 00_main_manuscript
 }
 
 bibtex_comm () {
