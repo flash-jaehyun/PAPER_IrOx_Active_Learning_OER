@@ -1,0 +1,50 @@
+% ###########################################################################
+
+% | - Machine Learning Algorithm Methods
+\subsection{Machine Learning Algorithm Methods}
+
+Relevant details about the ML Gaussian process here % @Chris
+% __|
+
+% | - Electrochemical OER Computational Methods
+\subsection{Electrochemical OER Computational Methods}
+
+% | - Density Functional Theory Methods
+\subsubsection{Density Functional Theory Methods}
+% Get VASP #reference in the ex. word doc. that @Michal shared with me
+All OER calculations were performed using density functional theory (DFT) implemented via the Vienna ab-initio simulation package (VASP) and utilizing the PBE exchange-correlation functional.
+Dipole corrections were imposed on all non-symmetric slabs.
+A 4x4x3 k-point mesh with gamma-point centered Monkshort-packing was used for all slabs.
+The plane-wave energy cutoff was 500 eV.
+
+% COMBAK Figure out how much spacing was used for all slabs
+% FIXME Change the A -> Angstrom symbol
+
+% COMBAK What kind of optimization routine was used? (Newtonian, BFGS?)
+All slab calculations maintained a vacuum spacing of <15 A.
+% COMBAK change A -> Angstrom
+All structures were relaxed utilizing a TEMP algorithm with a stop criteria being that all atoms satisfy a maximum force threshold of 0.02 eV/A.
+% __|
+
+% | - OER Thermodynamic Methodology
+\subsubsection{OER Thermodynamic Methodology}
+% __|
+
+% | - Surface Energy Pourbaix Methodology
+\subsubsection{Surface Energy Pourbaix Methodology}
+% __|
+
+Procedure:
+- For the top/most stable bulk structures the following procedure was carried out
+
+* Stable stoicheometric terminations were cut from the bulk
+    Stable termination planes were guesstimated via intuition, and the x-ray diffraction pattern tool from Vesta
+
+* Electrochemical surface coverage was elucidated via a surface Pourbaix analysis
+    Need to know the coverage of surface under operating conditions (>1.23 V RHE)
+
+* Thermodynamic/limiting potential analysis of the OER mechanistic pathway
+    Volcano plot, limiting potentials, etc.
+
+% TODO Gibbs corrections, OER mechanism
+% __|
