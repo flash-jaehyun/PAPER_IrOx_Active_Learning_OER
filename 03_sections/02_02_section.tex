@@ -1,7 +1,7 @@
 
 % ################################# Paragraph #################################
 % Short introduction into the cataylsis section
-In the following section we will demonstrate the merit of our bulk crystal searching method by investigating the 4 most stable structures for the oxygen evolution reaction, an important electrochemical reaction with application in energy storage technologies.
+In the following section we will demonstrate the merit of our bulk crystal searching method by investigating the 4 most stable structures for the OER, an important electrochemical reaction with application in energy storage technologies.
 
 
 % | - Bulk Pourbaix
@@ -9,17 +9,14 @@ In the following section we will demonstrate the merit of our bulk crystal searc
 
 % ################################# Paragraph #################################
 % COMBAK
-The electrochemical stability phase diagram (E vs. pH) was constructed from all bulk crystals of Ir, \ce{IrO_2}, \ce{IrO_3}, and aqueous dissolved \ce{IrO[4-]}.
-Only the most stable structure for each stoichiometry is visible on the Pourbaix diagram which correspond to TEMP and are shown in Fig. \ref{fig:bulk_pourbaix}
-% COMBAK Reference 4 most stable structres from elsewhere
+% QUESTION Use E or U for potential variable
+The electrochemical stability phase diagram (E vs. pH) was constructed by considering the equilibrium conditions of the following species: Ir, \rIrOtwo, \aIrOthree, \rIrOthree, \bIrOthree, and an aqueous dissolved \ce{IrO[4-]} species (See TEMP|SI for additional details).
+The resulting diagram is shown in Fig. \ref{fig:bulk_pourbaix}.
+Importantly, under acidic conditions (pH < 7) and in the bias region of interest for the OER (~1.23 V vs. RHE) \aIrOthree shows a large window of stability.
+This indicates that the \aIrOthree phase may be stabilized under the highly oxidizing conditions of the OER.
+The stability regions for \rIrOthree and \bIrOthree in the absence of any other \ce{IrO_3} polymorphs are also indicated by the unfilled solid lines and demonstrate a sizable stability window as well.
+This result implies that these metastable phases may also play a role for the OER.
 % Also explain the Ir and IrO[4-] ion
-
-% ################################# Paragraph #################################
-Under acidic condition (< pH 7) and in the bias region of of interest for the OER, there exists a region of stability for the novel $\alpha$-AlF3 IrO3 structure found herein.
-
-% ################################# Paragraph #################################
-% COMBAK Insert bound of stability here
-At a pH=0 the bound of stability for $\alpha$-AlF3 IrO3 spans TEMP
 
 % | - Figure | Bulk Pourbaix Diagram
 \begin{figure}
@@ -29,7 +26,7 @@ At a pH=0 the bound of stability for $\alpha$-AlF3 IrO3 spans TEMP
 % {02_figures/oer_activity_stability/bulk_pourbaix_0.pdf}
 }
 \caption{\label{fig:bulk_pourbaix}
-Electrochemical bulk phase stability diagram (Pourbaix) of the Ir-O-H chemical space.
+Electrochemical bulk phase stability diagram (Pourbaix) of the Ir-O-H chemical space considering rutile-\ce{IrO_2},
 }
 \end{figure}
 % __|
@@ -41,10 +38,10 @@ Electrochemical bulk phase stability diagram (Pourbaix) of the Ir-O-H chemical s
 
 % ################################# Paragraph #################################
 % Surface Energy Pourbaix Analysis
-
-The OER activity (expressed in over-potential) for surfaces cut from the IrO2, and the 3 most stable polymorphs of IrO3 are shown in Fig. \ref{fig:oer_volcano}.
+The OER activity (expressed in terms of the limiting potential) for various surfaces cut from rutile-\ce{IrO_2}, and the three polymorphs of \ce{IrO_3} considered are shown in Fig. \ref{fig:oer_volcano}.
 % TODO #reference | Reference for VESTA x-ray diff. pattern method
-The specific facets were chosen from the highest intensity x-ray diffraction peaks from powder-diffraction spectra simulated in VESTA.
+The specific facets were chosen from the highest intensity x-ray diffraction peaks from powder-diffraction spectra simulated in VESTA,
+as well as using physical intuition as to which facets would be most physical.
 
 
 % | - Figure | OER Volcano/Surface Pourbaix
@@ -55,30 +52,40 @@ The specific facets were chosen from the highest intensity x-ray diffraction pea
 % {02_figures/oer_activity_stability/00_master_plot__oer-volc_surf-pourb_struct__main_v3__outplot.pdf}
 }
 \caption{\label{fig:oer_volcano}
-Summary of OER results for the four bulk structures of IrOx considered: rutile-IrO2 (green), $\alpha$-IrO3 (purple), rutile-IrO3 (orange), and b-IrO3 (pink).
+Summary of OER results for the four bulk structures of \IrOx considered: rutile-\ce{IrO_2} (green), $\alpha$-\ce{IrO_3} (purple), rutile-\ce{IrO_3} (orange), and $\beta$-\ce{IrO_3} (pink).
+% -----------------------------------------------------------------------------
 (a) Surface energy Pourbaix diagrams for each structure, with the surface energy of various facets and coverages shown as a function of applied potential.
 The bulk Pourbaix diagram's bounds of stability at pH 0 are superimposed at the bottom of each subplot.
-(b) OER activity volcano for IrOx systems considered.
-Circles designate oxygen covered surfaces while triangles designate hydroxyl (*OH) terminated surfaces (relevant surface terminations were found via surface Pourbaix analyses.
-Surface energies at standard conditions (pH and V = 0) are reflected in the border color for each data point, where black indicates a low energy surface termination and white indicates more unstable surfaces.  % Currently not implemented as this
+% -----------------------------------------------------------------------------
+(b) OER activity volcano for \IrOx systems considered utilizing the \DGOmOH thermodynamic descriptor.
+The purple dotted line corresponds to the experimental limiting potential at 10 mA cm\textsuperscript{2} for \ce{IrO_3}, % TODO Insert Seitz Science reference
+while the green band corresponds to the range of experimentally observed overpotentials for pristine \ce{IrO_2} catalysts.  % TODO Insert green band into figure
+% -----------------------------------------------------------------------------
+(c) Select surface facets for the four \IrOx crystal systems considered.
+% -----------------------------------------------------------------------------
+% | - __old__
+% Circles designate oxygen covered surfaces while triangles designate hydroxyl (*OH) terminated surfaces (relevant surface terminations were found via surface Pourbaix analyses).
+% Surface energies at standard conditions (pH and V = 0) are reflected in the border color for each data point, where black indicates a low energy surface termination and white indicates more unstable surfaces.  % Currently not implemented as this
 % The color range goes from x to y.
-(c) Select surface structures for IrOx systems considered herin.
+% __|
 }
 \end{figure}
 % __|
 
 % ################################# Paragraph #################################
-% Surface Energy Pourbaix Analysis
 To determine the most likely experimentally abundant surface facets and surface coverages, a surface energy Pourbaix diagram was constructed (TEMP).  % COMBAK Insert correct reference
 See (SI for surface energy/Pourbaix part) for the method used to calculate surface energies.
 % COMBAK
 % __|
 
-% | - OER Intermediate Scaling
+% | - OER Scaling Relations
 \subsubsection{c. OER Intermediate Scaling}
 
 % ################################# Paragraph #################################
-Write stuff
+Figure TEMP shows the scaling relations between the adsorption free energies of the OER intermediate species for the \IrOx systems studied herein.
+It can be seen clearly that the data points corresponding to the three \ce{IrO_3} polymorphs are roughly 1 eV weaker binding than the rutile-\ce{IrO_2} points.
+This generally weaker binding of the \ce{IrO_3} stoichiometry is responsible for the observed improvement in theoretical activity.
+The \DGOOH vs.\DGOH relationship is very close to the traditional ``universal scaling relations'', demonstrating that our materials do not break the infamous \DGOOH vs. \DGOH scaling.
 
 % | - Figure | OER Scaling Relations
 \begin{figure}
@@ -88,8 +95,12 @@ Write stuff
 % {02_figures/oer_activity_stability/pl_scaling_relations_tmp.pdf}
 }
 \caption{\label{fig:scaling_relations}
-Scaling relationship between DG of adsorption of the intermediate species of the OER using dG*OH as a descriptor.
-DG*OOH, DG*O, and DG*OH are plotted on the y-axis.
+% Adsorption free energy scaling relations plot.
+Relationship between the adsorption free energies of the three key OER intermediates (*OH, *O, *OOH), with \DGOH chosen as the dependent variable.
+Best fit lines are provided for \DGOOH vs. \DGOH and \DGO vs. \DGOH.
+Additionally, ``universal scaling relations'' for \DGOOH vs. \DGOH and \DGO vs. \DGOH are shown (black dotted lines) to emphasize our deviation from the traditionally reported scaling fits.
+The trivial \DGOH vs. \DGOH relationship is included for completeness.
+% TODO Do I have to redefine the color convention every caption?
 }
 \end{figure}
 % __|
