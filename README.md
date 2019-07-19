@@ -1,10 +1,9 @@
 # Machine Learning IrOx OER Paper
-TEST TEST
 ---
 
-## Notes:
-For notes, to-do lists, and additional materials see the following link:  
-https://workflowy.com/s/ml-irox-oer-publicat/kA13CTQkFbAzFkBd
+## Links:
+Github Repo: https://github.com/raulf2012/irox_ml_oer
+Workflowy: https://workflowy.com/s/ml-irox-oer-publicat/kA13CTQkFbAzFkBd
 
 ## Main Figures
 Chris's section
@@ -17,7 +16,6 @@ My section
 * Surface Energy/Pourbaix Plot
 
 ---
-
 ## Paper Tags:
   `#reference`
   `#TODO`
