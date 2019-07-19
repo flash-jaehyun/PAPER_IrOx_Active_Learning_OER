@@ -9,12 +9,15 @@ Workflowy: https://workflowy.com/s/ml-irox-oer-publicat/kA13CTQkFbAzFkBd
 ## Paper Tags:
   `#REF`
   `#TODO`
-  `#COMBAK`
+  `##COMBAK`
+
+## Final Pre-submission Checklist
+1. Make sure that all acronyms are defined before they are used
+2. Make sure all references are placed correctly
 
 ## Git commands
 ---
-
-Proper workflow
+Workflow (Just for @Raul)
 
 1. From `Overleaf.com`: Sync changes in Overleaf to Github
   - Menu --> Github --> Push Overleaf changes to Github
