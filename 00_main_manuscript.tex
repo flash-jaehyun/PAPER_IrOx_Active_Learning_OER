@@ -1,12 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Just added this to overleaf, should end up in final king_branch
 %% Machine Learning IrOx OER Paper
-%%
-%% Github Repo:
-%% https://github.com/raulf2012/irox_ml_oer
-%%
-%% Workflowy Link (notes, to-do lists, and additional materials):
-%% https://workflowy.com/s/ml-irox-oer-publicat/kA13CTQkFbAzFkBd
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % | - __latex_setup__
@@ -22,9 +15,12 @@
 % - Author List ***************************************************************
 \input{03_sections/authors}
 
+% - Custom Macros *************************************************************
+\input{03_sections/custom_macros}
+
 % Article Title ***************************************************************
 \title[ML discovered IrOx phases]{
-  Machine-Learning Discovery of Highly Oxidized \ce{IrO_x} Phases}
+  Machine-Learning Discovery of Highly Oxidized \IrOx Phases}
 
 \begin{document}
 
@@ -36,7 +32,6 @@
 \end{tocentry}
 % __|
 
-% #############################################################################
 % #############################################################################
 % - MAIN DOCUMENT *************************************************************
 
@@ -54,24 +49,23 @@
 
   % - 02.00 | IrO2 ************************************************************
   \subsection{I. \ce{IrO_2}}
-  \input{03_sections/02_results_discussion/02_00_section}
+  \input{03_sections/02_00_section}
 
   % - 02.01 | IrO3 ************************************************************
   \subsection{II. \ce{IrO_3}}
-  \input{03_sections/02_results_discussion/02_01_section}
+  \input{03_sections/02_01_section}
 
   % - 02.02 | Electrochemical OER Application *********************************
   \subsection{III. Electrochemical OER Application}
-  \input{03_sections/02_results_discussion/02_02_section}
+  \input{03_sections/02_02_section}
 
 % - 03 | Conclusion ***********************************************************
 \section{Conclusion}
 \input{03_sections/03_conclusions}
 
 % #############################################################################
-% #############################################################################
 
-% - Acknowledgement ***********************************************************
+% - Acknowledgment ***********************************************************
 \begin{acknowledgement}
 \input{03_sections/acknowledgements}
 \end{acknowledgement}
@@ -87,7 +81,7 @@
 % __|
 
 \begin{suppinfo}
-\input{03_sections/04_supp_info/04_00_section}
+\input{03_sections/04_00_section}
 \end{suppinfo}
 
 % Bibliography ****************************************************************
