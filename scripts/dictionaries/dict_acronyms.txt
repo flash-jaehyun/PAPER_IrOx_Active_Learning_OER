@@ -1,0 +1,18 @@
+personal_ws-1.1 en 61
+SLAC
+vesta
+JAGT
+VASP
+DFT
+SUNCAT
+UVA
+NERSC
+CatHub
+RHE
+OQMD
+TRI
+PBE
+DTU
+PCA
+SG
+OER
