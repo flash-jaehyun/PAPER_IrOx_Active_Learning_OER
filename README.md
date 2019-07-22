@@ -15,6 +15,7 @@ Workflowy: https://workflowy.com/s/ml-irox-oer-publicat/kA13CTQkFbAzFkBd
 ## Final Pre-submission Checklist
 1. Make sure that all acronyms are defined before they are used
 2. Make sure all references are placed correctly
+3. Define Gaussian Process (GP) in text
 
 ## Git commands
 ---
