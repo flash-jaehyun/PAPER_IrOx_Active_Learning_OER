@@ -19,10 +19,9 @@ Additionally, the surfaces will be evaluated for their stability and equilibrium
 
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TEMP
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % #COMBAK
 % #QUESTION Use E or U for potential variable
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 The electrochemical stability phase diagram (E vs. pH) was constructed by considering the equilibrium conditions of the following species: Ir, \rIrOtwo, \aIrOthree, \rIrOthree, \bIrOthree, and an aqueous dissolved \ce{IrO[4-]} species (See TEMP|SI for additional details).
 The resulting diagram is shown in Fig. \ref{fig:bulk_pourbaix}.
 Importantly, under acidic conditions (pH < 7) and in the bias region of interest for the OER (~1.23 V vs. RHE) \aIrOthree shows a large window of stability.
@@ -32,7 +31,7 @@ This result implies that these metastable phases may also play a role for the OE
 % Also explain the Ir and IrO[4-] ion
 
 % | - Figure | Bulk Pourbaix Diagram
-\begin{figure}
+\begin{figure*}
 \centering
 \makebox[\textwidth][c]{\includegraphics
 {02_figures/oer_activity_stability/00_master__bulk-pourbaix__v1__400dpi__0__outplot.png}
@@ -41,7 +40,7 @@ This result implies that these metastable phases may also play a role for the OE
 \caption{\label{fig:bulk_pourbaix}
 Electrochemical bulk phase stability diagram (Pourbaix) of the Ir-O-H chemical space considering rutile-\ce{IrO_2},
 }
-\end{figure}
+\end{figure*}
 % __|
 
 % __|
@@ -51,17 +50,34 @@ Electrochemical bulk phase stability diagram (Pourbaix) of the Ir-O-H chemical s
 
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TEMP
+% Introduction to OER results
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Surface Energy Pourbaix Analysis
-The OER activity (expressed in terms of the limiting potential) for various surfaces cut from rutile-\ce{IrO_2}, and the three polymorphs of \ce{IrO_3} considered are shown in Fig. \ref{fig:oer_volcano}.
+Fig. \ref{fig:oer_volcano} summarizes the major results of the electrochemical activity and surface stability analysis.
+First, Fig. \ref{fig:oer_volcano} a.) shows the surace energy Pourbaix plots for the four IrOx crystals of interest. For each bulk system, the surface energy as a function of applied potential (pH=0), for various facets, and at various coverages (bare, *OH, and *O covered), are shown, see SI for more details.
+% How facets were chosen | TODO Get x-ray pattern for systems
 % TODO #REF | Reference for VESTA x-ray diff. pattern method
 The specific facets were chosen from the highest intensity x-ray diffraction peaks from powder-diffraction spectra simulated in VESTA,
 as well as using physical intuition as to which facets would be most physical.
+% Say that the IrO3 bulk phase corresponds to the o-covered regime
+Additionally, the bulk phase limits of stability from figure TEMP are included at the bottom of each subplot.
+In most cases, the oxygen covered surfaces dominate at the OER equilibrium potential (1.23 V vs RHE) with bare surfaces being competitive to within TEMP eV/A2,
+this competitivness goes away at even modest overpotentials (eta~0.3, --> ~1.5 V vs RHE),
+at which point the oxygen covered terminations are further overstabalized relative to the bare surfaces,
+making them the sole dominant termination.
+% COMBAK, Revise "mainly" if we include some different coverags
+Therefore in our activity analysis we consider mainly oxygen terminated surfaces for the OER.
+The OER activity (expressed in terms of the limiting potential) for select oxygen terminated surfaces are shown in Fig. \ref{fig:oer_volcano} as a function of the DGO-DGOH TEMP OER thermodynamic descriptr.
+The two rutile-IrO2 suraces (100, and 110) are located towards the strong binding side of the volcano, indicating that that they bind OER intemediate too strongly.
+% Reference all experimental IrO2 overpotentials I can find
+Encourangly, with predicted overpotentials of TEMP and TEMP, our rutile-IrO2 are within the range of experimental overpotentials found in literature.
+The three IrO3 polymorph surfaces all have DGO-DGOH descriptor towards the top and right of the volcano, indicative of weaker binding energetics.
+This is evident from figure SI TEMP (scaling) which shows a clear distinction between the IrO2 and IrO3 polymorphs, with IrO3 binding overall weaker than IrO2.
+The best performing systems, including the (100), (110), and (211) facets of a-IrO3, b-IrO3 (101), and R-IrO3 (110), have overpotentials of ~0.4 V vs RHE,
+a ~0.2 V vs RHE improvemnt over the rutile-IrO2 system.
 
 
 % | - Figure | OER Volcano/Surface Pourbaix
-\begin{figure}
+\begin{figure*}
 \centering
 \makebox[\textwidth][c]{\includegraphics
 {02_figures/oer_activity_stability/00_master__oer-volc_surf-pourb_struct__main_v3__200dpi__outplot.png}
@@ -85,19 +101,12 @@ while the green band corresponds to the range of experimentally observed overpot
 % The color range goes from x to y.
 % __|
 }
-\end{figure}
+\end{figure*}
 % __|
 
-% ################################# Paragraph #################################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TEMP
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-To determine the most likely experimentally abundant surface facets and surface coverages, a surface energy Pourbaix diagram was constructed (TEMP).  % #COMBAK Insert correct reference
-See (SI for surface energy/Pourbaix part) for the method used to calculate surface energies.
-% #COMBAK
 % __|
 
-% | - OER Scaling Relations
+% | - OER Scaling Relations | TODO | MOVE THIS TO SI
 \subsubsection{c. OER Intermediate Scaling}
 
 % ################################# Paragraph #################################
@@ -110,7 +119,7 @@ This generally weaker binding of the \ce{IrO_3} stoichiometry is responsible for
 The \DGOOH vs.\DGOH relationship is very close to the traditional ``universal scaling relations'', demonstrating that our materials do not break the infamous \DGOOH vs. \DGOH scaling.
 
 % | - Figure | OER Scaling Relations
-\begin{figure}
+\begin{figure*}
 \centering
 \makebox[\textwidth][c]{\includegraphics
 {02_figures/oer_activity_stability/00_master__oer_scaling__main_v0__outplot2.png}
@@ -124,7 +133,7 @@ Additionally, ``universal scaling relations'' for \DGOOH vs. \DGOH and \DGO vs. 
 The trivial \DGOH vs. \DGOH relationship is included for completeness.
 % TODO Do I have to redefine the color convention every caption?
 }
-\end{figure}
+\end{figure*}
 % __|
 
 % __|
