@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Electrochemical OER Application
 %%
-%%
+%% TODO: Put (s) on a-IrO3 phase in bulk Pourbaix diagram
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -22,12 +22,15 @@ Additionally, the surfaces will be evaluated for their stability and equilibrium
 % #COMBAK
 % #QUESTION Use E or U for potential variable
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The electrochemical stability phase diagram (E vs. pH) was constructed by considering the equilibrium conditions of the following species: Ir, \rIrOtwo, \aIrOthree, \rIrOthree, \bIrOthree, and an aqueous dissolved \ce{IrO[4-]} species (See TEMP|SI for additional details).
+The electrochemical stability phase diagram (E vs. pH) was constructed by considering the equilibrium conditions of the following species: Ir, \rIrOtwo, \aIrOthree,  \rIrOthree, \bIrOthree, and an aqueous dissolved \ce{IrO[4-]} species (See TEMP|SI for additional details).
 The resulting diagram is shown in Fig. \ref{fig:bulk_pourbaix}.
-Importantly, under acidic conditions (pH < 7) and in the bias region of interest for the OER (~1.23 V vs. RHE) \aIrOthree shows a large window of stability.
+Importantly, under acidic conditions (pH \textless 7) and in the bias region of interest for the OER (~1.23 V vs. RHE) \aIrOthree shows a large window of stability.
 This indicates that the \aIrOthree phase may be stabilized under the highly oxidizing conditions of the OER.
-The stability regions for \rIrOthree and \bIrOthree in the absence of any other \ce{IrO_3} polymorphs are also indicated by the unfilled solid lines and demonstrate a sizable stability window as well.
-This result implies that these metastable phases may also play a role for the OER.
+For comparison, the stability regions of the metastable \rIrOthree and \bIrOthree phases, in the absence of any other competing \ce{IrO_3} polymorphs, are indicated by unfilled solid lines.
+As shown, these metastable phases appear to also have a wide region of stability in the OER region,
+due to to their formation energies being within TEMP eV of the globally stable \aIrOthree phase, see SI table TEMP for the bulk energies of all considered phases.
+Because of their similar energies it is possible that some or all of these \ce{IrO_3} phases may be present and relevent for the OER.
+In the next section, we explore this possibility by computing the theoretical OER activity of these polymorph systems.
 % Also explain the Ir and IrO[4-] ion
 
 % | - Figure | Bulk Pourbaix Diagram
@@ -37,8 +40,11 @@ This result implies that these metastable phases may also play a role for the OE
 {02_figures/oer_activity_stability/00_master__bulk-pourbaix__v1__400dpi__0__outplot.png}
 % {02_figures/oer_activity_stability/bulk_pourbaix_0.pdf}
 }
-\caption{\label{fig:bulk_pourbaix}
-Electrochemical bulk phase stability diagram (Pourbaix) of the Ir-O-H chemical space considering rutile-\ce{IrO_2},
+\caption{\label{fig:bulk_pourbaix},
+Electrochemical bulk phasetability diagram (Pourbaix) of the Ir-O-H chemical space with respects to changes in potential and pH.
+We considered a bulk unoxidized Ir(s) (blue), a [+4] \rIrOtwo  (green), and an aqueously dissolved \ce{IrO4[4-]} (grey) phase.
+Additionnally, we considered the three \ce{IrO_3} polymorphs, \aIrOthree (purple), \rIrOthree (orange), and \bIrOthree (pink).
+The water equilibrium line at 1.23 V vs RHE, which corresponds to a 0 overpotential catalyst, is shown by a dotted line.
 }
 \end{figure*}
 % __|
