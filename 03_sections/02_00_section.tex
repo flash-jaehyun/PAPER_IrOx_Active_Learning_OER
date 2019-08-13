@@ -13,6 +13,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % ################################# Paragraph #################################
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TEMP
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Data prep. | Unique Structures | Atom subst., V relax | Fingerprinting
 The structures that comprise the candidate data set were constructed by parsing for structurally unique systems in the OQMD and Materials Project DFT databases.
 The structural uniqueness was performed using a space-group symmetry classification scheme developed by TEMP-Ankit-REF which can classify any arbitrary structure based on stoichiometry (composition), space-group, and Wyckoff positioning of the atoms
@@ -29,6 +32,9 @@ PCA was used to reduce the dimensionality of the feature space from 271  to 20 f
 
 
 % ################################# Paragraph #################################
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TEMP
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Iterative Training of Gaussian Process
 The active learning algorithm proceeds through iterative ML training, prediction, and acquisition steps and is visualized in figure TEMP.
 The
@@ -58,7 +64,7 @@ Further details on the GP model, including hyper parameter information, is inclu
 
 
 % | - Figure | Active Learning Algorithm
-\begin{figure}
+\begin{figure*}
 \centering
 \makebox[\textwidth][c]{\includegraphics
   {02_figures/Surrogate_model_mine.png}
@@ -73,7 +79,7 @@ Finally, an acquisition step is performed to pick the next most valuable calcula
 (b) Toy model demonstrating a GP model converging with each subsequent iteration.
 % -----------------------------------------------------------------------------
 }
-\end{figure}
+\end{figure*}
 % __|
 
 
