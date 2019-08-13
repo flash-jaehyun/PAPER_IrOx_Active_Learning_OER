@@ -35,26 +35,26 @@
 % #############################################################################
 % - MAIN DOCUMENT *************************************************************
 
-% % - 00 | Abstract *************************************************************
-% \begin{abstract}
-% \input{03_sections/00_abstract}
-% \end{abstract}
-%
-% % - 01 | Introduction *********************************************************
-% \section{Introduction}
-% \input{03_sections/01_introduction}
+% - 00 | Abstract *************************************************************
+\begin{abstract}
+\input{03_sections/00_abstract}
+\end{abstract}
+
+% - 01 | Introduction *********************************************************
+\section{Introduction}
+\input{03_sections/01_introduction}
 
 % - 02 | Results and Discussion ***********************************************
 \section{Results and discussion}
 
-  % % - 02.00 | *****************************************************************
-  % \subsection{I. Active Learning Machine Learning Methodology}
-  % \input{03_sections/02_00_section}
-  %
-  % % - 02.01 | *****************************************************************
-  % \subsection{II. Application of AL to stable polymorph discovery in the Ir-O space}
-  % \input{03_sections/02_01_section}
-  %
+  % - 02.00 | *****************************************************************
+  \subsection{I. Active Learning Machine Learning Methodology}
+  \input{03_sections/02_00_section}
+
+  % - 02.01 | *****************************************************************
+  \subsection{II. Application of AL to stable polymorph discovery in the Ir-O space}
+  \input{03_sections/02_01_section}
+
   % - 02.02 | *****************************************************************
   \subsection{III. Electrochemical OER Application}
   \input{03_sections/02_02_section}
@@ -73,17 +73,15 @@
 % - Supplementary Information *************************************************
 % | - __latex_setup__
 \clearpage
-% #Question Why did you add this @Michal?
-% \appendixhttps://www.overleaf.com/project/5d30a91110dda51a44b9fec4
 \renewcommand{\thefigure}{S\arabic{figure}}
 \setcounter{figure}{0}
 \renewcommand{\thetable}{S\arabic{table}}
 \setcounter{table}{0}
 % __|
 
-% \begin{suppinfo}
-% \input{03_sections/04_00_SI}
-% \end{suppinfo}
+\begin{suppinfo}
+\input{03_sections/04_00_SI}
+\end{suppinfo}
 
 % Bibliography ****************************************************************
 \bibliography{01_references/dummy_refs.bib}
