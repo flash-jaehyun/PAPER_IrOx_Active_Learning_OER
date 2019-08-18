@@ -2,7 +2,11 @@
 ---
 
 ## Links:
-Github Repo: https://github.com/raulf2012/irox_ml_oer
+Paper Github Repo:
+https://github.com/raulf2012/PAPER_IrOx_Active_Learning_OER
+
+Project Analysis Github Repo:
+https://github.com/raulf2012/PROJ_IrOx_Active_Learning_OER
 
 Workflowy: https://workflowy.com/s/ml-irox-oer-publicat/kA13CTQkFbAzFkBd
 
