@@ -11,6 +11,15 @@ https://github.com/raulf2012/PROJ_IrOx_Active_Learning_OER
 Workflowy: https://workflowy.com/s/ml-irox-oer-publicat/kA13CTQkFbAzFkBd
 
 ---
+## Notes:
+### Code-folding syntax
+I use a custom syntax to fold code through out this repo (% | - CF start) and (% \_\_|).
+I find this quite useful for navigation, and to achieve the same effect in your VIM editor put the following code into your `~/vimrc`:
+
+`setlocal foldmethod=marker foldmarker=#\|\ -,#__\|`
+
+
+
 ## Paper Tags:
   `#REF`
   `#TODO`
