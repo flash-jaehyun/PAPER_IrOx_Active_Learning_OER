@@ -16,19 +16,35 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Data prep. | Unique Structures | Atom subst., V relax | Fingerprinting
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - Paragraph start
+% __|
 
+% | - Paragraph start
 The structures that comprise the candidate data set were constructed by parsing for structurally unique systems in the OQMD and Materials Project DFT databases.
 The structural uniqueness was performed using a space-group symmetry classification scheme developed by Jain et al. \cite{Jain2018}, which can classify any arbitrary structure based on stoichiometry (composition), space-group, and Wyckoff positions of the atoms
+%
  (see SI for more details on the structural classification scheme).
+%
+%
 To focus the scope of the study, only AB2 and AB3 stoichiometries were parsed from the databases.
+%
 The AB2 formula was chosen because it includes \rIrOtwo, the known most stable polymorph of IrO2.
+%
 Importantly, AB3 was chosen to include high valency IrO3 structures in our search.
 This classification scheme can directly serve as a fingerprinting scheme and has successfully been used for the prediction of formation energies.  % REF Ankit paper
+%
 The results of the classification scheme resulted in a XYZ AB2 and XYZ AB3 structural prototypes for which iridium and oxygen were replaced for A and B sites, respectively.
+%
 Finally, a coarse isotropic volume relaxation based on atomic radii was performed on the structures to accommodate the atomic radii of iridium and oxygen into the lattice.
 Finally, a Voronoi tessellation based fingerprinting scheme developed by Wolverton-paper-REF was used to encode the relevant chemical information for each structure.
+%
+%
 The Voronoi based method was used because it is insensitive to volume relaxation.
 PCA was used to reduce the dimensionality of the feature space from 271  to 20 features such that 99percent of the variance is captured.
+%
+% How many columns of the 271 are redundant if stoich and composition are frozen
+%
+% __|
 
 
 % ################################# Paragraph #################################
@@ -36,10 +52,18 @@ PCA was used to reduce the dimensionality of the feature space from 271  to 20 f
 % TEMP
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Iterative Training of Gaussian Process
+% | - Paragraph start
 The active learning algorithm proceeds through iterative ML training, prediction, and acquisition steps and is visualized in figure TEMP.
 The
 A Gaussian process (GP) regression employing a rational quadratic kernel was chosen as the ML model because it offers a high degree of flexibility and importantly, error quantification for the predicted formation energies.
+%
 Further details on the GP model, including hyper parameter information, is including in the SI.
+%
+% TODO: Write aquisition function here, again does it have a name
+%
+% TODO: Is this statement true?
+%
+%
 
 
 \begin{enumerate}
@@ -64,6 +88,7 @@ Further details on the GP model, including hyper parameter information, is inclu
 
 
 % | - Figure | Active Learning Algorithm
+% | - Figure | Active Learning Algorithm **************************************
 \begin{figure*}
 \centering
 \makebox[\textwidth][c]{\includegraphics
@@ -84,6 +109,7 @@ Finally, an acquisition step is performed to pick the next most valuable calcula
 
 
 
+% #############################################################################
 % | - __old__
 % ################################# Paragraph #################################
 % AB2 Structures Ankit
