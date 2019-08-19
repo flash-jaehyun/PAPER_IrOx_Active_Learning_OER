@@ -1,16 +1,31 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Supporting Information
 %% TODO:
-%%   - Gibbs corrections
-%%   - OER mechanism
+%%    TODO: Free energy corrections to OER intermediates, OER mechanism
+%%    TODO: Is there any cross-validation happening here? I don't think so
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-% | - Machine Learning Algorithm Methods
 \subsection{Machine Learning Algorithm Methods}
 
-Relevant details about the ML Gaussian process here % @Chris
-% __|
+\subsection{Classifying unique prototypes in DFT databases}
+TEMP
+
+\subsection{Gaussian process regression model}
+TEMP
+
+\subsection{Gaussian process regression model}
+Relevant details about the ML Gaussian process here  % @Chris
+
+% TODO Check again how I handled the length vectors
+The Gaussian Process model utilized a rational quadratic kernel with variable length scales for each dimensino of the feature space.
+% CV error of XYZ eV/atom, initial predictions in figure XYZ.
+% - Selected 10 structures with lowest prediction-uncertainty for DFT.
+% Structures were volume optimized, then fully relaxed, described in methods XYZ.
+% - Model retrained with the 10 DFT computed structures ONLY, 271 features->110 features applicable to \ce{IrO_2}->20 principle components for 99.9 percent variance.
+% CV error…
+% - Repeat until XYZ, final predictions shown in Fig XYZ
+
 
 % | - Electrochemical OER Computational Methods
 \subsection{Electrochemical OER Computational Methods}
