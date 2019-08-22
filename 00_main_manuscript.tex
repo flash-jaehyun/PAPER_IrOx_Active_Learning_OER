@@ -1,17 +1,24 @@
 %% Machine Learning IrOx OER Paper %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % | - __latex_setup__
-\documentclass[a6paper,journal=jacsat,manuscript=article]{achemso}  % Smart-phone formatting
-% \documentclass[journal=jacsat,manuscript=article]{achemso}
-% \documentclass[journal=jacsat,manuscript=article,layout=twocolumn]{achemso}
+\newif\ifPhoneFormat
+%   \PhoneFormattrue
+\PhoneFormatfalse
+
+\ifPhoneFormat
+  % Smart-phone formatting
+  \documentclass[a6paper,journal=jacsat,manuscript=article]{achemso}  % Smart-phone formatting
+  \usepackage{geometry}
+  \geometry{margin=0.3in}
+  \pagenumbering{gobble}
+  \usepackage{endfloat}  % 190731 | RF | Put's all figures at the end
+\else
+  \documentclass[journal=jacsat,manuscript=article]{achemso}
+  % \documentclass[journal=jacsat,manuscript=article,layout=twocolumn]{achemso}
+\fi
+% __|
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage[margin=1mm]{geometry}  % Smart-phone formatting
-\usepackage{tgheros}
-\usepackage[T1]{fontenc}
-\renewcommand*\familydefault{\sfdefault}
-
-\pagenumbering{gobble}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[version=3]{mhchem}  % Formula subscripts using \ce{}
@@ -19,7 +26,6 @@
 \usepackage{multirow}
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{hhline}
-% \usepackage{svg}  % 181208 | RF | Added to include svg files
 % \usepackage{endfloat}  % 190731 | RF | Put's all figures at the end
 % __|
 
