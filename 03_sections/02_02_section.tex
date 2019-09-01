@@ -10,15 +10,18 @@
 % Short introduction into the cataylsis section
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-\textcolor{red}{write in active voice}
-We next turned to ab initio thermodynamic and kinetic analysis to elucidate the electrochemical stability and OER activity of the four stable polymorphs (\textcolor{red}{list them by name} computed above (Fg. XYZ).
+We next permormed an ab initio thermodynamic and kinetic analysis to elucidate the electrochemical stability and OER activity of the four stable polymorphs (\rIrOtwo, \aIrOthree, \rIrOthree, and \bIrOthree) computed above (Fg. XYZ).
 
 
-\sout{In the following section we will demonstrate the merit of our stable polymorph discovery algorithm by elucidating the electrochemical properties of the four promising structures discussed in the previous section.
-%
-In particular, surfaces constructed from the four polymorphs will be evaluated for their activity towards the oxygen evolution reaction (OER), an important chemistry with direct application to fuel cell devices.
-%
-Additionally, the surfaces will be evaluated for their stability and equilibrium surface coverage of surface oxygen and hydroxides.}
+% | - __old__
+% Removed by Chris
+% \sout{In the following section we will demonstrate the merit of our stable polymorph discovery algorithm by elucidating the electrochemical properties of the four promising structures discussed in the previous section.
+% %
+% In particular, surfaces constructed from the four polymorphs will be evaluated for their activity towards the oxygen evolution reaction (OER), an important chemistry with direct application to fuel cell devices.
+% %
+% Additionally, the surfaces will be evaluated for their stability and equilibrium surface coverage of surface oxygen and hydroxides.}
+% __|
+
 % __|
 
 
@@ -28,33 +31,32 @@ Additionally, the surfaces will be evaluated for their stability and equilibrium
 
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% #COMBAK
+% Explain the Ir and IrO[4-] species
 % #QUESTION Use E or U for potential variable
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 Fig. \ref{fig:bulk_pourbaix} reports the IrOx pourbaix diagram (E vs. pH) constructed with the following species: Ir, \rIrOtwo, \aIrOthree,  \rIrOthree, \bIrOthree, and an aqueous dissolved \ce{IrO[4-]} species (See TEMP|SI for additional details).
 %
-%The resulting diagram is shown in Fig. \ref{fig:bulk_pourbaix}.
-%
-\textcolor{red}{try to avoid superlatives}\sout{Importantly,} 
 \aIrOthree is the most stable species under acidic conditions (pH \textless 7) and in the bias region of interest for the OER (~1.23 V vs. RHE)
-%Under acidic conditions (pH \textless 7) and in the bias region of interest for the OER (~1.23 V vs. RHE) \aIrOthree shows a large window of stability.
 %
-%This indicates that the \aIrOthree phase may be stabilized under the highly oxidizing conditions of the OER.
+% Raul | I would like to make the more general point that IrO3 polymorphs are the stable species relative to IrO2 at OER conditions.
+% I think that point needs to be made clearly before we dive into the detail of which particular polymorph is stable
+% TEXT | This indicates that the \aIrOthree phase may be stabilized under the highly oxidizing conditions of the OER.
 %
+% I want to be careful about how I talk about the metastable structures in the bulk Pourbaix, they strickly speaking shouldn't be there at all
 The stability regions of the metastable \rIrOthree and \bIrOthree phases are indicated by unfilled solid lines and appear stable in the OER relevant region of the diagram.
+%
 The similar formation energies (SI XYZ) for all three IrO3 species suggest some or all of these \ce{IrO_3} phases may be present and are stable under OER conditions.
 
-\textcolor{red}{Can we demarcate somehow on the PB diagram what the OER relevant region is}
-%, in the absence of any other competing \ce{IrO_3} polymorphs, are indicated by unfilled solid lines.
+% | - __old__
+% , in the absence of any other competing \ce{IrO_3} polymorphs, are indicated by unfilled solid lines.
 %
-%As shown, these metastable phases appear to also have a wide region of stability in the OER region,
+% As shown, these metastable phases appear to also have a wide region of stability in the OER region,
 %due to to their formation energies being within TEMP eV of the globally stable \aIrOthree phase, see SI table TEMP for the bulk energies of all considered phases.
 %
 %Because of their similar energies it is possible that some or all of these \ce{IrO_3} phases may be present and relevant for the OER.
 %
 %In the next section, we explore this possibility by computing the theoretical OER activity of these polymorph systems.
-% Also explain the Ir and IrO[4-] ion
 % __|
 
 
@@ -79,40 +81,56 @@ The water equilibrium line at 1.23 V vs RHE, which corresponds to a 0 overpotent
 
 % __|
 
+% __|
 
-% | - OER Activities and Surfaces
+
+% | - OER Surfaces and Activities
 \subsubsection{b. OER Surfaces and Activities}
 
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Introduction to OER results
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - Paragraph start
 Fig. \ref{fig:oer_volcano} summarizes the major results of the electrochemical activity and surface stability analysis, structure files and method details are reported in SI XYZ.
 %
-Fig. \ref{fig:oer_volcano} a.) reports the surface energy Pourbaix plots as a function of applied potential (at pH=0) for the four IrOx crystals of interest. The bulk phase limits of stability from figure TEMP are included at the bottom of each subplot.  For each polymoph XYZ specific facets were chosen from the highest intensity x-ray diffraction peaks from powder-diffraction spectra simulated in VESTA and physical intuition. For each facet we computed the surface free energy for three coverages, bare, *OH, and *O.
-\sout{shows the surface energy Pourbaix plots for the four IrOx crystals of interest. For each bulk system, the surface energy as a function of applied potential (pH=0), for various facets, and at various coverages (bare, *OH, and *O covered), are shown, see SI for more details.}
+Fig. \ref{fig:oer_volcano} a.) reports the surface energy Pourbaix plots as a function of applied potential (at pH=0) for the four IrOx crystals of interest.
+%
+The bulk phase limits of stability from figure TEMP are included at the bottom of each subplot.
+%
+For each polymoph XYZ specific facets were chosen from the highest intensity x-ray diffraction peaks from powder-diffraction spectra simulated in VESTA (TEMP insert vesta ref and ref SI xrd plot) and physical intuition.
+%
+For each facet we computed the surface free energy for three coverages, bare, *OH, and *O.
 % How facets were chosen | TODO Get x-ray pattern for systems
 % TODO #REF | Reference for VESTA x-ray diff. pattern method
-%The specific facets were chosen from the highest intensity x-ray diffraction peaks from powder-diffraction spectra simulated in VESTA,
-%as well as using physical intuition as to which facets would be most physical.
-% Say that the IrO3 bulk phase corresponds to the o-covered regime
-%Additionally, the bulk phase limits of stability from figure TEMP are included at the bottom of each subplot.
+% TODO Say that the IrO3 bulk phase corresponds to the o-covered regime
 %
-In most cases\chris{be specific}, the oxygen covered surfaces dominate at the OER equilibrium potential (1.23 V vs RHE) with bare surfaces being competitive to within TEMP eV/A2,
-this competitiveness goes away at even modest overpotentials (eta~0.3, --> ~1.5 V vs RHE),
-at which point the oxygen covered terminations are further over-stabilized relative to the bare surfaces,
-making them the sole dominant termination. Consequently, we consider mainly \chris{only?} oxygen terminated surfaces for the OER.\\
-% COMBAK, Revise "mainly" if we include some different coverags
-%Therefore in our activity analysis we consider mainly oxygen terminated surfaces for the OER.
+% Probably remove this sentence and just go with the second one
+% In most cases\chris{be specific}, the oxygen covered surfaces dominate at the OER equilibrium potential (1.23 V vs RHE) with bare surfaces being competitive to within TEMP eV/A2,
+% this competitiveness goes away at even modest overpotentials (eta~0.3, --> ~1.5 V vs RHE),
+% at which point the oxygen covered terminations are further over-stabilized relative to the bare surfaces,
+% making them the sole dominant termination. Consequently, we consider mainly \chris{only?} oxygen terminated surfaces for the OER.\\
+At modest overpotentials (eta ~0.3 and potentials of ~1.5 V vs RHE) the convex hull is populated soley by oxygen terminated surfaces.
 %
+% COMBAK, Revise "mainly" if we include some different coverages
+Consequently, we consider mainly oxygen terminated surfaces for the OER analysis.
+%
+% __|
 
-The OER activity (expressed in terms of the limiting potential) for select oxygen terminated surfaces are shown in Fig. \ref{fig:oer_volcano} as a function of the DGO-DGOH TEMP OER thermodynamic descriptor.\chris{you need to explain what this means and cite previous work.  It has previously been established that XYZ...}
+% ################################# Paragraph #################################
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% OER results
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - Paragraph start
+The OER activity (expressed in terms of the limiting potential) for select oxygen terminated surfaces are shown in Fig. \ref{fig:oer_volcano} as a function of the DGO-DGOH TEMP OER thermodynamic descriptor.
 %
-The two rutile-IrO2 surfaces (100, and 110) bind OER intermediates \chris{which intermediates?} strongly, locating them at a theoretical limiting potential of xyz. Predicted overpotentials of TEMP and TEMP, our rutile-IrO2 are within the range of experimental overpotentials found in literature \chris{I don't understand this sentence, what are the TEMP supposed to be here?}.
+The two rutile-IrO2 surfaces (100, and 110) bind the OER intermediates strongly, locating them at a theoretical limiting potential of xyz.
+%
+The predicted overpotentials of our rutile-IrO2 systems are within the range of experimentally observed overpotentials found in literature.
 % Reference all experimental IrO2 overpotentials I can find
-\sout{Encouragingly, with predicted overpotentials of TEMP and TEMP, our rutile-IrO2 are within the range of experimental overpotentials found in literature.}
 %
-The three IrO3 polymorph surfaces all have DGO-DGOH descriptor towards the top and right of the volcano, indicative of weaker binding energetics. \chris{you already know the binding energies to even construct the volcano, why are you trying to infer them from it?}  \chris{Im losing the big picture here at the end of the section, I think you are convoluting two different things that need to be broken up into their own paragraphs.  This OER activity part needs some work, let's discuss}
+The three IrO3 polymorph surfaces all have DGO-DGOH descriptor towards the top and right of the volcano, indicative of weaker binding energetics.
+% \chris{Im losing the big picture here at the end of the section, I think you are convoluting two different things that need to be broken up into their own paragraphs.  This OER activity part needs some work, let's discuss}
 %
 This is evident from figure SI TEMP (scaling) which shows a clear distinction between the IrO2 and IrO3 polymorphs, with IrO3 binding on average TEMP eV weaker than IrO2.
 %
@@ -120,7 +138,7 @@ The best performing systems, including the (100), (110), and (211) facets of a-I
 a ~0.2 V vs RHE improvement over the rutile-IrO2 system.
 %
 We note that the computed  overpotentials for our \rIrOtwo system differs from that reported in \cite{Seitz2016} by ~0.2 V. This discrepancy is due to our us of spin-polarization, which was neglected in Seitz et al., which strengthens the binding of IrO2.
-
+% __|
 
 % | - Figure | OER Volcano/Surface Pourbaix
 \begin{figure*}
