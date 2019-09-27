@@ -64,7 +64,7 @@ Finally, a Voronoi tessellation based fingerprinting scheme developed by Ward et
 %
 The Voronoi based method was used because it is insensitive to volume relaxation.
 %
-Separate, indpedent models were used for IrO2 and IrO3 to reduce the complexity of the space, this has the addtional effect of making a large number of the fingerprint descriptors reduendant.
+Separate, independent models were used for IrO2 and IrO3 to reduce the complexity of the space, this has the additional effect of making a large number of the fingerprint descriptors redundant.
 % How many columns of the 271 are redundant if stoich and composition are frozen
 As a result, the 271 length feature space is reduced to a TEMP length vector.
 %
@@ -80,31 +80,36 @@ PCA was used to reduce the dimensionality of the feature space from 271 to 20 fe
 % | - Paragraph start
 The active learning algorithm proceeds through iterative ML training, prediction, and acquisition steps and is visualized in figure TEMP.
 %
-Although we could use practically any regression technique, we employed the Gaussian process (GP) regression model because it offers a high degree of flexibility and, most importantly, built-in error quantification.
-% TODO: Does the aquisition function we use have a name?
-Error quantification on the predicted formation energies is important because its used in the aquisition criteria.
+While any regression technique can be used, we employed the Gaussian process (GP) regression model because it offers a high degree of flexibility and, most importantly, built-in uncertainty quantification.
+% TODO: Does the acquisition function we use have a name?
+Uncertainty quantification on the predicted formation energies is important because its used in the acquisition criteria.
 %
 Further details on the GP model, including hyper parameter information, is including in the SI.
 %
-The aquisition is made by selecting the $N$ systems with the lowest value of the aquisition function.
+The acquisition is made by selecting the $N$ systems with the lowest value of the acquisition function.
 %
-The aquistion function is defined as the predicted formation energy minus the uncertainty,
+The acquisition function is defined in terms of the predicted formation energy, E, and the uncertainty, U:
+
+\begin{equation}
+    F = E - \kappa U,
+\end{equation}
+
+where the parameter $\kappa$ can be tuned to probe low uncertainty (small $\kappa$) or high uncertainty regions  (large $\kappa$). 
 % TODO: Write aquisition function here, again does it have a name
-$a = b + c$
+%$a = b + c$
 %
 The value of $N$ determines how many structures are selected for DFT calculations,
-and as such, determines the degree of parallization of the routine.
-%
-Small values of N result in an algorithm that is slow, as every DFT calculation is performed serially.
+and as such, determines the degree of parallization of the routine. The optimal value of $N$ depends on the computational resources available, as small values of N result in an algorithm that is slow, as every DFT calculation is performed serially.
 % TODO: Is this statement true?
-Larger values of N speed up the algorith, but potentially decreases the efficiency of the algorithm by TEMP TEMP.
+Larger values of N speed up the active-learning algorithm, but leads to a higher number of DFT calculations performed before convergence. %but potentially decreases the efficiency of the algorithm by TEMP TEMP.
 %
 Here we chose a value $N=10$.
 %
-The aquired strcutres are initially volume relaxed, followed by a full relaxation of all of the atomic coordinates,
+The acquired structures are initially volume relaxed, followed by a full relaxation of all of the atomic coordinates,
 see SI for additional details on the DFT methodology.
 % This is wordy
-The AL loop proceeds until convergence is achieved, which here is defined as the point at which the model has determined the lowest $N$ structures and has acheived a degree of accuracy for the candidate space such that no structures have formation energies with a lower uncertainty bound lower than the most stable $N$ structures.
+The AL loop proceeds until convergence is achieved, which here is defined as the point at which %the model has determined the lowest $N$ structures and has achieved a degree of accuracy for the candidate space such that 
+no structures have predicted formation energies with an uncertainty bound lower than the most stable $N$ structures.
 
 % __|
 
@@ -113,10 +118,10 @@ The AL loop proceeds until convergence is achieved, which here is defined as the
   \item Candidate space of structures is generated
   \item Initial seed data is used to train a ML model
   \item ML model predicts energy of entire candidate space
-  \item Most valuable calculation(s) is selected using acquisition function
+  \item Most valuable structure(s) is(are) selected using acquisition function
   \item DFT calculation(s) is(are) performed to obtain additional training data points
   \item ML model is retrained with additional data
-  \item Repeat steps (TEMP) through (TEMP) until convergence criteria is reached
+  \item Repeat steps (3) through (6) until convergence criteria is reached
   % \item TEMP
 \end{enumerate}
 

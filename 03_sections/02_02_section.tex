@@ -10,7 +10,7 @@
 % Short introduction into the cataylsis section
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-We next permormed an ab initio thermodynamic and kinetic analysis to elucidate the electrochemical stability and OER activity of the four stable polymorphs (\rIrOtwo, \aIrOthree, \rIrOthree, and \bIrOthree) computed above (Fg. XYZ).
+We next performed an ab initio thermodynamic and kinetic analysis to elucidate the electrochemical stability and OER activity of the four stable polymorphs (\rIrOtwo, \aIrOthree, \rIrOthree, and \bIrOthree) computed above (Fg. XYZ).
 
 
 % | - __old__
@@ -37,14 +37,14 @@ We next permormed an ab initio thermodynamic and kinetic analysis to elucidate t
 % | - Paragraph start
 Fig. \ref{fig:bulk_pourbaix} reports the IrOx pourbaix diagram (E vs. pH) constructed with the following species: Ir, \rIrOtwo, \aIrOthree,  \rIrOthree, \bIrOthree, and an aqueous dissolved \ce{IrO[4-]} species (See TEMP|SI for additional details).
 %
-\aIrOthree is the most stable species under acidic conditions (pH \textless 7) and in the bias region of interest for the OER (~1.23 V vs. RHE)
+While \Ir and \rIrOtwo are most stable at low bias, \aIrOthree is the most stable species under acidic conditions (pH \textless 7) and in the bias region of interest for the OER (~1.23 V vs. RHE).
 %
 % Raul | I would like to make the more general point that IrO3 polymorphs are the stable species relative to IrO2 at OER conditions.
 % I think that point needs to be made clearly before we dive into the detail of which particular polymorph is stable
 % TEXT | This indicates that the \aIrOthree phase may be stabilized under the highly oxidizing conditions of the OER.
 %
-% I want to be careful about how I talk about the metastable structures in the bulk Pourbaix, they strickly speaking shouldn't be there at all
-The stability regions of the metastable \rIrOthree and \bIrOthree phases are indicated by unfilled solid lines and appear stable in the OER relevant region of the diagram.
+% I want to be careful about how I talk about the metastable structures in the bulk Pourbaix, they strictly speaking shouldn't be there at all
+The stability regions of the metastable \rIrOthree and \bIrOthree phases are indicated by unfilled solid lines and appear (meta?)stable in the OER relevant region of the diagram.
 %
 The similar formation energies (SI XYZ) for all three IrO3 species suggest some or all of these \ce{IrO_3} phases may be present and are stable under OER conditions.
 
@@ -97,7 +97,7 @@ Fig. \ref{fig:oer_volcano} a.) reports the surface energy Pourbaix plots as a fu
 %
 The bulk phase limits of stability from figure TEMP are included at the bottom of each subplot.
 %
-For each polymoph XYZ specific facets were chosen from the highest intensity x-ray diffraction peaks from powder-diffraction spectra simulated in VESTA (TEMP insert vesta ref and ref SI xrd plot) and physical intuition.
+For each polymoph, XYZ specific facets were chosen from the highest intensity x-ray diffraction peaks from powder-diffraction spectra simulated in VESTA (TEMP insert vesta ref and ref SI xrd plot) and physical intuition.
 %
 For each facet we computed the surface free energy for three coverages, bare, *OH, and *O.
 % How facets were chosen | TODO Get x-ray pattern for systems
@@ -109,7 +109,7 @@ For each facet we computed the surface free energy for three coverages, bare, *O
 % this competitiveness goes away at even modest overpotentials (eta~0.3, --> ~1.5 V vs RHE),
 % at which point the oxygen covered terminations are further over-stabilized relative to the bare surfaces,
 % making them the sole dominant termination. Consequently, we consider mainly \chris{only?} oxygen terminated surfaces for the OER.\\
-At modest overpotentials (eta ~0.3 and potentials of ~1.5 V vs RHE) the convex hull is populated soley by oxygen terminated surfaces.
+At modest overpotentials (eta ~0.3 and potentials of ~1.5 V vs RHE) the convex hull is populated solely by oxygen terminated surfaces.
 %
 % COMBAK, Revise "mainly" if we include some different coverages
 Consequently, we consider mainly oxygen terminated surfaces for the OER analysis.
@@ -121,14 +121,15 @@ Consequently, we consider mainly oxygen terminated surfaces for the OER analysis
 % OER results
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-The OER activity (expressed in terms of the limiting potential) for select oxygen terminated surfaces are shown in Fig. \ref{fig:oer_volcano} as a function of the DGO-DGOH TEMP OER thermodynamic descriptor.
+% Replace G_O and G_OH with my custom macros for consistency
+The OER activity (expressed in terms of the limiting potential) for select oxygen terminated surfaces are shown in Fig. \ref{fig:oer_volcano} as a function of the $\Delta G_\mathrm{O} - \Delta G_\mathrm{OH}$ thermodynamic descriptor.
 %
-The two rutile-IrO2 surfaces (100, and 110) bind the OER intermediates strongly, locating them at a theoretical limiting potential of xyz.
+The two rutile-IrO2 surfaces (100 and 110) bind the OER intermediates strongly, locating them at a theoretical limiting potential of xyz.
 %
 The predicted overpotentials of our rutile-IrO2 systems are within the range of experimentally observed overpotentials found in literature.
 % Reference all experimental IrO2 overpotentials I can find
 %
-The three IrO3 polymorph surfaces all have DGO-DGOH descriptor towards the top and right of the volcano, indicative of weaker binding energetics.
+The three IrO3 polymorph surfaces all have a $\Delta G_\mathrm{O} - \Delta G_\mathrm{OH}$ descriptor towards the top and right of the volcano, indicative of weaker binding energetics.
 % \chris{Im losing the big picture here at the end of the section, I think you are convoluting two different things that need to be broken up into their own paragraphs.  This OER activity part needs some work, let's discuss}
 %
 This is evident from figure SI TEMP (scaling) which shows a clear distinction between the IrO2 and IrO3 polymorphs, with IrO3 binding on average TEMP eV weaker than IrO2.
