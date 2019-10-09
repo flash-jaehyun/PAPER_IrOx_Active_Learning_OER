@@ -5,16 +5,17 @@
 %%    TODO: Is there any cross-validation happening here? I don't think so
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+% #############################################################################
 \subsection{Machine Learning Algorithm Methods}
 
 \subsection{Classifying unique prototypes in DFT databases}
+% | - Classifying unique prototypes in DFT databases
 TEMP
 
-\subsection{Gaussian process regression model}
-TEMP
+% __|
 
 \subsection{Gaussian process regression model}
+% | - Gaussian process regression model
 Relevant details about the ML Gaussian process here  % @Chris
 
 % TODO Check again how I handled the length vectors
@@ -25,13 +26,40 @@ The Gaussian Process model utilized a rational quadratic kernel with variable le
 % - Model retrained with the 10 DFT computed structures ONLY, 271 features->110 features applicable to \ce{IrO_2}->20 principle components for 99.9 percent variance.
 % CV error…
 % - Repeat until XYZ, final predictions shown in Fig XYZ
+% __|
 
+\subsection{Bulk polymorph DFT optimization}
+% | - Gaussian process regression model
+VASP
+PBE exchange correlation functional
+spin-polarized calculations
+plane-wave cutoff of 600 eV
 
-% | - Electrochemical OER Computational Methods
+A variable k-point mesh is used such that a kpoint density of at least 20 kpoints per recipricol space dimension.
+
+All bulk systems were run through the following computational recipe to converge the equilibrium structure.
+The recipe has 3 distinct phases, and structures are only advanced to the next phase when the previous phase completes without error.
+1. A isif 7 calculation to optimize only the volue (initial volume of cell may be really off)
+2. 3 consecutive isif 3 relaxations to fully converge the lattice and atomic positions
+3. A final isif 2, calculation to relax the atomic coorindates only to avoid errors associated with changing the cell volume with a fixed plane-wave cutoff basis
+
+The final isif 2 step is run with an electronic energy SCF convergence criteria of 1E-6 eV and the ionic relaxation has a tight force convergence criteria of 1E-3 eV/Angstrom
+% __|
+
+\subsection{Structural coordination motiff identification}
+% | - Structural coordination motiff identification
+Several esoteric structural features were found in the DFT optimized structures and can be catogorized as one of two types, legitimate structural motiffs not characterized by the scheme of Waroquiers et. al. \cite{Waroquiers2017}, and arguably non-physical structural artifacts, including:
+% TODO Add more of these
+- unassociated oxygen atoms
+- molecular oxygens in the unit cell
+%
+% __|
+
+% #############################################################################
 \subsection{Electrochemical OER Computational Methods}
 
-% | - Density Functional Theory Methods
 \subsubsection{Density Functional Theory Methods}
+% | - Density Functional Theory Methods
 % Get VASP #REF in the ex. word doc. that @Michal shared with me
 All OER calculations were performed using density functional theory (DFT) implemented via the Vienna ab-initio simulation package (VASP) and utilizing the PBE exchange-correlation functional.
 Dipole corrections were imposed on all non-symmetric slabs.
@@ -47,12 +75,20 @@ All slab calculations maintained a vacuum spacing of <15 A.
 All structures were relaxed utilizing a TEMP algorithm with a stop criteria being that all atoms satisfy a maximum force threshold of 0.02 eV/A.
 % __|
 
-% | - OER Thermodynamic Methodology
 \subsubsection{OER Thermodynamic Methodology}
+% | - OER Thermodynamic Methodology
+Procedure:
+- For the top/most stable bulk structures the following procedure was carried out
+
+* Stable stoichiometric terminations were cut from the bulk Stable termination planes were guesstimated via intuition, and the x-ray diffraction pattern tool from Vesta
+
+* Electrochemical surface coverage was elucidated via a surface Pourbaix analysis Need to know the coverage of surface under operating conditions (>1.23 V RHE)
+
+* Thermodynamic/limiting potential analysis of the OER mechanistic pathway Volcano plot, limiting potentials, etc.
 % __|
 
-% | - Surface Energy Pourbaix Methodology
 \subsubsection{Surface Energy Pourbaix Methodology}
+% | - Surface Energy Pourbaix Methodology
 Surface energy Pourbaix plots were constructed by calculating the surface energy of each slab by under standard conditions (V=0 and pH=0) and then utilizing the computational hydrogen electrode to compute the potential dependence of the surfaces.
 
 Surface energy calculations were performed for various facets for slabs of increasing thickness.
@@ -66,6 +102,8 @@ The equation for is as follows:
 % TODO
 % __|
 
+% #############################################################################
+
 % | - Bulk systems
 % Formation energies of 4 polymorphs
 
@@ -73,16 +111,5 @@ The equation for is as follows:
 
 % | - Table of OER energetics
 
-
-% __|
-
-Procedure:
-- For the top/most stable bulk structures the following procedure was carried out
-
-* Stable stoichiometric terminations were cut from the bulk Stable termination planes were guesstimated via intuition, and the x-ray diffraction pattern tool from Vesta
-
-* Electrochemical surface coverage was elucidated via a surface Pourbaix analysis Need to know the coverage of surface under operating conditions (>1.23 V RHE)
-
-* Thermodynamic/limiting potential analysis of the OER mechanistic pathway Volcano plot, limiting potentials, etc.
 
 % __|

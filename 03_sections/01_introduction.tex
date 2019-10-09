@@ -1,7 +1,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Introduction
 %%
-%%
+%% Key points:
+%%   * Materials are composed of their "stoicheometry" and their "structure"
+%%   * 3N dimensional cartesion space of coordinates is prohibitelvey large
+%%   * Our candidate space generation leverages symmetry to produce a set of
+%%     structurally unique and well distributed (across the high dim. 3N space)
+%%     polymorphs
+%%   * Mention other methods for bulk crystal structure Discovery
+%%     - simulated annearling
+%%     - paper that Hammer put out (R58)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -10,7 +18,8 @@
 % Setting up the general problem of crystal structure determination
 % Very hard to exhausitvely sample all structures,
 % therefore it's hard to know if you are considering the global minimum strucutre
-% All important properties of a material are governed by structure (assuming stoich is known)
+% All important properties of a material are governed by structure
+% (assuming stoich is known)
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 The general problem of solving for the most thermodynamically stable crystal structure for an arbitrary inorganic system remains a prohibitive challenge in material science.
@@ -18,8 +27,16 @@ The general problem of solving for the most thermodynamically stable crystal str
 Experimentally synthesized inorganic materials often conform to the globally minimum energy structure (or similarly stable meta-stable phases),
 therefore it is desirable from a computational perspective to know the corresponding crystal structure to conduct simulations on.
 %
-This problem is theoretically challenging, as the number of possible crystal structures for a given stoichiometry is prohibitive.
+This problem is theoretically challenging for all but the most simple systems systems such as mono/bi-metallic materials which tend to adopt simple close-packed arragements.
 %
+For all other systems though, the structural variety available is practically uncountable.
+%
+This is particulally true for metal-oxides, a diverse and important class of materials, which tend to organize themselves into well-defined coordination environment motiffs such as octahedra and tetrahedra units (low-range order).
+%
+These basic building blocks can then be connected through 3 primary modes, vertex-sharing, edge-sharing, and face-sharing configurations (mid-range order) which can give rise to long-range order by forming porous or layered systems.
+%
+The potential to form structures with order on multiple length-scales gives oxides a large degree of structural variety which it turn makes the space of possible polymorphs intractably large.
+% TEMP
 Iterative Active Machine Learning and unique prototype identification to discover stable new materials and catalysts.
 %
 Motivation for \ce{IrO_x}, low representation, longstanding controversy over oxidation states and topology, and demonstrates promise for OER and Li ion batteries.
@@ -28,24 +45,39 @@ Motivation for \ce{IrO_x}, low representation, longstanding controversy over oxi
 
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TEMP
+% Talk about problem w.r.t. Iridium Oxides
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-Reported +6 oxidation state phases are achievable leading to high degree of structural variability, which is the highest for transition metals.
+Herein, we focus on iridium oxide chemical systems.
 %
-High oxidation states (low pH high anodic voltage, harsh oxidizing conditions) unexplored, need very specific structures with precise oxygen connectivity (aka high pressure \ce{SrIrO_3}) that can exist.
+Iridium oxides are an important class of materials with applications in electrochemistry and TEMP.
 %
-Machine learning is the efficient way to explore this “exploring Antarctica for life” sparse space.
+Rutile-IrO2, the most stable form of iridium-oxide at standard conditions, is a well studied electrocatalyst for the oxygen evolution reaction (OER)
+% (TODO cite science paper)
+Iridium in rutile-IrO2 has a [4+] formal oxidation state, but a previous studies on SrIrO3 electrocatayls  under operating conditions (low pH and high anodic voltage) demonstrated that Sr leaching left behind a highly oxidized Ir[6+] (IrO3) system that was predicted to be responsible for the observed OER activity.
 %
-What we show here...
+For this reason we focused our study to search for stable polymorphs in the standard IrO2 stoicheometry  as well as higher oxidation state IrO3.
+% TODO Reference the paper(s) from a-AlF3 systems
+IrO3 is a natural stoicheomtry to target since it's the only one that can form octahedral crystals that are 100 percent corner sharing, and there is plenty of research on coordination crystals of the same stoicheometry. (TEMP reference).
+
+%Reported +6 oxidation state phases are achievable leading to high degree of structural variability, which is the highest for transition metals.
+%High oxidation states (low pH high anodic voltage, harsh oxidizing conditions) unexplored, need very specific structures with precise oxygen connectivity (aka high pressure \ce{SrIrO_3}) that can exist.
+% Machine learning is the efficient way to explore this “exploring Antarctica for life” sparse space.
 % __|
 
 
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TEMP
+% Paragraph that starts to focus in on our actual algorithm
+% Talk about the problem with optimizing in 3N cartesian space
+% Best way to create a population of polymorphs is to consider symmetry
+%   - nature loves symmetry
+%   - Talk about other material databases
+%   - They mostly explore composition space, despite this though, there does exist a lot of variety in structure
+%       * QUESTION How much data do we have on the OQMD+MP structure uniqueness search
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
+% 2  --> 3 key features (first is that we're not working in 3N space!!!)
 The two key features of our algorithm that make the exploration of an expansive space possible are its use of surrogate models and active learning framework.
 %
 Because DFT calculations are prohibitively computationally expensive to carry out for large data sets, herein we train a Gaussian Process (GP) machine learning model to serve as a surrogate model.
