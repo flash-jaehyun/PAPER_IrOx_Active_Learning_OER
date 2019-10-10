@@ -3,12 +3,12 @@
 %%
 %% Key points:
 %%   * Materials are composed of their "stoicheometry" and their "structure"
-%%   * 3N dimensional cartesion space of coordinates is prohibitelvey large
+%%   * 3N dimensional Cartesian space of coordinates is prohibitelvey large
 %%   * Our candidate space generation leverages symmetry to produce a set of
 %%     structurally unique and well distributed (across the high dim. 3N space)
 %%     polymorphs
 %%   * Mention other methods for bulk crystal structure Discovery
-%%     - simulated annearling
+%%     - simulated annealing
 %%     - paper that Hammer put out (R58)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -16,27 +16,30 @@
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Setting up the general problem of crystal structure determination
-% Very hard to exhausitvely sample all structures,
-% therefore it's hard to know if you are considering the global minimum strucutre
+% Very hard to exhaustively sample all structures,
+% therefore it's hard to know if you are considering the global minimum structure
 % All important properties of a material are governed by structure
 % (assuming stoich is known)
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-The general problem of solving for the most thermodynamically stable crystal structure for an arbitrary inorganic system remains a prohibitive challenge in material science.
+Predicting the thermodynamically stable crystal structures for an arbitrary inorganic system remains a challenging problem in computational material science.
 %
-Experimentally synthesized inorganic materials often conform to the globally minimum energy structure (or similarly stable meta-stable phases),
-therefore it is desirable from a computational perspective to know the corresponding crystal structure to conduct simulations on.
+Experimentally synthesized inorganic materials often conform to the global minimum energy structure (or similarly stable meta-stable phases). When simulations are used to guide the search  for new materials, the stable and meta-stable crystal structures must be known in order to predict the material properties.
+%therefore it is desirable from a computational perspective to know the corresponding crystal structure to conduct simulations on.
 %
-This problem is theoretically challenging for all but the most simple systems systems such as mono/bi-metallic materials which tend to adopt simple close-packed arragements.
+This problem is theoretically challenging for all but the most simple systems systems such as mono/bi-metallic materials which tend to adopt simple close-packed arrangements.
 %
 For all other systems though, the structural variety available is practically uncountable.
-%
-This is particulally true for metal-oxides, a diverse and important class of materials, which tend to organize themselves into well-defined coordination environment motiffs such as octahedra and tetrahedra units (low-range order).
+
+
+This is particularly true for metal-oxides, a diverse and important class of materials, which tend to organize themselves into well-defined coordination environment motifs such as octahedral and tetrahedral units (short-range order).
 %
 These basic building blocks can then be connected through 3 primary modes, vertex-sharing, edge-sharing, and face-sharing configurations (mid-range order) which can give rise to long-range order by forming porous or layered systems.
 %
-The potential to form structures with order on multiple length-scales gives oxides a large degree of structural variety which it turn makes the space of possible polymorphs intractably large.
+The potential to form structures with different arrangements on multiple length-scales gives oxides a large degree of structural variety which it turn makes the space of possible polymorphs intractably large.
 % TEMP
+In order to navigate this vast space of materials, Machine Learning approaches has a huge potential to guide the search for structures of interest, and by-passing the need for expensive computations for all possible arrangements. 
+
 Iterative Active Machine Learning and unique prototype identification to discover stable new materials and catalysts.
 %
 Motivation for \ce{IrO_x}, low representation, longstanding controversy over oxidation states and topology, and demonstrates promise for OER and Li ion batteries.
@@ -56,9 +59,9 @@ Rutile-IrO2, the most stable form of iridium-oxide at standard conditions, is a 
 % (TODO cite science paper)
 Iridium in rutile-IrO2 has a [4+] formal oxidation state, but a previous studies on SrIrO3 electrocatayls  under operating conditions (low pH and high anodic voltage) demonstrated that Sr leaching left behind a highly oxidized Ir[6+] (IrO3) system that was predicted to be responsible for the observed OER activity.
 %
-For this reason we focused our study to search for stable polymorphs in the standard IrO2 stoicheometry  as well as higher oxidation state IrO3.
+For this reason we focused our study to search for stable polymorphs in the standard IrO2 stoicheometry  as well as higher oxidation state corresponding to IrO3.
 % TODO Reference the paper(s) from a-AlF3 systems
-IrO3 is a natural stoicheomtry to target since it's the only one that can form octahedral crystals that are 100 percent corner sharing, and there is plenty of research on coordination crystals of the same stoicheometry. (TEMP reference).
+IrO3 is a natural stoichiometry to target since it's the only one that can form octahedral units that are 100 percent corner sharing, and there is plenty of research on coordination crystals of the same stoicheometry. (TEMP reference).
 
 %Reported +6 oxidation state phases are achievable leading to high degree of structural variability, which is the highest for transition metals.
 %High oxidation states (low pH high anodic voltage, harsh oxidizing conditions) unexplored, need very specific structures with precise oxygen connectivity (aka high pressure \ce{SrIrO_3}) that can exist.
