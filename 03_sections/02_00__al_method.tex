@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Active Learning Machine Learning Methodology and Results
+%% Active Learning Machine Learning Methodology
 %%
 %%
 %% Points to mention:
@@ -24,7 +24,6 @@
 % stability of the entire candidate space
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-
 Here, we present a machine-learning based methodology for discovering new stable and meta-stable phases of Iridium oxide.
 
 Our approach builds on the principles of surrogate active learning, where a model is iteratively trained on available ab-initio DFT data. The model predictions are used as a surrogate to the DFT energy evaluations, which are used to acquire new systems for DFT in the population based on an acquisition criteria.
@@ -148,143 +147,11 @@ no structures have predicted formation energies with an uncertainty bound lower 
 \begin{figure*}
 \centering
 \makebox[\textwidth][c]{\includegraphics
-  {02_figures/Surrogate_model_mine.png}
+  % {02_figures/Surrogate_model_mine.png}
+  {02_figures/al_diagram/Surrogate_model_mine.pdf}
   }
 \caption{\label{fig:all_diagram}
-(a) Active learning algorithm diagram.
-First the candidate space of structures is generated,
-next, the machine learning model is trained on any available DFT formation energy data.
-The trained ML model is then used to predict the DE of the entire candidate space.
-Finally, an acquisition step is performed to pick the next most valuable calculation to perform an-initio DFT on
-% -----------------------------------------------------------------------------
-(b) Toy model demonstrating a GP model converging with each subsequent iteration.
-% -----------------------------------------------------------------------------
+Process flow diagram for the active learning algorithm.
 }
 \end{figure*}
-% __|
-
-
-
-
-
-
-% #############################################################################
-% #############################################################################
-% ██████  ███████ ███████ ██    ██ ██   ████████ ███████
-% ██   ██ ██      ██      ██    ██ ██      ██    ██
-% ██████  █████   ███████ ██    ██ ██      ██    ███████
-% ██   ██ ██           ██ ██    ██ ██      ██         ██
-% ██   ██ ███████ ███████  ██████  ███████ ██    ███████
-% #############################################################################
-% #############################################################################
-% Notes:
-%   - QUESTION Is there any physical intuition that we can gleam from the fingerprints?
-%   - QUESTION What did @Chris mean by this? "Computed amorphous phase to define synthesizability"
-% #############################################################################
-% #############################################################################
-
-
-
-% ################################# Paragraph #################################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Intro/transition paragraph
-%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Paragraph start
-%
-We now turn our attention of the application of this active learning scheme by
-applying them to IrO2 and IrO3.
-%
-The AL algorithm is applied separately to IrO2 and IrO3 because we are specifically interested in the most stable polymorphs at each stoicheometry.
-% TODO How many features drop out when you constrain the stoich.?
-This has an the added benefit of reducing the number of fingerprint vectors from the Voronoi tesselation dramatically (from TEMP to TEMP) because many features are senstive to changes in stoicheometry.
-% __|
-
-% ################################# Paragraph #################################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Results for IrO3
-% MAIN RESULTS:
-%   How many generations to find top 2-3 structures?
-% We need to call them something else than "convergence plots" (bad name)
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Paragraph start
-%
-Figure TEMP a and b shows several plots of the AL predictions on the candidate space at particular generations of the AL algorithm for the IrO3 candidate space with an aquisition bin size of 10 DFT calculations per iteration and an initial 11 calculations used for seeding.
-%
-Figure TEMP a. shows the progression of the model at select generations of the active learning loop.
-%
-It can be seen from Figure TEMP a that
-%
-Figure TEMP b. shows the
-The formation energy, either predicted (small colored circles) or computed (large red-bordered circles), is plotted on the y-axis against all structures in the candidate space of IrO3 polymorphs.
-%
-The DFT derived formation energy is plotted alongside the predicted data (hollow diamonds).
-%
-It is evident from figure TEMP, that the Gaussian process model is doing a poor job of predicting the DFT formation energy of the candidate space, with a exceptionally poor MAE of TEMP eV/atom at the AL generation shown here.
-%
-This is significatally lower than the leave-one out cross validation error of TEMP ~0.15 eV/atom, which indicates that the issue does not lie with a poor predictive model.
-%
-Instead, the issue lies with the large degree of structural reorganization that occurs over the course of a typical DFT ionic optimization.
-% TODO Change wording when @Kirsten uses the protosearch to optimize candidates
-Becasue the candidate space structures are generated
-% To compare the performance of the AL routine we compare against a
-% __|
-
-
-% | - Figure | IrO3 Convergence Plot
-\begin{figure*}
-\centering
-\makebox[\textwidth][c]{\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]
-{02_figures/ml_convergence_plots/test_iro3_al.jpg}
-}
-\caption{\label{fig:iro2_al}
-Results from machine-learning accelarted active learning material discovery algorithm.
-% FORMATION ENTHALPY, FIX
-Both (a) and (b) plot the formation enthalpy (either predicted from the model or computed by DFT) for each system in the candidate pool, ordered by decreasing stability (low to high formation energy).
-%
-Formation energies predicted by the surrogate model are represented by smaller circles,
-while aquired DFT formation energies are shown as enlarged red bordered circles.
-%
-Each data point is colored based on the ordering of the DFT formation energies, with low formation energy systems on the dark end of the spectrum and the highest formation energy species colored light.
-%
-Error bars representing 1 sigma standard deviation from the Gaussian Process model are shown for each prediction.
-%
-(a) Series of ML convergence plots at different generations of the active learning algorithm.
-%
-The middle panel indicates the generation which satisifies the AL stop criteria (see text)
-%
-(b) Expanded ML plot for the generation that satisfies the stop criteria.
-%
-Black diamonds indicate the actual DFT formation energy for each system.
-%
-Inset shows the most stable 20 systems that are within the energetic window of meta-stability (indicated by grey band).
-%
-(c)
-Number of the top 20 polymorphs discovered as a function of the AL generation number for the AL loop using the aquisition criteria in equation TEMP and a control run that utilized a random  aquisition method.
-
-
-% | - __old__
-% Gaussian process machine learning models trained initially on (a) publicly available DFT data for IrO2 and (b) all of the acquired DFT calculations from the active learning algorithm.
-% See SI for additional panels at intermediate iterations of the active learning algorithm.
-% The Gibbs formation energy (either DFT derived or predicted from the GP model) and associated GP estimated error (2 sigmas or something TEMP) is plotted for each polymorph in the IrO2 candidate space.
-% The data points in each subset are ordered from most to least stable (lowest to largest DE formation).
-% The individual markers are colored based on their ordering in the final converged GP model.
-% Acquired structures are identified by their red borders and slightly larger size.
-% The insets show the most stable TEMP structures, where several well known crystal structures are labeled.
-% __|
-
-}
-\end{figure*}
-% __|
-
-
-% #############################################################################
-% | - __old__
-% ################################# Paragraph #################################
-% AB2 Structures Ankit
-% - There are XYZ unique AB2 structures (or multiples, e.g. A2B4)
-% - Of those we found 697 unique AB2 prototypes (unique SG/Wyckoff combination) in OQMD/MP
-% - To generate our test set we substituted Ir for A and O for B, then isotropically expanded cell volume to constrain a minimum Ir-O distance of XYZ
-% - Next translated each of the 697 structures to be described by 271 features (invariant to isotropic expansion/compression), then reduced to 30 using PCA, described in methods XYZ
-% - To generate initial training data use existing DFT. Not enough on \ce{IrO_2}, so used OQMD to generate initial training data from nearest structures in phase space, described in Methods XYZ. Training set of 30 structures in SI XYZ.
 % __|
