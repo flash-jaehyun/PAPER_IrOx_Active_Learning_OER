@@ -24,17 +24,21 @@
 % stability of the entire candidate space
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-The materials discovery algorithm described here is based on principles of surrogate active learning,
-where a model is iteratively trained on availble DFT data to create a surrogate to ab-initio DFT energy evaluations that can then be used to aquire new systems in the population based on some aquisition criteria.
+
+Here, we present a machine-learning based methodology for discovering new stable and meta-stable phases of Iridium oxide. 
+
+Our approach builds on the principles of surrogate active learning, where a model is iteratively trained on available ab-initio DFT data. The model predictions are used as a surrogate to the DFT energy evaluations, which are used to acquire new systems for DFT in the population based on an acquisition criteria.
 %
-Machine learning accelarated active learning procedures have been succesfully demonstrated to speed up materials discovery in conjugtion with genetic algorithms for alloy nanoparticles \cite{Jennings2019}, EXAMPLE_1, and EXAMPLE_2.
+Machine learning accelerated active learning procedures have been demonstrated to successfully speed up materials discovery in conjunction with genetic algorithms for alloy nanoparticles \cite{Jennings2019, EXAMPLE_1, and EXAMPLE_2}.
 % TEMP
-The algorithm proceeds in two steps, the first being the generation of the candidate space,
-which is an inclusive list of all initial crystal structures to be screened through during the search routine.
+The methodology consists of two steps, the first being the generation of the candidate space,
+which is an inclusive list of all initial crystal structures to be screened through during the search routine. Since the initial candidates sets a formal limit for the structures that can ultimately be discovered, it is crucial to define a candidate space that is sufficiently broad and diverse, if anything novel is to be found.
+
+%Here it is crucial to ensure that the candidate 
 %
-This part is really important because you can't discover anything interesting if it's not a part of the candidate space to begin with.
+%This part is really important because you can't discover anything interesting if it's not a part of the candidate space to begin with.
 % TEMP Say more
-The second part of the algorithm is iterative active learning.
+The second part of the algorithm is iterative active learning algorithm.
 % TODO Add figure reference
 The procedural flow diagram is shown in figure TEMP.
 
