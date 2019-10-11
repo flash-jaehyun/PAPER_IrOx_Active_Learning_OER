@@ -24,18 +24,20 @@
 % stability of the entire candidate space
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-Here, we present a machine-learning based methodology for discovering new stable and meta-stable phases of Iridium oxide.
-
-Our approach builds on the principles of surrogate active learning, where a model is iteratively trained on available ab-initio DFT data. The model predictions are used as a surrogate to the DFT energy evaluations, which are used to acquire new systems for DFT in the population based on an acquisition criteria.
+Here, we present a machine-learning based methodology for discovering new stable and meta-stable phases of iridium oxide.
+%
+Our approach builds on the principles of surrogate active learning,
+where a model is iteratively trained on available ab-initio DFT data.
+%
+The model predictions are used as a surrogate to the DFT energy evaluations,
+which are used to acquire new systems for DFT in the population based on an acquisition criteria.
 %
 Machine learning accelerated active learning procedures have been demonstrated to successfully speed up materials discovery in conjunction with genetic algorithms for alloy nanoparticles \cite{Jennings2019, EXAMPLE_1, and EXAMPLE_2}.
 % TEMP
 The methodology consists of two steps, the first being the generation of the candidate space,
-which is an inclusive list of all initial crystal structures to be screened through during the search routine. Since the initial candidates sets a formal limit for the structures that can ultimately be discovered, it is crucial to define a candidate space that is sufficiently broad and diverse, if anything novel is to be found.
-
-%Here it is crucial to ensure that the candidate
+which is an inclusive list of all initial crystal structures to be screened through during the search routine.
 %
-%This part is really important because you can't discover anything interesting if it's not a part of the candidate space to begin with.
+Since the initial candidates sets a formal limit for the structures that can ultimately be discovered, it is crucial to define a candidate space that is sufficiently broad and diverse, if anything novel is to be found.
 % TEMP Say more
 The second part of the algorithm is iterative active learning algorithm.
 % TODO Add figure reference
@@ -54,92 +56,159 @@ The procedural flow diagram is shown in figure TEMP.
 
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Data prep. | Unique Structures | Atom subst., V relax | Fingerprinting
-% Probably most of this needs to go to SI
+% !!!!!!!!!! NEW PARAGRAPH !!!!!!!!!! Can I get all of the methodology here
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-The structures that comprise the candidate data set were constructed by parsing for structurally unique systems in the OQMD and Materials Project DFT databases.
+% TODO Reference OQMD and MP
+% TODO Ask @Ankit for these numbers
+The structures that comprise the candidate data sets for IrO2 and IrO3 were constructed by parsing for all bulk AB2 and AB3 strucures in both the Materials Project\cite{Jain2013} and OQMD\cite{Kirklin2015} databases (TEMP AB2 and TEMP AB3).
 %
-The structural uniqueness was performed using a space-group symmetry classification scheme developed by Jain et al. \cite{Jain2018},
-which can classify a structure based on its composition and structure.
- (see SI for more details on the structural classification scheme).
+Structurally redundant systems were then removed via a space-group based structural classification scheme developed by Jain et al. \cite{Jain2018}.
 %
-This structural classification scheme can directly serve as a structural fingerprint and has successfully been applied towards the prediction of formation energies of inorganic compounds \cite{Jain2018}
+The resulting data set is composed of XYZ AB2 and XYZ AB3 structural prototypes for which iridium and oxygen were replaced for A and B sites, respectively.
 %
-To focus the scope of the study, only \ABtwo  and \ABthree stoichiometries were parsed from the databases.
+Finally, a coarse isotropic volume relaxation was performed to accommodate to account for the difference in atomic radii of Ir and O and the elements that originally comprised the structure in OQMD/MP.
 %
-The \ABtwo formula was chosen because it includes \rIrOtwo, the known most stable polymorph of \IrOtwo.
-%
-Importantly, \ABthree was chosen to include high valency \IrOthree structures in our search.
-%
-The results of the classification scheme resulted in a XYZ AB2 and XYZ AB3 structural prototypes for which iridium and oxygen were replaced for A and B sites, respectively.
-%
-Finally, a coarse isotropic volume relaxation based on atomic radii was performed on the structures to accommodate the atomic radii of iridium and oxygen into the lattice.
-%
-Finally, a Voronoi tessellation based fingerprinting scheme developed by Ward et al. \cite{Ward2017} was used to encode the relevant chemical information for each structure into a vector quantity of length 271.
-%
-The Voronoi based method was used because it is insensitive to volume relaxation.
-%
-Separate, independent models were used for IrO2 and IrO3 to reduce the complexity of the space, this has the additional effect of making a large number of the fingerprint descriptors redundant.
-% How many columns of the 271 are redundant if stoich and composition are frozen
-As a result, the 271 length feature space is reduced to a TEMP length vector.
-%
-PCA was used to reduce the dimensionality of the feature space from 271 to 20 features such that 99 \% of the variance is captured \cite{Tipping1999}.
+This procedure is shown schematically in figure TEMP, addtional details can be found in the SI.
 % __|
-
 
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Iterative Training of Gaussian Process
-% TODO go through fingerprinting here, not previous part
+% !!!!!!!!!! NEW PARAGRAPH !!!!!!!!!! Can I get all of the methodology here
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-The active learning algorithm proceeds through iterative ML training, prediction, and acquisition steps and is visualized in figure TEMP.
+The candidate data set was featurized using the voronoi tessellation fingerprinting scheme developed by Ward et al. \cite{Ward2017} which produces a 271 feature vector for each material that is nominally insensitive to isotropic expansions and contrations in a crystals lattice.
+% How many columns of the 271 are redundant if stoich and composition are frozen
+Herein, we apply our active learning model to the IrO2 and IrO3 spaces separately because contraining the candidate space to having uniform element types stoicheometry reduces the 271 feature vector to 101 non-zero variance features, thus reducing the dimensionality of our problem significantly.
+% COMBAK
+Further dimensionality reduction is achieved via a principle component analysis (PCA) \cite{Tipping1999}, which was used to reduce the remaining 101 features to 11.
+% #############################################################################
+The active learning algorithm proceeds through iterative generations of ML training, prediction, and acquisition steps that are visualized in figure TEMP.
+% COMBAK Did I get all of the important features of GP here? @Jose
+To start, Gaussian process (GP) regression is used to train a regression model on a small seed set of DFT formation energies from randomly selected structures in the candidate space.
 %
-While any regression technique can be used, we employed the Gaussian process (GP) regression model because it offers a high degree of flexibility and, most importantly, built-in uncertainty quantification.
-% TODO: Does the acquisition function we use have a name?
-Uncertainty quantification on the predicted formation energies is important because its used in the acquisition criteria.
+The model is then used to predict the formation energies of the entire candidate space.
 %
-Further details on the GP model, including hyper parameter information, is including in the SI.
+Following this, the fitness of each structure is calculated using equation TEMP, which attempts to trade off exploitation and exploration by weighting the predicted formation energy and the associated uncertainty to bias systems that are both low energy and high uncertainty.
 %
-The acquisition is made by selecting the $N$ systems with the lowest value of the acquisition function.
+The parameter $\kappa$ can tune the relative weighting between exploiting low energy systems (small $\kappa$) and exploring high uncertainty regions of the candidate space (large $\kappa$).
 %
-The acquisition function is defined in terms of the predicted formation energy, E, and the uncertainty, U:
-
+Here, $\kappa$ is set to $1$ which equally weights the energy and uncertainty.
+% @Kirsten The conventional symbol for the acquisition function seems to be u
 \begin{equation}
     F = E - \kappa U,
 \end{equation}
-
-where the parameter $\kappa$ can be tuned to probe low uncertainty (small $\kappa$) or high uncertainty regions  (large $\kappa$).
-% TODO: Write aquisition function here, again does it have a name
-%$a = b + c$
 %
-The value of $N$ determines how many structures are selected for DFT calculations,
-and as such, determines the degree of parallization of the routine. The optimal value of $N$ depends on the computational resources available, as small values of N result in an algorithm that is slow, as every DFT calculation is performed serially.
-% TODO: Is this statement true?
-Larger values of N speed up the active-learning algorithm, but leads to a higher number of DFT calculations performed before convergence. %but potentially decreases the efficiency of the algorithm by TEMP TEMP.
+Once ranked, the N systems that minimize the acquisition function are selected (or acquired) for full DFT calculations, which are included in the training data of subsequent AL generations.
 %
-Here we chose a value $N=10$.
-%
-The acquired structures are initially volume relaxed, followed by a full relaxation of all of the atomic coordinates,
-see SI for additional details on the DFT methodology.
-% This is wordy
-The AL loop proceeds until convergence is achieved, which here is defined as the point at which %the model has determined the lowest $N$ structures and has achieved a degree of accuracy for the candidate space such that
-no structures have predicted formation energies with an uncertainty bound lower than the most stable $N$ structures.
+The AL loop proceeds until convergence is achieved, which here is chosen to be the generation at which the structures within the range of metastability (here taken as 0.1 eV/atom) are unchanging over three consecutive generations.
 % __|
 
 
+
+% | - TRANSFER THIS TO SI AND MAKE SURE IT'S NOT TOO REDUNDANT WITH MAIN TEXT
+
+%  are used as the regression model because they are highly flexible and can quantify the uncertainty of their predictions (see SI for details on the GP methodology).
+% %
+% The uncertainty quantification is used by the aquisition criteria which ranks the fitness of each prediction by weight both the predicted formation energy and the uncertainty assocated with the prediction as shown in equation TEMP.
+
+
+% % ################################# Paragraph #################################
+% % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % Data prep. | Unique Structures | Atom subst., V relax | Fingerprinting
+% % Shift most of this to the SI and keep it simple instead
+% % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % | - Paragraph start
+% The structures that comprise the candidate data set were constructed by parsing for structurally unique systems in the OQMD and Materials Project DFT databases.
+% %
+% The structural uniqueness was performed using a space-group symmetry classification scheme developed by Jain et al. \cite{Jain2018},
+% which can classify a structure based on its composition and structure.
+%  (see SI for more details on the structural classification scheme).
+% %
+% This structural classification scheme can directly serve as a structural fingerprint and has successfully been applied towards the prediction of formation energies of inorganic compounds \cite{Jain2018}
+% %
+% To focus the scope of the study, only \ABtwo  and \ABthree stoichiometries were parsed from the databases.
+% %
+% Additionally, only structures with less than 75 atoms per unit cell were considered because
+% 1.) they would be computationally prohibitive to simmulate with DFT and
+% 2.) large unit cells are less likely to form well-ordered crystalline phase and/or more likely to relax into crystal structures that can be represented in smaller cells.
+% %
+% The \ABtwo formula was chosen because it includes \rIrOtwo, the known most stable polymorph of \IrOtwo.
+% %
+% Importantly, \ABthree was chosen to include high valency \IrOthree structures in our search.
+% %
+% The results of the classification scheme resulted in a XYZ AB2 and XYZ AB3 structural prototypes for which iridium and oxygen were replaced for A and B sites, respectively.
+% %
+% Finally, a coarse isotropic volume relaxation based on atomic radii was performed on the structures to accommodate the atomic radii of iridium and oxygen into the lattice.
+% %
+% Finally, a Voronoi tessellation based fingerprinting scheme developed by Ward et al. \cite{Ward2017} was used to encode the relevant chemical information for each structure into a vector quantity of length 271.
+% %
+% The Voronoi based method was used because it is insensitive to volume relaxation.
+% %
+% Separate, independent models were used for IrO2 and IrO3 to reduce the complexity of the space, this has the additional effect of making a large number of the fingerprint descriptors redundant.
+% % How many columns of the 271 are redundant if stoich and composition are frozen
+% As a result, the 271 length feature space is reduced to a TEMP length vector.
+% %
+% PCA was used to reduce the dimensionality of the feature space from 271 to 20 features such that 99 \% of the variance is captured \cite{Tipping1999}.
+% % __|
+%
+%
+% % ################################# Paragraph #################################
+% % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % Iterative Training of Gaussian Process
+% % TODO go through fingerprinting here, not previous part
+% % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % | - Paragraph start
+% The active learning algorithm proceeds through iterative ML training, prediction, and acquisition steps and is visualized in figure TEMP.
+% %
+% While any regression technique can be used, we employed the Gaussian process (GP) regression model because it offers a high degree of flexibility and, most importantly, built-in uncertainty quantification.
+% % TODO: Does the acquisition function we use have a name?
+% Uncertainty quantification on the predicted formation energies is important because its used in the acquisition criteria.
+% %
+% Further details on the GP model, including hyper parameter information, is including in the SI.
+% %
+% The acquisition is made by selecting the $N$ systems with the lowest value of the acquisition function.
+% %
+% The acquisition function is defined in terms of the predicted formation energy, E, and the uncertainty, U:
+%
+% \begin{equation}
+%     F = E - \kappa U,
+% \end{equation}
+%
+% where the parameter $\kappa$ can be tuned to probe low uncertainty (small $\kappa$) or high uncertainty regions  (large $\kappa$).
+% % TODO: Write aquisition function here, again does it have a name
+% %$a = b + c$
+% %
+% The value of $N$ determines how many structures are selected for DFT calculations,
+% and as such, determines the degree of parallization of the routine. The optimal value of $N$ depends on the computational resources available, as small values of N result in an algorithm that is slow, as every DFT calculation is performed serially.
+% % TODO: Is this statement true?
+% Larger values of N speed up the active-learning algorithm, but leads to a higher number of DFT calculations performed before convergence. %but potentially decreases the efficiency of the algorithm by TEMP TEMP.
+% %
+% Here we chose a value $N=10$.
+% %
+% The acquired structures are initially volume relaxed, followed by a full relaxation of all of the atomic coordinates,
+% see SI for additional details on the DFT methodology.
+% % This is wordy
+% The AL loop proceeds until convergence is achieved, which here is defined as the point at which %the model has determined the lowest $N$ structures and has achieved a degree of accuracy for the candidate space such that
+% no structures have predicted formation energies with an uncertainty bound lower than the most stable $N$ structures.
+% % __|
+
+% __|
+
+
+
+% Probably don't need this and the figure
 % | - AL steps itemized
-\begin{enumerate}
-  \item Candidate space of structures is generated
-  \item Initial seed data is used to train a ML model
-  \item ML model predicts energy of entire candidate space
-  \item Most valuable structure(s) is(are) selected using acquisition function
-  \item DFT calculation(s) is(are) performed to obtain additional training data points
-  \item ML model is retrained with additional data
-  \item Repeat steps (3) through (6) until convergence criteria is reached
-  % \item TEMP
-\end{enumerate}
+% \begin{enumerate}
+%   \item Candidate space of structures is generated
+%   \item Initial seed data is used to train a ML model
+%   \item ML model predicts energy of entire candidate space
+%   \item Most valuable structure(s) is(are) selected using acquisition function
+%   \item DFT calculation(s) is(are) performed to obtain additional training data points
+%   \item ML model is retrained with additional data
+%   \item Repeat steps (3) through (6) until convergence criteria is reached
+%   % \item TEMP
+% \end{enumerate}
 % __|
 
 

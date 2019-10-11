@@ -22,27 +22,48 @@
 % (assuming stoich is known)
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-Predicting the thermodynamically stable crystal structures for an arbitrary inorganic system remains a challenging problem in computational material science.
+Predicting the thermodynamically favorable crystal structures for an arbitrary inorganic system remains a challenging problem in computational material science.
 %
-Experimentally synthesized inorganic materials often conform to the global minimum energy structure (or similarly stable meta-stable phases). When simulations are used to guide the search  for new materials, the stable and meta-stable crystal structures must be known in order to predict the material properties.
-%therefore it is desirable from a computational perspective to know the corresponding crystal structure to conduct simulations on.
+% Experimentally synthesized inorganic materials often conform to the global minimum energy structure (or similarly stable meta-stable phases).
 %
-This problem is theoretically challenging for all but the most simple systems systems such as mono/bi-metallic materials which tend to adopt simple close-packed arrangements.
+When simulations are used to guide the search for new materials, the stable and meta-stable crystal structures must be known in order to predict the material properties.
+% Structure vs composition enumeration (composition done to death)
+% Give example of how over represented some motiffs are
+Although there have been numerous examples in recent years of machine learning algorithms applied towards the prediction of formation energies of large ab-intio data sets, these data sets are relitively biased towards common structural motiffs.
+
+
+
+
+%
+As such, these efforts have been primarily concerned with the effect of composition and elemental identity on material stability and less so with the enumeration of structure.
+%
+The problem of thouroughly sampling in the structural space is challenging for all but the most simple systems systems,
+because it involves sampling within the highly dimensional space of 3N cartesian coordinates, where N is the number of atoms in a given unit cell.
+% COMBAK
+This is only tractable for simple systems such as mono/bi-metallic crystals that tend to adopt simple close-packed arrangements with well defined symmetry.
 %
 For all other systems though, the structural variety available is practically uncountable.
-
-
-This is particularly true for metal-oxides, a diverse and important class of materials, which tend to organize themselves into well-defined coordination environment motifs such as octahedral and tetrahedral units (short-range order).
+% I think less exposition about these structurall motiffs is better
+This is particularly true for metal-oxides, a diverse and important class of materials,
+which tend to organize themselves into well-defined local coordination environments such as octahedral and tetrahedral units (short-range order) which can arrange themselves in a large number of ways (long-range order).
 %
-These basic building blocks can then be connected through 3 primary modes, vertex-sharing, edge-sharing, and face-sharing configurations (mid-range order) which can give rise to long-range order by forming porous or layered systems.
+Traditional methods of crystal structure discovery, such as simulated annealing, operate within the high dimensional 3N cartesian space, making these methods expensive and non-scalable to systems with many atoms.
+%
+Here we report a machine learning accelarted method of crystall structure discovery that avoids operating in 3N space by leveraging nature's propensity for symetry by preparing data sets with a large degree of structural diversity at fixed composition and stoicheometries.
+%
+By considering only systems of unique stoicheomtry we leave the search space of 3N cartesions coordinates and enter a one dimensinal search space of structurally unique canddidates.
+%
+Machine learning is then used to speed/guide the search for promissing and stable structures within the space of candidates, by-passing the need to perform expensive electronic structure calculations for the entire candidate space.
+%
+In order to navigate this vast space of materials, Machine Learning approaches has a huge potential to guide the search for structures of interest, and by-passing the need for expensive computations for all possible arrangements.
+%
+% Motivation for \ce{IrO_x}, low representation, longstanding controversy over oxidation states and topology, and demonstrates promise for OER and Li ion batteries.
+
+
+% These basic building blocks can then be connected through 3 primary modes, vertex-sharing, edge-sharing, and face-sharing configurations (mid-range order) which can give rise to long-range order by forming porous or layered systems.
 % Other classical crystal structure finding methods here
-The potential to form structures with different arrangements on multiple length-scales gives oxides a large degree of structural variety which it turn makes the space of possible polymorphs intractably large for traditional methods like simulated annealing, TEMP, or TEMP.
+% The potential to form structures with different arrangements on multiple length-scales gives oxides a large degree of structural variety which it turn makes the space of possible polymorphs intractably large for traditional methods like simulated annealing, TEMP, or TEMP.
 % TEMP
-In order to navigate this vast space of materials, Machine Learning approaches has a huge potential to guide the search for structures of interest, and by-passing the need for expensive computations for all possible arrangements. 
-
-Iterative Active Machine Learning and unique prototype identification to discover stable new materials and catalysts.
-%
-Motivation for \ce{IrO_x}, low representation, longstanding controversy over oxidation states and topology, and demonstrates promise for OER and Li ion batteries.
 % __|
 
 
