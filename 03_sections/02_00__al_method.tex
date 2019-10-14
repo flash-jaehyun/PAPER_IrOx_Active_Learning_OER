@@ -24,14 +24,15 @@
 % stability of the entire candidate space
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-Here, we present a machine-learning based methodology for discovering new stable and meta-stable phases of iridium oxide.
+% Maybe "crystal structures" instead of "materials"? More to the point?
+Here, we present a machine-learning based methodology for discovering new stable and meta-stable materials.
 %
 Our approach builds on the principles of surrogate active learning,
 where a model is iteratively trained on available ab-initio DFT data.
 %
 The model predictions are used as a surrogate to the DFT energy evaluations,
 which are used to acquire new systems for DFT in the population based on an acquisition criteria.
-%
+% Add the Hammer paper (R58) as another citation
 Machine learning accelerated active learning procedures have been demonstrated to successfully speed up materials discovery in conjunction with genetic algorithms for alloy nanoparticles \cite{Jennings2019}. Furthermore, active learning algorithms have been applied to speed up structures optimization \cite{hansen2019atomistic} and transition-state calculations \cite{torres2019low}.
 % TEMP
 The methodology consists of two steps, the first being the generation of the candidate space,
@@ -41,7 +42,7 @@ Since the initial candidates determines which structures that can ultimately be 
 % TEMP Say more
 The second part of the algorithm is iterative active learning algorithm.
 % TODO Add figure reference
-The procedural flow diagram is shown in figure TEMP.
+The procedural flow diagram is shown in figure \ref{fig:all_diagram}.
 
 % | - __old__
 % Our machine learning accelerated materials discovery method proceeds through the following steps:
@@ -69,7 +70,7 @@ The resulting data set is composed of XYZ AB2 and XYZ AB3 structural prototypes 
 %
 Finally, a coarse isotropic volume relaxation was performed to accommodate to account for the difference in atomic radii of Ir and O and the elements that originally comprised the structure in OQMD/MP.
 %
-This procedure is shown schematically in figure TEMP, where additional details can be found in the SI.
+This procedure is shown schematically in figure TEMP, and additional details can be found in the SI.
 % __|
 
 % ################################# Paragraph #################################
@@ -77,9 +78,9 @@ This procedure is shown schematically in figure TEMP, where additional details c
 % !!!!!!!!!! NEW PARAGRAPH !!!!!!!!!! Can I get all of the methodology here
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-The candidate data set was featurized using the voronoi tessellation fingerprinting scheme developed by Ward et al. \cite{Ward2017} which produces a 271 feature vector for each material that is nominally insensitive to isotropic expansions and contrations in a crystals lattice.
+The candidate data set was featurized using the voronoi tessellation fingerprinting scheme developed by Ward et al. \cite{Ward2017} which produces a 271 feature vector for each material that is nominally insensitive to isotropic expansions and contractions in a crystals lattice.
 % How many columns of the 271 are redundant if stoich and composition are frozen
-Herein, we apply our active learning model to the IrO2 and IrO3 spaces separately,because we are interested in the most stable polymorphs at each stoichiometry. An additional benefit is that because constraining the candidate space to having uniform element types stoichiometry reduces the 271 feature vector to 101 non-zero variance features, thus reducing the dimensionality of our problem significantly.
+Herein, we apply our active learning model to the IrO2 and IrO3 spaces separately, because we are interested in the most stable polymorphs at each stoichiometry. An additional benefit is that constraining the candidate space to having uniform element types stoichiometry reduces the 271 feature vector to 101 non-zero variance features, thus reducing the dimensionality of our problem significantly.
 % COMBAK
 Further dimensionality reduction is achieved via a principle component analysis (PCA) \cite{Tipping1999}, which was used to reduce the remaining 101 features to 11.
 % #############################################################################
@@ -89,19 +90,20 @@ To start, Gaussian process (GP) regression is used to train a regression model o
 %
 The model is then used to predict the formation energies of the entire candidate space.
 %
-Following this, the fitness of each structure is calculated using equation TEMP, which attempts to trade off exploitation and exploration by weighting the predicted formation energy and the associated uncertainty to bias systems that are both low energy and high uncertainty.
+Following this, the predictions are used to determine which systems to acquire, by minimizing the acquisition function:
 %
-The parameter $\kappa$ can tune the relative weighting between exploiting low energy systems (small $\kappa$) and exploring high uncertainty regions of the candidate space (large $\kappa$).
-%
-Here, $\kappa$ is set to $1$ which equally weights the energy and uncertainty.
-% @Kirsten The conventional symbol for the acquisition function seems to be u
 \begin{equation}
-    F = E - \kappa U,
+    U = - \mu - \kappa \sigma,
 \end{equation}
 %
-Once ranked, the N systems that minimize the acquisition function are selected (or acquired) for full DFT calculations, which are included in the training data of subsequent AL generations.
+where $\mu$ and $\sigma$ is the predicted mean and standard deviation of the formation energy, and 
+$\kappa$ is a free parameter to tune the relative weighting between exploiting low formation energy systems (small $\kappa$) and exploring high uncertainty regions of the candidate space (large $\kappa$).
 %
-The AL loop proceeds until convergence is achieved, which here is chosen to be the generation at which the structures within the range of metastability (here taken as 0.1 eV/atom) are unchanging over three consecutive generations.
+In this work we attempt to trade off exploitation and exploration by weighting the predicted formation energy and the associated uncertainty to bias systems that are both low energy and high uncertainty.
+%
+Here, $\kappa$ is set to $1$ which equally weights the energy and uncertainty.
+%
+Once ranked, the N systems that minimize the acquisition function are selected for full DFT calculations, which are included in the training data of subsequent AL generations. The AL loop proceeds until convergence is achieved, which here is chosen to be the generation at which the structures within the range of metastability, here taken as 0.1 eV/atom, are unchanging over three consecutive generations.
 % __|
 
 

@@ -34,12 +34,12 @@ When simulations are used to guide the search for new materials, the stable and 
 % 188,000 systems with identical prototype ABO2 perovskite structure (~50 %)
 Although there have been numerous examples in recent years of machine learning algorithms applied towards the prediction of formation energies of large ab-intio data sets, these data sets are relitively biased towards common structural motiffs.
 %
-For example, roughly half of all entries (~200,000) in The Open Quantum Materials Database (OQMD) have identical structures corresponding to ABO3 perovskites.
+For example, roughly half the entries (~200,000) in The Open Quantum Materials Database (OQMD) correspond to ternary-alloy combinations in the same close-packed cubic structure.
+%have identical structures corresponding to ABO3 perovskites.
 % Should we say that enumerating comp. is easy and struct. is hard?
 As such, these efforts have been primarily concerned with the enumeration of composition and elemental identity and less so with the enumeration of structure.
 %
-The problem of thouroughly enumerating structural space is challenging for all but the most simple systems systems,
-because it involves sampling within the highly dimensional space of 3N cartesian coordinates, where N is the number of atoms in a given unit cell.
+The problem of thoroughly enumerating structural space is challenging for all but the most simple systems systems, because it involves sampling within the highly dimensional space of 3N cartesian coordinates, where N is the number of atoms in a given unit cell.
 % COMBAK
 This approach is only tractable for the most simple systems,
 such as metallic crystals which tend to adopt highly symmetric close-packed configurations, but is less suited for anything more complex.
@@ -51,7 +51,7 @@ which tend to organize themselves into well-defined local coordination environme
 % Traditional methods of crystal structure discovery, such as simulated annealing, operate within the high dimensional 3N cartesian space,
 % making them scale poorly with system size.
 %
-Here we report on a crystal structure discovery algorithm that leverages machine learning surrogate models and an active learning framework to accelrate
+Here we report on a crystal structure discovery algorithm that leverages machine learning surrogate models and an active learning framework to accelerate
 the discovery of novel crystal structures in the Ir-O space.
 %
 The algorithm avoids operating in the highly dimensional 3N space by leveraging nature's propensity for symetry by preparing data sets with a large degree of structural diversity at fixed composition and stoicheometries.
@@ -79,10 +79,8 @@ The algorithm avoids operating in the highly dimensional 3N space by leveraging 
 % Talk about problem w.r.t. Iridium Oxides
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-Herein, we focus on the chemical space of iridium oxides,
-because they are an important class of materials with applications in electrochemistry and TEMP.
-%
-In particular, rutile-IrO2 (Ir in a [4+] oxidation state), the most stable form of iridium-oxide at standard conditions, is a well studied electrocatalyst for the oxygen evolution reaction (OER).
+Herein, we focus on the chemical space of iridium oxide polymorphs,
+which is an important class of materials with applications in electrochemistry. In particular, rutile-IrO2 (Ir in a [4+] oxidation state), the most stable form of iridium-oxide at standard conditions, is a well studied electrocatalyst for the oxygen evolution reaction (OER).
 % (TODO cite science paper)
 Previous studies on SrIrO3 electrocatayls for the OER demonstrated that Sr leaching left behind a highly oxidized Ir[6+] (IrO3) system that was predicted to be responsible for the observed OER activity.
 %

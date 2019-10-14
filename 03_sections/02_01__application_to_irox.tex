@@ -28,13 +28,12 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 %
-We now turn our attention of the application of this active learning scheme to the dicovery of stable forms of IrO2 and IrO3.
+We now turn our attention of the application of this active learning scheme to the discovery of stable forms of IrO2 and IrO3.
 % Comment on this line | TODO do stuff
 %The AL algorithm is applied separately to IrO2 and IrO3 because we are specifically interested in the most stable polymorphs at each stoichiometry.
 % TODO How many features drop out when you constrain the stoich.?
 %This has an the added benefit of reducing the number of fingerprint vectors from the Voronoi tesselation dramatically (from TEMP to TEMP) because many features are senstive to changes in stoicheometry.
 % __|
-
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Results for IrO3
@@ -44,23 +43,25 @@ We now turn our attention of the application of this active learning scheme to t
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 %
-Figure TEMP a and b shows several plots of the AL predictions on the candidate space at particular generations of the AL algorithm for the IrO3 candidate space with an aquisition bin size of 10 DFT calculations per iteration and an initial 11 calculations used for seeding.
+Figure \ref{fig:iro2_al} a and b shows several iterations of the active learning loop for the IrO3 candidate space. 
+An acquisition bin size of 10 DFT calculations per iteration and an initial seed of 11 calculations were used.
+%plots of the AL predictions on the candidate space at particular generations of the AL algorithm for the IrO3 candidate space with an aquisition bin size of 10 DFT calculations per iteration and an initial 11 calculations used for seeding.
 %
-Figure TEMP a. shows the progression of the model at select generations of the active learning loop.
+Figure \ref{fig:iro2_al} a. shows the progression of the model at selected generations of the active learning loop.
 %
-It can be seen from Figure TEMP a that
+It can be seen from Figure\ref{fig:iro2_al}  a that
 %
-Figure TEMP b. shows the formation energy, either predicted (small colored circles) or computed (large red-bordered circles), is plotted on the y-axis against all structures in the candidate space of IrO3 polymorphs.
+Figure \ref{fig:iro2_al} b. shows the formation energy, either predicted (small colored circles) or computed (large red-bordered circles), is plotted on the y-axis against all structures in the candidate space of IrO3 polymorphs.
 %
 The DFT derived formation energy is plotted alongside the predicted data (hollow diamonds).
 %
-It is evident from figure TEMP, that the Gaussian process model is doing a poor job of predicting the DFT formation energy of the candidate space, with a exceptionally poor MAE of TEMP eV/atom at the AL generation shown here.
+It is evident from figure \ref{fig:iro2_al}, that the Gaussian process model is doing a poor job of predicting the DFT formation energy of the candidate space, with a exceptionally poor MAE of TEMP eV/atom at the AL generation shown here.
 %
-This is significatally lower than the leave-one out cross validation error of TEMP ~0.15 eV/atom, which indicates that the issue does not lie with a poor predictive model.
+This is significantly lower than the leave-one out cross validation error of TEMP ~0.15 eV/atom, which indicates that the issue does not lie with a poor predictive model.
 %
 Instead, the issue lies with the large degree of structural reorganization that occurs over the course of a typical DFT ionic optimization.
 % TODO Change wording when @Kirsten uses the protosearch to optimize candidates
-Becasue the candidate space structures are generated
+%Because the candidate space structures are generated
 % To compare the performance of the AL routine we compare against a
 % __|
 
@@ -72,12 +73,12 @@ Becasue the candidate space structures are generated
 {02_figures/ml_convergence_plots/test_iro3_al.jpg}
 }
 \caption{\label{fig:iro2_al}
-Results from machine-learning accelarted active learning material discovery algorithm.
+Results from machine-learning accelerated active learning material discovery algorithm.
 % FORMATION ENTHALPY, FIX
 Both (a) and (b) plot the formation enthalpy (either predicted from the model or computed by DFT) for each system in the candidate pool, ordered by decreasing stability (low to high formation energy).
 %
 Formation energies predicted by the surrogate model are represented by smaller circles,
-while aquired DFT formation energies are shown as enlarged red bordered circles.
+while acquired DFT formation energies are shown as enlarged red bordered circles.
 %
 Each data point is colored based on the ordering of the DFT formation energies, with low formation energy systems on the dark end of the spectrum and the highest formation energy species colored light.
 %
