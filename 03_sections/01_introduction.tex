@@ -10,6 +10,8 @@
 %%   * Mention other methods for bulk crystal structure Discovery
 %%     - simulated annealing
 %%     - paper that Hammer put out (R58)
+%%   * Potential energy surface (PES)
+%%   * Global minimum (GM)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -29,41 +31,46 @@ Predicting the thermodynamically favorable crystal structures for an arbitrary i
 When simulations are used to guide the search for new materials, the stable and meta-stable crystal structures must be known in order to predict the material properties.
 % Structure vs composition enumeration (composition done to death)
 % Give example of how over represented some motiffs are
+% 188,000 systems with identical prototype ABO2 perovskite structure (~50 %)
 Although there have been numerous examples in recent years of machine learning algorithms applied towards the prediction of formation energies of large ab-intio data sets, these data sets are relitively biased towards common structural motiffs.
-
-
-
-
 %
-As such, these efforts have been primarily concerned with the effect of composition and elemental identity on material stability and less so with the enumeration of structure.
+For example, roughly half of all entries (~200,000) in The Open Quantum Materials Database (OQMD) have identical structures corresponding to ABO3 perovskites.
+% Should we say that enumerating comp. is easy and struct. is hard?
+As such, these efforts have been primarily concerned with the enumeration of composition and elemental identity and less so with the enumeration of structure.
 %
-The problem of thouroughly sampling in the structural space is challenging for all but the most simple systems systems,
+The problem of thouroughly enumerating structural space is challenging for all but the most simple systems systems,
 because it involves sampling within the highly dimensional space of 3N cartesian coordinates, where N is the number of atoms in a given unit cell.
 % COMBAK
-This is only tractable for simple systems such as mono/bi-metallic crystals that tend to adopt simple close-packed arrangements with well defined symmetry.
+This approach is only tractable for the most simple systems,
+such as metallic crystals which tend to adopt highly symmetric close-packed configurations, but is less suited for anything more complex.
 %
-For all other systems though, the structural variety available is practically uncountable.
 % I think less exposition about these structurall motiffs is better
 This is particularly true for metal-oxides, a diverse and important class of materials,
 which tend to organize themselves into well-defined local coordination environments such as octahedral and tetrahedral units (short-range order) which can arrange themselves in a large number of ways (long-range order).
 %
-Traditional methods of crystal structure discovery, such as simulated annealing, operate within the high dimensional 3N cartesian space, making these methods expensive and non-scalable to systems with many atoms.
+% Traditional methods of crystal structure discovery, such as simulated annealing, operate within the high dimensional 3N cartesian space,
+% making them scale poorly with system size.
 %
-Here we report a machine learning accelarted method of crystall structure discovery that avoids operating in 3N space by leveraging nature's propensity for symetry by preparing data sets with a large degree of structural diversity at fixed composition and stoicheometries.
+Here we report on a crystal structure discovery algorithm that leverages machine learning surrogate models and an active learning framework to accelrate
+the discovery of novel crystal structures in the Ir-O space.
 %
-By considering only systems of unique stoicheomtry we leave the search space of 3N cartesions coordinates and enter a one dimensinal search space of structurally unique canddidates.
+The algorithm avoids operating in the highly dimensional 3N space by leveraging nature's propensity for symetry by preparing data sets with a large degree of structural diversity at fixed composition and stoicheometries.
 %
-Machine learning is then used to speed/guide the search for promissing and stable structures within the space of candidates, by-passing the need to perform expensive electronic structure calculations for the entire candidate space.
+% By considering only systems of unique stoicheomtry we leave the search space of 3N cartesions coordinates and enter a one dimensinal search space of structurally unique candidates.
 %
-In order to navigate this vast space of materials, Machine Learning approaches has a huge potential to guide the search for structures of interest, and by-passing the need for expensive computations for all possible arrangements.
-%
+% Within this search space, machine learning is used to accelarate and guide the search for promissing and stable structures by by-passing the need to perform expensive electronic structure calculations for the entire candidate space.
+
+% | - __old__
+% In order to navigate this vast space of materials, Machine Learning approaches has a huge potential to guide the search for structures of interest, and by-passing the need for expensive computations for all possible arrangements.
+
 % Motivation for \ce{IrO_x}, low representation, longstanding controversy over oxidation states and topology, and demonstrates promise for OER and Li ion batteries.
 
 
 % These basic building blocks can then be connected through 3 primary modes, vertex-sharing, edge-sharing, and face-sharing configurations (mid-range order) which can give rise to long-range order by forming porous or layered systems.
 % Other classical crystal structure finding methods here
 % The potential to form structures with different arrangements on multiple length-scales gives oxides a large degree of structural variety which it turn makes the space of possible polymorphs intractably large for traditional methods like simulated annealing, TEMP, or TEMP.
-% TEMP
+% __|
+
 % __|
 
 
@@ -72,21 +79,23 @@ In order to navigate this vast space of materials, Machine Learning approaches h
 % Talk about problem w.r.t. Iridium Oxides
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-Herein, we focus on iridium oxide chemical systems.
+Herein, we focus on the chemical space of iridium oxides,
+because they are an important class of materials with applications in electrochemistry and TEMP.
 %
-Iridium oxides are an important class of materials with applications in electrochemistry and TEMP.
-%
-Rutile-IrO2, the most stable form of iridium-oxide at standard conditions, is a well studied electrocatalyst for the oxygen evolution reaction (OER)
+In particular, rutile-IrO2 (Ir in a [4+] oxidation state), the most stable form of iridium-oxide at standard conditions, is a well studied electrocatalyst for the oxygen evolution reaction (OER).
 % (TODO cite science paper)
-Iridium in rutile-IrO2 has a [4+] formal oxidation state, but a previous studies on SrIrO3 electrocatayls  under operating conditions (low pH and high anodic voltage) demonstrated that Sr leaching left behind a highly oxidized Ir[6+] (IrO3) system that was predicted to be responsible for the observed OER activity.
+Previous studies on SrIrO3 electrocatayls for the OER demonstrated that Sr leaching left behind a highly oxidized Ir[6+] (IrO3) system that was predicted to be responsible for the observed OER activity.
 %
-For this reason we focused our study to search for stable polymorphs in the standard IrO2 stoicheometry  as well as higher oxidation state corresponding to IrO3.
+For this reason we focused our study to search for stable polymorphs in the standard IrO2 stoicheometry as well as higher oxidation state corresponding to IrO3.
 % TODO Reference the paper(s) from a-AlF3 systems
-IrO3 is a natural stoichiometry to target since it's the only one that can form octahedral units that are 100 percent corner sharing, and there is plenty of research on coordination crystals of the same stoicheometry. (TEMP reference).
+Additionally, IrO3 is a natural stoichiometry to target since it's the only one that can form octahedral units that are 100 percent corner sharing, and there is plenty of research on coordination crystals of the same stoicheometry. (TEMP reference).
 
+% | - __old__
 %Reported +6 oxidation state phases are achievable leading to high degree of structural variability, which is the highest for transition metals.
 %High oxidation states (low pH high anodic voltage, harsh oxidizing conditions) unexplored, need very specific structures with precise oxygen connectivity (aka high pressure \ce{SrIrO_3}) that can exist.
 % Machine learning is the efficient way to explore this “exploring Antarctica for life” sparse space.
+% __|
+
 % __|
 
 
@@ -101,17 +110,21 @@ IrO3 is a natural stoichiometry to target since it's the only one that can form 
 %       * QUESTION How much data do we have on the OQMD+MP structure uniqueness search
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-% 2  --> 3 key features (first is that we're not working in 3N space!!!)
-The two key features of our algorithm that make the exploration of an expansive space possible are its use of surrogate models and active learning framework.
-%
-Because DFT calculations are prohibitively computationally expensive to carry out for large data sets, herein we train a Gaussian Process (GP) machine learning model to serve as a surrogate model.
-%
-In general active learning applications, the requisite training data is not available.
-%
-Active learning frameworks are a means by which to generate the most valuable training data set, on the fly.
+% % 2  --> 3 key features (first is that we're not working in 3N space!!!)
+% The two key features of our algorithm that make the exploration of an expansive space possible are its use of surrogate models and active learning framework.
+% %
+% Because DFT calculations are prohibitively computationally expensive to carry out for large data sets, herein we train a Gaussian Process (GP) machine learning model to serve as a surrogate model.
+% %
+% In general active learning applications, the requisite training data is not available.
+% %
+% Active learning frameworks are a means by which to generate the most valuable training data set, on the fly.
 % __|
 
 
+
+
+
+% | - __old__
 % ################################# Paragraph #################################
 % Crystallographic Discovery and Machine Learning.
 % Current state of databases (OQMD, MP, CatHub, alfowlib).
@@ -125,3 +138,4 @@ Active learning frameworks are a means by which to generate the most valuable tr
 % ################################# Paragraph #################################
 % Oxides for batteries/fuel cells, Iridium Oxide, OER, Lithiated \ce{IrO_3}.
 % Highly oxidized phases of oxides for fuel cell and energy storage applications.
+% __|
