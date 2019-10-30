@@ -55,6 +55,7 @@ Figure \ref{fig:iro2_al} a. shows the progression of the model at selected gener
 %
 As the ALL aquires more DFT calculations, the predicted uncertainty on the remaining candidate space decreases,
 as evidenced by the shrinking error bars with increasing AL generation.
+% As seen from Figure\ref{fig:iro2_al} a) the early iterations, where the training data is sparse 
 %
 The middle panel corresponds to the converged generation of the ALL, which finished after TEMP iterations of the ALL (TEMP DFT calculations).
 %
@@ -70,8 +71,25 @@ This is significantly lower than the leave-one out cross validation error of ~0.
 %
 This
 % TODO Change wording when @Kirsten uses the protosearch to optimize candidates
+% UPDATE | Using protosearch pre-optimizer isn't worth it, no siginificant improvement
 %Because the candidate space structures are generated
 % To compare the performance of the AL routine we compare against a
+%
+Figure subplot TEMP shows the parity plot of the predicted DFT energies using the fingerprints corresponding to the unoptimized structures (COLOR1) and post-DFT relaxed structures (COLOR2),
+plotted against the final post-optimization DFT formation energy.
+% Sentence that explains the parity plot
+It is clear that the GP model severely underpredicts the energy of the candidate space, especially for systems with less stable predicted formation energies, when predicting onto the candidate space of unoptimized structures (MAE of ~0.5 eV/atom).
+%
+This is due to the fact that the structures undergo through a large degree of structural rearrangement over the course of the DFT relaxation.
+%
+Alternatively, the MAE is much lower when the model predicts onto the post-optimized structures (MAE ~0.15 eV/atom),
+demonstrating that the poor preditive capabilities is due primarily to structural drift and not to the poor predictive capabilities of the GP model.
+%
+Despite these shortcomings, figure TEMP (TEMP performance plot) tracks the number of high stability materials (lowest N structures) discovered as a function of the number of DFT calculations for the case of 1.) AL with UCB acquisition function and 2.) AL with a random acquisition function.
+%
+The random acquisition function emulates the behavior of regression model which exhibits no correlation between the input and output space.
+%
+Clearly, the rate of discovery for case 1.) is superior to that of case 2.), with our methodology discovering half of the lowest N structures after only TEMP DFT calculations compared to TEMP when acquiring randomley within the candidate space.
 % __|
 
 
