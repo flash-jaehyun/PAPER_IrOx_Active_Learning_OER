@@ -28,7 +28,7 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 %
-We now turn our attention of the application of this active learning scheme to the discovery of stable forms of IrO2 and IrO3.
+We now turn our attention of the application of this active learning scheme to the discovery of most stable forms of IrO$_2$ and IrO$_3$.
 % Comment on this line | TODO do stuff
 %The AL algorithm is applied separately to IrO2 and IrO3 because we are specifically interested in the most stable polymorphs at each stoichiometry.
 % TODO How many features drop out when you constrain the stoich.?
@@ -44,16 +44,12 @@ We now turn our attention of the application of this active learning scheme to t
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 %
-Figure \ref{fig:iro2_al} a and b shows several iterations of the active learning loop for the IrO3 candidate space.
-%
-The figures plot the predicted (small circles) and aquired (large red-bordered circles) formation energies against the candidate space, sorted by the formation energy.
-%
-An acquisition bin size of 10 DFT calculations per iteration and an initial seed of 11 calculations were used.
+Figure \ref{fig:iro2_al} shows a sequence of  plots with several iterations of the active learning loop for the IrO$_2$ candidate space. The analogous result for IrO$_3$ candidate space in attached in SI.  The individual plots show predicted (small circles) and acquired(DFT calculated, large red-bordered circles) total energies against the candidate space, sorted by the formation energy.  An acquisition bin size of 10 DFT calculations per iteration and an initial seed of 11 calculations were used.
 %plots of the AL predictions on the candidate space at particular generations of the AL algorithm for the IrO3 candidate space with an aquisition bin size of 10 DFT calculations per iteration and an initial 11 calculations used for seeding.
 %
-Figure \ref{fig:iro2_al} a. shows the progression of the model at selected generations of the active learning loop, starting and ending with the initillay seeded generation and final generation, respectivelly.
+Figure \ref{fig:iro2_al} a. shows the progression of the model at selected generations of the active learning loop, starting and ending with the initially seeded generation and final generation, respectively.
 %
-As the ALL aquires more DFT calculations, the predicted uncertainty on the remaining candidate space decreases,
+As the ALL acquires more DFT calculations, the predicted uncertainty on the remaining candidate space decreases,
 as evidenced by the shrinking error bars with increasing AL generation.
 % As seen from Figure\ref{fig:iro2_al} a) the early iterations, where the training data is sparse 
 %
@@ -113,7 +109,7 @@ Error bars representing 1 sigma standard deviation from the Gaussian Process mod
 %
 (a) Series of ML convergence plots at different generations of the active learning algorithm.
 %
-The middle panel indicates the generation which satisifies the AL stop criteria (see text)
+The middle panel indicates the generation which satisfies the AL stop criteria (see text)
 %
 (b) Expanded ML plot for the generation that satisfies the stop criteria.
 %
@@ -122,7 +118,7 @@ Black diamonds indicate the actual DFT formation energy for each system.
 Inset shows the most stable 20 systems that are within the energetic window of meta-stability (indicated by grey band).
 %
 (c)
-Number of the top 20 polymorphs discovered as a function of the AL generation number for the AL loop using the aquisition criteria in equation TEMP and a control run that utilized a random  aquisition method.
+Number of the top 20 polymorphs discovered as a function of the AL generation number for the AL loop using the aquisition criteria in equation {\bf XX} and a control run that utilized a random  aquisition method.
 
 
 % | - __old__
