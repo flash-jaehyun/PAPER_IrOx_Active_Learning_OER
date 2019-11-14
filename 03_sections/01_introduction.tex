@@ -42,7 +42,7 @@ As such, these efforts have been primarily concerned with the enumeration of com
 The problem of thoroughly enumerating structural space is challenging for all but the most simple systems systems, because it involves sampling within the highly dimensional space of $3N$-cartesian coordinates, where N is the number of atoms in a given unit cell.
 % COMBAK
 This approach is only tractable for the most simple systems,
-such as metallic crystals which tend to adopt highly symmetric close-packed configurations, but is less suited for more complex materials such as metal oxides.
+such as metallic crystals which tend to adopt highly symmetric close-packed configurations, but is less suited for more complex materials.
 %
 % I think less exposition about these structurall motiffs is better
 This is particularly true for structurally diverse metal-oxides, a structurally diverse and important class of materials, which tend to organize themselves into well-defined local coordination environments such as octahedral and tetrahedral and other units (short-range order defining metal crystal field) arranged themselves in a large number of ways (long-range order, crystal symmetry group). Recently, several groups attempted to address the structural-diversity problem using computation for the MnO2~\cite{} and VOx~\cite{} polymorph space.
@@ -52,8 +52,8 @@ This is particularly true for structurally diverse metal-oxides, a structurally 
 % making them scale poorly with system size.
 %
 Here we report on a crystal structure discovery  algorithm that leverages machine learning surrogate models and an active learning framework to accelerate the discovery of novel crystal structures in the Ir-O space.
-%
-The algorithm avoids operating in the highly dimensional $3N$-space by leveraging nature's propensity for symmetry by preparing data sets with a large degree of structural diversity at fixed composition and stoichiometries.{\bf Are just trying to say that nature gives us sumetric strctures? }
+% By my definition composition includes stoicheometry
+The algorithm avoids operating in the highly dimensional $3N$-space by leveraging nature's propensity for symmetry by preparing data sets with a large degree of structural diversity at fixed composition.{\bf Are just trying to say that nature gives us sumetric strctures? }
 %
 % By considering only systems of unique stoicheomtry we leave the search space of 3N cartesions coordinates and enter a one dimensinal search space of structurally unique candidates.
 %
