@@ -36,14 +36,14 @@ which are used to acquire new systems for DFT in the population based on an acqu
 % Add the Hammer paper (R58) as another citation
 Active learning in conjunction with genetic algorithms has been demonstrated to successfully speed up materials discovery for alloy nanoparticles \cite{Jennings2019}, and ...[Other refs?],  structural optimizations \cite{hansen2019atomistic}, and transition-state calculations \cite{torres2019low}.
 % TEMP
-The methodology consists of two steps \textcolor{red}{point to the figure here, I think these two steps are your two boxes}, the first being the generation of the candidate space,
-which is an inclusive list of all initial crystal structures to be screened through during the search routine.
+The methodology consists of two steps (outlined in  \ref{fig:all_diagram}).
+%
+The first step is the generation of the candidate space,
+which defines the inclusive list of all crystal structures to be screened through during the search routine.
 %
 Since the initial candidates determines which structures that can ultimately be discovered, it is crucial to define a candidate space that is sufficiently diverse.
 % TEMP Say more
 The second part of the algorithm is the iterative active learning algorithm.
-% TODO Add figure reference
-\textcolor{red}{point to the figure first, not here}The procedural flow diagram is shown in figure \ref{fig:all_diagram}.
 
 % | - __old__
 % Our machine learning accelerated materials discovery method proceeds through the following steps:
@@ -79,6 +79,7 @@ Finally, a coarse isotropic volume relaxation was performed to accommodate to ac
  Additional details about our method can be found in the SI.
 % __|
 
+
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % !!!!!!!!!! NEW PARAGRAPH !!!!!!!!!! Can I get all of the methodology here
@@ -112,6 +113,23 @@ Here, $\kappa$ is set to $1$ which equally weights the energy and uncertainty.
 %
 Once ranked, the N systems that minimize the acquisition function are selected for full DFT calculations, which are included in the training data of subsequent AL generations. The AL loop proceeds until convergence is achieved, which here is chosen to be the generation at which the structures within the range of metastability, here taken as 0.1 eV/atom, are unchanging over three consecutive generations.
 % __|
+
+
+
+% | - Figure | Active Learning Algorithm **************************************
+\begin{figure*}[!htb]
+\centering
+\makebox[\textwidth][c]{\includegraphics
+  % {02_figures/Surrogate_model_mine.png}
+  {02_figures/al_diagram/Surrogate_model_mine.pdf}
+  }
+\caption{\label{fig:all_diagram}
+Process flow diagram for the active learning algorithm.
+{\bf Please desctribe the steps and loops in this}. {\bf Finalize this pic and its caption}
+}
+\end{figure*}
+% __|
+
 
 
 
@@ -202,20 +220,4 @@ Once ranked, the N systems that minimize the acquisition function are selected f
 % no structures have predicted formation energies with an uncertainty bound lower than the most stable $N$ structures.
 % % __|
 
-% __|
-
-
-
-% | - Figure | Active Learning Algorithm **************************************
-\begin{figure*}[!htb]
-\centering
-\makebox[\textwidth][c]{\includegraphics
-  % {02_figures/Surrogate_model_mine.png}
-  {02_figures/al_diagram/Surrogate_model_mine.pdf}
-  }
-\caption{\label{fig:all_diagram}
-Process flow diagram for the active learning algorithm.
-{\bf Please desctribe the steps and loops in this}. {\bf Finalize this pic and its caption}
-}
-\end{figure*}
 % __|
