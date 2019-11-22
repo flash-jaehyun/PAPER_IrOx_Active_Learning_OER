@@ -64,7 +64,7 @@ The second part of the algorithm is the iterative active learning algorithm.
 % TODO Reference OQMD and MP
 % TODO Ask @Ankit for these numbers
 
-In Schema \ref{fig:all_diagram} we show the {\bf overlall process with the integrated active learnign loop}. {\bf We start with ...} .  {\bf We continue with  with XXX...}   
+In Schema \ref{fig:all_diagram} we show the {\bf overlall process with the integrated active learnign loop}. {\bf We start with ...} .  {\bf We continue with  with XXX...}
 The structures that comprise the candidate data sets for IrO2 and IrO3 were constructed by parsing for all bulk AB2 and AB3 structures in both the Materials Project\cite{Jain2013} and OQMD\cite{Kirklin2015} databases (TEMP AB2 and TEMP AB3).
 %
 Structurally redundant systems were then removed via a space-group based structural classification scheme developed by Jain et al. \cite{Jain2018}.
@@ -76,7 +76,7 @@ The resulting data set is composed of XYZ AB2 and XYZ AB3 structural prototypes 
 
 Finally, a coarse isotropic volume relaxation was performed to accommodate to account for the difference in atomic radii of Ir and O to the elements that originally comprised the structure in OQMD/MP.
 %
- Additional details about our method can be found in the SI. 
+ Additional details about our method can be found in the SI.
 % __|
 
 % ################################# Paragraph #################################
@@ -103,7 +103,7 @@ Following this, the predictions are used to determine which systems to acquire, 
     U = - \mu - \kappa \sigma,
 \end{equation}
 %
-where $\mu$ and $\sigma$ is the predicted mean and standard deviation of the formation energy, and 
+where $\mu$ and $\sigma$ is the predicted mean and standard deviation of the formation energy, and
 $\kappa$ is a free parameter to tune the relative weighting between exploiting low formation energy systems (small $\kappa$) and exploring high uncertainty regions of the candidate space (large $\kappa$).
 %
 In this work we attempt to trade off exploitation and exploration by weighting the predicted formation energy and the associated uncertainty to bias systems that are both low energy and high uncertainty.
@@ -222,7 +222,7 @@ Once ranked, the N systems that minimize the acquisition function are selected f
 
 
 % | - Figure | Active Learning Algorithm **************************************
-\begin{figure*}
+\begin{figure*}[!htb]
 \centering
 \makebox[\textwidth][c]{\includegraphics
   % {02_figures/Surrogate_model_mine.png}
@@ -230,7 +230,7 @@ Once ranked, the N systems that minimize the acquisition function are selected f
   }
 \caption{\label{fig:all_diagram}
 Process flow diagram for the active learning algorithm.
-{\bf Please desctribe the steps and loops in this}. {\bf Finalize this pic and its caption} 
+{\bf Please desctribe the steps and loops in this}. {\bf Finalize this pic and its caption}
 }
 \end{figure*}
 % __|
