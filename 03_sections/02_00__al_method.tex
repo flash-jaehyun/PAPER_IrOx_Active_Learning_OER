@@ -63,20 +63,20 @@ The second part of the algorithm is the iterative active learning algorithm.
 % | - Paragraph start
 % TODO Reference OQMD and MP
 % TODO Ask @Ankit for these numbers
-
 In Schema \ref{fig:all_diagram} we show the {\bf overlall process with the integrated active learnign loop}. {\bf We start with ...} .  {\bf We continue with  with XXX...}
 The structures that comprise the candidate data sets for IrO2 and IrO3 were constructed by parsing for all bulk AB2 and AB3 structures in both the Materials Project\cite{Jain2013} and OQMD\cite{Kirklin2015} databases (TEMP AB2 and TEMP AB3).
 %
 Structurally redundant systems were then removed via a space-group based structural classification scheme developed by Jain et al. \cite{Jain2018}.
 %
-The resulting data set is composed of XYZ AB2 and XYZ AB3 structural prototypes for which iridium and oxygen were replaced for A and B sites, respectively.
+The resulting data set is composed of 697 AB2 and 259 AB3 structural prototypes for which iridium and oxygen were replaced for the A and B sites, respectively.
 %
-
-{\bf The Active learning loops starts here with ...}
-
 Finally, a coarse isotropic volume relaxation was performed to accommodate to account for the difference in atomic radii of Ir and O to the elements that originally comprised the structure in OQMD/MP.
 %
- Additional details about our method can be found in the SI.
+Additional details about our method can be found in the SI.
+%
+Only candidates that were successfully optimized with DFT were utlimitally included so that the model could be properly validated, which gives a final candidate data set of 450ish and 258 AB2 and AB3 structurally unique polymorphs.
+%
+The size of this dataset isn't particularly large, but will serve to demonstrate the polymorph discovery routine as a proof of concept and is small enough that it is tractable to perform the DFT for all structures such that the performance of the model can be benchmarked.
 % __|
 
 
@@ -90,28 +90,31 @@ The candidate data set was featurized using the voronoi tessellation fingerprint
 Herein, we apply our active learning model to the IrO2 and IrO3 spaces separately, because we are interested in the most stable polymorphs at each stoichiometry. Constraining the candidate space to having uniform stoichiometry reduces the 271 feature vector to 101 non-zero variance features, thus reducing the dimensionality of our problem significantly.
 % COMBAK
 Further dimensionality reduction is achieved via a principle component analysis (PCA) \cite{Tipping1999}, which was used to reduce the remaining 101 features to 11.
-% #############################################################################
-The active learning algorithm proceeds through iterative generations of ML training, prediction, and acquisition steps that are visualized in figure TEMP.
+%
+The active learning algorithm proceeds through iterative generations of ML training, prediction, and acquisition steps that are visualized in figure \ref{fig:iro2_al}.
 % COMBAK Did I get all of the important features of GP here? @Jose
 To start, Gaussian process (GP) regression is used to train a regression model on a small seed set of DFT formation energies from randomly selected structures in the candidate space.
 %
 The model is then used to predict the formation energies of the entire candidate space.
 %
-Following this, the predictions are used to determine which systems to acquire, by minimizing the acquisition function:
+Following this, the predictions are used to determine which systems to acquire, by minimizing the so-called GP-UCB acquisition function:
 % The name for this kind of acquisition is calld GP-UCB (Upper confidence bound)
 % https://www.cse.wustl.edu/~garnett/cse515t/spring_2015/files/lecture_notes/12.pdf
 \begin{equation}
-    U = - \mu - \kappa \sigma,
+    U = \mu - \kappa \sigma,
 \end{equation}
 %
-where $\mu$ and $\sigma$ is the predicted mean and standard deviation of the formation energy, and
-$\kappa$ is a free parameter to tune the relative weighting between exploiting low formation energy systems (small $\kappa$) and exploring high uncertainty regions of the candidate space (large $\kappa$).
+where $\mu$ and $\sigma$ is the predicted mean and standard deviation of the formation energy,
+and $\kappa$ is a free parameter to tune the relative weighting between exploiting low formation energy systems (small $\kappa$) and exploring high uncertainty regions of the candidate space (large $\kappa$).
 %
 In this work we attempt to trade off exploitation and exploration by weighting the predicted formation energy and the associated uncertainty to bias systems that are both low energy and high uncertainty.
 %
 Here, $\kappa$ is set to $1$ which equally weights the energy and uncertainty.
-%
-Once ranked, the N systems that minimize the acquisition function are selected for full DFT calculations, which are included in the training data of subsequent AL generations. The AL loop proceeds until convergence is achieved, which here is chosen to be the generation at which the structures within the range of metastability, here taken as 0.1 eV/atom, are unchanging over three consecutive generations.
+% TODO N is used into mean number of atoms (FIX)
+Once ranked, the N systems that minimize the acquisition function are selected for full DFT calculations, which are included in the training data of subsequent AL generations.
+% COMBAK We are discussing alternative convergence critera, or whether to even
+% have convergence criteria here
+The AL loop proceeds until convergence is achieved, which here is chosen to be the generation at which the structures within the range of metastability, here taken as 0.1 eV/atom, are unchanging over three consecutive generations.
 % __|
 
 
@@ -120,25 +123,21 @@ Once ranked, the N systems that minimize the acquisition function are selected f
 \begin{figure*}[!htb]
 \centering
 \makebox[\textwidth][c]{\includegraphics
-  % {02_figures/Surrogate_model_mine.png}
   {02_figures/al_diagram/Surrogate_model_mine.pdf}
   }
 \caption{\label{fig:all_diagram}
-Process flow diagram for the active learning algorithm.
-{\bf Please desctribe the steps and loops in this}. {\bf Finalize this pic and its caption}
+% Probably better to keep this caption really concise and refer to the text
+Process flow diagram for the active learning accelerated algorithm. The procedure is composed of (a) generation of the candidate set of considered crystal structures constructed from DFT materials databases and (b) iterative active learning surrogate search of the candidate space.
 }
 \end{figure*}
 % __|
 
 
 
-
 % | - TRANSFER THIS TO SI AND MAKE SURE IT'S NOT TOO REDUNDANT WITH MAIN TEXT
-
 %  are used as the regression model because they are highly flexible and can quantify the uncertainty of their predictions (see SI for details on the GP methodology).
 % %
 % The uncertainty quantification is used by the aquisition criteria which ranks the fitness of each prediction by weight both the predicted formation energy and the uncertainty assocated with the prediction as shown in equation TEMP.
-
 
 % % ################################# Paragraph #################################
 % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
