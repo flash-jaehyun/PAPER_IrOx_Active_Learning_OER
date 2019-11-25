@@ -72,8 +72,8 @@ The resulting data set is composed of 697 AB2 and 259 AB3 structural prototypes 
 Finally, a coarse isotropic volume relaxation was performed to accommodate to account for the difference in atomic radii of Ir and O to the elements that originally comprised the structure in OQMD/MP.
 %
 Additional details about our method can be found in the SI.
-%
-Only candidates that were successfully optimized with DFT were ultimately included so that the model could be properly validated, which gives a final candidate data set of 450ish and 258 AB2 and AB3 structurally unique polymorphs.
+% TODO Double check numbers
+Only candidates that were successfully optimized with DFT were ultimately included so that the model could be properly validated, which gives a final candidate data set of 448 and 258 AB2 and AB3 structurally unique polymorphs.
 %
 The size of this dataset isn't particularly large, but will serve to demonstrate the polymorph discovery routine as a proof of concept and is small enough that it is tractable to perform the DFT for all structures such that the performance of the model can be benchmarked.
 % __|
@@ -84,7 +84,7 @@ The size of this dataset isn't particularly large, but will serve to demonstrate
 % !!!!!!!!!! NEW PARAGRAPH !!!!!!!!!! Can I get all of the methodology here
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-The candidate data set was featurized using the voronoi tessellation fingerprinting scheme developed by Ward et al. \cite{Ward2017} which produces a 271 feature vector for each material that are insensitive to isotropic expansions and contractions in a crystals lattice.
+The candidate data set was featurized using the Voronoi tessellation fingerprinting scheme developed by Ward et al. \cite{Ward2017} which produces a 271 feature vector for each material that are insensitive to isotropic expansions and contractions in a crystals lattice.
 % How many columns of the 271 are redundant if stoich and composition are frozen
 Herein, we apply our active learning model to the IrO2 and IrO3 spaces separately, because we are interested in the most stable polymorphs at each stoichiometry. Constraining the candidate space to having uniform stoichiometry reduces the 271 feature vector to 101 non-zero variance features, thus reducing the dimensionality of our problem significantly.
 % COMBAK
