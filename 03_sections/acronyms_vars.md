@@ -6,6 +6,7 @@ DFT | Density Functional Theory
 AL | Active Learning
 ALL | Active Learning Loop
 GP-UCB | Gaussian Process - Upper Confidence Bound
+SCF | Self-consistent field
 
 # Variables
 ---
