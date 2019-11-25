@@ -60,22 +60,30 @@ The second part of the algorithm is the iterative active learning algorithm.
 % !!!!!!!!!! NEW PARAGRAPH !!!!!!!!!! Can I get all of the methodology here
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-% TODO Reference OQMD and MP
 % TODO Ask @Ankit for these numbers
-In Schema \ref{fig:all_diagram} we show the {\bf overall process with the integrated active learning loop}. {\bf We start with ...} .  {\bf We continue with  with XXX...}
-The structures that comprise the candidate data sets for IrO2 and IrO3 were constructed by parsing for all bulk AB2 and AB3 structures in both the Materials Project\cite{Jain2013} and OQMD\cite{Kirklin2015} databases (TEMP AB2 and TEMP AB3).
+% The MP project number should be correct, but the OQMD number might be wrong
+% MP{AB2: 3995, AB3: 2849} | OQMD{AB2: 533, AB3:20915}
+In Schema \ref{fig:all_diagram} we show the {\bf overall process with the integrated active learning loop}. {\bf We start with ...}.
+%
+{\bf We continue with  with XXX...}
+%
+The structures that comprise the candidate data sets for \IrOtwo and \IrOthree were constructed by parsing for all bulk \ABtwo and \ABthree structures in both the Materials Project\cite{Jain2013} and OQMD\cite{Kirklin2015} databases
+(in total 4528 \ABtwo and 23764 \ABthree entries).
 %
 Structurally redundant systems were then removed via a space-group based structural classification scheme developed by Jain et al. \cite{Jain2018}.
 %
-The resulting data set is composed of 697 AB2 and 259 AB3 structural prototypes for which iridium and oxygen were replaced for the A and B sites, respectively.
+The resulting data set is composed of 697 \ABtwo and 259 \ABthree structural prototypes for which iridium and oxygen were replaced for the A and B sites, respectively.
 %
-Finally, a coarse isotropic volume relaxation was performed to accommodate to account for the difference in atomic radii of Ir and O to the elements that originally comprised the structure in OQMD/MP.
+Finally, a coarse isotropic volume relaxation was performed to accommodate for the difference in atomic radii of Ir and O to the elements that originally comprised the structure in OQMD/MP.
 %
 Additional details about our method can be found in the SI.
 % TODO Double check numbers
-Only candidates that were successfully optimized with DFT were ultimately included so that the model could be properly validated, which gives a final candidate data set of 448 and 258 AB2 and AB3 structurally unique polymorphs.
+Only candidates that were successfully optimized with DFT were ultimately included so that the model could be properly validated,
+which gives a final candidate data set of 448 and 258 \ABtwo and \ABthree structurally unique polymorphs.
 %
-The size of this dataset isn't particularly large, but will serve to demonstrate the polymorph discovery routine as a proof of concept and is small enough that it is tractable to perform the DFT for all structures such that the performance of the model can be benchmarked.
+While size of this dataset is not particularly large, it will serve the purpose of demonstrating the polymorph discovery routine as a proof of concept.
+%
+Additionally, the dataset is small enough that computing all of the structural candidats with ab-initio DFT is tractable, thus allowing us to validate the performance of the model.
 % __|
 
 
@@ -86,7 +94,7 @@ The size of this dataset isn't particularly large, but will serve to demonstrate
 % | - Paragraph start
 The candidate data set was featurized using the Voronoi tessellation fingerprinting scheme developed by Ward et al. \cite{Ward2017} which produces a 271 feature vector for each material that are insensitive to isotropic expansions and contractions in a crystals lattice.
 % How many columns of the 271 are redundant if stoich and composition are frozen
-Herein, we apply our active learning model to the IrO2 and IrO3 spaces separately, because we are interested in the most stable polymorphs at each stoichiometry. Constraining the candidate space to having uniform stoichiometry reduces the 271 feature vector to 101 non-zero variance features, thus reducing the dimensionality of our problem significantly.
+Herein, we apply our active learning model to the \IrOtwo and \IrOthree spaces separately, because we are interested in the most stable polymorphs at each stoichiometry. Constraining the candidate space to having uniform stoichiometry reduces the 271 feature vector to 101 non-zero variance features, thus reducing the dimensionality of our problem significantly.
 % COMBAK
 Further dimensionality reduction is achieved via a principle component analysis (PCA) \cite{Tipping1999}, which was used to reduce the remaining 101 features to 11.
 %
@@ -170,7 +178,7 @@ Process flow diagram for the active learning accelerated algorithm. The procedur
 % %
 % The Voronoi based method was used because it is insensitive to volume relaxation.
 % %
-% Separate, independent models were used for IrO2 and IrO3 to reduce the complexity of the space, this has the additional effect of making a large number of the fingerprint descriptors redundant.
+% Separate, independent models were used for \IrOtwo and \IrOthree to reduce the complexity of the space, this has the additional effect of making a large number of the fingerprint descriptors redundant.
 % % How many columns of the 271 are redundant if stoich and composition are frozen
 % As a result, the 271 length feature space is reduced to a TEMP length vector.
 % %

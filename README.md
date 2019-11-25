@@ -34,6 +34,8 @@ I find this quite useful for navigation, and to achieve the same effect in your 
 1. Make sure that all acronyms are defined before they are used
 2. Make sure all references are placed correctly
 3. Define Gaussian Process (GP) in text
+4. Consistent formatting of V vs. RHE (with dot at vs.)
+5. ab-initio is formatted properly (italicized)
 
 ## Git commands
 ---

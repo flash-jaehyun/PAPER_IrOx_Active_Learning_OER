@@ -14,19 +14,18 @@
 % TEMP
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-{\bf There should be a paragraph which discussed the structural drift and performance/acceleration in more detail}
-I would use the updated version of Figure 2c.
-
-
-Next, we describe the structural variety that is present in our data set of ~1000 IrO2 and IrO3 polymorphs.
-% Looks like I wasn't using the algorithm implemented in R52 (David Waroquiers)
-The coordination environment package ChemEnv, developed by Waroquiers et. al. \cite{Waroquiers2017} and implemented in pymatgen \cite{Ong2013},was used to assign M-O crystal filed coordination types (e.g. octahedral, square pyramidal, cubic, etc.) to each of the $~$1K structures in our combined data set.
-{\bf Describe in two paragraphs what is shown in Figure 3 and in what the main consequences of these results}
-
+% There should be a paragraph which discussed the structural drift and performance/acceleration in more detail
+% I would use the updated version of Figure 2c.
 %
+Next, we describe the structural variety that is present in our data set of ~1000 \IrOtwo and \IrOthree polymorphs.
+% Looks like I wasn't using the algorithm implemented in R52 (David Waroquiers)
+The coordination environment package ChemEnv, developed by Waroquiers et. al. \cite{Waroquiers2017} and implemented in pymatgen \cite{Ong2013}, was used to assign M-O crystal filed coordination types (e.g. octahedral, square pyramidal, cubic, etc.) to each of the $~$1K structures in our combined data set.
+%
+{\bf Describe in two paragraphs what is shown in Figure 3 and in what the main consequences of these results}
+% Not true anymore?
 Additional esoteric coordination environments were identified manually, see SI.
-% COMBAK What normalization methodd do I end up using for the E and V?
-The resulting distribution is included in figure TEMP, which plots the electronic energy and volume, both normalized on a per atom basis
+% COMBAK What normalization method do I end up using for the E and V?
+The resulting distribution is included in figure \ref{E_vs_V}, which plots the electronic energy and volume, both normalized on a per atom basis.
 % __|
 
 
@@ -38,9 +37,9 @@ The resulting distribution is included in figure TEMP, which plots the electroni
 width=\textwidth,height=\textheight,keepaspectratio]
 {02_figures/e_vs_v_motiffs.png}
 }
-\caption{\label{fig:iro2_al}
+\caption{\label{fig:E_vs_V}
 % Make sure to update x-axis quantity (volume per atom, Ir, or density, etc.)
-Enthalpy of formation for the 448 IrO2 (circles) and 258 IrO3 (crosses) structures in the candidate data set plotted against the volume per atom.
+Enthalpy of formation for the 448 \IrOtwo (circles) and 258 \IrOthree (crosses) structures in the candidate data set plotted against the volume per atom.
 %
 Color overlays indicate the dominant coordination motifs as indicated by the legend.
 %
@@ -64,10 +63,9 @@ Select polymorphs systems are displayed around the plot area.
 %   % {02_figures/ml_convergence_plots/iro2_ml_conv.png}
 %   }
 % \caption{\label{fig:convergence_plot_iro2_0}
-% % #COMBAK Subscript IrO2
-% Gaussian process machine learning models trained initially on (a) publicly available DFT data for IrO2 and (b) all of the acquired DFT calculations from the active learning algorithm.
+% Gaussian process machine learning models trained initially on (a) publicly available DFT data for \IrOtwo and (b) all of the acquired DFT calculations from the active learning algorithm.
 % See SI for additional panels at intermediate iterations of the active learning algorithm.
-% The Gibbs formation energy (either DFT derived or predicted from the GP model) and associated GP estimated error (2 sigmas or something TEMP) is plotted for each polymorph in the IrO2 candidate space.
+% The Gibbs formation energy (either DFT derived or predicted from the GP model) and associated GP estimated error (2 sigmas or something TEMP) is plotted for each polymorph in the \IrOtwo candidate space.
 % The data points in each subset are ordered from most to least stable (lowest to largest DE formation).
 % The individual markers are colored based on their ordering in the final converged GP model.
 % Acquired structures are identified by their red borders and slightly larger size.
