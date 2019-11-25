@@ -11,7 +11,7 @@
 % Short introduction into the cataylsis section
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-We next performed {\it ab-initio} thermodynamic simulations to elucidate the electrochemical operational stability of IrOx and the OER activity of the four stable polymorphs (\rIrOtwo, \aIrOthree, \rIrOthree, and \bIrOthree) computed above (Fg. XYZ).
+We next performed {\it ab-initio} thermodynamic simulations to elucidate the electrochemical operational stability of \IrOx and the OER activity of the four stable polymorphs (\rIrOtwo, \aIrOthree, \rIrOthree, and \bIrOthree) computed above (Fg. XYZ).
 % __|
 
 
@@ -24,7 +24,7 @@ We next performed {\it ab-initio} thermodynamic simulations to elucidate the ele
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 %
-Figure \ref{fig:bulk_pourbaix} reports the IrOx Pourbaix diagram (E vs. pH) constructed with the following species: Ir, \rIrOtwo, \aIrOthree,  \rIrOthree, \bIrOthree, and an aqueous dissolved \ce{IrO[4-]} species (See TEMP|SI for additional details).
+Figure \ref{fig:bulk_pourbaix} reports the \IrOx Pourbaix diagram (E vs. pH) constructed with the following species: Ir, \rIrOtwo, \aIrOthree,  \rIrOthree, \bIrOthree, and an aqueous dissolved \ce{IrO[4-]} species (See TEMP|SI for additional details).
 %
 While \Ir and \rIrOtwo are most stable at low bias, \aIrOthree is the most stable species under acidic conditions (pH \textless 7) and in the bias region of interest for the OER (~1.23 V vs. RHE).
 %
@@ -35,7 +35,7 @@ While \Ir and \rIrOtwo are most stable at low bias, \aIrOthree is the most stabl
 % I want to be careful about how I talk about the metastable structures in the bulk Pourbaix, they strictly speaking shouldn't be there at all
 The stability regions of the metastable \rIrOthree and \bIrOthree phases are indicated by unfilled solid lines and appear (meta?)stable in the OER relevant region of the diagram.
 %
-The similar formation energies (SI XYZ) for all three IrO3 species suggest some or all of these \ce{IrO_3} phases may be present and are stable under OER conditions.
+The similar formation energies (SI XYZ) for all three \IrOthree species suggest some or all of these \IrOthree phases may be present and are stable under OER conditions.
 
 % | - __old__
 % , in the absence of any other competing \ce{IrO_3} polymorphs, are indicated by unfilled solid lines.
@@ -51,16 +51,24 @@ The similar formation energies (SI XYZ) for all three IrO3 species suggest some 
 % __|
 
 
+
+
 % | - Figure | Bulk Pourbaix Diagram
 \begin{figure*}[!htb]
 \centering
 \makebox[\textwidth][c]{\includegraphics
 {02_figures/oer_activity_stability/00_master__bulk-pourbaix__v1__400dpi__0__outplot.png}
-% {02_figures/oer_activity_stability/bulk_pourbaix_0.pdf}
 }
-\label{fig:bulk_pourbaix}
-\caption{
-The revised Pourbaix diagram (electrochemical bulk phase stability)  of the Ir-H$_2$O system as a function of applied potential (vs. SHE) and pH. The most stable system studied (see Table XX in SI for a full list) are Ir-metal Ir(s) (blue), a \rIrOtwo  (green), and a dissolved \ce{IrO4[4-]} (gray). Thee are compared to the\ce{IrO_3} polymorphs, \aIrOthree (purple), \rIrOthree (orange), and \bIrOthree (pink). {\bf I would like to add Srx IrO3 to show much less stable it is than alpha}. The water equilibrium line at U=1.23 V vs RHE shows the ideal onset of OER. This plot highlights the importance of the \ce{IrO3} for OER operational stability.
+\caption{\label{fig:bulk_pourbaix}
+The revised Pourbaix diagram (electrochemical bulk phase stability) of the Ir-H$_2$O system as a function of applied potential (vs. SHE) and pH.
+%
+The most stable system studied (see Table XX in SI for a full list) are Ir-metal Ir(s) (blue), a \rIrOtwo  (green), and a dissolved \ce{IrO4[4-]} (gray).
+%
+These are compared to the \ce{IrO_3} polymorphs, \aIrOthree (purple), \rIrOthree (orange), and \bIrOthree (pink).
+% I would like to add Srx IrO3 to show much less stable it is than alpha
+The water equilibrium line at U=1.23 V vs. RHE shows the ideal onset of OER.
+%
+% This plot highlights the importance of the \ce{IrO3} for OER operational stability.
 }
 \end{figure*}
 % __|
@@ -78,7 +86,7 @@ The revised Pourbaix diagram (electrochemical bulk phase stability)  of the Ir-H
 % | - Paragraph start
 Fig. \ref{fig:oer_volcano} summarizes the \sout{major} results of the electrochemical activity and surface stability analysis, structure files and method details are reported in SI XYZ.
 %
-Fig. \ref{fig:oer_volcano} a.) reports the surface energy Pourbaix plots as a function of applied potential (at pH=0) for the four IrOx crystals of interest.
+Fig. \ref{fig:oer_volcano} a.) reports the surface energy Pourbaix plots as a function of applied potential (at pH=0) for the four \IrOx crystals of interest.
 %
 The bulk phase limits of stability from figure TEMP are included at the bottom of each subplot.
 %
@@ -87,7 +95,7 @@ For each polymorph, XYZ specific facets were chosen from the highest intensity x
 For each facet we computed the surface free energy for three coverages, bare, *OH, and *O.
 % How facets were chosen | TODO Get x-ray pattern for systems
 % TODO #REF | Reference for VESTA x-ray diff. pattern method
-% TODO Say that the IrO3 bulk phase corresponds to the o-covered regime
+% TODO Say that the \IrOthree bulk phase corresponds to the o-covered regime
 %
 % Probably remove this sentence and just go with the second one
 % In most cases\chris{be specific}, the oxygen covered surfaces dominate at the OER equilibrium potential (1.23 V vs RHE) with bare surfaces being competitive to within TEMP eV/A2,
@@ -109,21 +117,24 @@ Consequently, we consider mainly oxygen terminated surfaces for the OER analysis
 % Replace G_O and G_OH with my custom macros for consistency
 The OER activity (expressed in terms of the limiting potential) for select oxygen terminated surfaces are shown in Fig. \ref{fig:oer_volcano} as a function of the $\Delta G_\mathrm{O} - \Delta G_\mathrm{OH}$ thermodynamic descriptor.
 %
-The two rutile-IrO2 surfaces (100 and 110) bind the OER intermediates strongly, locating them at a theoretical limiting potential of xyz.
+The two \rIrOtwo surfaces (100 and 110) bind the OER intermediates too strongly,
+locating them at a theoretical limiting potential of ~1.8 V vs. RHE.
 %
-The predicted overpotentials of our rutile-IrO2 systems are within the range of experimentally observed overpotentials found in literature.
+The predicted overpotentials of our \rIrOtwo systems are within the range of experimentally observed overpotentials found in literature.
 % Reference all experimental IrO2 overpotentials I can find
-%
-The three IrO3 polymorph surfaces all have a $\Delta G_\mathrm{O} - \Delta G_\mathrm{OH}$ descriptor towards the top and right of the volcano, indicative of weaker binding energetics.
+The three \IrOthree polymorph surfaces all have a $\Delta G_\mathrm{O} - \Delta G_\mathrm{OH}$ descriptor towards the top and right of the volcano, indicative of weaker binding energetics.
 % \chris{Im losing the big picture here at the end of the section, I think you are convoluting two different things that need to be broken up into their own paragraphs.  This OER activity part needs some work, let's discuss}
+% TODO How much weaker does IrO3 bind than IrO2 on average
+This is evident from figure \ref{scaling_relations} in the SI, which shows a clear distinction between the \IrOtwo and \IrOthree polymorphs, with \IrOthree binding on average TEMP eV weaker than \IrOtwo.
 %
-This is evident from figure SI TEMP (scaling) which shows a clear distinction between the IrO2 and IrO3 polymorphs, with IrO3 binding on average TEMP eV weaker than IrO2.
+The best performing systems, including the (100), (110), and (211) facets of \aIrOthree, \bIrOthree (101), and \rIrOthree (110), have overpotentials of ~0.4 V vs RHE,
+a ~0.2 V vs RHE improvement over the \rIrOtwo system.
 %
-The best performing systems, including the (100), (110), and (211) facets of a-IrO3, b-IrO3 (101), and R-IrO3 (110), have overpotentials of ~0.4 V vs RHE,
-a ~0.2 V vs RHE improvement over the rutile-IrO2 system.
+We note that the computed  overpotentials for our \rIrOtwo system differs from that reported in \cite{Seitz2016} by ~0.2 V.
 %
-We note that the computed  overpotentials for our \rIrOtwo system differs from that reported in \cite{Seitz2016} by ~0.2 V. This discrepancy is due to our us of spin-polarization, which was neglected in Seitz et al., which strengthens the binding of IrO2.
-
+This discrepancy is due to our inclusion of spin-polarization in our ab-initio calculations, which was neglected in Seitz et al.
+%
+This discrpency was discussed in a previous publication. \ref{Strickler2019}
 % __|
 
 

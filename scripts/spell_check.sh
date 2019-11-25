@@ -9,17 +9,34 @@
 #| - Files to spell check
 declare -a StringArray=(
     "../00_main_manuscript.tex"
+
     "../03_sections/00_abstract.tex"
     "../03_sections/01_introduction.tex"
-    "../03_sections/02_00_section.tex"
-    "../03_sections/02_01_section.tex"
-    "../03_sections/02_02_section.tex"
+    "../03_sections/02_00__al_method.tex"
+    "../03_sections/02_01__application_to_irox.tex"
+    "../03_sections/02_02__struct_motiffs.tex"
+    "../03_sections/02_03__echem_oer.tex"
     "../03_sections/03_conclusions.tex"
     "../03_sections/04_00_SI.tex"
     "../03_sections/acknowledgements.tex"
+    "../03_sections/acronyms_vars.md"
     "../03_sections/authors.tex"
     "../03_sections/custom_macros.tex"
     )
+
+
+# "../03_sections/00_abstract.tex"
+# "../03_sections/01_introduction.tex"
+# "../03_sections/02_00_section.tex"
+# "../03_sections/02_01_section.tex"
+# "../03_sections/02_02_section.tex"
+# "../03_sections/03_conclusions.tex"
+# "../03_sections/04_00_SI.tex"
+# "../03_sections/acknowledgements.tex"
+# "../03_sections/authors.tex"
+# "../03_sections/custom_macros.tex"
+
+
 #__|
 
 #| - Dictionary Files

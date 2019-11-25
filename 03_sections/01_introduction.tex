@@ -3,7 +3,7 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Key points:
-%   * Materials are composed of their "stoicheometry" and their "structure"
+%   * Materials are composed of their "stoichiometry" and their "structure"
 %   * 3N dimensional Cartesian space of coordinates is prohibitelvey large
 %   * Our candidate space generation leverages symmetry to produce a set of
 %     structurally unique and well distributed (across the high dim. 3N space)
@@ -14,6 +14,7 @@
 %   * Potential energy surface (PES)
 %   * Global minimum (GM)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 
 % ################################# Paragraph #################################
@@ -38,7 +39,7 @@ Although there have been numerous examples in recent years of machine learning a
 For example, roughly half the entries (\~200,000) in The Open Quantum Materials Database (OQMD) correspond to ternary-alloy combinations in the same close-packed cubic structure.
 %have identical structures corresponding to ABO3 perovskites.
 % Should we say that enumerating comp. is easy and struct. is hard?
-As such, these efforts have been primarily concerned with the enumeration of composition (elemental identity and stoicheometries) and less so with the exploration of structural diversity.
+As such, these efforts have been primarily concerned with the enumeration of composition (elemental identity and stoichiometries) and less so with the exploration of structural diversity.
 %
 The task of finding globally/locally stable crystal structures is equivalent to performing a global optimization (GO) routine within the highly dimensional potential energy surface (PES).
 %
@@ -71,6 +72,7 @@ The algorithm avoids operating in the highly dimensional $3N$-space by leveragin
 % __|
 
 
+
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Introduce specific system (Ir-oxides), relevance (OER), and what is to be
@@ -81,22 +83,22 @@ Herein, we focus on the chemical space of iridium oxide polymorphs,
 an important class of materials with applications in electrochemistry.
 % See following link for list of important IrO2 OER papers:
 % https://workflowy.com/#/e755141e2f66
-In particular, rutile-IrO$_2$ (Ir[4+] oxidation state), is the most stable form of iridium-oxide at standard conditions,
+In particular, \rIrOtwo (Ir[4+] oxidation state), is the most stable form of iridium-oxide at standard conditions,
 and is a well studied electrocatalyst for the oxygen evolution reaction (OER).
 \cite{Seitz2016,Lee2012a,McCrory2015,Trotochaud2012,Danilovic2014,Carmo2013,Miles1978,Beni1979}
 %
-Previous studies on SrIrO3 electrocatalyst for the OER demonstrated that Sr leaching might leave behind a highly oxidized Ir (Ir[6+] for hypothetical IrO$_3$) and it was argued as one possibly for observed high OER activity.\cite{Seitz2016}
+Previous studies on SrIrO\textsubscript{3} electrocatalyst for the OER demonstrated that Sr leaching might leave behind a highly oxidized Ir (Ir[6+] for hypothetical \IrOthree) and it was argued as one possibly for observed high OER activity.\cite{Seitz2016}
 % @Michal wants a Schlogl paper here, not sure which TODO
-Other groups also observed such dissociation of IrOx catalyst and subsequent formation of amorphous-like layer of unknown strcuture. \cite{Pearce2017}
+Other groups also observed such dissociation of \IrOx catalyst and subsequent formation of amorphous-like layer of unknown structure. \cite{Pearce2017}
 %
-Highly oxidized IrO$_3$ phases as also formed as the terminal structure of LixIrO3 anodes.\cite{Pearce2017}
+Highly oxidized \IrOthree phases as also formed as the terminal structure of Li\textsubscript{x}IrO\textsubscript{3} anodes.\cite{Pearce2017}
 %
-For above reasons, we focused our study to search for stable polymorphs in the standard IrO$_2$ stoichometry as well as higher oxidation state corresponding to IrO$_3$,
+For above reasons, we focused our study to search for stable polymorphs in the standard \IrOtwo stoichiometry as well as higher oxidation state corresponding to \IrOthree,
 while neglecting the possibility of mixed IrO$_2$(OH) phase.
 %
-Purely octaheadral IrO$_3$ leads naturally to 100 percent corner sharing octahedra, where all terminal surface Ir-oxygens are potentially OER active sites.
+Purely octahedral \IrOthree leads naturally to 100 percent corner sharing octahedra, where all terminal surface Ir-oxygens are potentially OER active sites.
 % TODO Add references to octahedra literature
-Furthermore, such pure corner sharing octaheadral crystals are known from in other sytems such flourites and chlorites.
+Furthermore, such pure corner sharing octahedral crystals are known from in other systems such fluorites and chlorites.
 
 
 % | - __old__
@@ -108,6 +110,7 @@ Furthermore, such pure corner sharing octaheadral crystals are known from in oth
 % __|
 
 
+
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Paragraph outlining the structure of the paper
@@ -116,19 +119,16 @@ Furthermore, such pure corner sharing octaheadral crystals are known from in oth
 %
 In the first section, we define our prototype space and introduce the active-learning surrogate model.
 %
-Next, we highlight the application of AL to the IrO$_2$ and IrO$_3$ prototype space.
+Next, we highlight the application of AL to the \IrOtwo and \IrOthree prototype space.
 %
 Here we discuss the acceleration/performance and practical limitations of this approach as well as the nature of the most stable polymorphs.
 %
 Here, we also extract and analyze the rich structural information of our set.
 %
-In the section 3, we construct a revised bulk Pourbaix diagram of the Ir-H$_2$O system highlighting the importance of the IrO$_3$ phases under OER.
+In the section 3, we construct a revised bulk Pourbaix diagram of the Ir-H$_2$O system highlighting the importance of the \IrOthree phases under OER.
 %
 Finally, we construct thermodynamic OER volcano of most stable phases and discuss the trends in activities.
 % __|
-
-
-
 
 
 

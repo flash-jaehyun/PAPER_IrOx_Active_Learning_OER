@@ -1,10 +1,30 @@
-personal_ws-1.1 en 34 
+personal_ws-1.1 en 34
+unassociated
+thermodynamical
+enthalpy
+enthalpies
+pre
+benchmarked
+grey
+featurized
+dataset
+nanoparticles
+nanoparticle
+fluorites
+coordinations
+iteratively
+chlorites
+octahedral
+octahedra
+systems
+stabilities
 Avenir
 energetics
 mA
 isotropically
 IrOx
 stoichiometric
+oxygens
 al
 stoichiometries
 unoxidized
@@ -18,6 +38,8 @@ overpotentials
 hydroxyl
 polymorph
 electrochemical
+electrochemistry
+electrocatalyst
 initio
 alfowlib
 aqueously
@@ -30,6 +52,7 @@ polymorphs
 et
 eV
 metastable
+metastability
 Lithiated
 AlF
 stoichiometry

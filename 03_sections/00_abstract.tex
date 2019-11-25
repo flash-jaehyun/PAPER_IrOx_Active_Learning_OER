@@ -1,35 +1,33 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%
-%%
-%%
+% Abstract %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-% ################################# Paragraph #################################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TEMP
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Paragraph start
+
 %
 Machine learning (ML) has revolutionized a number of scientific fields where it is possible to train models that are flexible enough to regress to data of interest while maintaining predictive power.
 %
 Particular impact of ML surrogate models to  have been in the field of materials science,
-where the bottle-neck imposed by the computational expense of Density Functional Theory (DFT) when applied to to vast composition-space of bulk systems has been addressed.
+where the bottle-neck imposed by the computational expense of Density Functional Theory (DFT) when applied to the vast composition-space of bulk systems has been addressed.
 %
 However, surrogate model applications to the structural space of bulk-crystals, i.e. polymorphs, are very scarce due to {\bf XX}.
 %
-Herein, we report on an active learning ML methodology that searches for the most stable crystal structures of IrO2 and IrO3 by utilizing surrogate models which optimize within a candidate data set of crystal motiffs sourced from publicly available materials databases.
+Herein, we report on an active learning ML methodology that searches for the most stable crystal structures of \IrOtwo and \IrOthree by utilizing surrogate models which optimize within a candidate data set of crystal motifs sourced from publicly available materials databases.
 %
-We demonstrate the efficacy of this AL-accelerated methodology by discovering 70 percent of the 10 most stable crystal structures for IrO3 and IrO3 with less than 50 dft calculations.
+We demonstrate the efficacy of this AL-accelerated methodology by discovering 70 percent of the 10 most stable crystal structures for \IrOtwo and \IrOthree with less than 50 DFT calculations.
 %
-For \ce{IrO_2}, we show that while the bulk-rutile system is the globally stable polymorph,
+For \IrOtwo, we show that while the bulk-rutile system is the globally stable polymorph,
 while more than {\bf XX} unique structures is discovered within 0.2 eV per atom.
-%
-For \ce{IrO_3}, we discover {\bf XX} previously unknown polymorphs, e.g., $\rm \alpha-AlF$_3$ type and rutile-like \ce{IrO_3} with stabilities lower than 0.2 per atom than anything known to date.
+% There are 10 IrO3 polymorphs within 0.2 eV/atom of the lowest structure
+% and 5 IrO3 polymorphs within 0.1 eV/atom of the lowest structure
+% Of these 10, how many were unkown? Maybe 8ish? TODO double check
+For \IrOthree, we discover 10 previously unknown polymorphs, e.g.,
+$\alpha$-AlF\textsubscript{3} type and a rutile-like \IrOthree structure with stabilities lower than 0.2 per atom than anything known to date.
 % Add in result of new phase of IrO3 that has implications to OER chemistries (@Raul)
-With these results as inputs, we construct a new bulk Pourbiax diagram of the Ir-H$_2$O system.
+With these results as inputs, we construct a new bulk Pourbaix diagram of the Ir-H\textsubscript{2}O system.
 %
-We computationally test the proficiency of these phases towards oxygen-evolution reaction and find that the above stable \ce{IrO_3} polymorphs have much higher activity that any \ce{IrO_2}.
+We computationally test the proficiency of these phases towards oxygen evolution reaction and find that the above stable \IrOthree polymorphs have much higher activity that any \IrOtwo.
 %
-This work opens up an opportunity to materials/catalysts structural discovery on unprecedented scale.     
-% __|
+This work opens up an opportunity to materials/catalysts structural discovery on unprecedented scale.
