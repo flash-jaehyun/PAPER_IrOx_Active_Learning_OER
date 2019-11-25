@@ -32,7 +32,7 @@ Of those we found 697 unique AB2 prototypes (unique SG/Wyckoff combination) in O
 Relevant details about the ML Gaussian process here  % @Chris
 
 % TODO Check again how I handled the length vectors
-The Gaussian Process model utilized a rational quadratic kernel with variable length scales for each dimensino of the feature space.
+The Gaussian Process model utilized a rational quadratic kernel with variable length scales for each dimension of the feature space.
 % CV error of XYZ eV/atom, initial predictions in figure XYZ.
 % - Selected 10 structures with lowest prediction-uncertainty for DFT.
 % Structures were volume optimized, then fully relaxed, described in methods XYZ.
@@ -48,20 +48,20 @@ PBE exchange correlation functional
 spin-polarized calculations
 plane-wave cutoff of 600 eV
 
-A variable k-point mesh is used such that a kpoint density of at least 20 kpoints per recipricol space dimension.
+A variable k-point mesh is used such that a kpoint density of at least 20 kpoints per reciprocal space dimension.
 
 All bulk systems were run through the following computational recipe to converge the equilibrium structure.
 The recipe has 3 distinct phases, and structures are only advanced to the next phase when the previous phase completes without error.
-1. A isif 7 calculation to optimize only the volue (initial volume of cell may be really off)
-2. 3 consecutive isif 3 relaxations to fully converge the lattice and atomic positions
-3. A final isif 2, calculation to relax the atomic coorindates only to avoid errors associated with changing the cell volume with a fixed plane-wave cutoff basis
+1. A ISIF 7 calculation to optimize only the volue (initial volume of cell may be really off)
+2. 3 consecutive ISIF 3 relaxations to fully converge the lattice and atomic positions
+3. A final ISIF 2, calculation to relax the atomic coordinates only to avoid errors associated with changing the cell volume with a fixed plane-wave cutoff basis
 
-The final isif 2 step is run with an electronic energy SCF convergence criteria of 1E-6 eV and the ionic relaxation has a tight force convergence criteria of 1E-3 eV/Angstrom
+The final ISIF 2 step is run with an electronic energy SCF convergence criteria of 1E-6 eV and the ionic relaxation has a tight force convergence criteria of 1E-3 eV/Angstrom
 % __|
 
-\subsection{Structural coordination motiff identification}
-% | - Structural coordination motiff identification
-Several esoteric structural features were found in the DFT optimized structures and can be catogorized as one of two types, legitimate structural motiffs not characterized by the scheme of Waroquiers et. al. \cite{Waroquiers2017}, and arguably non-physical structural artifacts, including:
+\subsection{Structural coordination motif identification}
+% | - Structural coordination motif identification
+Several esoteric structural features were found in the DFT optimized structures and can be catogorized as one of two types, legitimate structural motifs not characterized by the scheme of Waroquiers et. al. \cite{Waroquiers2017}, and arguably non-physical structural artifacts, including:
 % TODO Add more of these
 - unassociated oxygen atoms
 - molecular oxygens in the unit cell
