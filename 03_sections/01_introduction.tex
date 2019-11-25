@@ -1,17 +1,18 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Introduction
-%%
-%% Key points:
-%%   * Materials are composed of their "stoicheometry" and their "structure"
-%%   * 3N dimensional Cartesian space of coordinates is prohibitelvey large
-%%   * Our candidate space generation leverages symmetry to produce a set of
-%%     structurally unique and well distributed (across the high dim. 3N space)
-%%     polymorphs
-%%   * Mention other methods for bulk crystal structure Discovery
-%%     - simulated annealing
-%%     - paper that Hammer put out (R58)
-%%   * Potential energy surface (PES)
-%%   * Global minimum (GM)
+% Introduction %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Key points:
+%   * Materials are composed of their "stoicheometry" and their "structure"
+%   * 3N dimensional Cartesian space of coordinates is prohibitelvey large
+%   * Our candidate space generation leverages symmetry to produce a set of
+%     structurally unique and well distributed (across the high dim. 3N space)
+%     polymorphs
+%   * Mention other methods for bulk crystal structure Discovery
+%     - simulated annealing
+%     - paper that Hammer put out (R58)
+%   * Potential energy surface (PES)
+%   * Global minimum (GM)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -28,7 +29,7 @@ Predicting the thermodynamically favorable crystal structures for an arbitrary i
 %
 % Experimentally synthesized inorganic materials often conform to the global minimum energy structure (or similarly stable meta-stable phases).
 %
-When simulations are used to guide the search for new materials, the stable and meta-stable crystal structures, i.e. polymorphs,  above the convex hull of stabilty  must be known in order to predict the material properties.\cite{}
+When simulations are used to guide the search for new materials, the stable and meta-stable crystal structures, i.e. polymorphs,  above the convex hull of stabilty must be known in order to predict the material properties.\cite{}
 % Structure vs composition enumeration (composition done to death)
 % Give example of how over represented some motiffs are
 % 188,000 systems with identical prototype ABO2 perovskite structure (~50 %)
@@ -37,34 +38,31 @@ Although there have been numerous examples in recent years of machine learning a
 For example, roughly half the entries (\~200,000) in The Open Quantum Materials Database (OQMD) correspond to ternary-alloy combinations in the same close-packed cubic structure.
 %have identical structures corresponding to ABO3 perovskites.
 % Should we say that enumerating comp. is easy and struct. is hard?
-As such, these efforts have been primarily concerned with the enumeration of composition and elemental identity and less so with the enumeration of structure.
+As such, these efforts have been primarily concerned with the enumeration of composition (elemental identity and stoicheometries) and less so with the exploration of structural diversity.
 %
-The problem of thoroughly enumerating structural space is challenging for all but the most simple systems systems, because it involves sampling within the highly dimensional space of $3N$-cartesian coordinates, where N is the number of atoms in a given unit cell.
-% COMBAK
-This approach is only tractable for the most simple systems,
+The task of finding globally/locally stable crystal structures is equivalent to performing a global optimization (GO) routine within the highly dimensional potential energy surface (PES).
+%
+Traditional approaches, such as simulated annealing, are only tractable for the most simple systems,
 such as metallic crystals which tend to adopt highly symmetric close-packed configurations, but is less suited for more complex materials.
 %
-% I think less exposition about these structurall motiffs is better
-This is particularly true for structurally diverse metal-oxides, a structurally diverse and important class of materials, which tend to organize themselves into well-defined local coordination environments such as octahedral and tetrahedral and other units (short-range order defining metal crystal field) arranged themselves in a large number of ways (long-range order, crystal symmetry group). Recently, several groups attempted to address the structural-diversity problem using computation for the MnO2~\cite{} and VOx~\cite{} polymorph space.
+For instance, the class of structurally diverse metal-oxides, an important class of materials which tend to organize themselves into well-defined local coordination environments (octahedral, tetrahedral, etc.) which can assemble in a large variety of configurations with long-range order.
+% There are way more papers in the general area of GO than these
+% I'm leaning away from framing as a "structural-diversity" problem with
+% the databases and more so as a method of global optimization
+In the past, various groups have put forth methodologies to address the structural-diversity problem using computation for the MnO2~\cite{} and VOx~\cite{} polymorph spaces,
+but most of these methodologies are limited by the fact that they are operating within the highly intractable/dimensional PES.
+% Emphasize the candidate space generation as a KEY feature of algorithm
+Here we report on a crystal structure discovery algorithm that leverages machine learning surrogate models and an active learning framework to accelerate the discovery of novel crystal structures at fixed composition.
+% Are just trying to say that nature gives us sumetric strctures?
+The algorithm avoids operating in the highly dimensional $3N$-space by leveraging nature's propensity for symmetry by preparing data sets with a large degree of structural diversity at fixed composition.
 
-%
-% Traditional methods of crystal structure discovery, such as simulated annealing, operate within the high dimensional 3N cartesian space,
-% making them scale poorly with system size.
-%
-Here we report on a crystal structure discovery  algorithm that leverages machine learning surrogate models and an active learning framework to accelerate the discovery of novel crystal structures in the Ir-O space.
-% By my definition composition includes stoicheometry
-The algorithm avoids operating in the highly dimensional $3N$-space by leveraging nature's propensity for symmetry by preparing data sets with a large degree of structural diversity at fixed composition.{\bf Are just trying to say that nature gives us sumetric strctures?}
-%
+% | - __old__
 % By considering only systems of unique stoicheomtry we leave the search space of 3N cartesions coordinates and enter a one dimensinal search space of structurally unique candidates.
 %
 % Within this search space, machine learning is used to accelarate and guide the search for promissing and stable structures by by-passing the need to perform expensive electronic structure calculations for the entire candidate space.
 
-% | - __old__
 % In order to navigate this vast space of materials, Machine Learning approaches has a huge potential to guide the search for structures of interest, and by-passing the need for expensive computations for all possible arrangements.
-
 % Motivation for \ce{IrO_x}, low representation, longstanding controversy over oxidation states and topology, and demonstrates promise for OER and Li ion batteries.
-
-
 % These basic building blocks can then be connected through 3 primary modes, vertex-sharing, edge-sharing, and face-sharing configurations (mid-range order) which can give rise to long-range order by forming porous or layered systems.
 % Other classical crystal structure finding methods here
 % The potential to form structures with different arrangements on multiple length-scales gives oxides a large degree of structural variety which it turn makes the space of possible polymorphs intractably large for traditional methods like simulated annealing, TEMP, or TEMP.
@@ -75,17 +73,31 @@ The algorithm avoids operating in the highly dimensional $3N$-space by leveragin
 
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Talk about problem w.r.t. Iridium Oxides
+% Introduce specific system (Ir-oxides), relevance (OER), and what is to be
+% gained by discovering new polymorphs
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 Herein, we focus on the chemical space of iridium oxide polymorphs,
-which is an important class of materials with applications in electrochemistry. In particular, rutile-IrO$_2$ (Ir[4+] oxidation state), is the most stable form of iridium-oxide at standard conditions, and is a well studied electrocatalyst for the oxygen evolution reaction (OER).\cite{like 5 papers here pls}
-Previous studies on SrIrO3 electrocatalyst for the OER demonstrated that Sr leaching might leave behind a highly oxidized Ir (Ir[6+] for hypotetical IrO$_3$) and it was argued as one possibly for observed high OER activity.\cite{Dickens} Other groups also observed such dissociation of IrOx catalyst and subsequent formation of amorphos-like layer of oknown strcuture\cite{Schlogl, beta-IrO3 OER paper}. Highly oxidized IrO$_3$ phases as also formed as the terminal struccture of LixIrO3 anodes.\cite{betaIrO3}
-% TEMP This line has this information
-For above reasons, we focused our study to search for stable polymorphs in the standard IrO$_2$ stoichometry as well as higher oxidation state corresponding to IrO$_3$, but neglecting the possibility of mixed IrO$_2$(OH) phase.
-Purely octaheadral IrO$_3$ leads naturally  to 100 percent corner sharing octahedra, where all terminal surface Ir-oxygens are potentially OER active sites. Furthermore, such pure corner sharing octaheadral crystals are known from in other sytems such flourites and chlorites. 
+an important class of materials with applications in electrochemistry.
+% See following link for list of important IrO2 OER papers:
+% https://workflowy.com/#/e755141e2f66
+In particular, rutile-IrO$_2$ (Ir[4+] oxidation state), is the most stable form of iridium-oxide at standard conditions,
+and is a well studied electrocatalyst for the oxygen evolution reaction (OER).
+\cite{Seitz2016,Lee2012a,McCrory2015,Trotochaud2012,Danilovic2014,Carmo2013,Miles1978,Beni1979}
+%
+Previous studies on SrIrO3 electrocatalyst for the OER demonstrated that Sr leaching might leave behind a highly oxidized Ir (Ir[6+] for hypotetical IrO$_3$) and it was argued as one possibly for observed high OER activity.\cite{Seitz2016}
+% @Michal wants a Schlogl paper here, not sure which TODO
+Other groups also observed such dissociation of IrOx catalyst and subsequent formation of amorphos-like layer of unknown strcuture. \cite{Pearce2017}
+%
+Highly oxidized IrO$_3$ phases as also formed as the terminal structure of LixIrO3 anodes.\cite{Pearce2017}
+%
+For above reasons, we focused our study to search for stable polymorphs in the standard IrO$_2$ stoichometry as well as higher oxidation state corresponding to IrO$_3$,
+while neglecting the possibility of mixed IrO$_2$(OH) phase.
+%
+Purely octaheadral IrO$_3$ leads naturally to 100 percent corner sharing octahedra, where all terminal surface Ir-oxygens are potentially OER active sites.
+% TODO Add references to octahedra literature
+Furthermore, such pure corner sharing octaheadral crystals are known from in other sytems such flourites and chlorites.
 
-{\bf Do a short summary of the paper here mirroring abstract}. In the first section, we define our prototype space and introduce the active-learing surrogate model. Next, we highlight the application of AL to  IrO$_2$ and  IrO$_3$ prototype space. Here we discuss the acceleratiioon/performance and practical limitations of this approach as well as the nature of the most stable polymorphs. Here, we also extract and analyze the rich structural information of our set. In the section 3, we construct the new bulk Pourbaix diagram of the Ir-H$_2$O system highliting the imporance of the IrO$_3$ phases under OER. Finally, we construct termodynamic OER volcano of most stable phases and dissucss the trends in activities.         
 
 % | - __old__
 %Reported +6 oxidation state phases are achievable leading to high degree of structural variability, which is the highest for transition metals.
@@ -94,6 +106,30 @@ Purely octaheadral IrO$_3$ leads naturally  to 100 percent corner sharing octahe
 % __|
 
 % __|
+
+
+% ################################# Paragraph #################################
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Paragraph outlining the structure of the paper
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - Paragraph start
+%
+In the first section, we define our prototype space and introduce the active-learing surrogate model.
+%
+Next, we highlight the application of AL to the IrO$_2$ and IrO$_3$ prototype space.
+%
+Here we discuss the acceleratiioon/performance and practical limitations of this approach as well as the nature of the most stable polymorphs.
+%
+Here, we also extract and analyze the rich structural information of our set.
+%
+In the section 3, we construct a revised bulk Pourbaix diagram of the Ir-H$_2$O system highliting the imporance of the IrO$_3$ phases under OER.
+%
+Finally, we construct termodynamic OER volcano of most stable phases and dissucss the trends in activities.
+% __|
+
+
+
+
 
 
 % ################################# Paragraph #################################
@@ -120,7 +156,6 @@ Purely octaheadral IrO$_3$ leads naturally  to 100 percent corner sharing octahe
 
 
 
-
 % | - __old__
 % ################################# Paragraph #################################
 % Crystallographic Discovery and Machine Learning.
@@ -130,7 +165,6 @@ Purely octaheadral IrO$_3$ leads naturally  to 100 percent corner sharing octahe
 % Prototyping databases to identify knowledge gaps.
 % Deriving features from structures to describe heats of formation.
 % What has been done (simple models) more recently using DFT+Machine Learning.
-
 
 % ################################# Paragraph #################################
 % Oxides for batteries/fuel cells, Iridium Oxide, OER, Lithiated \ce{IrO_3}.

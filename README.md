@@ -13,7 +13,8 @@ Workflowy: https://workflowy.com/s/ml-irox-oer-publicat/kA13CTQkFbAzFkBd
 ---
 
 ## TODO List:
-TODO: Reference the Catlearn paper and codebase
+  * Reference the Catlearn paper and codebase
+  * Be consistent about use of 'fingerprint' vs 'feature', just use 1
 
 ## Notes:
 ### Code-folding syntax

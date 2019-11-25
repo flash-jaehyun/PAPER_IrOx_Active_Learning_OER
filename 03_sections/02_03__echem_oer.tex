@@ -1,7 +1,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Electrochemical OER Application
-%%
-%% TODO: Put (s) on a-IrO3 phase in bulk Pourbaix diagram
+% Electrochemical OER Application %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% TODO: Put (s) on a-IrO3 phase in bulk Pourbaix diagram
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -10,19 +11,20 @@
 % Short introduction into the cataylsis section
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-We next performed an {\it ab-initio} thermodynamic to elucidate the electrochemical operartional stability of IrOx 
-and OER activity of the four stable polymorphs (\rIrOtwo, \aIrOthree, \rIrOthree, and \bIrOthree) computed above (Fg. XYZ).
+We next performed {\it ab-initio} thermodynamic simulations to elucidate the electrochemical operartional stability of IrOx and the OER activity of the four stable polymorphs (\rIrOtwo, \aIrOthree, \rIrOthree, and \bIrOthree) computed above (Fg. XYZ).
+% __|
 
 
 \subsubsection{Bulk Pourbaix}
-
+% | - Bulk Pourbaix
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Explain the Ir and IrO[4-] species
 % #QUESTION Use E or U for potential variable
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-Fig. \ref{fig:bulk_pourbaix} reports the IrOx pourbaix diagram (E vs. pH) constructed with the following species: Ir, \rIrOtwo, \aIrOthree,  \rIrOthree, \bIrOthree, and an aqueous dissolved \ce{IrO[4-]} species (See TEMP|SI for additional details).
+%
+Figure \ref{fig:bulk_pourbaix} reports the IrOx pourbaix diagram (E vs. pH) constructed with the following species: Ir, \rIrOtwo, \aIrOthree,  \rIrOthree, \bIrOthree, and an aqueous dissolved \ce{IrO[4-]} species (See TEMP|SI for additional details).
 %
 While \Ir and \rIrOtwo are most stable at low bias, \aIrOthree is the most stable species under acidic conditions (pH \textless 7) and in the bias region of interest for the OER (~1.23 V vs. RHE).
 %
@@ -46,9 +48,11 @@ The similar formation energies (SI XYZ) for all three IrO3 species suggest some 
 %In the next section, we explore this possibility by computing the theoretical OER activity of these polymorph systems.
 % __|
 
+% __|
+
 
 % | - Figure | Bulk Pourbaix Diagram
-\begin{figure*}
+\begin{figure*}[!htb]
 \centering
 \makebox[\textwidth][c]{\includegraphics
 {02_figures/oer_activity_stability/00_master__bulk-pourbaix__v1__400dpi__0__outplot.png}
@@ -56,23 +60,22 @@ The similar formation energies (SI XYZ) for all three IrO3 species suggest some 
 }
 \label{fig:bulk_pourbaix}
 \caption{
-The revised Pourbaix diagram (electrochemical bulk phase stability)  of the Ir-H$_2$O system as a function of applied potential (vs. SHE) and pH. The most stable system studied (see Table XX in SI for a full list) are Ir-metal Ir(s) (blue), a \rIrOtwo  (green), and a dissolved \ce{IrO4[4-]} (gray). Thee are compared to the\ce{IrO_3} polymorphs, \aIrOthree (purple), \rIrOthree (orange), and \bIrOthree (pink). {\bf I would like to add Srx IrO3 to show much less stable it is than alpha}. The water equilibrium line at U=1.23 V vs RHE shows the ideal onset of OER. This plot highlights the importance of the \ce{IrO3} for OER operational stabity. 
+The revised Pourbaix diagram (electrochemical bulk phase stability)  of the Ir-H$_2$O system as a function of applied potential (vs. SHE) and pH. The most stable system studied (see Table XX in SI for a full list) are Ir-metal Ir(s) (blue), a \rIrOtwo  (green), and a dissolved \ce{IrO4[4-]} (gray). Thee are compared to the\ce{IrO_3} polymorphs, \aIrOthree (purple), \rIrOthree (orange), and \bIrOthree (pink). {\bf I would like to add Srx IrO3 to show much less stable it is than alpha}. The water equilibrium line at U=1.23 V vs RHE shows the ideal onset of OER. This plot highlights the importance of the \ce{IrO3} for OER operational stabity.
 }
 \end{figure*}
 % __|
 
 % __|
 
-% __|
 
-
+\subsubsection{OER Surfaces and Activities}
 % | - OER Surfaces and Activities
-\subsubsection{b. OER Surfaces and Activities}
 
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Introduction to OER results
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - Paragraph start
 Fig. \ref{fig:oer_volcano} summarizes the \sout{major} results of the electrochemical activity and surface stability analysis, structure files and method details are reported in SI XYZ.
 %
 Fig. \ref{fig:oer_volcano} a.) reports the surface energy Pourbaix plots as a function of applied potential (at pH=0) for the four IrOx crystals of interest.
@@ -95,8 +98,8 @@ At modest overpotentials (eta ~0.3 and potentials of ~1.5 V vs RHE) the convex h
 %
 % COMBAK, Revise "mainly" if we include some different coverages
 Consequently, we consider mainly oxygen terminated surfaces for the OER analysis.
-%
 % __|
+
 
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -120,7 +123,10 @@ The best performing systems, including the (100), (110), and (211) facets of a-I
 a ~0.2 V vs RHE improvement over the rutile-IrO2 system.
 %
 We note that the computed  overpotentials for our \rIrOtwo system differs from that reported in \cite{Seitz2016} by ~0.2 V. This discrepancy is due to our us of spin-polarization, which was neglected in Seitz et al., which strengthens the binding of IrO2.
+
 % __|
+
+
 
 % | - Figure | OER Volcano/Surface Pourbaix
 \begin{figure*}
@@ -146,45 +152,6 @@ while the green band corresponds to the range of experimentally observed overpot
 % Surface energies at standard conditions (pH and V = 0) are reflected in the border color for each data point, where black indicates a low energy surface termination and white indicates more unstable surfaces.  % Currently not implemented as this
 % The color range goes from x to y.
 % __|
-}
-\end{figure*}
-% __|
-
-% __|
-
-
-% | - OER Scaling Relations | TODO | MOVE THIS TO SI
-\subsubsection{c. OER Intermediate Scaling}
-{\bf We will make a O(2p) vs O-OH plot showing that this descriptor correlates with oxidation state like that some of the structures are close to ideal.}
-
-% ################################# Paragraph #################################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TEMP
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Figure TEMP shows the scaling relations between the adsorption free energies of the OER intermediate species for the \IrOx systems studied herein.
-%
-It can be seen clearly that the data points corresponding to the three \ce{IrO_3} polymorphs are roughly 1 eV weaker binding than the rutile-\ce{IrO_2} points.
-%
-This generally weaker binding of the \ce{IrO_3} stoichiometry is responsible for the observed improvement in theoretical activity.
-%
-The \DGOOH vs.\DGOH relationship is very close to the traditional ``universal scaling relations'', demonstrating that our materials do not break the infamous \DGOOH vs. \DGOH scaling.
-
-
-% | - Figure | OER Scaling Relations
-\begin{figure*}
-\centering
-\makebox[\textwidth][c]{\includegraphics
-{02_figures/oer_activity_stability/00_master__oer_scaling__main_v0__outplot2.png}
-% {02_figures/oer_activity_stability/pl_scaling_relations_tmp.pdf}
-}
-\caption{\label{fig:scaling_relations}
-% Adsorption free energy scaling relations plot.
-Relationship between the adsorption free energies of the three key OER intermediates (*OH, *O, *OOH), with \DGOH chosen as the dependent variable.
-Best fit lines are provided for \DGOOH vs. \DGOH and \DGO vs. \DGOH.
-%
-Additionally, ``universal scaling relations'' for \DGOOH vs. \DGOH and \DGO vs. \DGOH are shown (black dotted lines) to emphasize our deviation from the traditionally reported scaling fits.
-The \DGOH line is  shown as guide to eye.
-% TODO Do I have to redefine the color convention every caption?
 }
 \end{figure*}
 % __|
