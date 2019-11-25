@@ -29,11 +29,11 @@ Predicting the thermodynamically favorable crystal structures for an arbitrary i
 %
 % Experimentally synthesized inorganic materials often conform to the global minimum energy structure (or similarly stable meta-stable phases).
 %
-When simulations are used to guide the search for new materials, the stable and meta-stable crystal structures, i.e. polymorphs,  above the convex hull of stabilty must be known in order to predict the material properties.\cite{}
+When simulations are used to guide the search for new materials, the stable and meta-stable crystal structures, i.e. polymorphs,  above the convex hull of stability must be known in order to predict the material properties.\cite{}
 % Structure vs composition enumeration (composition done to death)
 % Give example of how over represented some motiffs are
 % 188,000 systems with identical prototype ABO2 perovskite structure (~50 %)
-Although there have been numerous examples in recent years of machine learning algorithms applied towards the prediction of formation energies of large ab-intio data sets, these data sets are biased towards common structures and varying composition space .\cite{}
+Although there have been numerous examples in recent years of machine learning algorithms applied towards the prediction of formation energies of large ab-initio data sets, these data sets are biased towards common structures and varying composition space .\cite{}
 %
 For example, roughly half the entries (\~200,000) in The Open Quantum Materials Database (OQMD) correspond to ternary-alloy combinations in the same close-packed cubic structure.
 %have identical structures corresponding to ABO3 perovskites.
@@ -53,7 +53,7 @@ In the past, various groups have put forth methodologies to address the structur
 but most of these methodologies are limited by the fact that they are operating within the highly intractable/dimensional PES.
 % Emphasize the candidate space generation as a KEY feature of algorithm
 Here we report on a crystal structure discovery algorithm that leverages machine learning surrogate models and an active learning framework to accelerate the discovery of novel crystal structures at fixed composition.
-% Are just trying to say that nature gives us sumetric strctures?
+% Are just trying to say that nature gives us symmetric structures?
 The algorithm avoids operating in the highly dimensional $3N$-space by leveraging nature's propensity for symmetry by preparing data sets with a large degree of structural diversity at fixed composition.
 
 % | - __old__
@@ -85,9 +85,9 @@ In particular, rutile-IrO$_2$ (Ir[4+] oxidation state), is the most stable form 
 and is a well studied electrocatalyst for the oxygen evolution reaction (OER).
 \cite{Seitz2016,Lee2012a,McCrory2015,Trotochaud2012,Danilovic2014,Carmo2013,Miles1978,Beni1979}
 %
-Previous studies on SrIrO3 electrocatalyst for the OER demonstrated that Sr leaching might leave behind a highly oxidized Ir (Ir[6+] for hypotetical IrO$_3$) and it was argued as one possibly for observed high OER activity.\cite{Seitz2016}
+Previous studies on SrIrO3 electrocatalyst for the OER demonstrated that Sr leaching might leave behind a highly oxidized Ir (Ir[6+] for hypothetical IrO$_3$) and it was argued as one possibly for observed high OER activity.\cite{Seitz2016}
 % @Michal wants a Schlogl paper here, not sure which TODO
-Other groups also observed such dissociation of IrOx catalyst and subsequent formation of amorphos-like layer of unknown strcuture. \cite{Pearce2017}
+Other groups also observed such dissociation of IrOx catalyst and subsequent formation of amorphous-like layer of unknown strcuture. \cite{Pearce2017}
 %
 Highly oxidized IrO$_3$ phases as also formed as the terminal structure of LixIrO3 anodes.\cite{Pearce2017}
 %
@@ -114,17 +114,17 @@ Furthermore, such pure corner sharing octaheadral crystals are known from in oth
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 %
-In the first section, we define our prototype space and introduce the active-learing surrogate model.
+In the first section, we define our prototype space and introduce the active-learning surrogate model.
 %
 Next, we highlight the application of AL to the IrO$_2$ and IrO$_3$ prototype space.
 %
-Here we discuss the acceleratiioon/performance and practical limitations of this approach as well as the nature of the most stable polymorphs.
+Here we discuss the acceleration/performance and practical limitations of this approach as well as the nature of the most stable polymorphs.
 %
 Here, we also extract and analyze the rich structural information of our set.
 %
-In the section 3, we construct a revised bulk Pourbaix diagram of the Ir-H$_2$O system highliting the imporance of the IrO$_3$ phases under OER.
+In the section 3, we construct a revised bulk Pourbaix diagram of the Ir-H$_2$O system highlighting the importance of the IrO$_3$ phases under OER.
 %
-Finally, we construct termodynamic OER volcano of most stable phases and dissucss the trends in activities.
+Finally, we construct thermodynamic OER volcano of most stable phases and discuss the trends in activities.
 % __|
 
 

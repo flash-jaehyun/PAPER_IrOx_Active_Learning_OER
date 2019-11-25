@@ -62,7 +62,7 @@ The second part of the algorithm is the iterative active learning algorithm.
 % | - Paragraph start
 % TODO Reference OQMD and MP
 % TODO Ask @Ankit for these numbers
-In Schema \ref{fig:all_diagram} we show the {\bf overlall process with the integrated active learnign loop}. {\bf We start with ...} .  {\bf We continue with  with XXX...}
+In Schema \ref{fig:all_diagram} we show the {\bf overall process with the integrated active learning loop}. {\bf We start with ...} .  {\bf We continue with  with XXX...}
 The structures that comprise the candidate data sets for IrO2 and IrO3 were constructed by parsing for all bulk AB2 and AB3 structures in both the Materials Project\cite{Jain2013} and OQMD\cite{Kirklin2015} databases (TEMP AB2 and TEMP AB3).
 %
 Structurally redundant systems were then removed via a space-group based structural classification scheme developed by Jain et al. \cite{Jain2018}.
@@ -73,7 +73,7 @@ Finally, a coarse isotropic volume relaxation was performed to accommodate to ac
 %
 Additional details about our method can be found in the SI.
 %
-Only candidates that were successfully optimized with DFT were utlimitally included so that the model could be properly validated, which gives a final candidate data set of 450ish and 258 AB2 and AB3 structurally unique polymorphs.
+Only candidates that were successfully optimized with DFT were ultimately included so that the model could be properly validated, which gives a final candidate data set of 450ish and 258 AB2 and AB3 structurally unique polymorphs.
 %
 The size of this dataset isn't particularly large, but will serve to demonstrate the polymorph discovery routine as a proof of concept and is small enough that it is tractable to perform the DFT for all structures such that the performance of the model can be benchmarked.
 % __|
@@ -111,7 +111,7 @@ In this work we attempt to trade off exploitation and exploration by weighting t
 Here, $\kappa$ is set to $1$ which equally weights the energy and uncertainty.
 % TODO N is used into mean number of atoms (FIX)
 Once ranked, the N systems that minimize the acquisition function are selected for full DFT calculations, which are included in the training data of subsequent AL generations.
-% COMBAK We are discussing alternative convergence critera, or whether to even
+% COMBAK We are discussing alternative convergence criteria, or whether to even
 % have convergence criteria here
 The AL loop proceeds until convergence is achieved, which here is chosen to be the generation at which the structures within the range of metastability, here taken as 0.1 eV/atom, are unchanging over three consecutive generations.
 % __|
