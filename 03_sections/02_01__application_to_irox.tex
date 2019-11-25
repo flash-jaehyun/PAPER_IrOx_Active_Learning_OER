@@ -14,41 +14,70 @@
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Intro/transition paragraph
-%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 %
 We now turn our attention of the application of this active learning scheme to the discovery of most stable forms of IrO$_2$ and IrO$_3$.
-% Comment on this line | TODO do stuff
-%The AL algorithm is applied separately to IrO2 and IrO3 because we are specifically interested in the most stable polymorphs at each stoichiometry.
-% TODO How many features drop out when you constrain the stoich.?
-%This has an the added benefit of reducing the number of fingerprint vectors from the Voronoi tesselation dramatically (from TEMP to TEMP) because many features are senstive to changes in stoicheometry.
+%
+The algorithm is applied separately to both stoicheometries.
+%
+Here, we report in detail the results for IrO3, the analogous results for IrO2 are shown in more detail in the SI.
 % __|
 
 
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Results for IrO3
-% MAIN RESULTS:
-%   How many generations to find top 2-3 structures?
+% ALL results for IrO3
+%   * Introduce the convergence plots
+%   * The GP becomes more accurate as more DFT is aquired
+%   * The GP can start to recognize the low energy systems after minimal DFT
+%   *
 % We need to call them something else than "convergence plots" (bad name)
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 %
-Figure \ref{fig:iro2_al} shows a sequence of  plots with several iterations of the active learning loop for the IrO$_3$ candidate space. The analogous result for IrO$_2$ candidate space in attached in SI.  The individual plots show predicted (small circles) and acquired(DFT calculated, large red-bordered circles) total energies against the candidate space, sorted by the formation energy.  An acquisition bin size of 10 DFT calculations per iteration and an initial seed of 11 calculations were used.
-%plots of the AL predictions on the candidate space at particular generations of the AL algorithm for the IrO3 candidate space with an aquisition bin size of 10 DFT calculations per iteration and an initial 11 calculations used for seeding.
+Figure \ref{fig:iro2_al}a shows a sequence of plots at various generations of the active learning loop,
+starting with the initial generation with five randomlly drawn candidates and ending with the 40th generation of the ALL
+(205  DFT computed structures out of the 248 total candidates).
 %
-Figure \ref{fig:iro2_al} a. shows the progression of the model at selected generations of the active learning loop, starting and ending with the initially seeded generation and final generation, respectively.
+Each plot tracks the predicted (hollow grey) and DFT-derived (solid red) formation enthalpies, sorted from most to least stable.
 %
-As the ALL acquires more DFT calculations, the predicted uncertainty on the remaining candidate space decreases,
-as evidenced by the shrinking error bars with increasing AL generation.
-% As seen from Figure\ref{fig:iro2_al} a) the early iterations, where the training data is sparse
+As the active learning loop aquires DFT data, the GP model becomes more accurate, as evidenced by the decreasing uncertainties when going from left to right.
 %
-The middle panel corresponds to the converged generation of the ALL, which finished after TEMP iterations of the ALL (TEMP DFT calculations).
+At the top of each subplot of \ref{fig:iro2_al} the identity of top ten most stable polymorphs is tracked,
+with the short grey line turning into a longer red line when the structure is aquired by the ALL.
 %
-The middle panel is reproduced in figure \ref{fig:iro2_al}, which also shows the real DFT energies accompanying each predicted formation energy (hollow diamonds).
-% Probably remove the diamonds and add the parity subplot?
-% Figure \ref{fig:iro2_al} b. shows the formation energy, either predicted (small colored circles) or computed (large red-bordered circles), is plotted on the y-axis against all structures in the candidate space of IrO3 polymorphs.
+At the first generation the top ten structures are randomly distributed across the entire candidate space because the GP model hasn't had enough training data to identify the most stable polymorphs as low energy systems.
+%
+After only three generations (\ref{fig:iro2_al}a.ii) the GP model is sufficiently trained to have correctly identified all of the top ten systems as being low energy.
+%
+Additionally, by the third generation (20 DFT calculations) 2/10 top systems have been acquired.
+%
+After another 3 generations (\ref{fig:iro2_al}a.iii) (15 additional DFT calculations) the AL routine has succesfully identified 7/10 of the top systems.
+%
+Figure \ref{fig:iro2_al}e plots the number of top ten structures aquired as a function of DFT calculations for the ALL with the GP-UCB aquisition function and a baseline random acquisition scheme.
+%
+The results of figure \ref{fig:iro2_al}e are averaged over independent runs of AL algorithm with the 1 sigma standard deviation between these runs shown.
+%
+Overall, the GP-UCB runs outperform the random aquisition runs, with only 50 DFT calculations on average needed to discover 7 of the top 10 systems.
+%
+This is compared to the 157 DFT calculations needed to compare 7/10 top systems for the random aquisition.
+% __|
+
+% TEMP | Find a place for these sentences where they flow
+%
+The low energy region of \ref{fig:iro2_al}a.iii is shown in \ref{fig:iro2_al}c.
+%
+And the 6 most stable structural polymorphs are shown in \ref{fig:iro2_al}d.
+
+
+% ################################# Paragraph #################################
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Discussion on performance of the AL routine
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - Paragraph start
+
 %
 It is evident from figure \ref{fig:iro2_al}, that the Gaussian process model is doing a poor job of predicting the DFT formation energy of the candidate space, with an exceptionally poor MAE of ~0.5 eV/atom at the AL generation shown here.
 %
@@ -56,10 +85,7 @@ This is clearly seen in the parity plot (Fig TEMP), which shows that the predict
 %
 This is significantly lower than the leave-one out cross validation error of ~0.15 eV/atom, which is performed by predicting only on optimized strctures, indicating that the issue does not lie with a poor predictive model, but instead with the large degree of structural reorganization that occurs over the course of a typical DFT ionic optimization.
 %
-This
-% TODO Change wording when @Kirsten uses the protosearch to optimize candidates
-% UPDATE | Using protosearch pre-optimizer isn't worth it, no siginificant improvement
-%Because the candidate space structures are generated
+% This is because the candidate space structures are generated
 % To compare the performance of the AL routine we compare against a
 %
 Figure subplot TEMP shows the parity plot of the predicted DFT energies using the fingerprints corresponding to the unoptimized structures (COLOR1) and post-DFT relaxed structures (COLOR2),
@@ -72,21 +98,8 @@ This is due to the fact that the structures undergo through a large degree of st
 Alternatively, the MAE is much lower when the model predicts onto the post-optimized structures (MAE ~0.15 eV/atom),
 demonstrating that the poor preditive capabilities is due primarily to structural drift and not to the poor predictive capabilities of the GP model.
 %
-Despite these shortcomings, figure TEMP (TEMP performance plot) tracks the number of high stability materials (lowest N structures) discovered as a function of the number of DFT calculations for the case of 1.) AL with UCB acquisition function and 2.) AL with a random acquisition function.
-%
-The random acquisition function emulates the behavior of regression model which exhibits no correlation between the input and output space.
-%
-Clearly, the rate of discovery for case 1.) is superior to that of case 2.), with our methodology discovering half of the lowest N structures after only TEMP DFT calculations compared to TEMP when acquiring randomley within the candidate space.
 % __|
 
-
-% ################################# Paragraph #################################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Discussion on performance of the AL routine
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Paragraph start
-The performance of the model is TEMP TEMP...
-% __|
 
 
 % | - Figure | IrO3 Convergence Plot
@@ -96,37 +109,54 @@ The performance of the model is TEMP TEMP...
 {02_figures/ml_convergence_plots/test_iro3_al.png}
 }
 \caption{\label{fig:iro2_al}
-Results from machine-learning accelerated active learning material discovery algorithm.
-% FORMATION ENTHALPY, FIX
-Both (a) and (b) plot the formation enthalpy (either predicted from the model or computed by DFT) for each system in the candidate pool, ordered by decreasing stability (low to high formation energy).
+% (a) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+(a) Progress of the active learning algorithm at five subsequent generations.
 %
-Formation energies predicted by the surrogate model are represented by smaller circles,
-while acquired DFT formation energies are shown as enlarged red bordered circles.
+The AL generation and number of DFT training data at each generation is shown for each subplot.
 %
-Each data point is colored based on the ordering of the DFT formation energies, with low formation energy systems on the dark end of the spectrum and the highest formation energy species colored light.
+The enthalpy of formation is plotted, ordered from most to least stable, against all IrO3 candidates.
 %
-Error bars representing 1 sigma standard deviation from the Gaussian Process model are shown for each prediction.
+Grey markers indicate predicted formation enthalpies from the ML model while red markers correspond to DFT-computed quantities.
 %
-(a) Series of ML convergence plots at different generations of the active learning algorithm.
+Error bars from the GP model corresponding to 1 sigma are shown for all predictions.
 %
-The middle panel indicates the generation which satisfies the AL stop criteria (see text)
+The vertical lines at the top of each subplot are tracking the positions of the 10 most stable polymorphs at each generation and whether they have been acquired (red) or not (grey) by the AL routine.
+% (b) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+(b) Parity plot of the final ML models for IrO2 and IrO3 predicting on either the pre-optimized (grey) or the post-optimized structures of IrO2 and IrO3.
+% (c) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+(c) Zoomed inset of the 6th generation of the AL loop.
+% (d) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+(d) Crystal structures of 6 most stable IrO3 polymorphs.
+% (e) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+(e) The number of the top 10 most stable polymorphs of IrO3 that are discovered as a function of the number of DFT bulk relaxations, averaged over 5 independent runs of the AL algorithm using the GP-UCB aquisition criteria (red) and a random acquisition method (grey).
 %
-(b) Expanded ML plot for the generation that satisfies the stop criteria.
+Error bars indicate the standard deviation over 5 runs.
 %
-Black diamonds indicate the actual DFT formation energy for each system.
-%
-Inset shows the most stable 20 systems that are within the energetic window of meta-stability (indicated by grey band).
-%
-(c)
-Number of the top 20 polymorphs discovered as a function of the AL generation number for the AL loop using the aquisition criteria in equation {\bf XX} and a control run that utilized a random  aquisition method.
+Red guide lines are displayed to show how many DFT calculations are needed to disocver 7/10 of most stable polymorphs for the GP-UCB and random acquisition.
+}
+\end{figure*}
+% __|
+
 
 
 % | - __old__
-% The Gibbs formation energy (either DFT derived or predicted from the GP model) and associated GP estimated error (2 sigmas or something TEMP) is plotted for each polymorph in the IrO2 candidate space.
-% The data points in each subset are ordered from most to least stable (lowest to largest DE formation).
-% The insets show the most stable TEMP structures, where several well known crystal structures are labeled.
-% __|
-
-}
-\end{figure*}
+% Despite these shortcomings, figure TEMP (TEMP performance plot) tracks the number of high stability materials (lowest N structures) discovered as a function of the number of DFT calculations for the case of 1.) AL with UCB acquisition function and 2.) AL with a random acquisition function.
+% %
+% The random acquisition function emulates the behavior of regression model which exhibits no correlation between the input and output space.
+% %
+% Clearly, the rate of discovery for case 1.) is superior to that of case 2.), with our methodology discovering half of the lowest N structures after only TEMP DFT calculations compared to TEMP when acquiring randomley within the candidate space.
+%
+% The middle panel is reproduced in figure \ref{fig:iro2_al}, which also shows the real DFT energies accompanying each predicted formation energy (hollow diamonds).
+% Probably remove the diamonds and add the parity subplot?
+% Figure \ref{fig:iro2_al} b. shows the formation energy, either predicted (small colored circles) or computed (large red-bordered circles), is plotted on the y-axis against all structures in the candidate space of IrO3 polymorphs.
+%
+% As seen from Figure\ref{fig:iro2_al} a) the early iterations, where the training data is sparse
+%
+% Figure \ref{fig:iro2_al} a. shows the progression of the model at selected generations of the active learning loop, starting and ending with the initially seeded generation and final generation, respectively.
+%
+% An acquisition bin size of 10 DFT calculations per iteration and an initial seed of 11 calculations were used.
+% plots of the AL predictions on the candidate space at particular generations of the AL algorithm for the IrO3 candidate space with an aquisition bin size of 10 DFT calculations per iteration and an initial 11 calculations used for seeding.
+% The AL algorithm is applied separately to IrO2 and IrO3 because we are specifically interested in the most stable polymorphs at each stoichiometry.
+% TODO How many features drop out when you constrain the stoich.?
+% This has an the added benefit of reducing the number of fingerprint vectors from the Voronoi tesselation dramatically (from TEMP to TEMP) because many features are senstive to changes in stoicheometry.
 % __|
