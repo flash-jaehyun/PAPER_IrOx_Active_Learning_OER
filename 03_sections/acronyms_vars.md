@@ -3,6 +3,9 @@
 PES | Potential energy surface
 GO | Global optimization
 DFT | Density Functional Theory
+AL | Active Learning
+ALL | Active Learning Loop
+GP-UCB | Gaussian Process - Upper Confidence Bound
 
 # Variables
 ---
