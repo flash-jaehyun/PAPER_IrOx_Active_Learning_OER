@@ -77,26 +77,27 @@ And the 6 most stable structural polymorphs are shown in \ref{fig:iro2_al}d.
 % Discussion on performance of the AL routine
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-
+Having demonstrated the efficacy of the ALL materials discovery scheme we will now turn our attention to evaluating the performance of the GP regressive model of the final generation (trained on all available IrO3 DFT data).
 %
-It is evident from figure \ref{fig:iro2_al}, that the Gaussian process model is doing a poor job of predicting the DFT formation energy of the candidate space, with an exceptionally poor MAE of ~0.5 eV/atom at the AL generation shown here.
+Figure \ref{fig:iro2_al}b plots the GP model predicted formation enthalpy against the DFT-computed values for two special cases,
+1.) predicting onto the features of the pre-optimized structures (grey), as is done in the regular operation of the ALL when aquiring new structures and
+2.) predicting onto the post-DFT fingerprints (blue).
 %
-This is clearly seen in the parity plot (Fig TEMP), which shows that the predicted DFT energies become increasingly less accurate as stability of the polymorph decreases, with low stability structures tending to reconfigure into lower energy states.
+It is evident from the parity plot in figure \ref{fig:iro2_al}b that the Gaussian process model is doing an poor job of predicting the DFT formation energy of the candidate space using the pre-optimized fingerprints,
+with an exceptionally poor MAE of ~1.5 eV/atom.
 %
-This is significantly lower than the leave-one out cross validation error of ~0.15 eV/atom, which is performed by predicting only on optimized strctures, indicating that the issue does not lie with a poor predictive model, but instead with the large degree of structural reorganization that occurs over the course of a typical DFT ionic optimization.
+The model's poor predictions are skewed towards the higher formation enthalpies, with the errors associated with low energy structures being much more robust.
 %
-% This is because the candidate space structures are generated
-% To compare the performance of the AL routine we compare against a
+The same GP model does comparatively much better at predicting the formation energies of post-DFT optimized structures with an MAE of ~0.2 eV/atom,
+which is expected since the post-DFT fingerprints directly corresponds to the DFT energies.
 %
-Figure subplot TEMP shows the parity plot of the predicted DFT energies using the fingerprints corresponding to the unoptimized structures (COLOR1) and post-DFT relaxed structures (COLOR2),
-plotted against the final post-optimization DFT formation energy.
-% Sentence that explains the parity plot
-It is clear that the GP model severely underpredicts the energy of the candidate space, especially for systems with less stable predicted formation energies, when predicting onto the candidate space of unoptimized structures (MAE of ~0.5 eV/atom).
+This is to show that the GP model's poor predictive capabilities is due to the large degree of structural reorganization that occurs after DFT relaxation of the pre-optimized structure.
 %
-This is due to the fact that the structures undergo through a large degree of structural rearrangement over the course of the DFT relaxation.
+Structures that are initilizaed in high energy configurations will therefore have high predicted formation enthalpies, and will then reconfigure into a lower nearby configuration, resulting in lower final energy and a large discrepency between the predicted and final energies.
 %
-Alternatively, the MAE is much lower when the model predicts onto the post-optimized structures (MAE ~0.15 eV/atom),
-demonstrating that the poor preditive capabilities is due primarily to structural drift and not to the poor predictive capabilities of the GP model.
+It's interesting to consider why the ALL appears to perform so well as outlined prevously (discovering 7/10 of the most stable candidates after only 35 DFT calculations).
+%
+The reason for this is that the pre-optimized structures that are similar enough to the most stable final equilibrium structures will not restructure considerably, meaning that their predicted formation energies will be close enough (and low enough) to be quickly picked up by the acquisition criteria.
 %
 % __|
 
@@ -140,6 +141,23 @@ Red guide lines are displayed to show how many DFT calculations are needed to di
 
 
 % | - __old__
+% This is clearly seen in the parity plot (Fig TEMP), which shows that the predicted DFT energies become increasingly less accurate as stability of the polymorph decreases, with low stability structures tending to reconfigure into lower energy states.
+% %
+% This is significantly lower than the leave-one out cross validation error of ~0.15 eV/atom, which is performed by predicting only on optimized strctures, indicating that the issue does not lie with a poor predictive model, but instead with the large degree of structural reorganization that occurs over the course of a typical DFT ionic optimization.
+% %
+% % This is because the candidate space structures are generated
+% % To compare the performance of the AL routine we compare against a
+% %
+% Figure subplot TEMP shows the parity plot of the predicted DFT energies using the fingerprints corresponding to the unoptimized structures (COLOR1) and post-DFT relaxed structures (COLOR2),
+% plotted against the final post-optimization DFT formation energy.
+% % Sentence that explains the parity plot
+% It is clear that the GP model severely underpredicts the energy of the candidate space, especially for systems with less stable predicted formation energies, when predicting onto the candidate space of unoptimized structures (MAE of ~0.5 eV/atom).
+% %
+% This is due to the fact that the structures undergo through a large degree of structural rearrangement over the course of the DFT relaxation.
+% %
+% Alternatively, the MAE is much lower when the model predicts onto the post-optimized structures (MAE ~0.15 eV/atom),
+% demonstrating that the poor preditive capabilities is due primarily to structural drift and not to the poor predictive capabilities of the GP model.
+%
 % Despite these shortcomings, figure TEMP (TEMP performance plot) tracks the number of high stability materials (lowest N structures) discovered as a function of the number of DFT calculations for the case of 1.) AL with UCB acquisition function and 2.) AL with a random acquisition function.
 % %
 % The random acquisition function emulates the behavior of regression model which exhibits no correlation between the input and output space.
