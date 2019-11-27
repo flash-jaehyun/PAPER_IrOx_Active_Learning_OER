@@ -1,4 +1,8 @@
-%% Machine Learning IrOx OER Paper %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Machine Learning IrOx OER Paper %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % | - __latex_setup__
 \newif\ifPhoneFormat
@@ -29,13 +33,16 @@
 \usepackage[normalem]{ulem}
 \usepackage{hhline}
 % \usepackage{endfloat}  % 190731 | RF | Put's all figures at the end
-% __|
 
-% - Author List ***************************************************************
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% - Author List
 \input{03_sections/authors}
 
-% - Custom Macros *************************************************************
+% - Custom Macros
 \input{03_sections/custom_macros}
+% __|
 
 % Article Title ***************************************************************
 \title[ML discovered \IrOx phases]{
@@ -50,6 +57,7 @@
 \end{center}
 \end{tocentry}
 % __|
+
 
 % #############################################################################
 % | - MAIN DOCUMENT ***********************************************************
@@ -86,13 +94,16 @@
 \input{03_sections/03_conclusions}
 
 % #############################################################################
-% - Acknowledgment ***********************************************************
+% - Acknowledgment ************************************************************
 \begin{acknowledgement}
 \input{03_sections/acknowledgements}
 \end{acknowledgement}
 % __|
+% #############################################################################
 
-% - Supplementary Information *************************************************
+
+% | - Supplementary Information *************************************************
+
 % | - __latex_setup__
 \clearpage
 \renewcommand{\thefigure}{S\arabic{figure}}
@@ -104,12 +115,17 @@
 \begin{suppinfo}
 \input{03_sections/04_00_SI}
 \end{suppinfo}
+% __|
 
-% Bibliography ****************************************************************
+% | - Bibliography ************************************************************
 \bibliography{%
-01_references/misc_refs.bib,%
+01_references/global_opt_refs.bib,%
 01_references/irox_refs.bib,%
+01_references/misc_refs.bib,%
 01_references/ml_refs.bib,%
+01_references/oer_refs.bib,%
+01_references/software_refs.bib,%
 }
+% __|
 
 \end{document}

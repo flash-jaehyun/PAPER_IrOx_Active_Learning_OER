@@ -29,25 +29,26 @@ Of those we found 697 unique \ABtwo prototypes (unique SG/Wyckoff combination) i
 
 \subsection{Gaussian process regression model}
 % | - Gaussian process regression model
-Relevant details about the ML Gaussian process here  % @Chris
+% Relevant details about the ML Gaussian process here  % @Chris
 
 % TODO Check again how I handled the length vectors
 The Gaussian Process model utilized a rational quadratic kernel with variable length scales for each dimension of the feature space.
-% CV error of XYZ eV/atom, initial predictions in figure XYZ.
+% CV error of TEMP eV/atom, initial predictions in figure TEMP.
 % - Selected 10 structures with lowest prediction-uncertainty for DFT.
-% Structures were volume optimized, then fully relaxed, described in methods XYZ.
+% Structures were volume optimized, then fully relaxed, described in methods TEMP.
 % - Model retrained with the 10 DFT computed structures ONLY, 271 features->110 features applicable to \ce{IrO_2}->20 principle components for 99.9 percent variance.
 % CV error…
-% - Repeat until XYZ, final predictions shown in Fig XYZ
+% - Repeat until TEMP, final predictions shown in Fig TEMP
 % __|
 
 \subsection{Bulk polymorph DFT optimization}
 % | - Bulk polymorph DFT optimization
-VASP
-PBE exchange correlation functional
-spin-polarized calculations
-plane-wave cutoff of 600 eV
+% VASP
+% PBE exchange correlation functional
+% spin-polarized calculations
+% plane-wave cutoff of 600 eV
 
+%
 A variable k-point mesh is used such that a k-point density of at least 20 k-points per reciprocal space dimension.
 %
 All bulk systems were run through the following computational recipe to converge the equilibrium structure.
@@ -69,7 +70,6 @@ Several esoteric structural features were found in the DFT optimized structures 
 % TODO Add more of these
 - unassociated oxygen atoms
 - molecular oxygens in the unit cell
-%
 % __|
 
 % __|
@@ -88,19 +88,23 @@ Several esoteric structural features were found in the DFT optimized structures 
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Density Functional Theory Methods
-% Get VASP #REF in the ex. word doc. that @Michal shared with me
-All OER calculations were performed using density functional theory (DFT) implemented via the Vienna ab-initio simulation package (VASP) and utilizing the PBE exchange-correlation functional.
-Dipole corrections were imposed on all non-symmetric slabs.
-A 4x4x3 k-point mesh with gamma-point centered Monkshort-packing was used for all slabs.
+%
+All OER calculations were performed using density functional theory (DFT) implemented via the Vienna {\it ab-initio} simulation package (VASP)
+\cite{Kresse1995,Kresse1996_0,Kresse1996_1}
+and utilizing the PBE exchange-correlation functional\cite{Perdew1996}.
+%
+Dipole corrections were imposed on all non-symmetric slabs to counteract spurious dipole interactions between the periodic cells.\cite{Neugebauer1992}
+% TODO COMBAK, make this section more general, k-points were treated differently
+% for different calculations
+A 4x4x3 k-point mesh with gamma-point centered Monkshort-packing\cite{Monkhorst1976} was used for all slabs.
+%
 The plane-wave energy cutoff was 500 eV.
-
-% #COMBAK Figure out how much spacing was used for all slabs
-% FIXME Change the A -> Angstrom symbol
-
-% #COMBAK What kind of optimization routine was used? (Newtonian, BFGS?)
-All slab calculations maintained a vacuum spacing of <15 A.
-% #COMBAK change A -> Angstrom
-All structures were relaxed utilizing a TEMP algorithm with a stop criteria being that all atoms satisfy a maximum force threshold of 0.02 eV/A.
+% COMBAK Figure out how much spacing was used for all slabs
+All slab calculations maintained a vacuum spacing of $<$15 \AA.
+%
+All structures were relaxed with utilizing the conjugate gradient algorithm as implemented in VASP (IBRION=2).
+%
+The simulation stop criteria used was that all atoms must satisfy a maximum force threshold of 0.02 eV/\AA.
 % __|
 
 
@@ -147,9 +151,7 @@ The equation for is as follows:
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{OER Scaling Relations}  % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TODO We will make a O(2p) vs O-OH plot showing that this descriptor
-% correlates with oxidation state like that some of the structures are close
-% to ideal
+% TODO We will make a O(2p) vs O-OH plot showing that this descriptor correlates with oxidation state like that some of the structures are close to ideal
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
