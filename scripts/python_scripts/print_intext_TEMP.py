@@ -18,6 +18,9 @@ words_to_check = [
     "COMBAK",
     "TODO",
     "XYZ",
+    "QUESTION",
+
+    # "",
     # "",
     ]
 # __|
