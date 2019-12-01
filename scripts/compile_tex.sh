@@ -10,6 +10,10 @@
 cd "$(dirname "$0")"
 cd ..
 
+# So that lines aren't auto-lined breaked in the output
+export max_print_line=1048576
+# export max_print_line=80
+
 #| - Bash Functions
 print_stars () {
   echo "**********************************************************************"
