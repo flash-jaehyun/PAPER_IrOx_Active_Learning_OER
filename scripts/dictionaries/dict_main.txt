@@ -29,7 +29,6 @@ al
 stoichiometries
 unoxidized
 anodic
-XYZ
 IrO
 SrIrO
 Charlottesville
