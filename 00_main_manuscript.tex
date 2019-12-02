@@ -5,34 +5,47 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % | - __latex_setup__
-\newif\ifPhoneFormat
-  % \PhoneFormattrue
-  \PhoneFormatfalse
 
-\ifPhoneFormat
-  % Smart-phone formatting
-  \documentclass[a6paper,journal=jacsat,manuscript=article]{achemso}  % Smart-phone formatting
-  \usepackage{geometry}
-  \geometry{margin=0.3in}
-  \pagenumbering{gobble}
-  \usepackage{endfloat}  % 190731 | RF | Put's all figures at the end
-\else
-  \documentclass[journal=jacsat,manuscript=article]{achemso}
-  % \documentclass[journal=jacsat,manuscript=article,layout=twocolumn]{achemso}
-\fi
+% | - Phone Formatting
+% \newif\ifPhoneFormat
+%   % \PhoneFormattrue
+%   \PhoneFormatfalse
+%
+% \ifPhoneFormat
+%   % Smart-phone formatting
+%   \documentclass[a6paper,journal=jacsat,manuscript=article]{achemso}  % Smart-phone formatting
+%   \usepackage{geometry}
+%   \geometry{margin=0.3in}
+%   \pagenumbering{gobble}
+%   \usepackage{endfloat}  % 190731 | RF | Put's all figures at the end
+% \else
+%   \documentclass[journal=jacsat,manuscript=article]{achemso}
+%   % \documentclass[journal=jacsat,manuscript=article,layout=twocolumn]{achemso}
+% \fi
+% __|
+
+\documentclass[%
+  journal=jacsat,
+  manuscript=article,
+  layout=twocolumn,
+  ]{achemso}
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[version=3]{mhchem}  % Formula subscripts using \ce{}
-\usepackage{xspace}
-\usepackage{subfig}
-\usepackage{multirow}
-\usepackage[table,xcdraw]{xcolor}
-\newcommand{\chris}[1]{\textcolor{red}{#1}}
-\usepackage[normalem]{ulem}
-\usepackage{hhline}
+\usepackage{xspace}  % To add space after macros
+
+% \usepackage[table,xcdraw]{xcolor}
+% \usepackage[normalem]{ulem}  % Used for underlining and crossing out text
+% \usepackage{subfig}  % Support for subfiguress
+% \usepackage{multirow}  % Used for tables I think
+% \usepackage{hhline}  % Used for making lines in tables I think
+
 % \usepackage{endfloat}  % 190731 | RF | Put's all figures at the end
+% \usepackage{hyperref}  % TEST | Used to reference sections w/ hyperlinks
+
+
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
