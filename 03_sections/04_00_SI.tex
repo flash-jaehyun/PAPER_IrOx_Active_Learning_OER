@@ -13,10 +13,19 @@
 % #############################################################################
 % | - Active Learning ML Section
 
-\subsection{Candidate space generation}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Candidate space generation}  % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Candidate space generation
+
 %
 The candidate for \IrOtwo and \IrOthree were generated from existing experimental structures in the OQMD and Materials Project databases.
+% TODO
+This was done by parsing for structurally unique systems based on the crystal symmetry classification scheme of Ankit.
+%
+This structural classification scheme can directly serve as a structural fingerprint and has successfully been applied towards the prediction of formation energies of inorganic compounds \cite{Jain2018}.
 % TODO
 There are TEMP unique \ABtwo structures or multiples of \ABtwo,
 e.g. A\textsubscript{2}B\textsubscript{2}
@@ -27,21 +36,63 @@ Of those we found 697 unique \ABtwo prototypes (unique SG/Wyckoff combination) i
 % VOLUME Pre-optimization of static prototypes
 % __|
 
-\subsection{Gaussian process regression model}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Structure featurization and data processing}  % %%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - Structure featurization and data processing
+% TODO Cite Wolverton paper
+Structures are featurized using the Voronoi tessellation method developed by TEMP.
+%
+0-variance features that don't encode for any information within a set of structures with constant composition and stoicheometry are then removed (271 to 101 feature columns).
+% TODO Add all of the feature engineering steps here
+% __|
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Gaussian process regression model}  % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Gaussian process regression model
 % Relevant details about the ML Gaussian process here  % @Chris
 
-% TODO Check again how I handled the length vectors
-The Gaussian Process model utilized a rational quadratic kernel with variable length scales for each dimension of the feature space.
-% CV error of TEMP eV/atom, initial predictions in figure TEMP.
-% - Selected 10 structures with lowest prediction-uncertainty for DFT.
-% Structures were volume optimized, then fully relaxed, described in methods TEMP.
-% - Model retrained with the 10 DFT computed structures ONLY, 271 features->110 features applicable to \ce{IrO_2}->20 principle components for 99.9 percent variance.
-% CV error…
-% - Repeat until TEMP, final predictions shown in Fig TEMP
+%
+The Gaussian Process model utilized two isotropic Gaussian (RBF) kernels, with one kernel having a larager length scale parameter and the other one having a lengh scale parameter that operates on shorter length scales.
+%
+% TODO Double check that I said it correctly, might be minimizing the LML
+The hyperparameters of the GP kernel are optimized every time the GP is trained such that the log marginal likelihood of the model and training data is maximized.
+%
+The initial values of the hyper paramters are as follows:
+
+% | - Table of GP Hyper parameters
+\begin{table}[]
+\centering
+\begin{tabular}{cc}
+GP Hyper Paramter & Initial Value \\
+noise & 0.02542 \\
+sigma_l & 1.0049 \\
+sigma_f & 5.19 \\
+alpha & 0.018
+\end{tabular}
+\end{table}
+
+% noise: 0.02542,
+% sigma_l: 1.0049,
+% sigma_f: 5.19,
+% alpha: 0.018
 % __|
 
-\subsection{Bulk polymorph DFT optimization}
+% __|
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Bulk polymorph DFT optimization}  % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Bulk polymorph DFT optimization
 % VASP
 % PBE exchange correlation functional
@@ -64,13 +115,20 @@ The recipe has 3 distinct phases, and structures are only advanced to the next p
 The final ISIF 2 step is run with an electronic energy SCF convergence criteria of 1E-6 eV and the ionic relaxation has a tight force convergence criteria of 1E-3 eV/Angstrom
 % __|
 
-\subsection{Structural coordination motif identification}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Structural coordination motif identification}  % %%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Structural coordination motif identification
-Several esoteric structural features were found in the DFT optimized structures and can be categorized as one of two types, legitimate structural motifs not characterized by the scheme of Waroquiers et. al. \cite{Waroquiers2017}, and arguably non-physical structural artifacts, including:
+Several esoteric structural features were found in the DFT optimized structures and can be categorized as one of two types,
+legitimate structural motifs not characterized by the scheme of Waroquiers et. al. \cite{Waroquiers2017}, and arguably non-physical structural artifacts, including:
 % TODO Add more of these
 - unassociated oxygen atoms
 - molecular oxygens in the unit cell
 % __|
+
 
 % __|
 
@@ -89,7 +147,7 @@ Several esoteric structural features were found in the DFT optimized structures 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Density Functional Theory Methods
 %
-All OER calculations were performed using density functional theory (DFT) implemented via the Vienna {\it ab-initio} simulation package (VASP)
+All OER calculations were performed using density functional theory (DFT) implemented via the Vienna \latin{ab-initio} simulation package (VASP)
 \cite{Kresse1995,Kresse1996_0,Kresse1996_1}
 and utilizing the PBE exchange-correlation functional\cite{Perdew1996}.
 %
