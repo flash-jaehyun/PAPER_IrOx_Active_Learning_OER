@@ -18,7 +18,10 @@
 \usepackage[version=3]{mhchem}  % Formula subscripts using \ce{}
 \usepackage{xspace}  % To add space after macros
 
-% Unused packages, maybe will be necessary later
+\usepackage{subcaption}  % Used to create tables
+\captionsetup{justification=raggedright,singlelinecheck=false}  % Trying to get the tables a bit more centered
+
+%| - Unused packages, maybe will be necessary later
 % \usepackage[table,xcdraw]{xcolor}
 % \usepackage[normalem]{ulem}  % Used for underlining and crossing out text
 % \usepackage{subfig}  % Support for subfiguress
@@ -28,8 +31,7 @@
 % Boolean options
 % \usepackage{endfloat}  % 190731 | RF | Put's all figures at the end
 % \usepackage{hyperref}  % TEST | Used to reference sections w/ hyperlinks
-
-
+% __|
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -58,7 +60,7 @@
 
 % #############################################################################
 % | - MAIN DOCUMENT ***********************************************************
-% - 00 | Abstract *************************************************************
+- 00 | Abstract *************************************************************
 \begin{abstract}
 \input{03_sections/00_abstract}
 \end{abstract}
@@ -99,7 +101,7 @@
 % #############################################################################
 
 
-% | - Supplementary Information *************************************************
+% | - Supplementary Information ***********************************************
 
 % | - __latex_setup__
 \clearpage

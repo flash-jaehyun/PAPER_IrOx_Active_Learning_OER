@@ -10,6 +10,8 @@ https://github.com/raulf2012/PROJ_IrOx_Active_Learning_OER
 
 Workflowy: https://workflowy.com/s/ml-irox-oer-publicat/kA13CTQkFbAzFkBd
 
+Latex table generation: https://www.tablesgenerator.com/latex_tables
+
 ---
 
 ## TODO List:
