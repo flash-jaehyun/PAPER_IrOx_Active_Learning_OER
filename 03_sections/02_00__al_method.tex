@@ -1,6 +1,21 @@
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Active Learning Machine Learning Methodology %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Outline:
+%   * PARAGRAPH 00
+%     - General introduction and high-level overview of algorithm
+%   * PARAGRAPH 01
+%     - Candidate space generation methodology
+%   * PARAGRAPH 02
+%     - Quick paragraph about structure featurization
+%   * PARAGRAPH 03
+%     - Iterative AL algorithm procedure
+%   * PARAGRAPH 04
+%
+%
+%
+%   * There will not be much motivation for our general approach from the intoduction, so this is a good place to more properly layout our arguments
 %
 % Points to mention:
 %   * Active learning frameworks are a means by which to generate the most valuable training data set, on the fly.
@@ -10,101 +25,112 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+% ████████ ███████ ███    ███ ██████
+%    ██    ██      ████  ████ ██   ██
+%    ██    █████   ██ ████ ██ ██████
+%    ██    ██      ██  ██  ██ ██
+%    ██    ███████ ██      ██ ██
+% This is good exposition that probably belongs in the introduction
+
+%
+% QUESTION Should this be in the introduction
+% COMBAK Does the hansen2019atomistic paper really demonstrate structural optimizations? Double check
+Active learning frameworks utilizing surrogate models have been demonstrated to successfully speed up materials discovery for alloy nanoparticles \cite{Jennings2019}, structural optimizations \cite{hansen2019atomistic}, and transition-state searches \cite{torres2019low}, as well as adaptive approaches for global optimization \cite{VanDenBossche2018}.
+%
+% TODO All global optimization papers go here
+% TODO Add review paper for GO
+Historically, the most common approach to crystal strcuture prediction relied on classical global optimization schemes,
+in which the local/global minimum are found via numerical optimization routines that operate within the continious potential energy surface (PES).
+%
+These methods are fundementally limited by the curse of dimensionality associated with exploring the highly dimensional potential energy surface (PES),
+whose degrees of freedoms (and potential number of polymorphs) rises exponentialy with system size.\cite{Stillinger1999}
+%
+% I'm repeating the same point twice
+As such, the global optimization approach is better suited toward smaller systems and doesn't scale efficiently with system size.
+%
+An alternative approach to GO is to first, define the set of candidate crystal polymorphs, and secondly, search through the static list of candidates with a selection-type algorithm.
+%
+This approach relies on being able to prepare candidate structures that are likely to be physical and low in energy.
+% TODO Find references for various wasys of preparing candidate structures
+To date, there have been various techniques to prepare candidate structures, including generating structures randomly, enumerating space groups, etc.
+%
+Emperically, we know that nature tends to favor symmetric structures, and thus herein, we use construct a dataset candidate structures that leverage this intuition.
+
 
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % General intro to AL scheme
-% Basic gist, i.e. define our candidate space of materials to explore within (we do this by looking taking all structurally unique systems in DBs)
-% To start the AL we take the few systems that have DFT calcs (more generally we can just choose random structures)
-% We then build a surrogate model (GP, initially really bad) to predict the stability of the entire candidate space
+%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 %
 Here, we present an active learning accelerated methodology for discovering novel and stable crystal polymorphs.
 %
-Our approach is based on the principles of surrogate-models paired with an active learning framework,
-whereby a simple surrogate model is trained on a set of candidate materials by iteratively sampling structures that are predicted to be low in energy.
+Our approach utilizes an active learning framework and makes use of a surrogate-model,
+whereby a simple regression model is trained on a set of candidate materials by iteratively and intelligently sampling structures from a candidate set.
 %
-% COMBAK Does the hansen2019atomistic paper really demonstrate structural optimizations? Double check
-Active learning frameworks utilizing surrogate models have been demonstrated to successfully speed up materials discovery for alloy nanoparticles \cite{Jennings2019}, structural optimizations \cite{hansen2019atomistic}, and transition-state searches \cite{torres2019low}, as well as adaptive approaches for global optimization \cite{VanDenBossche2018}.
+A high-level overview of algorithm is presented in figure \ref{fig:all_diagram}.
+% TODO Add subplot labels to figure 1
+There are two primary parts of the algorithm, the first is the generation of the candidate space,
+which defines the list of candidate crystal structures to be searched through (\ref{fig:all_diagram}.a).
 %
-% TODO All global optimization papers go here
-More generally a large body of work has been devoted to the problem of polymorph discovery and global optimization.
+The structures within the candidate space are then transformed into a vectorial representation by a fingerprinting method which encodes the relevent chemical and structural information into a numerical vector,
+which can then be directly used by a machine learning regression model.
 %
-These methods are inherintly limited by the curse of dimensionality associated with the highly dimensional potential energy surface (PES).
-%
-An alternative method to exploring the PES through global optimization routines is to prepare a static list of candidate structures that will be searched through.
-%
-This method relies on being able to prepare candidate structures that are likely to be low energy.
-%
-Since nature tends to form symmetric structures, we use this intuition to build a candidate set of structures that have symmetry built in.
-%
-The methodology consists of two steps (outlined in figure \ref{fig:all_diagram}).
-%
-The first step is the generation of the candidate space,
-which defines the inclusive list of all crystal structures to be screened through during the search routine.
-%
-Since the initial candidates determines which structures that can ultimately be discovered, it is crucial to define a candidate space that is sufficiently diverse.
-%
-% TEMP Say more
-The second part of the algorithm is the iterative active learning algorithm.
-
-% | - __old__
-% Our machine learning accelerated materials discovery method proceeds through the following steps:
-% First, the dataset of candidate materials is constructed.
-% This data set will define the totality of materials that will be considered by the search algorithm,
-% this is done because the search space of materials is not a continous space but a discrite array of individual structures.
-% Next, the dataset of materials is transformed into a vectorial representation by using a fingerprinting method that encodes the relevent chemical and structural information.
-% __|
-
+The second part of the algorithm is the iterative search through candidate space via a continiously retrained surrogate model (\ref{fig:all_diagram}.b).
 % __|
 
 
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CANDIDATE SPACE GENERATION
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
+The generation of the candidate space is a critical step in the discovery of novel crystal structures for a given system,
+since the initial candidate pool determines which structures that can ultimately be discovered, it is imperative to construct candidates that are sufficiently diverse, such that they encompanse as much of the structural diversity in the PES as possible.
+%
 % TODO PENDING Ask @Ankit for these numbers
 % The MP project number should be correct, but the OQMD number might be wrong
-% MP{AB2: 3995, AB3: 2849} | OQMD{AB2: 533, AB3:20915}
-In Schema \ref{fig:all_diagram} we show the overall process with the integrated active learning loop.
-% NUMBER
-The structures that comprise the candidate data sets for \IrOtwo and \IrOthree were constructed by parsing for all bulk \ABtwo and \ABthree structures in both the Materials Project\cite{Jain2013} and OQMD\cite{Kirklin2015} databases
+% MP{AB2: 2424, AB3: 2341} | OQMD{AB2: 4736, AB3: 28883}
+Herein, the structures that comprise the candidate data sets for \IrOtwo and \IrOthree were constructed by mining for \ABtwo and \ABthree structures in the Materials Project\cite{Jain2013} and OQMD\cite{Kirklin2015} databases
 (in total 4528 \ABtwo and 23764 \ABthree entries).
 %
 Structurally redundant systems were then removed via a space-group based structural classification scheme developed by Jain \latin{et al.} \cite{Jain2018},
 whereby structural uniqueness is defined by the element-nonspecific stoicheometry (\ABtwo, \ABthree, etc.), spacegroup symmetry and wyckoff positions of the atoms within the unit cell.
 %
-% COMBAK
-This filtering step consideribly reduces the pool of candidates to 697 and 259 structures for the \ABtwo and \ABthree stoicheometries;  % NUMBER
+Imposing structural uniqness reduces the number of entries considerably to 697 and 259 structures for the \ABtwo and \ABthree stoicheometries, respectively;
 this is a prime indication of the lack of structural diversity in the OQMD and MP databases.
+%
 % NUMBER
 Furthermore, only bulk structures containing $\leq$ 75 atoms were included in the final candidate pool to reduce the computational expense of the DFT compuations
 (further reducing the candidates spaces to 567 and 256 \ABtwo and \ABthree structures respectively).
 %
 Next, iridum and oxygen were subsituted for the A and B sites, respectively,
 this was then followed by a crude isotropic expansion/contraction of the unit cell to accommodate the atomic radii of iridium and oxygen.
+%
 % NUMBER
-Because of the relitively small size of the candidate space and because we wish to validate our methods fully, we performed bulk relaxations for all 823 structures in the candidate space.
+Because of the relitively small size of the candidate space, and because we wish to validate our methods fully, we performed bulk relaxations for all 823 structures in the candidate space.
+%
+See section (SI Bulk polymorph DFT optimization) for further details on the computational methodology used to relax the bulk structures.
 %
 Of the 823 structures, 736 were able to be fully optimized, while 87, primarily \ABtwo structures were not able to be converged for a variety of convergence issues stemming from highly volumnous and unphysical initial structures.
 %
 The resulting candidate space was composed of 487 \IrOtwo and 249 \IrOthree structures, all of which have unique space group/Wyckoff combintations, ensuring their structural uniquness.
 %
-See section (SI Bulk polymorph DFT optimization) for further details on the computational methodology used to relax the bulk structures.
+While not particularly large in size, this data set will serve as a proof of concept.
 %
-While size of this dataset is not particularly large, it will serve the purpose of demonstrating the polymorph discovery routine as a proof of concept.
-%
-Additionally, the dataset is small enough that computing all of the structural candidats with \latin{ab-initio} DFT is tractable, thus allowing us to validate the performance of the model.
+In addition, the size of candidate space is sufficiently small that we can tractably optimize the equilibrium structure for the entire dataset with \latin{ab-initio} DFT, thus allowing us to validate the approach in an `after the fact` manner.
 % __|
 
 
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short paragraph on featurization method
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
+%
 The candidate data set was featurized using the Voronoi tessellation fingerprinting scheme developed by Ward \latin{et al.} \cite{Ward2017} which produces a 271 length feature vector for each material that is invariant to isotropic expansions/contractions of the lattice and to a degree, insensitive to the exact atomic coordinates of the atoms.
 %
 % How many columns of the 271 are redundant if stoich and composition are frozen
@@ -115,6 +141,16 @@ significantly reducing the dimensionality of the features.
 %
 % COMBAK TODO How much of the variance is captured by the PCA analysis
 Further dimensionality reduction is achieved via a principle component analysis (PCA) \cite{Tipping1999}, which was used to reduce the remaining 101 features to 11.
+% __|
+
+
+% ################################# Paragraph #################################
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Active Learning Loop
+%
+% NOTE This paragraph is a bit long, find way to split into 2
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - Paragraph start
 %
 The active learning algorithm proceeds through iterative generations of ML training, prediction, and acquisition steps that are visualized in figure \ref{fig:iro2_al}.
 %

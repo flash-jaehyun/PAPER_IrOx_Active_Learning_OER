@@ -20,17 +20,16 @@
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Setting up the general problem of crystal structure determination
-% Very hard to exhaustively sample all structures,
-% therefore it's hard to know if you are considering the global minimum structure
-% All important properties of a material are governed by structure
-% (assuming stoich is known)
+% Very hard to exhaustively sample all structures, therefore it's hard to know if you are considering the global minimum structure
+% All important properties of a material are governed by structure, (assuming stoich is known)
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-Predicting the thermodynamically favorable crystal structures for an arbitrary inorganic system remains a challenging problem in computational material science.\cite{}
+% TODO this intro sentence will be a reference dump for literature in crystal structure prediction
+Predicting the thermodynamically favorable crystal structures for an arbitrary inorganic system remains a challenging problem in computational material science.\cite{Woodley2008}
 %
 % Experimentally synthesized inorganic materials often conform to the global minimum energy structure (or similarly stable meta-stable phases).
 %
-When simulations are used to guide the search for new materials, the stable and meta-stable crystal structures, i.e. polymorphs,  above the convex hull of stability must be known in order to predict the material properties.\cite{}
+When simulations are used to guide the search for new materials, the stable and meta-stable crystal structures, \latin{i.e.} polymorphs,  above the convex hull of stability must be known in order to predict the material properties.\cite{}
 % Structure vs composition enumeration (composition done to death)
 % Give example of how over represented some motiffs are
 % 188,000 systems with identical prototype ABO2 perovskite structure (~50 %)
@@ -52,28 +51,25 @@ For instance, the class of structurally diverse metal-oxides, an important class
 %
 % There are way more papers in the general area of GO than these
 % I'm leaning away from framing as a "structural-diversity" problem with the databases and more so as a method of global optimization
-In the past, various groups have put forth methodologies to address the structural-diversity problem using computation for the MnO2~\cite{} and VOx~\cite{} polymorph spaces,
-but most of these methodologies are limited by the fact that they are operating within the highly intractable/dimensional PES.
+% In the past, various groups have put forth methodologies to address the structural-diversity problem using computation for the MnO2~\cite{} and VOx~\cite{} polymorph spaces,
+% but most of these methodologies are limited by the fact that they are operating within the highly intractable/dimensional PES.
+%
+% __|
+
+
+% ################################# Paragraph #################################
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Arguments and motivations for our unique approach to Global Opt.
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - Paragraph start
 %
 % Emphasize the candidate space generation as a KEY feature of algorithm
-Here we report on a crystal structure discovery algorithm that leverages machine learning surrogate models and an active learning framework to accelerate the discovery of novel crystal structures at fixed composition.
+To address the limitations of traditional global optimization methods,
+here we report on a crystal structure discovery algorithm that leverages machine learning surrogate models and an active learning framework to accelerate the discovery of novel crystal structures at fixed composition.
 %
-% Are just trying to say that nature gives us symmetric structures?
 The algorithm avoids operating in the highly dimensional $3N$-space by leveraging nature's propensity for symmetry by preparing data sets with a large degree of structural diversity at fixed composition.
-
-% | - __old__
-% By considering only systems of unique stoicheometry we leave the search space of 3N cartesions coordinates and enter a one dimensinal search space of structurally unique candidates.
-%
-% Within this search space, machine learning is used to accelarate and guide the search for promissing and stable structures by by-passing the need to perform expensive electronic structure calculations for the entire candidate space.
-% In order to navigate this vast space of materials, Machine Learning approaches has a huge potential to guide the search for structures of interest, and by-passing the need for expensive computations for all possible arrangements.
-% Motivation for \ce{IrO_x}, low representation, longstanding controversy over oxidation states and topology, and demonstrates promise for OER and Li ion batteries.
-% These basic building blocks can then be connected through 3 primary modes, vertex-sharing, edge-sharing, and face-sharing configurations (mid-range order) which can give rise to long-range order by forming porous or layered systems.
-% Other classical crystal structure finding methods here
-% The potential to form structures with different arrangements on multiple length-scales gives oxides a large degree of structural variety which it turn makes the space of possible polymorphs intractably large for traditional methods like simulated annealing, TEMP, or TEMP.
 % __|
-
-% __|
-
 
 
 % ################################# Paragraph #################################
@@ -116,7 +112,6 @@ Furthermore, such pure corner sharing octahedral crystals are known from in othe
 % __|
 
 
-
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Paragraph outlining the structure of the paper
@@ -143,6 +138,21 @@ Finally, we construct thermodynamic OER volcano of most stable phases and discus
 
 
 % | - __old__
+
+
+
+% | - __old__
+% By considering only systems of unique stoicheometry we leave the search space of 3N cartesions coordinates and enter a one dimensinal search space of structurally unique candidates.
+%
+% Within this search space, machine learning is used to accelarate and guide the search for promissing and stable structures by by-passing the need to perform expensive electronic structure calculations for the entire candidate space.
+% In order to navigate this vast space of materials, Machine Learning approaches has a huge potential to guide the search for structures of interest, and by-passing the need for expensive computations for all possible arrangements.
+% Motivation for \ce{IrO_x}, low representation, longstanding controversy over oxidation states and topology, and demonstrates promise for OER and Li ion batteries.
+% These basic building blocks can then be connected through 3 primary modes, vertex-sharing, edge-sharing, and face-sharing configurations (mid-range order) which can give rise to long-range order by forming porous or layered systems.
+% Other classical crystal structure finding methods here
+% The potential to form structures with different arrangements on multiple length-scales gives oxides a large degree of structural variety which it turn makes the space of possible polymorphs intractably large for traditional methods like simulated annealing, TEMP, or TEMP.
+% __|
+
+
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Paragraph that starts to focus in on our actual algorithm
