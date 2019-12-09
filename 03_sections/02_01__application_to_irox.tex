@@ -45,20 +45,20 @@ Each plot tracks the predicted (hollow grey) and DFT-derived (solid red) formati
 %
 As the active learning loop acquires DFT data, the GP model becomes more accurate, as evidenced by the decreasing uncertainties when going from left to right.
 %
-At the top of each subplot of \ref{fig:iro2_al} the identity of top ten most stable polymorphs is tracked,
+At the top of each subplot of Figure \ref{fig:iro2_al} the identity of top ten most stable polymorphs is tracked,
 with the short grey line turning into a longer red line when the structure is acquired by the ALL.
 %
 At the first generation the top ten structures are randomly distributed across the entire candidate space because the GP model hasn't had enough training data to identify the most stable polymorphs as low energy systems.
 %
-After only three generations (\ref{fig:iro2_al}a.ii) the GP model is sufficiently trained to have correctly identified all of the top ten systems as being low energy.
+After only three generations (Figure \ref{fig:iro2_al}a.ii) the GP model is sufficiently trained to have correctly identified all of the top ten systems as being low energy.
 %
 Additionally, by the third generation (20 DFT calculations) 2/10 top systems have been acquired.
 %
-After another 3 generations (\ref{fig:iro2_al}a.iii) (15 additional DFT calculations) the AL routine has successfully identified 7/10 of the top systems.
+After another 3 generations (Figure \ref{fig:iro2_al}a.iii) (15 additional DFT calculations) the AL routine has successfully identified 7/10 of the top systems.
 %
 Figure \ref{fig:iro2_al}e plots the number of top ten structures acquired as a function of DFT calculations for the ALL with the GP-UCB acquisition function and a baseline random acquisition scheme.
 %
-The results of figure \ref{fig:iro2_al}e are averaged over independent runs of AL algorithm with the 1 sigma standard deviation between these runs shown.
+The results of Figure \ref{fig:iro2_al}e are averaged over independent runs of AL algorithm with the 1 sigma standard deviation between these runs shown.
 %
 Overall, the GP-UCB runs outperform the random acquisition runs, with only 50 DFT calculations on average needed to discover 7 of the top 10 systems.
 %
@@ -67,9 +67,9 @@ This is compared to the 157 DFT calculations needed to compare 7/10 top systems 
 
 % TEMP | Find a place for these sentences where they flow
 %
-The low energy region of \ref{fig:iro2_al}a.iii is shown in \ref{fig:iro2_al}c.
+The low energy region of Figure \ref{fig:iro2_al}a.iii is shown in Figure \ref{fig:iro2_al}c.
 %
-And the 6 most stable structural polymorphs are shown in \ref{fig:iro2_al}d.
+And the 6 most stable structural polymorphs are shown in Figure \ref{fig:iro2_al}d.
 
 
 % ################################# Paragraph #################################
@@ -83,7 +83,7 @@ Figure \ref{fig:iro2_al}b plots the GP model predicted formation enthalpy agains
 1.) predicting onto the features of the pre-optimized structures (grey), as is done in the regular operation of the ALL when acquiring new structures and
 2.) predicting onto the post-DFT fingerprints (blue).
 %
-It is evident from the parity plot in figure \ref{fig:iro2_al}b that the Gaussian process model is doing an poor job of predicting the DFT formation energy of the candidate space using the pre-optimized fingerprints,
+It is evident from the parity plot in Figure \ref{fig:iro2_al}b that the Gaussian process model is doing an poor job of predicting the DFT formation energy of the candidate space using the pre-optimized fingerprints,
 with an exceptionally poor MAE of ~1.5 eV/atom.
 %
 The model's poor predictions are skewed towards the higher formation enthalpies, with the errors associated with low energy structures being much more robust.
@@ -158,13 +158,13 @@ Red guide lines are displayed to show how many DFT calculations are needed to di
 % Alternatively, the MAE is much lower when the model predicts onto the post-optimized structures (MAE ~0.15 eV/atom),
 % demonstrating that the poor preditive capabilities is due primarily to structural drift and not to the poor predictive capabilities of the GP model.
 %
-% Despite these shortcomings, figure TEMP (TEMP performance plot) tracks the number of high stability materials (lowest N structures) discovered as a function of the number of DFT calculations for the case of 1.) AL with UCB acquisition function and 2.) AL with a random acquisition function.
+% Despite these shortcomings, Figure TEMP (TEMP performance plot) tracks the number of high stability materials (lowest N structures) discovered as a function of the number of DFT calculations for the case of 1.) AL with UCB acquisition function and 2.) AL with a random acquisition function.
 % %
 % The random acquisition function emulates the behavior of regression model which exhibits no correlation between the input and output space.
 % %
 % Clearly, the rate of discovery for case 1.) is superior to that of case 2.), with our methodology discovering half of the lowest N structures after only TEMP DFT calculations compared to TEMP when acquiring randomley within the candidate space.
 %
-% The middle panel is reproduced in figure \ref{fig:iro2_al}, which also shows the real DFT energies accompanying each predicted formation energy (hollow diamonds).
+% The middle panel is reproduced in Figure \ref{fig:iro2_al}, which also shows the real DFT energies accompanying each predicted formation energy (hollow diamonds).
 % Probably remove the diamonds and add the parity subplot?
 % Figure \ref{fig:iro2_al} b. shows the formation energy, either predicted (small colored circles) or computed (large red-bordered circles), is plotted on the y-axis against all structures in the candidate space of \IrOthree polymorphs.
 %

@@ -38,15 +38,16 @@ Here, we present an active learning accelerated methodology for discovering nove
 Our approach utilizes an active learning framework and makes use of a surrogate-model,
 whereby a simple regression model is trained on a set of candidate materials by iteratively and intelligently sampling structures from a candidate set.
 %
-A high-level overview of algorithm is presented in figure \ref{fig:all_diagram}.
-% TODO Add subplot labels to figure 1
+A high-level overview of algorithm is presented in Figure \ref{fig:all_diagram}.
+%
+% TODO Add subplot labels to Figure 1
 There are two primary parts of the algorithm, the first is the generation of the candidate space,
-which defines the list of candidate crystal structures to be searched through (\ref{fig:all_diagram}.a).
+which defines the list of candidate crystal structures to be searched through (see Figure \ref{fig:all_diagram}.a).
 %
 The structures within the candidate space are then transformed into a vectorial representation by a fingerprinting method which encodes the relevent chemical and structural information into a numerical vector,
 which can then be directly used by a machine learning regression model.
 %
-The second part of the algorithm is the iterative search through candidate space via a continiously retrained surrogate model (\ref{fig:all_diagram}.b).
+The second part of the algorithm is the iterative search through candidate space via a continiously retrained surrogate model, (Figure \ref{fig:all_diagram}.b).
 % __|
 
 
@@ -121,7 +122,7 @@ Further dimensionality reduction is achieved via a principle component analysis 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 %
-The active learning algorithm proceeds through iterative generations of ML training, prediction, and acquisition steps that are visualized in figure \ref{fig:iro2_al}.
+The active learning algorithm proceeds through iterative generations of ML training, prediction, and acquisition steps that are visualized in Figure \ref{fig:iro2_al}.
 %
 % COMBAK Did I get all of the important features of GP here? @Jose
 To start, we utilized Gaussian process (GP) regression with gaussian (or RBF) kernels as implemented in the CatLearn\cite{hansen2019atomistic,CatLearn_Repo} package for atomistic machine learning applications, and used it to train a regression model on a small seed set of DFT formation energies from randomly selected structures in the candidate space.
