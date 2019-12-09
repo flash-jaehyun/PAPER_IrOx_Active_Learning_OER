@@ -11,17 +11,20 @@
 %   * Mention other methods for bulk crystal structure Discovery
 %     - simulated annealing
 %     - paper that Hammer put out (R58)
-%   * Potential energy surface (PES)
-%   * Global minimum (GM)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Setting up the general problem of crystal structure determination
-% Very hard to exhaustively sample all structures, therefore it's hard to know if you are considering the global minimum structure
-% All important properties of a material are governed by structure, (assuming stoich is known)
+% * General intro into problem, give proper context
+% * Make the point that structure has been all but ignored in recent years by the big-data/ML material science community (OQMD MP as examples)
+%
+% OUTLINE:
+%  * Solving for crystal structures in a generally difficult problem
+%  * It's an important problem to solve because all chemical/physical properties of a material are fundementally linked to the atomic structure.
+%  * Although we've seen a lot of work in the past ~10 years from material science groups leveraging recent advances in big-data, ML, cheaper computational resources, high-throughput screening, materials databases, etc.
+%    * Most of the focus has been on exploring compositionas and not structure
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 % TODO this intro sentence will be a reference dump for literature in crystal structure prediction
@@ -42,13 +45,6 @@ For example, roughly half the entries (\mytilde200,000) in The Open Quantum Mate
 % Should we say that enumerating comp. is easy and struct. is hard?
 As such, these efforts have been primarily concerned with the enumeration of composition (elemental identity and stoichiometries) and less so with the exploration of structural diversity.
 %
-The task of finding globally/locally stable crystal structures is equivalent to performing a global optimization (GO) routine within the highly dimensional potential energy surface (PES).
-%
-Traditional approaches, such as simulated annealing, are only tractable for the most simple systems,
-such as metallic crystals which tend to adopt highly symmetric close-packed configurations, but is less suited for more complex materials.
-%
-For instance, the class of structurally diverse metal-oxides, an important class of materials which tend to organize themselves into well-defined local coordination environments (octahedral, tetrahedral, etc.) which can assemble in a large variety of configurations with long-range order.
-%
 % There are way more papers in the general area of GO than these
 % I'm leaning away from framing as a "structural-diversity" problem with the databases and more so as a method of global optimization
 % In the past, various groups have put forth methodologies to address the structural-diversity problem using computation for the MnO2~\cite{} and VOx~\cite{} polymorph spaces,
@@ -59,16 +55,43 @@ For instance, the class of structurally diverse metal-oxides, an important class
 
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Arguments and motivations for our unique approach to Global Opt.
+% * Introduction to global optimization and crystal structure predication community
+% * Arguments and motivations for our unique approach
 %
+% OUTLINE:
+%   * TEMP
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
+% TODO All global optimization papers go here
+% TODO Add review paper for GO
+Historically, the most common approach to crystal strcuture prediction relied on classical global optimization (GO) schemes,
+in which the local/global minimum are found via numerical optimization routines that operate within the continious, and high dimensional, potential energy surface (PES).
+%
+These approaches, such as simulated annealing, are only tractable for the most simple systems,
+such as metallic crystals which tend to adopt highly symmetric close-packed configurations, but is less suited for more complex materials.
+%
+This is so because these methods are fundementally limited by the curse of dimensionality associated with exploring the highly dimensional potential energy surface (PES),
+whose degrees of freedoms (and potential number of polymorphs) rises exponentialy with system size.\cite{Stillinger1999}
+%
+The class of structurally diverse metal-oxides are a prime example of a chemical space for which structure prediction is non-trivial
+%
+Metal-oxides important class of materials which tend to organize themselves into well-defined local coordination environments (octahedral, tetrahedral, etc.) which can assemble in a large variety of configurations with long-range order.
 %
 % Emphasize the candidate space generation as a KEY feature of algorithm
 To address the limitations of traditional global optimization methods,
 here we report on a crystal structure discovery algorithm that leverages machine learning surrogate models and an active learning framework to accelerate the discovery of novel crystal structures at fixed composition.
 %
+% COMBAK Does the hansen2019atomistic paper really demonstrate structural optimizations? Double check
+Active learning frameworks utilizing surrogate models have been demonstrated to successfully speed up materials discovery for alloy nanoparticles \cite{Jennings2019}, structural optimizations \cite{hansen2019atomistic}, and transition-state searches \cite{torres2019low}, as well as adaptive approaches for global optimization \cite{VanDenBossche2018}.
+%
 The algorithm avoids operating in the highly dimensional $3N$-space by leveraging nature's propensity for symmetry by preparing data sets with a large degree of structural diversity at fixed composition.
+An alternative approach to GO is to first, define the set of candidate crystal polymorphs, and secondly, search through the static list of candidates with a selection-type algorithm.
+%
+This approach relies on being able to prepare candidate structures that are likely to be physical and low in energy.
+% TODO Find references for various wasys of preparing candidate structures
+To date, there have been various techniques to prepare candidate structures, including generating structures randomly, enumerating space groups, etc.
+%
+Emperically, we know that nature tends to favor symmetric structures, and thus herein, we use construct a dataset candidate structures that leverage this intuition.
 % __|
 
 
@@ -139,6 +162,7 @@ Finally, we construct thermodynamic OER volcano of most stable phases and discus
 
 % | - __old__
 
+% Very hard to exhaustively sample all structures, therefore it's hard to know if you are considering the global minimum structure
 
 
 % | - __old__
