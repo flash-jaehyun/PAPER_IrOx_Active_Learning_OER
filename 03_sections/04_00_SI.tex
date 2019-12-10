@@ -323,14 +323,23 @@ The simulation stop criteria used was that all atoms must satisfy a maximum forc
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - OER Thermodynamic Methodology
-Procedure:
-- For the top/most stable bulk structures the following procedure was carried out
-
-* Stable stoichiometric terminations were cut from the bulk Stable termination planes were guesstimated via intuition, and the x-ray diffraction pattern tool from Vesta
-
-* Electrochemical surface coverage was elucidated via a surface Pourbaix analysis Need to know the coverage of surface under operating conditions (>1.23 V RHE)
-
-* Thermodynamic/limiting potential analysis of the OER mechanistic pathway Volcano plot, limiting potentials, etc.
+%
+Here we will outline the procedure used to carry out OER simulations on the various slabs of \IrOtwo and \IrOthree.
+%
+The procedure was as follows:
+%
+Stable stoichiometric terminations were cut from the bulk
+%
+% COMBAK
+% TODO Add Vesta reference
+Stable termination planes were guesstimated via intuition, and the x-ray diffraction pattern tool from Vesta.
+%
+Next, electrochemical surface coverage was elucidated via a surface Pourbaix analysis.
+%
+This elucidates the coverage under operating conditions (> \SI{1.23}{\volt vs. RHE}) for each slab.
+%
+% COMBAK
+Finally we conducted a thermodynamic/limiting potential analysis of the OER mechanistic pathway (Volcano plot, limiting potentials, etc).
 % __|
 
 
@@ -343,15 +352,21 @@ Procedure:
 % | - Surface Energy Pourbaix Methodology
 %
 Surface energy Pourbaix plots were constructed by calculating the surface energy of each slab by under standard conditions (\si{\volt}\num{=0} and pH\num{=0}) and then utilizing the computational hydrogen electrode (CHE) to compute the potential dependence of the surfaces.
+%
 Surface energy calculations were performed for various facets for slabs of increasing thickness.
-The bulk energy was then extracted by fitting the total energy of the slabs against the number of layers as explained in REF2.
+%
+% TODO Insert reference for surface E calcs
+The bulk energy was then extracted by fitting the total energy of the slabs against the number of layers as explained in TEMP.
+%
 This was  done to avoid common issues of surface energy divergence associated with using a separate bulk energy calculation.
-
+%
 The sensitivity of a given slab to an applied bias is dependent on the composition of the surface,
 in particular, the effect of coverage of electrolyte species which can deposit oxygen, hydrogen, and hydroxide species on the surface layers.
-These additional O and H atoms are not referenced to the atoms in the slab, but are instead referenced to the computational hydrogen electrode and water-splitting reaction.
+%
+These additional \ce{O} and \ce{H} atoms are not referenced to the atoms in the slab, but are instead referenced to the computational hydrogen electrode and water-splitting reaction.
+%
+% TODO Type out equations for surface energy calculation
 The equation for is as follows:
-% TODO
 % __|
 
 

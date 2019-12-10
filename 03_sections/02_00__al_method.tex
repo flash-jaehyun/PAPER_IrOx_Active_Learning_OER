@@ -156,7 +156,8 @@ Once ranked, the N systems that minimize the acquisition function are selected f
 Here we chose a bin size ($N$) of \num{5}, the value of which determines how many structures are selected for DFT calculations,
 and as such, determines the degree of parallization of the routine.
 %
-The optimal value of $N$ depends on the computational resources available, as small values of N result in an algorithm that is slow, as every DFT calculation is performed serially.
+The optimal value of $N$ depends on the computational resources available, as small values can result in slow down the discovery rate of the AL algorithm,
+as every DFT calculation needs to be performed more serially.
 %
 % TODO: Is this statement true?
 Larger values of $N$ speed up the active-learning algorithm, but leads to a higher number of DFT calculations performed before convergence.

@@ -37,7 +37,7 @@ Here, we report in detail the results for \IrOthree, the analogous results for  
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 %
-Figure \ref{fig:iro2_al}a shows a sequence of plots at various generations of the active learning loop,
+Figure \ref{fig:iro2_al}a shows a sequence of plots at various generations of the active learning loop applied to \IrOthree,
 starting with the initial generation with five randomly drawn candidates and ending with the 40th generation of the ALL
 (\num{205} DFT computed structures out of the \num{248} total candidates).
 %
@@ -48,7 +48,7 @@ As the active learning loop acquires DFT data, the GP model becomes more accurat
 At the top of each subplot of Figure \ref{fig:iro2_al} the identity of top ten most stable polymorphs is tracked,
 with the short grey line turning into a longer red line when the structure is acquired by the ALL.
 %
-At the first generation the top ten structures are randomly distributed across the entire candidate space because the GP model hasn't had enough training data to identify the most stable polymorphs as low energy systems.
+At the first generation the top ten structures are randomly distributed across the entire candidate space because the GP model has not been trained sufficiently to identify the most stable polymorphs as low energy systems.
 %
 After only three generations (Figure \ref{fig:iro2_al}a.ii) the GP model is sufficiently trained to have correctly identified all of the top ten systems as being low energy.
 %
