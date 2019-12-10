@@ -38,15 +38,16 @@ Here, we present an active learning accelerated methodology for discovering nove
 Our approach utilizes an active learning framework and makes use of a surrogate-model,
 whereby a simple regression model is trained on a set of candidate materials by iteratively and intelligently sampling structures from a candidate set.
 %
-A high-level overview of algorithm is presented in figure \ref{fig:all_diagram}.
-% TODO Add subplot labels to figure 1
+A high-level overview of algorithm is presented in Figure \ref{fig:all_diagram}.
+%
+% TODO Add subplot labels to Figure 1
 There are two primary parts of the algorithm, the first is the generation of the candidate space,
-which defines the list of candidate crystal structures to be searched through (\ref{fig:all_diagram}.a).
+which defines the list of candidate crystal structures to be searched through (see Figure \ref{fig:all_diagram}.a).
 %
 The structures within the candidate space are then transformed into a vectorial representation by a fingerprinting method which encodes the relevent chemical and structural information into a numerical vector,
 which can then be directly used by a machine learning regression model.
 %
-The second part of the algorithm is the iterative search through candidate space via a continiously retrained surrogate model (\ref{fig:all_diagram}.b).
+The second part of the algorithm is the iterative search through candidate space via a continiously retrained surrogate model, (Figure \ref{fig:all_diagram}.b).
 % __|
 
 
@@ -63,29 +64,29 @@ since the initial candidate pool determines which structures that can ultimately
 % The MP project number should be correct, but the OQMD number might be wrong
 % MP{AB2: 2424, AB3: 2341} | OQMD{AB2: 4736, AB3: 28883}
 Herein, the structures that comprise the candidate data sets for \IrOtwo and \IrOthree were constructed by mining for \ABtwo and \ABthree structures in the Materials Project\cite{Jain2013} and OQMD\cite{Kirklin2015} databases
-(in total 4528 \ABtwo and 23764 \ABthree entries).
+(in total \num{4528} \ABtwo and \num{23764} \ABthree entries).
 %
 Structurally redundant systems were then removed via a space-group based structural classification scheme developed by Jain \latin{et al.} \cite{Jain2018},
 whereby structural uniqueness is defined by the element-nonspecific stoicheometry (\ABtwo, \ABthree, etc.), spacegroup symmetry and wyckoff positions of the atoms within the unit cell.
 %
-Imposing structural uniqness reduces the number of entries considerably to 697 and 259 structures for the \ABtwo and \ABthree stoicheometries, respectively;
+Imposing structural uniqness reduces the number of entries considerably to \num{697} and \num{259} structures for the \ABtwo and \ABthree stoicheometries, respectively;
 this is a prime indication of the lack of structural diversity in the OQMD and MP databases.
 %
 % NUMBER
-Furthermore, only bulk structures containing $\leq$ 75 atoms were included in the final candidate pool to reduce the computational expense of the DFT compuations
-(further reducing the candidates spaces to 567 and 256 \ABtwo and \ABthree structures respectively).
+Furthermore, only bulk structures containing $\leq$ \num{75} atoms were included in the final candidate pool to reduce the computational expense of the DFT compuations
+(further reducing the candidates spaces to \num{567} and \num{256} \ABtwo and \ABthree structures respectively).
 %
 Next, iridum and oxygen were subsituted for the A and B sites, respectively,
 this was then followed by a crude isotropic expansion/contraction of the unit cell to accommodate the atomic radii of iridium and oxygen.
 %
 % NUMBER
-Because of the relitively small size of the candidate space, and because we wish to validate our methods fully, we performed bulk relaxations for all 823 structures in the candidate space.
+Because of the relitively small size of the candidate space, and because we wish to validate our methods fully, we performed bulk relaxations for all \num{823} structures in the candidate space.
 %
 See section (SI Bulk polymorph DFT optimization) for further details on the computational methodology used to relax the bulk structures.
 %
-Of the 823 structures, 736 were able to be fully optimized, while 87, primarily \ABtwo structures were not able to be converged for a variety of convergence issues stemming from highly volumnous and unphysical initial structures.
+Of the \num{823} structures, \num{736} were able to be fully optimized, while \num{87}, primarily \ABtwo structures were not able to be converged for a variety of convergence issues stemming from highly volumnous and unphysical initial structures.
 %
-The resulting candidate space was composed of 487 \IrOtwo and 249 \IrOthree structures, all of which have unique space group/Wyckoff combintations, ensuring their structural uniquness.
+The resulting candidate space was composed of \num{487} \IrOtwo and \num{249} \IrOthree structures, all of which have unique space group/Wyckoff combintations, ensuring their structural uniquness.
 %
 While not particularly large in size, this data set will serve as a proof of concept.
 %
@@ -100,16 +101,16 @@ In addition, the size of candidate space is sufficiently small that we can tract
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 %
-The candidate data set was featurized using the Voronoi tessellation fingerprinting scheme developed by Ward \latin{et al.} \cite{Ward2017} which produces a 271 length feature vector for each material that is invariant to isotropic expansions/contractions of the lattice and to a degree, insensitive to the exact atomic coordinates of the atoms.
+The candidate data set was featurized using the Voronoi tessellation fingerprinting scheme developed by Ward \latin{et al.} \cite{Ward2017} which produces a \num{271} length feature vector for each material that is invariant to isotropic expansions/contractions of the lattice and to a degree, insensitive to the exact atomic coordinates of the atoms.
 %
 % How many columns of the 271 are redundant if stoich and composition are frozen
 Herein, we apply our active learning model to the \IrOtwo and \IrOthree spaces separately, because we are interested in the most stable polymorphs at each stoichiometry.
 %
-Contraining the stoicheometry per application of the AL algorithm further reduces the 271 length  feature vector to 101 non-zero variance features,
+Contraining the stoicheometry per application of the AL algorithm further reduces the \num{271} length  feature vector to \num{101} non-zero variance features,
 significantly reducing the dimensionality of the features.
 %
 % COMBAK TODO How much of the variance is captured by the PCA analysis
-Further dimensionality reduction is achieved via a principle component analysis (PCA) \cite{Tipping1999}, which was used to reduce the remaining 101 features to 11.
+Further dimensionality reduction is achieved via a principle component analysis (PCA) \cite{Tipping1999}, which was used to reduce the remaining \num{101} features to \num{11}.
 % __|
 
 
@@ -121,7 +122,7 @@ Further dimensionality reduction is achieved via a principle component analysis 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 %
-The active learning algorithm proceeds through iterative generations of ML training, prediction, and acquisition steps that are visualized in figure \ref{fig:iro2_al}.
+The active learning algorithm proceeds through iterative generations of ML training, prediction, and acquisition steps that are visualized in Figure \ref{fig:iro2_al}.
 %
 % COMBAK Did I get all of the important features of GP here? @Jose
 To start, we utilized Gaussian process (GP) regression with gaussian (or RBF) kernels as implemented in the CatLearn\cite{hansen2019atomistic,CatLearn_Repo} package for atomistic machine learning applications, and used it to train a regression model on a small seed set of DFT formation energies from randomly selected structures in the candidate space.
@@ -145,20 +146,21 @@ Herein, we use the so-called GP-UCB acquisition function
 where $\mu$ and $\sigma$ is the predicted mean and uncertainty of the formation energy,
 and $\kappa$ is a free parameter to tune the relative weighting between exploiting low formation energy systems (small $\kappa$) and exploring high uncertainty regions of the candidate space (large $\kappa$).
 %
-Here, $\kappa$ is set to $1$ which equally weights the energy and uncertainty.
+Here, $\kappa$ is set to \num{1} which equally weights the energy and uncertainty.
 %
 In this work we attempt to trade off exploitation and exploration by weighting the predicted formation energy and the associated uncertainty to bias systems that are both low energy and high uncertainty.
 %
 % TODO N is used into mean number of atoms (FIX)
 Once ranked, the N systems that minimize the acquisition function are selected for full DFT calculations, which are included in the training data of subsequent AL generations.
 %
-Here we chose a bin size (N) of 5, the value of the bin size ($N$) determines how many structures are selected for DFT calculations,
+Here we chose a bin size ($N$) of \num{5}, the value of which determines how many structures are selected for DFT calculations,
 and as such, determines the degree of parallization of the routine.
 %
-The optimal value of $N$ depends on the computational resources available, as small values of N result in an algorithm that is slow, as every DFT calculation is performed serially.
+The optimal value of $N$ depends on the computational resources available, as small values can result in slow down the discovery rate of the AL algorithm,
+as every DFT calculation needs to be performed more serially.
 %
 % TODO: Is this statement true?
-Larger values of N speed up the active-learning algorithm, but leads to a higher number of DFT calculations performed before convergence.
+Larger values of $N$ speed up the active-learning algorithm, but leads to a higher number of DFT calculations performed before convergence.
 %
 Although initially unique, the structures in the candiate often relax into one another over the course of the DFT optimization, introducing duplicate structures in the post-DFT structures.
 %
@@ -167,7 +169,7 @@ These duplicate structures are removed during each generation of the AL algorith
 The coordination characterization function (CCF) based methodology to quantify the simalarity between structures was used to identify and remove duplicate structures.\cite{Su2017}
 %
 % COMBAK We are discussing alternative convergence criteria, or whether to even have convergence criteria here
-The AL loop proceeds until convergence is achieved, which here is chosen to be the generation at which the structures within the range of metastability, here taken as 0.1 eV/atom, are unchanging over three consecutive generations.
+The AL loop proceeds until convergence is achieved, which here is chosen to be the generation at which the structures within the range of metastability, here taken as \num{0.1} eV/atom, are unchanging over three consecutive generations.
 % __|
 
 
@@ -179,32 +181,11 @@ The AL loop proceeds until convergence is achieved, which here is chosen to be t
   {02_figures/al_diagram/Surrogate_model_mine.pdf}
   }
 \caption{\label{fig:all_diagram}
+%
 % Probably better to keep this caption really concise and refer to the text
-Process flow diagram for the active learning accelerated algorithm. The procedure is composed of (a) generation of the candidate set of considered crystal structures constructed from DFT materials databases and (b) iterative active learning surrogate search of the candidate space.
+Process flow diagram for the active learning accelerated algorithm. The procedure is composed of
+(a) generation of the candidate set of considered crystal structures constructed from DFT materials databases and
+(b) iterative active learning surrogate search of the candidate space.
 }
 \end{figure*}
-% __|
-
-
-
-% | - __old__
-
-
-
-% ████████ ███████ ███    ███ ██████
-%    ██    ██      ████  ████ ██   ██
-%    ██    █████   ██ ████ ██ ██████
-%    ██    ██      ██  ██  ██ ██
-%    ██    ███████ ██      ██ ██
-% This is good exposition that probably belongs in the introduction
-
-%
-% QUESTION Should this be in the introduction
-%
-% %
-% % I'm repeating the same point twice
-% As such, the global optimization approach is better suited toward smaller systems and doesn't scale efficiently with system size.
-% %
-
-
 % __|

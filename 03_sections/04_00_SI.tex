@@ -57,20 +57,20 @@ Herein, we take advantage of the structural diversity already present in materia
 We utilized two materials databases, the Open Quantum Materials (OQMD) and the Materials Project (MP) databases because of their large and diverse datasets of crystalline inorganic materials.
 %
 % TODO Approx. when did Ankit parse these databases
-At the time that we originally mined these databases (TEMP 2018? TEMP), there were 61,471 inorganic compounds in the MP database and 435,583 entries in the OQMD database.
+At the time that we originally mined these databases (TEMP 2018? TEMP), there were \num{61471} inorganic compounds in the MP database and \num{435583} entries in the OQMD database.
 %
 The databases have expanded the number of entries considerably since we originally parsed them, so we'd like to caution the reader that these exact numbers are out of date.
 %
 Herein, for simplicity we'll refer to the quantiative figures of these databases in the present, instead of past, tense.
 %
-The structural classification scheme of Jain \latin{et al.} \cite{Jain2018} was then used to classify the structure and element-nonspecific stoicheometry of each structure (497,054 in total).
+The structural classification scheme of Jain \latin{et al.} \cite{Jain2018} was then used to classify the structure and element-nonspecific stoicheometry of each structure (\num{497054} in total).
 %
 % COMBAK Revise if Ankit's scheme becomes it's own section
 See section TEMP for more details on the symmetry based structural classification scheme.
 %
 Once classified, we selected all entries with the desired stoicheometry of \ABtwo and \ABthree,
-for which MP has 2,424 and 2341 \ABtwo and \ABthree entries, respectively,
-and OQMD has 4,736 and 28,883 \ABtwo and \ABthree entries, respectively.
+for which MP has \num{2424} and \num{2341} \ABtwo and \ABthree entries, respectively,
+and OQMD has \num{4736} and \num{28,883} \ABtwo and \ABthree entries, respectively.
 %
 % COMBAK double check, is this the right reason?
 The reason that there are considerably more \ABthree compounds in OQMD is due to the extensive compositional permutation of the cubic perovskite structure (ABO\textsubscript{3} ABO3) with the A cation removed.
@@ -78,12 +78,11 @@ The reason that there are considerably more \ABthree compounds in OQMD is due to
 % TODO
 Within each stoicheometry, the structural classification was used to eliminate structurally redundant systems, \latin{i.e.} systems that share their stoicheometry, space-group, and wyckoff positions.
 %
-This process reduces the data set to 620 and 219 unique structures of \ABtwo and \ABthree for MP and 397 and 194 structurally unique \ABtwo and \ABthree OQMD entries.
+This process reduces the data set to \num{620} and \num{219} unique structures of \ABtwo and \ABthree for MP and \num{397} and \num{194} structurally unique \ABtwo and \ABthree OQMD entries.
 %
 % COMBAK
-Combining the MP and OQMD data sets ultimately results in a dataset of 688 \ABtwo and 254 \ABthree structurally unique candidates.
+Combining the MP and OQMD data sets ultimately results in a dataset of \num{688} \ABtwo and \num{254} \ABthree structurally unique candidates.
 %
-
 % __|
 
 
@@ -187,7 +186,6 @@ This structural classification scheme can directly serve as a structural fingerp
 %
 % This was done by parsing for structurally unique systems based on the crystal symmetry classification scheme of Ankit.
 %
-
 % __|
 
 
@@ -203,7 +201,7 @@ This structural classification scheme can directly serve as a structural fingerp
 % TODO Cite Wolverton paper
 Structures are featurized using the Voronoi tessellation method developed by TEMP.
 %
-0-variance features that don't encode for any information within a set of structures with constant composition and stoicheometry are then removed (271 to 101 feature columns).
+0-variance features that don't encode for any information within a set of structures with constant composition and stoicheometry are then removed (\num{271} to \num{101} feature columns).
 % TODO Add all of the feature engineering steps here
 % __|
 
@@ -211,11 +209,10 @@ Structures are featurized using the Voronoi tessellation method developed by TEM
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Gaussian process regression model}  % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Relevant details about the ML Gaussian process here  % @Chris
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Gaussian process regression model
-% Relevant details about the ML Gaussian process here  % @Chris
-
 %
 The Gaussian Process model utilized two isotropic Gaussian (RBF) kernels, with one kernel having a larager length scale parameter and the other one having a lengh scale parameter that operates on shorter length scales.
 %
@@ -244,27 +241,26 @@ The initial values of the hyper paramters are as follows:
 \subsection{Bulk polymorph DFT optimization}  % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Bulk polymorph DFT optimization
 % VASP
 % PBE exchange correlation functional
 % spin-polarized calculations
 % plane-wave cutoff of 600 eV
-
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - Bulk polymorph DFT optimization
 %
-A variable k-point mesh is used such that a k-point density of at least 20 k-points per reciprocal space dimension.
+A variable k-point mesh is used such that a k-point density of at least \num{20} k-points per reciprocal space dimension.
 %
 All bulk systems were run through the following computational recipe to converge the equilibrium structure.
 %
-The recipe has 3 distinct phases, and structures are only advanced to the next phase when the previous phase completes without error.
+The recipe has \num{3} distinct phases, and structures are only advanced to the next phase when the previous phase completes without error.
 %
-1. A ISIF 7 calculation to optimize only the volume (initial volume of cell may be really off)
+1. A ISIF \num{7} calculation to optimize only the volume (initial volume of cell may be really off).
 %
-2. 3 consecutive ISIF 3 relaxations to fully converge the lattice and atomic positions
+2. \num{3} consecutive ISIF \num{3} relaxations to fully converge the lattice and atomic positions.
 %
-3. A final ISIF 2, calculation to relax the atomic coordinates only to avoid errors associated with changing the cell volume with a fixed plane-wave cutoff basis
+3. A final ISIF \num{2}, calculation to relax the atomic coordinates only to avoid errors associated with changing the cell volume with a fixed plane-wave cutoff basis.
 %
-The final ISIF 2 step is run with an electronic energy SCF convergence criteria of 1E-6 eV and the ionic relaxation has a tight force convergence criteria of 1E-3 eV/Angstrom
+The final ISIF \num{2} step is run with an electronic energy SCF convergence criteria of \SI{1e-6} eV and the ionic relaxation has a tight force convergence criteria of \SI{1e-3}{\electronvolt\per\angstrom}.
 % __|
 
 
@@ -304,17 +300,19 @@ All OER calculations were performed using density functional theory (DFT) implem
 and utilizing the PBE exchange-correlation functional\cite{Perdew1996}.
 %
 Dipole corrections were imposed on all non-symmetric slabs to counteract spurious dipole interactions between the periodic cells.\cite{Neugebauer1992}
+%
 % TODO COMBAK, make this section more general, k-points were treated differently
 % for different calculations
 A 4x4x3 k-point mesh with gamma-point centered Monkshort-packing\cite{Monkhorst1976} was used for all slabs.
 %
-The plane-wave energy cutoff was 500 eV.
+The plane-wave energy cutoff was \SI{500}{\electronvolt}.
+%
 % COMBAK Figure out how much spacing was used for all slabs
-All slab calculations maintained a vacuum spacing of $<$15 \AA.
+All slab calculations maintained a vacuum spacing in between TEMP and \SI{15}{\angstrom}
 %
-All structures were relaxed with utilizing the conjugate gradient algorithm as implemented in VASP (IBRION=2).
+All structures were relaxed with utilizing the conjugate gradient algorithm as implemented in VASP (IBRION\num{=2}).
 %
-The simulation stop criteria used was that all atoms must satisfy a maximum force threshold of 0.02 eV/\AA.
+The simulation stop criteria used was that all atoms must satisfy a maximum force threshold of \SI{0.02}{\electronvolt\per\angstrom}.
 % __|
 
 
@@ -325,14 +323,23 @@ The simulation stop criteria used was that all atoms must satisfy a maximum forc
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - OER Thermodynamic Methodology
-Procedure:
-- For the top/most stable bulk structures the following procedure was carried out
-
-* Stable stoichiometric terminations were cut from the bulk Stable termination planes were guesstimated via intuition, and the x-ray diffraction pattern tool from Vesta
-
-* Electrochemical surface coverage was elucidated via a surface Pourbaix analysis Need to know the coverage of surface under operating conditions (>1.23 V RHE)
-
-* Thermodynamic/limiting potential analysis of the OER mechanistic pathway Volcano plot, limiting potentials, etc.
+%
+Here we will outline the procedure used to carry out OER simulations on the various slabs of \IrOtwo and \IrOthree.
+%
+The procedure was as follows:
+%
+Stable stoichiometric terminations were cut from the bulk
+%
+% COMBAK
+% TODO Add Vesta reference
+Stable termination planes were guesstimated via intuition, and the x-ray diffraction pattern tool from Vesta.
+%
+Next, electrochemical surface coverage was elucidated via a surface Pourbaix analysis.
+%
+This elucidates the coverage under operating conditions (> \SI{1.23}{\volt vs. RHE}) for each slab.
+%
+% COMBAK
+Finally we conducted a thermodynamic/limiting potential analysis of the OER mechanistic pathway (Volcano plot, limiting potentials, etc).
 % __|
 
 
@@ -343,17 +350,23 @@ Procedure:
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Surface Energy Pourbaix Methodology
-Surface energy Pourbaix plots were constructed by calculating the surface energy of each slab by under standard conditions (V=0 and pH=0) and then utilizing the computational hydrogen electrode to compute the potential dependence of the surfaces.
-
+%
+Surface energy Pourbaix plots were constructed by calculating the surface energy of each slab by under standard conditions (\si{\volt}\num{=0} and pH\num{=0}) and then utilizing the computational hydrogen electrode (CHE) to compute the potential dependence of the surfaces.
+%
 Surface energy calculations were performed for various facets for slabs of increasing thickness.
-The bulk energy was then extracted by fitting the total energy of the slabs against the number of layers as explained in REF2.
+%
+% TODO Insert reference for surface E calcs
+The bulk energy was then extracted by fitting the total energy of the slabs against the number of layers as explained in TEMP.
+%
 This was  done to avoid common issues of surface energy divergence associated with using a separate bulk energy calculation.
-
+%
 The sensitivity of a given slab to an applied bias is dependent on the composition of the surface,
 in particular, the effect of coverage of electrolyte species which can deposit oxygen, hydrogen, and hydroxide species on the surface layers.
-These additional O and H atoms are not referenced to the atoms in the slab, but are instead referenced to the computational hydrogen electrode and water-splitting reaction.
+%
+These additional \ce{O} and \ce{H} atoms are not referenced to the atoms in the slab, but are instead referenced to the computational hydrogen electrode and water-splitting reaction.
+%
+% TODO Type out equations for surface energy calculation
 The equation for is as follows:
-% TODO
 % __|
 
 
@@ -361,7 +374,7 @@ The equation for is as follows:
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{OER Scaling Relations}  % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TODO We will make a O(2p) vs O-OH plot showing that this descriptor correlates with oxidation state like that some of the structures are close to ideal
+% TODO We will make a O(2p) vs. O-OH plot showing that this descriptor correlates with oxidation state like that some of the structures are close to ideal
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -373,7 +386,7 @@ The equation for is as follows:
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Figure \ref{fig:scaling_relations} shows the scaling relations between the adsorption free energies of the OER intermediate species for the \IrOx systems studied herein.
 %
-It can be seen clearly that the data points corresponding to the three \IrOthree polymorphs are roughly 1 eV weaker binding than the \rIrOtwo points.
+It can be seen clearly that the data points corresponding to the three \IrOthree polymorphs are roughly \SI{1}{\electronvolt} weaker binding than the \rIrOtwo points.
 %
 This generally weaker binding of the \IrOthree stoichiometry is responsible for the observed improvement in theoretical activity.
 %
@@ -387,22 +400,17 @@ The \DGOOH vs.\DGOH relationship is very close to the traditional ``universal sc
 {02_figures/oer_activity_stability/00_master__oer_scaling__main_v0__outplot2.png}
 }
 \caption{\label{fig:scaling_relations}
-% Adsorption free energy scaling relations plot.
 Relationship between the adsorption free energies of the three key OER intermediates (*OH, *O, *OOH), with \DGOH chosen as the dependent variable.
+%
 Best fit lines are provided for \DGOOH vs. \DGOH and \DGO vs. \DGOH.
 %
 Additionally, ``universal scaling relations'' for \DGOOH vs. \DGOH and \DGO vs. \DGOH are shown (black dotted lines) to emphasize our deviation from the traditionally reported scaling fits.
+%
 The \DGOH line is  shown as guide to eye.
 % TODO Do I have to redefine the color convention every caption?
 }
 \end{figure*}
 % __|
-
-% ################################# Paragraph #################################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 % __|
 
