@@ -2,10 +2,10 @@
 % Electrochemical OER Application %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+% TODO Introduce the B-IrO3 phase in this section
 % TODO: Put (s) on a-IrO3 phase in bulk Pourbaix diagram
 % OER DFT modelling references:
 %   * Man2011
-%   *
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -18,16 +18,16 @@ We next performed \latin{ab-initio} thermodynamic simulations to elucidate the e
 % __|
 
 
-\subsubsection{Bulk Pourbaix}
-% | - Bulk Pourbaix
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Revised Bulk Pourbaix Diagram
+%
 % Explain the Ir and IrO[4-] species
-% #QUESTION Use E or U for potential variable
+% QUESTION Use E or U for potential variable
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 %
-Figure \ref{fig:bulk_pourbaix} reports the \IrOx Pourbaix diagram (E vs. pH) constructed with the following species: Ir, \rIrOtwo, \aIrOthree,  \rIrOthree, \bIrOthree, and an aqueous dissolved \ce{IrO[4-]} species (See TEMP|SI for additional details).
+Figure \ref{fig:bulk_pourbaix} reports the \IrOx Pourbaix diagram (E vs. pH) constructed with the following species: Ir, \rIrOtwo, \aIrOthree,  \rIrOthree, \bIrOthree, and an aqueous dissolved \ce{IrO[4-]} species (See TEMP SI for additional details).
 %
 While Ir and \rIrOtwo are most stable at low bias, \aIrOthree is the most stable species under acidic conditions (pH \mytilde7) and in the bias region of interest for the OER (\mytilde1.23 V vs. RHE).
 %
@@ -37,6 +37,7 @@ While Ir and \rIrOtwo are most stable at low bias, \aIrOthree is the most stable
 %
 % I want to be careful about how I talk about the metastable structures in the bulk Pourbaix, they strictly speaking shouldn't be there at all
 The stability regions of the metastable \rIrOthree and \bIrOthree phases are indicated by unfilled solid lines and appear (meta?)stable in the OER relevant region of the diagram.
+%
 % TODO Create energy table for main bulk systems in SI
 The similar formation energies (SI TEMP) for all three \IrOthree species suggest some or all of these \IrOthree phases may be present and are stable under OER conditions.
 
@@ -55,7 +56,6 @@ The similar formation energies (SI TEMP) for all three \IrOthree species suggest
 
 
 
-
 % | - Figure | Bulk Pourbaix Diagram
 \begin{figure*}[!htb]
 \centering
@@ -68,6 +68,7 @@ The revised Pourbaix diagram (electrochemical bulk phase stability) of the Ir-H$
 The most stable system studied (see Table XX in SI for a full list) are Ir-metal Ir(s) (blue), a \rIrOtwo  (green), and a dissolved \ce{IrO4[4-]} (gray).
 %
 These are compared to the \ce{IrO_3} polymorphs, \aIrOthree (purple), \rIrOthree (orange), and \bIrOthree (pink).
+%
 % I would like to add Srx IrO3 to show much less stable it is than alpha
 The water equilibrium line at U\num{=1.23} V vs. RHE shows the ideal onset of OER.
 %
@@ -76,11 +77,8 @@ The water equilibrium line at U\num{=1.23} V vs. RHE shows the ideal onset of OE
 \end{figure*}
 % __|
 
-% __|
 
 
-\subsubsection{OER Surfaces and Activities}
-% | - OER Surfaces and Activities
 
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -125,21 +123,24 @@ The two \rIrOtwo surfaces (100 and 110) bind the OER intermediates too strongly,
 locating them at a theoretical limiting potential of \mytilde\num{1.8} V vs. RHE.
 %
 The predicted overpotentials of our \rIrOtwo systems are within the range of experimentally observed overpotentials found in literature.
+%
 % Reference all experimental IrO2 overpotentials I can find
 The three \IrOthree polymorph surfaces all have a $\Delta G_\mathrm{O} - \Delta G_\mathrm{OH}$ descriptor towards the top and right of the volcano, indicative of weaker binding energetics.
+%
 % \chris{Im losing the big picture here at the end of the section, I think you are convoluting two different things that need to be broken up into their own paragraphs.  This OER activity part needs some work, let's discuss}
 % TODO How much weaker does IrO3 bind than IrO2 on average
 This is evident from Figure \ref{fig:scaling_relations} in the SI, which shows a clear distinction between the \IrOtwo and \IrOthree polymorphs, with \IrOthree binding on average TEMP eV weaker than \IrOtwo.
 %
 The best performing systems, including the (100), (110), and (211) facets of \aIrOthree, \bIrOthree (101), and \rIrOthree (110), have overpotentials of \mytilde\num{0.4} V vs RHE,
-a ~0.2 V vs RHE improvement over the \rIrOtwo system.
+a \mytilde\num{0.2} V vs RHE improvement over the \rIrOtwo system.
 %
 We note that the computed  overpotentials for our \rIrOtwo system differs from that reported in \cite{Seitz2016} by \mytilde\num{0.2} V.
 %
 This discrepancy is due to our inclusion of spin-polarization in our \latin{ab-initio} calculations, which was neglected in Seitz \latin{et al.}.
 %
-This discrpency was discussed in a previous publication. \cite{Strickler2019}
+For further details, we'll refer readers to the SI of a previous publication.\cite{Strickler2019}
 % __|
+
 
 
 
@@ -150,30 +151,32 @@ This discrpency was discussed in a previous publication. \cite{Strickler2019}
 {02_figures/oer_activity_stability/00_master__oer-volc_surf-pourb_struct__main_v3__200dpi__outplot.png}
 }
 \caption{\label{fig:oer_volcano}
+% TODO Insert green band into figure, insert experimental references for this
+%
 Summary of OER results for the four bulk structures of \IrOx considered: rutile-\ce{IrO_2} (green), $\alpha$-\ce{IrO_3} (purple), rutile-\ce{IrO_3} (orange), and $\beta$-\ce{IrO_3} (pink).
 %
 (a) Surface energy Pourbaix diagrams for each structure, with the surface energy of various facets and coverages shown as a function of applied potential.
-The bulk Pourbaix diagram's bounds of stability at pH 0 are superimposed at the bottom of each subplot.
+%
+% COMBAK This may not be necessary, too much clutter on plots
 The bulk Pourbaix diagram's bounds of stability at pH \num{0} are superimposed at the bottom of each subplot.
 %
 (b) OER activity volcano for \IrOx systems considered utilizing the \DGOmOH thermodynamic descriptor.
 %
 The purple dotted line corresponds to the experimental limiting potential at \num{10} mA cm\textsuperscript{-2} for \ce{IrO_3} \cite{Seitz2016},
 while the green band corresponds to the range of experimentally observed overpotentials for pristine \ce{IrO_2} catalysts as reported in literature.
-% TODO Insert green band into figure, insert experimental references for this
 %
 (c) Select surface facets for the four \IrOx crystal systems considered.
 %
-Color legend: oxygen (red), purple (iridium), coordination motiff (white)
+Color legend: oxygen (red), purple (iridium), coordination motiff (white).
 }
 \end{figure*}
 % __|
+
+
 
 
 % | - __old__
 % Circles designate oxygen covered surfaces while triangles designate hydroxyl (*OH) terminated surfaces (relevant surface terminations were found via surface Pourbaix analyses).
 % Surface energies at standard conditions (pH and V = 0) are reflected in the border color for each data point, where black indicates a low energy surface termination and white indicates more unstable surfaces.  % Currently not implemented as this
 % The color range goes from x to y.
-% __|
-
 % __|

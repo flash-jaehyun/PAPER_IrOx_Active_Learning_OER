@@ -83,7 +83,6 @@ This process reduces the data set to \num{620} and \num{219} unique structures o
 % COMBAK
 Combining the MP and OQMD data sets ultimately results in a dataset of \num{688} \ABtwo and \num{254} \ABthree structurally unique candidates.
 %
-
 % __|
 
 
@@ -187,7 +186,6 @@ This structural classification scheme can directly serve as a structural fingerp
 %
 % This was done by parsing for structurally unique systems based on the crystal symmetry classification scheme of Ankit.
 %
-
 % __|
 
 
@@ -211,11 +209,10 @@ Structures are featurized using the Voronoi tessellation method developed by TEM
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Gaussian process regression model}  % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Relevant details about the ML Gaussian process here  % @Chris
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Gaussian process regression model
-% Relevant details about the ML Gaussian process here  % @Chris
-
 %
 The Gaussian Process model utilized two isotropic Gaussian (RBF) kernels, with one kernel having a larager length scale parameter and the other one having a lengh scale parameter that operates on shorter length scales.
 %
@@ -244,13 +241,12 @@ The initial values of the hyper paramters are as follows:
 \subsection{Bulk polymorph DFT optimization}  % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Bulk polymorph DFT optimization
 % VASP
 % PBE exchange correlation functional
 % spin-polarized calculations
 % plane-wave cutoff of 600 eV
-
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - Bulk polymorph DFT optimization
 %
 A variable k-point mesh is used such that a k-point density of at least \num{20} k-points per reciprocal space dimension.
 %
@@ -304,11 +300,13 @@ All OER calculations were performed using density functional theory (DFT) implem
 and utilizing the PBE exchange-correlation functional\cite{Perdew1996}.
 %
 Dipole corrections were imposed on all non-symmetric slabs to counteract spurious dipole interactions between the periodic cells.\cite{Neugebauer1992}
+%
 % TODO COMBAK, make this section more general, k-points were treated differently
 % for different calculations
 A 4x4x3 k-point mesh with gamma-point centered Monkshort-packing\cite{Monkhorst1976} was used for all slabs.
 %
 The plane-wave energy cutoff was \SI{500}{\electronvolt}.
+%
 % COMBAK Figure out how much spacing was used for all slabs
 All slab calculations maintained a vacuum spacing in between TEMP and \SI{15}{\angstrom}
 %
@@ -387,22 +385,17 @@ The \DGOOH vs.\DGOH relationship is very close to the traditional ``universal sc
 {02_figures/oer_activity_stability/00_master__oer_scaling__main_v0__outplot2.png}
 }
 \caption{\label{fig:scaling_relations}
-% Adsorption free energy scaling relations plot.
 Relationship between the adsorption free energies of the three key OER intermediates (*OH, *O, *OOH), with \DGOH chosen as the dependent variable.
+%
 Best fit lines are provided for \DGOOH vs. \DGOH and \DGO vs. \DGOH.
 %
 Additionally, ``universal scaling relations'' for \DGOOH vs. \DGOH and \DGO vs. \DGOH are shown (black dotted lines) to emphasize our deviation from the traditionally reported scaling fits.
+%
 The \DGOH line is  shown as guide to eye.
 % TODO Do I have to redefine the color convention every caption?
 }
 \end{figure*}
 % __|
-
-% ################################# Paragraph #################################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 % __|
 
