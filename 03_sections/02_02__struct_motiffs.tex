@@ -1,10 +1,46 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Structural analysis of IrO2 and IrO3 oxides %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Important Points:
+%   * A good candidate set is a set of materials that have a large degree of 'structural diversity'
+%
+%   * We can make an analogy between the shape of these plots and typical van-der Waals curves
+%     * I would argue that the tails are much less steep than a van-der Waals curve because in most cases the there is still a large degree of bonding
+%       * Essentially these systems can create more and more 'porous' structures as the density is decreases, which allows us to get really large porous structures
+%         * A good point can be made here that these types of systems could be useful for battery applications
+%           * Pores are good in this context I think?
+%
+%
+%   * The main coordination environments are 6 and 4-fold coordinated (Ir-O4/6 units)
+%     * This is consistent with crystal field theory, or literature, etc.
+%     * 6/4-coord accounts for TEMP percent of the IrO2/3 candidate space
+%       * TODO Get these numbers
+%     * There are in addition to 6/4-coord, a lot of other types of coordination environments
+%       * A lot of these are simply weird, aphysical structures for sure
+%         * Unassociated oxygens
+%           * Singly-associated (part of N-hedra)
+%           * Completely un-unassociated O atoms, just randomly placed in unit cell
+%
+%         * Especially at the extreme ends of the average coord metric
+%       * But there are also a lot of legitimate coordination environments
+%         * I've manually parsed the dataset and found
+%
+%   * There is a lot to say about the different kinds of 100% corner sharing octahedral IrO3 systems
+%     * There are a lot of these systems that differ in subtle ways
+%       * Basically octahedra can be "rotated" in different directions, making them distinct
+%
+%   * Interesting types of systems
+%     * Layered systems (A lot of variety here)
+%     * Cubic coordination environments (A few cool looking expamples)
+%     * New coordination environments
+%       * TODO Remind myself again of these
+%
+%   * IrO2 has more 4-fold coordinated systems than IrO3
+%     * Makes sense, the more oxygens you have the more oxygen-rich motifs are favored
+%
 %
 % NOTES:
-%   * Describe convex hull, classes of structures (\ce{$\alpha$-AlF3} like,
-%   rutile like, and layered, should be segregated in hull plot)
+%   * Describe convex hull, classes of structures (\ce{$\alpha$-AlF3} like, rutile like, and layered, should be segregated in hull plot)
 %   * Describe structures within each class, cite lit where appropriate
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -18,6 +54,7 @@
 % I would use the updated version of Figure 2c.
 %
 Next, we describe the structural variety that is present in our data set of \mytilde\num{1000} \IrOtwo and \IrOthree polymorphs.
+% 
 % Looks like I wasn't using the algorithm implemented in R52 (David Waroquiers)
 The coordination environment package ChemEnv, developed by Waroquiers et. al. \cite{Waroquiers2017} and implemented in pymatgen \cite{Ong2013}, was used to assign M-O crystal filed coordination types (e.g. octahedral, square pyramidal, cubic, etc.) to each of the \mytilde one thousand structures in our combined data set.
 %
