@@ -10,7 +10,7 @@ RBF | Radial basis function
 GP-UCB | Gaussian Process - Upper Confidence Bound
 SCF | Self-consistent field
 CCF | Coordination Characterization Function
-
+CHE | Computational Hydrogen Electrode
 
 # Variables
 ---
