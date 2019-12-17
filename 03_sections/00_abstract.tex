@@ -9,19 +9,19 @@
 %
 Machine learning (ML) based surrogate models have become an increasingly common tool to overcome the relative expense of density functional theory in the field of computational materials discovery.
 %
-The application of ML surrogate models trained on expansive data sets of ab-initio DFT data has been used to discover new materials in the vast composition-space.
+The application of ML surrogate models trained on expansive data sets of \latin{ab-initio} DFT data has been used to discover new materials in the vast composition-space.
 %
 However, surrogate model applications to the structural space of bulk-crystals, \latin{i.e.} polymorphs,
-are very scarce due to the inherent bias of ab-initio datasets towards systems with a large variety in composition but with limited structural diversity. 
+are very scarce due to the inherent bias of \latin{ab-initio} datasets towards systems with a large variety in composition but with limited structural diversity. 
 %
 Herein, we report on an active learning (AL) ML methodology that searches for the most stable crystal structures of \IrOtwo and \IrOthree by utilizing surrogate models which optimize within a candidate data set of crystal motifs sourced from publicly available materials databases.
 % NUMBER
 We demonstrate the efficacy of this AL-accelerated methodology by discovering 70 percent of the 10 most stable crystal structures for \IrOtwo and \IrOthree with less than 50 DFT calculations.
-% NUMBER
+%
+% This needs to be filled ASAP. We have the results 
+% TODO COMBAK I'd like a more meaningful meta-stability cutoff other than 0.2 eV/atom, I'm thinking of some possibilities, will update
 For \IrOtwo, we reaffirm that the rutile phase is the globally stable polymorph,
-while for the previously unexplored \IrOthree more than 
-{\bf XX}%this needs to be filled ASAP. We have the results 
-unique structures are discovered within the metastability limit of 0.2 eV per atom.
+while for the previously unexplored \IrOthree more than unique structures are discovered within the metastability limit of 0.2 eV per atom.
 %
 % There are 10 IrO3 polymorphs within 0.2 eV/atom of the lowest structure and 5 IrO3 polymorphs within 0.1 eV/atom of the lowest structure
 % Of these 10, how many were unknown? Maybe 8ish? TODO double check
