@@ -15,11 +15,11 @@
 %
 %
 %
-%   * There will not be much motivation for our general approach from the intoduction, so this is a good place to more properly layout our arguments
+%   * There will not be much motivation for our general approach from the introduction, so this is a good place to more properly layout our arguments
 %
 % Points to mention:
 %   * Active learning frameworks are a means by which to generate the most valuable training data set, on the fly.
-%   * The search space of materials is not a continous space but a discrite array of individual structures
+%   * The search space of materials is not a continuous space but a discrete array of individual structures
 %
 % TODO:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -41,13 +41,13 @@ whereby a simple regression model is trained on a set of candidate materials by 
 A high-level overview of algorithm is presented in Figure \ref{fig:all_diagram}.
 %
 % TODO Add subplot labels to Figure 1
+\textbf{A and B do not appear in the figure}
 There are two primary parts of the algorithm, the first is the generation of the candidate space,
 which defines the list of candidate crystal structures to be searched through (see Figure \ref{fig:all_diagram}.a).
 %
-The structures within the candidate space are then transformed into a vectorial representation by a fingerprinting method which encodes the relevent chemical and structural information into a numerical vector,
-which can then be directly used by a machine learning regression model.
+The structures within the candidate space are then transformed into a numerical vector representation for use in machine learning regression model.
 %
-The second part of the algorithm is the iterative search through candidate space via a continiously retrained surrogate model, (Figure \ref{fig:all_diagram}.b).
+The second part of the algorithm is the iterative search through candidate space via a continuously retrained surrogate model, (Figure \ref{fig:all_diagram}.b).
 % __|
 
 
@@ -57,40 +57,40 @@ The second part of the algorithm is the iterative search through candidate space
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-The generation of the candidate space is a critical step in the discovery of novel crystal structures for a given system,
-since the initial candidate pool determines which structures that can ultimately be discovered, it is imperative to construct candidates that are sufficiently diverse, such that they encompanse as much of the structural diversity in the PES as possible.
+%The generation of the candidate space is a critical step in the discovery of novel crystal structures for a given system,
+%since the initial candidate pool determines which structures that can ultimately be discovered, it is imperative to construct candidates that are sufficiently diverse, such that they encompass as much of the structural diversity in the PES as possible.
 %
 % TODO PENDING Ask @Ankit for these numbers
 % The MP project number should be correct, but the OQMD number might be wrong
 % MP{AB2: 2424, AB3: 2341} | OQMD{AB2: 4736, AB3: 28883}
-Herein, the structures that comprise the candidate data sets for \IrOtwo and \IrOthree were constructed by mining for \ABtwo and \ABthree structures in the Materials Project\cite{Jain2013} and OQMD\cite{Kirklin2015} databases
+Structures that comprise the candidate data sets for \IrOtwo and \IrOthree were constructed by first obtaining all \ABtwo and \ABthree structures in the Materials Project\cite{Jain2013} and OQMD\cite{Kirklin2015} databases
 (in total \num{4528} \ABtwo and \num{23764} \ABthree entries).
 %
-Structurally redundant systems were then removed via a space-group based structural classification scheme developed by Jain \latin{et al.} \cite{Jain2018},
-whereby structural uniqueness is defined by the element-nonspecific stoicheometry (\ABtwo, \ABthree, etc.), spacegroup symmetry and wyckoff positions of the atoms within the unit cell.
+To reduce the size of the candidate space while maintaining maximum structural diversity, structurally redundant systems were removed via a space-group based structural classification scheme developed by Jain \latin{et al.} \cite{Jain2018},
+whereby structural uniqueness is defined by the element-nonspecific stoicheometry (\ABtwo, \ABthree, etc.), space group symmetry and Wyckoff positions of the atoms within the unit cell. \textbf{this needs another sentence here to explain what this means more plainly}
 %
-Imposing structural uniqness reduces the number of entries considerably to \num{697} and \num{259} structures for the \ABtwo and \ABthree stoicheometries, respectively;
-this is a prime indication of the lack of structural diversity in the OQMD and MP databases.
-%
-% NUMBER
-Furthermore, only bulk structures containing $\leq$ \num{75} atoms were included in the final candidate pool to reduce the computational expense of the DFT compuations
-(further reducing the candidates spaces to \num{567} and \num{256} \ABtwo and \ABthree structures respectively).
-%
-Next, iridum and oxygen were subsituted for the A and B sites, respectively,
-this was then followed by a crude isotropic expansion/contraction of the unit cell to accommodate the atomic radii of iridium and oxygen.
+Imposing structural uniqueness \textbf{you never define what this means} reduces the number of entries considerably to \num{697} and \num{259} structures for the \ABtwo and \ABthree stoichiometries, respectively.
+The orders of magnitude reduction between all structures and unique structures is a consequence of the lack of structural diversity in the OQMD and MP databases.
 %
 % NUMBER
-Because of the relitively small size of the candidate space, and because we wish to validate our methods fully, we performed bulk relaxations for all \num{823} structures in the candidate space.
+\textbf{Write in active voice where possible}
+To reduce the computational expense of the DFT calculations only bulk structures containing $\leq$ \num{75} atoms were included in the final candidate pool, further reducing the candidates spaces to \num{567} and \num{256} \ABtwo and \ABthree structures respectively)
 %
-See section (SI Bulk polymorph DFT optimization) for further details on the computational methodology used to relax the bulk structures.
+Next, iridium and oxygen were substituted for the A and B sites, respectively,
+this was then followed by isotropic expansion/contraction of the unit cell to accommodate the atomic radii of iridium and oxygen, \textbf{details in SI XYZ}.
 %
-Of the \num{823} structures, \num{736} were able to be fully optimized, while \num{87}, primarily \ABtwo structures were not able to be converged for a variety of convergence issues stemming from highly volumnous and unphysical initial structures.
+% NUMBER
+Because of the relatively small size of the candidate space, and to validate our methods fully, we performed bulk relaxations for all \num{823} structures in the candidate space.
 %
-The resulting candidate space was composed of \num{487} \IrOtwo and \num{249} \IrOthree structures, all of which have unique space group/Wyckoff combintations, ensuring their structural uniquness.
+Computational details for the bulk structure relaxations can be found in \textbf{SI XYZ} (SI Bulk polymorph DFT optimization).
 %
-While not particularly large in size, this data set will serve as a proof of concept.
+Of the \num{823} structures, \num{736} were able to be fully optimized, while \num{87}, primarily \ABtwo structures were not able to be converged due to highly voluminous and unphysical initial structures \textbf{Unphysical how?  Do not make sense for atoms like Ir and O?  Needs some more information here or link to an SI section on analysis of these structures.}.
 %
-In addition, the size of candidate space is sufficiently small that we can tractably optimize the equilibrium structure for the entire dataset with \latin{ab-initio} DFT, thus allowing us to validate the approach in an `after the fact` manner.
+The resulting candidate space was composed of \num{487} \IrOtwo and \num{249} \IrOthree structures, all of which have unique space group/Wyckoff combinations, ensuring their structural uniqueness.
+%
+%While not particularly large in size, this data set will serve as a proof of concept.
+%
+The candidate space size is ideal in that that we can tractably optimize each equilibrium structure for the entire dataset with DFT, thus allowing us to validate our AL approach.
 % __|
 
 
@@ -101,16 +101,17 @@ In addition, the size of candidate space is sufficiently small that we can tract
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 %
-The candidate data set was featurized using the Voronoi tessellation fingerprinting scheme developed by Ward \latin{et al.} \cite{Ward2017} which produces a \num{271} length feature vector for each material that is invariant to isotropic expansions/contractions of the lattice and to a degree, insensitive to the exact atomic coordinates of the atoms.
+The candidate data set was featurized using the Voronoi tessellation fingerprinting scheme developed by Ward \latin{et al.} \cite{Ward2017} which produces a \num{271} length feature vector for each material that is invariant to isotropic expansions/contractions of the lattice and to a degree, insensitive to the exact atomic coordinates of the atoms. \textbf{in one sentence you still need to explain what the physical meaning of the features it produces are}
 %
 % How many columns of the 271 are redundant if stoich and composition are frozen
-Herein, we apply our active learning model to the \IrOtwo and \IrOthree spaces separately, because we are interested in the most stable polymorphs at each stoichiometry.
+\textbf{don't use herein so much, it is almost never necessary and is not the way to write a sentence in active voice}
+We apply our active learning model to the \IrOtwo and \IrOthree spaces separately, because we are interested in the most stable polymorphs at each stoichiometry.
 %
-Contraining the stoicheometry per application of the AL algorithm further reduces the \num{271} length  feature vector to \num{101} non-zero variance features,
-significantly reducing the dimensionality of the features.
+Constraining the stoicheometry per application of the AL algorithm further reduces the \num{271} length  feature vector to \num{101} non-zero variance features.%,
+%significantly reducing the dimensionality of the features.
 %
 % COMBAK TODO How much of the variance is captured by the PCA analysis
-Further dimensionality reduction is achieved via a principle component analysis (PCA) \cite{Tipping1999}, which was used to reduce the remaining \num{101} features to \num{11}.
+Further dimensionality reduction is achieved via a principle component analysis (PCA) \cite{Tipping1999}, which was used to reduce the remaining \num{101} features to \num{11}.\textbf{why 11?  describes what \% of variance?}
 % __|
 
 
@@ -125,14 +126,14 @@ Further dimensionality reduction is achieved via a principle component analysis 
 The active learning algorithm proceeds through iterative generations of ML training, prediction, and acquisition steps that are visualized in Figure \ref{fig:iro2_al}.
 %
 % COMBAK Did I get all of the important features of GP here? @Jose
-To start, we utilized Gaussian process (GP) regression with gaussian (or RBF) kernels as implemented in the CatLearn\cite{hansen2019atomistic,CatLearn_Repo} package for atomistic machine learning applications, and used it to train a regression model on a small seed set of DFT formation energies from randomly selected structures in the candidate space.
+To start, we utilized Gaussian process (GP) regression with Gaussian (or RBF) kernels as implemented in the CatLearn\cite{hansen2019atomistic,CatLearn_Repo} package for atomistic machine learning applications, and used it to train a regression model on a small seed set of DFT formation energies from randomly selected structures in the candidate space.
 %
 % NOTE I've introduced the aquis. crit. with the GP uncertainty before talking about aquis. in more detail, need to restructure
 Herein, we utilized Gaussian process regression because they are highly flexible regression models which have built-in error quantification for each prediction.
 %
 The model is then used to predict the formation energies of the entire candidate space.
 %
-This predicted energy landscape is then used to select the next systems to calculate via a aquisition function, which defines a fitness score for each system, and systems that minimize this quantity are then selected.
+This predicted energy landscape is then used to select the next systems to calculate via a acquisition function, which defines a fitness score for each system, and systems that minimize this quantity are then selected.
 %
 Herein, we use the so-called GP-UCB acquisition function
 %
@@ -154,7 +155,7 @@ In this work we attempt to trade off exploitation and exploration by weighting t
 Once ranked, the N systems that minimize the acquisition function are selected for full DFT calculations, which are included in the training data of subsequent AL generations.
 %
 Here we chose a bin size ($N$) of \num{5}, the value of which determines how many structures are selected for DFT calculations,
-and as such, determines the degree of parallization of the routine.
+and as such, determines the degree of parallelization of the routine.
 %
 The optimal value of $N$ depends on the computational resources available, as small values can result in slow down the discovery rate of the AL algorithm,
 as every DFT calculation needs to be performed more serially.
@@ -162,7 +163,7 @@ as every DFT calculation needs to be performed more serially.
 % TODO: Is this statement true?
 Larger values of $N$ speed up the active-learning algorithm, but leads to a higher number of DFT calculations performed before convergence.
 %
-Although initially unique, the structures in the candiate often relax into one another over the course of the DFT optimization, introducing duplicate structures in the post-DFT structures.
+Although initially unique, the structures in the candidate set often relax into one another over the course of the DFT optimization, introducing duplicate structures in the post-DFT structures.
 %
 These duplicate structures are removed during each generation of the AL algorithm, leaving only a single instance of lowest energy in the candidate pool.
 %

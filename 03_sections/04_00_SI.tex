@@ -26,7 +26,7 @@
 % Basic intro into candidate generation
 % High-level overview again
 %   * Data mining OQMD MP fro AB2/3 entries
-%   * Reduce data set by eleminating structurally redundant systems
+%   * Reduce data set by eliminating structurally redundant systems
 %     * This is done with Ankit's scheme
 %   *
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -34,14 +34,14 @@
 %
 Here we describe in more detail the methodology to construct the set of structural candidates that were considered.
 %
-At a high-level, the procdure is to mine materials databases for entries with the desired non-element specific stoicheometry (\latin{i.e.} \ABtwo and \ABthree).
+At a high-level, the procedure is to mine materials databases for entries with the desired non-element specific stoicheometry (\latin{i.e.} \ABtwo and \ABthree).
 %
 Since many of the entries in these databases are structurally redundant with one another,
 we used a structure classification scheme to reduce the data set to a structurally unique set.
 %
 Once this is accomplished, the elements of interest were then substituted into the database structures, which at this point had their original elemental composition from their database.
 %
-And finally, the structures are isotropically expanded or contracted to accomodate the difference between the atomic radii of the original elements in the structure and the user defined elements.
+And finally, the structures are isotropically expanded or contracted to accommodate the difference between the atomic radii of the original elements in the structure and the user defined elements.
 %
 Below we go into more detail for each of these steps.
 % __|
@@ -61,7 +61,7 @@ At the time that we originally mined these databases (TEMP 2018? TEMP), there we
 %
 The databases have expanded the number of entries considerably since we originally parsed them, so we'd like to caution the reader that these exact numbers are out of date.
 %
-Herein, for simplicity we'll refer to the quantiative figures of these databases in the present, instead of past, tense.
+Herein, for simplicity we'll refer to the quantitative figures of these databases in the present, instead of past, tense.
 %
 The structural classification scheme of Jain \latin{et al.} \cite{Jain2018} was then used to classify the structure and element-nonspecific stoicheometry of each structure (\num{497054} in total).
 %
@@ -73,10 +73,10 @@ for which MP has \num{2424} and \num{2341} \ABtwo and \ABthree entries, respecti
 and OQMD has \num{4736} and \num{28,883} \ABtwo and \ABthree entries, respectively.
 %
 % COMBAK double check, is this the right reason?
-The reason that there are considerably more \ABthree compounds in OQMD is due to the extensive compositional permutation of the cubic perovskite structure (ABO\textsubscript{3} ABO3) with the A cation removed.
+The reason that there are considerably more \ABthree compounds in OQMD is due to the extensive compositional permutation of the cubic Perovskite structure (ABO\textsubscript{3} ABO3) with the A cation removed.
 %
 % TODO
-Within each stoicheometry, the structural classification was used to eliminate structurally redundant systems, \latin{i.e.} systems that share their stoicheometry, space-group, and wyckoff positions.
+Within each stoicheometry, the structural classification was used to eliminate structurally redundant systems, \latin{i.e.} systems that share their stoicheometry, space-group, and Wyckoff positions.
 %
 This process reduces the data set to \num{620} and \num{219} unique structures of \ABtwo and \ABthree for MP and \num{397} and \num{194} structurally unique \ABtwo and \ABthree OQMD entries.
 %
@@ -182,7 +182,7 @@ This structural classification scheme can directly serve as a structural fingerp
 
 % | - __old__
 %
-% The candidate for \IrOtwo and \IrOthree were generated from existing experimental structures in the OQMD and Materials Project databases by considering only structurally unique systems, where structural uniquness .
+% The candidate for \IrOtwo and \IrOthree were generated from existing experimental structures in the OQMD and Materials Project databases by considering only structurally unique systems, where structural uniqueness.
 %
 % This was done by parsing for structurally unique systems based on the crystal symmetry classification scheme of Ankit.
 %
@@ -214,12 +214,12 @@ Structures are featurized using the Voronoi tessellation method developed by TEM
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Gaussian process regression model
 %
-The Gaussian Process model utilized two isotropic Gaussian (RBF) kernels, with one kernel having a larager length scale parameter and the other one having a lengh scale parameter that operates on shorter length scales.
+The Gaussian Process model utilized two isotropic Gaussian (RBF) kernels, with one kernel having a larger length scale parameter and the other one having a length scale parameter that operates on shorter length scales.
 %
 % TODO Double check that I said it correctly, might be minimizing the LML
 The hyperparameters of the GP kernel are optimized every time the GP is trained such that the log marginal likelihood of the model and training data is maximized.
 %
-The initial values of the hyper paramters are as follows:
+The initial values of the hyper parameters are as follows:
 
 % | - Table of GP Hyper parameters
 \begin{table}[htbp]

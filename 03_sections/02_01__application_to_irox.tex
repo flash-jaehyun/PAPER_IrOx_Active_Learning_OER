@@ -7,6 +7,8 @@
 %     * Probably not important
 %   - QUESTION What did @Chris mean by this? "Computed amorphous phase to define synthesizability"
 %     * ANSWER: Referring to Murat's paper R85
+%     * I don't think we can take advantage of this since there is no amorphous data for IrO3
+% Mention that we have ~15 metastable structures inbetween rutile and anatase IrO2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -21,7 +23,7 @@ We now turn our attention of the application of this active learning scheme to t
 %
 The algorithm is applied separately to both stoichiometries.
 %
-Here, we report in detail the results for \IrOthree, the analogous results for  \IrOtwo are shown in more detail in the SI.
+We will focus in more detail the results for \IrOthree, as the results for \IrOtwo are analogous and will be shown in more detail in the SI.
 % __|
 
 
@@ -30,7 +32,7 @@ Here, we report in detail the results for \IrOthree, the analogous results for  
 % Results for IrO3
 % ALL results for IrO3
 %   * Introduce the convergence plots
-%   * The GP becomes more accurate as more DFT is aquired
+%   * The GP becomes more accurate as more DFT is acquired
 %   * The GP can start to recognize the low energy systems after minimal DFT
 %   *
 % We need to call them something else than "convergence plots" (bad name)
@@ -143,7 +145,7 @@ Red guide lines are displayed to show how many DFT calculations are needed to di
 % | - __old__
 % This is clearly seen in the parity plot (Fig TEMP), which shows that the predicted DFT energies become increasingly less accurate as stability of the polymorph decreases, with low stability structures tending to reconfigure into lower energy states.
 % %
-% This is significantly lower than the leave-one out cross validation error of ~0.15 eV/atom, which is performed by predicting only on optimized strctures, indicating that the issue does not lie with a poor predictive model, but instead with the large degree of structural reorganization that occurs over the course of a typical DFT ionic optimization.
+% This is significantly lower than the leave-one out cross validation error of ~0.15 eV/atom, which is performed by predicting only on optimized structures, indicating that the issue does not lie with a poor predictive model, but instead with the large degree of structural reorganization that occurs over the course of a typical DFT ionic optimization.
 % %
 % % This is because the candidate space structures are generated
 % % To compare the performance of the AL routine we compare against a
@@ -156,13 +158,13 @@ Red guide lines are displayed to show how many DFT calculations are needed to di
 % This is due to the fact that the structures undergo through a large degree of structural rearrangement over the course of the DFT relaxation.
 % %
 % Alternatively, the MAE is much lower when the model predicts onto the post-optimized structures (MAE ~0.15 eV/atom),
-% demonstrating that the poor preditive capabilities is due primarily to structural drift and not to the poor predictive capabilities of the GP model.
+% demonstrating that the poor predictive capabilities is due primarily to structural drift and not to the poor predictive capabilities of the GP model.
 %
 % Despite these shortcomings, Figure TEMP (TEMP performance plot) tracks the number of high stability materials (lowest N structures) discovered as a function of the number of DFT calculations for the case of 1.) AL with UCB acquisition function and 2.) AL with a random acquisition function.
 % %
 % The random acquisition function emulates the behavior of regression model which exhibits no correlation between the input and output space.
 % %
-% Clearly, the rate of discovery for case 1.) is superior to that of case 2.), with our methodology discovering half of the lowest N structures after only TEMP DFT calculations compared to TEMP when acquiring randomley within the candidate space.
+% Clearly, the rate of discovery for case 1.) is superior to that of case 2.), with our methodology discovering half of the lowest N structures after only TEMP DFT calculations compared to TEMP when acquiring randomly within the candidate space.
 %
 % The middle panel is reproduced in Figure \ref{fig:iro2_al}, which also shows the real DFT energies accompanying each predicted formation energy (hollow diamonds).
 % Probably remove the diamonds and add the parity subplot?
@@ -173,7 +175,7 @@ Red guide lines are displayed to show how many DFT calculations are needed to di
 % Figure \ref{fig:iro2_al} a. shows the progression of the model at selected generations of the active learning loop, starting and ending with the initially seeded generation and final generation, respectively.
 %
 % An acquisition bin size of 10 DFT calculations per iteration and an initial seed of 11 calculations were used.
-% plots of the AL predictions on the candidate space at particular generations of the AL algorithm for the \IrOthree candidate space with an aquisition bin size of 10 DFT calculations per iteration and an initial 11 calculations used for seeding.
+% plots of the AL predictions on the candidate space at particular generations of the AL algorithm for the \IrOthree candidate space with an acquisition bin size of 10 DFT calculations per iteration and an initial 11 calculations used for seeding.
 % The AL algorithm is applied separately to \IrOtwo and \IrOthree because we are specifically interested in the most stable polymorphs at each stoichiometry.
 % TODO How many features drop out when you constrain the stoich.?
 % This has an the added benefit of reducing the number of fingerprint vectors from the Voronoi tesselation dramatically (from TEMP to TEMP) because many features are senstive to changes in stoichiometry.
