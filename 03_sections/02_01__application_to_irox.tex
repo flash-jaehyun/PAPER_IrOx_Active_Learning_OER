@@ -103,6 +103,7 @@ The low energy region of Figure \ref{fig:iro2_al}a.iii is shown in Figure \ref{f
 And the \num{6} most stable structural polymorphs are shown in Figure \ref{fig:iro2_al}d.
 
 
+% COMBAK Remove parity plot text from this caption
 % | - Figure | IrO3 Convergence Plot
 \begin{figure*}[!htb]
 \centering
@@ -134,6 +135,20 @@ The vertical lines at the top of each subplot are tracking the positions of the 
 Error bars indicate the standard deviation over \num{5} runs.
 %
 Red guide lines are displayed to show how many DFT calculations are needed to discover \num{7/10} of most stable polymorphs for the GP-UCB and random acquisition.
+}
+\end{figure*}
+% __|
+
+
+% | - Figure | IrO2/3 Parity Plot
+\begin{figure*}[!htb]
+\centering
+\makebox[\textwidth][c]{\includegraphics[]
+{02_figures/parity_plot.png}
+}
+\caption{\label{fig:parity}
+%
+Parity plot of the final ML models for \IrOtwo and \IrOthree predicting on either the pre-optimized (grey) or the post-optimized structures of \IrOtwo and \IrOthree.
 }
 \end{figure*}
 % __|
