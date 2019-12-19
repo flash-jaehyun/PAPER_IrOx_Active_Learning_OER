@@ -2,11 +2,25 @@
 ---
 
 ## Links:
+
+### Paper
 Paper Github Repo:
 https://github.com/raulf2012/PAPER_IrOx_Active_Learning_OER
 
+Paper Dropbox Folder:
+https://www.dropbox.com/sh/02d6ysvy6o2pgsb/AABtNQCE5PXXNL2nP1c0MHz1a?dl=0
+
+### Project scripts/analysis
+
 Project Analysis Github Repo:
 https://github.com/raulf2012/PROJ_IrOx_Active_Learning_OER
+
+Corresponding Dropbox location:
+https://www.dropbox.com/sh/ulvd8mnl52p6bu8/AAAMKH95XtwLex7S3jg1z6T5a?dl=0
+
+### Location of figure files
+https://www.dropbox.com/sh/77hz3rvjtpa3k6b/AAA3y0-m69bxQHD8Za2FpTxLa?dl=0
+
 
 Workflowy: https://workflowy.com/s/ml-irox-oer-publicat/kA13CTQkFbAzFkBd
 
