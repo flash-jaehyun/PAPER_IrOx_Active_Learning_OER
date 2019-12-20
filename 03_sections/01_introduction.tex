@@ -37,13 +37,13 @@ When simulations are used to guide the search for new materials, the stable and 
 %
 % Structure vs. composition enumeration (composition done to death)
 % Give example of how over represented some motifs are
-% 188,000 systems with identical prototype ABO2 perovskites structure (~50 %)
+%
 % TODO Cite multiple materials databases here
 Although there have been numerous examples in recent years of machine learning algorithms applied towards the prediction of formation energies of large \latin{ab-initio} data sets,
-these data sets are biased towards common structures and varying composition space.\cite{}
-% NUMBER
-For example, roughly half of the entries (\mytilde\num{200000}) in The Open Quantum Materials Database (OQMD) correspond to ternary-alloy combinations in the same close-packed cubic structure.\cite{Kirklin2015}
-%have identical structures corresponding to ABO3 Perovskites.
+these data sets are biased towards common structures and varying composition space.
+%
+For example, there are \mytilde\num{188000} entries in The Open Quantum Materials Database (OQMD) correspond to ternary-alloy combinations in the same close-packed cubic structure.\cite{Kirklin2015}
+%
 % Should we say that enumerating comp. is easy and struct. is hard?
 As such, these efforts have been primarily concerned with the enumeration of composition (elemental identity and stoichiometries) and less so with the exploration of structural diversity.
 %
@@ -67,7 +67,7 @@ As such, these efforts have been primarily concerned with the enumeration of com
 % TODO All global optimization papers go here
 % TODO Add review paper for GO
 Historically, the most common approach to crystal structure prediction relied on classical global optimization (GO) schemes,
-in which the local/global minimum are found via numerical optimization routines that operate within the continuous potential energy surface (PES).%highly dimensional is also next sentence 
+in which the local/global minimum are found via numerical optimization routines that operate within the continuous potential energy surface (PES).%highly dimensional is also next sentence
 %
 % TODO Find solid example of shortcomings of classical GO schemes
 These approaches, such as simulated annealing, are only tractable for the most simple systems,
