@@ -31,8 +31,14 @@ Latex table generation: https://www.tablesgenerator.com/latex_tables
 ## TODO List:
   * Reference the Catlearn paper and codebase
   * Be consistent about use of 'fingerprint' vs 'feature', just use 1
+  * Give tables in SI that have more sig figs than numbers in text/plots
 
 ## Notes:
+
+I used the `git update-index --skip-worktree *pdf` on the output pdf file to ignore changes
+See the following link:
+https://stackoverflow.com/questions/6138076/git-assume-unchanged-vs-skip-worktree-ignoring-a-symbolic-link
+
 ### Code-folding syntax
 I use a custom syntax to fold code through out this repo (% | - CF start) and (% \_\_|).
 I find this quite useful for navigation, and to achieve the same effect in your VIM editor put the following code into your `~/vimrc`:
