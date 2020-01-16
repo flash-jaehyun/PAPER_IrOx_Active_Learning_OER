@@ -32,6 +32,8 @@ Latex table generation: https://www.tablesgenerator.com/latex_tables
   * Reference the Catlearn paper and codebase
   * Be consistent about use of 'fingerprint' vs 'feature', just use 1
   * Give tables in SI that have more sig figs than numbers in text/plots
+    * Or just make sure that the attached data (zip file or something) has the info available
+  * Change ALL to something else (AL would be fine, maybe something more fancy)
 
 ## Notes:
 
