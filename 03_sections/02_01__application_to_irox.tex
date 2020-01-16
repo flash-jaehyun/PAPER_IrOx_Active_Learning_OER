@@ -30,7 +30,7 @@ We will focus in more detail the results for \IrOthree, as the results for \IrOt
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Results for IrO3
-% ALL results for IrO3
+% AL results for IrO3
 %   * Introduce the convergence plots
 %   * The GP becomes more accurate as more DFT is acquired
 %   * The GP can start to recognize the low energy systems after minimal DFT
@@ -47,24 +47,24 @@ Each plot reports the predicted (hollow\textbf{do you mean light? not sure what 
 %
 As the active learning loop acquires DFT data, the GP model becomes more accurate, as evidenced by the decreasing uncertainties when going from left to right.\textbf{Is your point here that it gets better everywhere, but in particular accuracy improves in the lower energy range because that is where the aq. function is drawing from?  If so, I think you need to spell this out more clearly}
 %
-At the top of each subplot of Figure \ref{fig:iro2_al} the identity of top ten most stable polymorphs is tracked,
+At the top of each subplot of Figure \ref{fig:iro2_al} the identity of ten most stable polymorphs is tracked,
 with the short grey line turning into a longer red line when the structure is acquired by the ALL.\textbf{This is difficult to see in the figure, can you move the text inset down and make these lines longer?}
 %
-At the first generation the top ten structures are randomly distributed across the entire candidate space because the GP model has not been trained sufficiently to correctly identify the most stable polymorphs.
+At the first generation the ten most stable structures are randomly distributed across the entire candidate space because the GP model has not been trained sufficiently to correctly identify the most stable polymorphs.
 %
-After only three generations (Figure \ref{fig:iro2_al}a.ii) the GP model is sufficiently trained to have correctly identified all of the ten lowest energy systems.\textbf{I deleted top here and I think you should get rid of it throughout.  When referring to lowest energy structures it is not a good idea to use a description that includes ``top" since these are antithetical.  Just call it ten lowest energy structures, propagate this change throughout.}
+After only three generations (Figure \ref{fig:iro2_al}a.ii) the GP model is sufficiently trained to have correctly identified all of the ten lowest energy systems.
 %
-By the third generation (\num{20} DFT calculations) \num{2/10} top systems have been acquired.
+By the third generation (\num{20} DFT calculations) \num{2/10} most stable polymorphs have been acquired.
 %
-After another \num{3} generations\textbf{it is less confusing if you just say at the 6th gen., dont make the reader keep figuring out what you are adding and subtracting from} (Figure \ref{fig:iro2_al}a.iii) (\num{15} additional DFT calculations) the AL routine has successfully identified \num{7/10} of the top systems. \textbf{I don't understand this, I thought by the third gen you had all 10}
+After another \num{3} generations\textbf{it is less confusing if you just say at the 6th gen., dont make the reader keep figuring out what you are adding and subtracting from} (Figure \ref{fig:iro2_al}a.iii) (\num{15} additional DFT calculations) the AL routine has successfully identified \num{7/10} of the lowest energy structures. \textbf{I don't understand this, I thought by the third gen you had all 10}
 %
-Figure \ref{fig:iro2_al}e plots the number of top ten structures acquired as a function of DFT calculations for the ALL with the GP-UCB acquisition function and a baseline random acquisition scheme.
+Figure \ref{fig:iro2_al}e plots the quantity of the most stable ten systems acquired as a function of DFT calculations for the AL algorithm with the GP-UCB acquisition function and a baseline random acquisition scheme.
 %
 The results of Figure \ref{fig:iro2_al}e are averaged over independent runs of AL algorithms with the 1 sigma standard deviation between these runs shown.
 %
-Overall, the GP-UCB runs outperform the random acquisition runs, with only \num{50} DFT calculations on average needed to discover \num{7} of the top \num{10} systems.
+Overall, the GP-UCB runs outperform the random acquisition runs, with only \num{50} DFT calculations on average needed to discover \num{7} of the \num{10} most stable systems.
 %
-This is compared to the \num{157} DFT calculations needed to compare \num{7/10} top systems for the random acquisition.
+This is compared to the \num{157} DFT calculations needed to discover \num{7/10} most stable polymorphs for the AL utilizing a random acquisition.
 % __|
 
 
@@ -132,7 +132,7 @@ The vertical lines at the top of each subplot are tracking the positions of the 
 % (d) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 (d) Crystal structures of \num{6} most stable \IrOthree polymorphs.
 % (e) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-(e) The number of the top \num{10} most stable polymorphs of \IrOthree that are discovered as a function of the number of DFT bulk relaxations, averaged over \num{5} independent runs of the AL algorithm using the GP-UCB acquisition criteria (red) and a random acquisition method (grey).
+(e) The number of most stable \num{10} polymorphs of \IrOthree that are discovered as a function of the number of DFT bulk relaxations, averaged over \num{5} independent runs of the AL algorithm using the GP-UCB acquisition criteria (red) and a random acquisition method (grey).
 %
 Error bars indicate the standard deviation over \num{5} runs.
 %
