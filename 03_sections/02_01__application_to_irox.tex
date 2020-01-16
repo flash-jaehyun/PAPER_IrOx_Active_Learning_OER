@@ -39,16 +39,16 @@ Will will briefly touch on the results for \IrOtwo at the end and refer the read
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 %
-Figure \ref{fig:iro2_al}a shows a sequence of plots at various generations of the active learning loop applied to \IrOthree,
-starting with the initial generation of five randomly drawn candidate structures and ending with the 40th generation of the ALL \textbf{if you are going to use the ALL abbreviation you need to use it consistently throughout}
+Figure \ref{fig:iro2_al}a shows a sequence of plots at various generations of the active learning algorithm applied to \IrOthree,
+starting with the initial generation of five randomly drawn candidate structures and ending with the 40th generation
 (\num{205} DFT computed structures out of the \num{248} total candidates).
 %
 Each plot reports the predicted (hollow\textbf{do you mean light? not sure what the hollow here implies} grey) and DFT-derived (solid red) formation enthalpies ($y$-axis) for each structure sorted from most to least stable ($x$-axis).
 %
-As the active learning loop acquires DFT data, the GP model becomes more accurate, as evidenced by the decreasing uncertainties when going from left to right.\textbf{Is your point here that it gets better everywhere, but in particular accuracy improves in the lower energy range because that is where the aq. function is drawing from?  If so, I think you need to spell this out more clearly}
+As the algorithm acquires DFT data, the GP model becomes more accurate, as evidenced by the decreasing uncertainties when comparing the the initial generations to the latter generations of the AL (\ref{fig:iro2_al}a.i-v).
 %
 At the top of each subplot of Figure \ref{fig:iro2_al} the identity of ten most stable polymorphs is tracked,
-with the short grey line turning into a longer red line when the structure is acquired by the ALL.\textbf{This is difficult to see in the figure, can you move the text inset down and make these lines longer?}
+with the short grey line turning into a longer red line when the structure is acquired by the algorithm.\textbf{This is difficult to see in the figure, can you move the text inset down and make these lines longer?}
 %
 At the first generation the ten most stable structures are randomly distributed across the entire candidate space because the GP model has not been trained sufficiently to correctly identify the most stable polymorphs.
 %
@@ -73,10 +73,10 @@ This is compared to the \num{157} DFT calculations needed to discover \num{7/10}
 % Discussion on performance of the AL routine
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-Having demonstrated the efficacy of the ALL materials discovery scheme we will now turn our attention to evaluating the performance of the GP regressive model of the final generation (trained on all available \IrOthree DFT data).
+Having demonstrated the efficacy of the AL materials discovery scheme we will now turn our attention to evaluating the performance of the GP regressive model of the final generation (trained on all available \IrOthree DFT data).
 %
 Figure \ref{fig:iro2_al}b plots the GP model predicted formation enthalpy against the DFT-computed values for two special cases,
-1.) predicting onto the features of the pre-optimized structures (grey), as is done in the regular operation of the ALL when acquiring new structures and
+1.) predicting onto the features of the pre-optimized structures (grey), as is done in the regular operation of the algorithm when acquiring new structures and
 2.) predicting onto the post-DFT fingerprints (blue).
 %
 It is evident from the parity plot in Figure \ref{fig:iro2_al}b that the GP model is not accurate in quantitatively predicting the DFT formation energy of the candidate space using the pre-optimized fingerprints,
@@ -91,7 +91,7 @@ This is to show that the GP model's innacuracies are due to the large degree of 
 %
 Structures that are initialized in high energy configurations will therefore have high predicted formation enthalpies, and will then reconfigure into a lower nearby configuration, resulting in lower final energy and a large discrepancy between the predicted and final energies.
 %
-Interestingly, despite the inaccuracy of predictions on unrelaxed structures the ALL appears to perform well at discovering \num{7/10} of the most stable candidates after only \num{35} DFT calculations). \textbf{do determine the reason for this we did XYZ...}
+Interestingly, despite the inaccuracy of predictions on unrelaxed structures the algorithm appears to perform well at discovering \num{7/10} of the most stable candidates after only \num{35} DFT calculations). \textbf{do determine the reason for this we did XYZ...}
 %
 The reason for this is that the pre-optimized structures that are similar enough to the most stable final equilibrium structures will not restructure considerably, meaning that their predicted formation energies will be close enough (and low enough) to be quickly picked up by the acquisition criteria. \textbf{How do you know this?  This is in the section?  If it is you need to say it will be discussed in the next section here.}
 %
