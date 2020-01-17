@@ -19,18 +19,18 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 %
-We now turn our attention of the application of this active learning scheme to the discovery of most stable forms of \IrOtwo and \IrOthree.
+We next utilized the active learning scheme to discover of the most stable forms of \IrOtwo and \IrOthree.
 %
-The algorithm is applied separately to both stoichiometries.
+The algorithm is applied to each stoichiometry individually, and becasuse both cases demonstrate the efficacy of the algoirhm equally well, we will focus on walking through the algorithm for the more novel \IrOthree stoicheometry.
 %
-We will focus in more detail the results for \IrOthree, as the results for \IrOtwo are analogous and will be shown in more detail in the SI.
+Will will briefly touch on the results for \IrOtwo at the end and refer the reader to the SI for further explaination.
 % __|
 
 
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Results for IrO3
-% ALL results for IrO3
+% AL results for IrO3
 %   * Introduce the convergence plots
 %   * The GP becomes more accurate as more DFT is acquired
 %   * The GP can start to recognize the low energy systems after minimal DFT
@@ -39,32 +39,34 @@ We will focus in more detail the results for \IrOthree, as the results for \IrOt
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 %
-Figure \ref{fig:iro2_al}a shows a sequence of plots at various generations of the active learning loop applied to \IrOthree,
-starting with the initial generation with five randomly drawn candidates and ending with the 40th generation of the ALL
+Figure \ref{fig:iro2_al}a shows a sequence of plots at various generations of the active learning algorithm applied to \IrOthree,
+starting with the initial generation of five randomly drawn candidate structures and ending with the 40th generation
 (\num{205} DFT computed structures out of the \num{248} total candidates).
 %
-Each plot tracks the predicted (hollow grey) and DFT-derived (solid red) formation enthalpies, sorted from most to least stable.
+% COMBAK Why are we sorting? Explain
+Each plot reports the predicted (light grey) and DFT-derived (solid red) formation enthalpies ($y$-axis) for each structure sorted from most to least stable ($x$-axis).
 %
-As the active learning loop acquires DFT data, the GP model becomes more accurate, as evidenced by the decreasing uncertainties when going from left to right.
+As the algorithm acquires DFT data, the GP model becomes more accurate, as evidenced by the decreasing uncertainties when comparing the the initial generations to the latter generations of the AL (\ref{fig:iro2_al}a.i-v).
 %
-At the top of each subplot of Figure \ref{fig:iro2_al} the identity of top ten most stable polymorphs is tracked,
-with the short grey line turning into a longer red line when the structure is acquired by the ALL.
+At the top of each subplot of Figure \ref{fig:iro2_al} the identity of ten most stable polymorphs is tracked,
+with the short grey line turning into a longer red line when the structure is acquired by the algorithm.\textbf{This is difficult to see in the figure, can you move the text inset down and make these lines longer?}
 %
-At the first generation the top ten structures are randomly distributed across the entire candidate space because the GP model has not been trained sufficiently to identify the most stable polymorphs as low energy systems.
+At the first generation the ten most stable structures are randomly distributed across the entire candidate space because the GP model has not been trained sufficiently to correctly identify the most stable polymorphs.
 %
-After only three generations (Figure \ref{fig:iro2_al}a.ii) the GP model is sufficiently trained to have correctly identified all of the top ten systems as being low energy.
+After only three generations (Figure \ref{fig:iro2_al}a.ii) the GP model is sufficiently trained to predict all of the 10 most stable polymorphs as being low energy configurations, as evidenced by the fact that their predicted energy ording within the candidate space has shifted towards the low energy portion of Figure \ref{fig:iro2_al}a.ii.
 %
-Additionally, by the third generation (\num{20} DFT calculations) \num{2/10} top systems have been acquired.
+By the third generation (\num{20} DFT calculations) \num{2/10} most stable polymorphs have been acquired.
 %
-After another \num{3} generations (Figure \ref{fig:iro2_al}a.iii) (\num{15} additional DFT calculations) the AL routine has successfully identified \num{7/10} of the top systems.
+% COMBAK Does this syntax work with num?
+By the \num{6th} generation (Figure \ref{fig:iro2_al}a.iii) (\num{15} additional DFT calculations) the AL routine has successfully identified \num{7/10} of the lowest energy structures.
 %
-Figure \ref{fig:iro2_al}e plots the number of top ten structures acquired as a function of DFT calculations for the ALL with the GP-UCB acquisition function and a baseline random acquisition scheme.
+Figure \ref{fig:iro2_al}e plots the quantity of the most stable ten systems acquired as a function of DFT calculations for the AL algorithm with the GP-UCB acquisition function and a baseline random acquisition scheme.
 %
-The results of Figure \ref{fig:iro2_al}e are averaged over independent runs of AL algorithm with the 1 sigma standard deviation between these runs shown.
+The results of Figure \ref{fig:iro2_al}e are averaged over independent runs of AL algorithms with the 1 sigma standard deviation between these runs shown.
 %
-Overall, the GP-UCB runs outperform the random acquisition runs, with only \num{50} DFT calculations on average needed to discover \num{7} of the top \num{10} systems.
+Overall, the GP-UCB runs outperform the random acquisition runs, with only \num{50} DFT calculations on average needed to discover \num{7} of the \num{10} most stable systems.
 %
-This is compared to the \num{157} DFT calculations needed to compare \num{7/10} top systems for the random acquisition.
+This is compared to the \num{157} DFT calculations needed to discover \num{7/10} most stable polymorphs for the AL utilizing a random acquisition.
 % __|
 
 
@@ -73,27 +75,31 @@ This is compared to the \num{157} DFT calculations needed to compare \num{7/10} 
 % Discussion on performance of the AL routine
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-Having demonstrated the efficacy of the ALL materials discovery scheme we will now turn our attention to evaluating the performance of the GP regressive model of the final generation (trained on all available \IrOthree DFT data).
+Having demonstrated the efficacy of the AL materials discovery scheme we will now turn our attention to evaluating the performance of the GP regressive model of the final generation (trained on all available \IrOthree DFT data).
 %
 Figure \ref{fig:iro2_al}b plots the GP model predicted formation enthalpy against the DFT-computed values for two special cases,
-1.) predicting onto the features of the pre-optimized structures (grey), as is done in the regular operation of the ALL when acquiring new structures and
+1.) predicting onto the features of the pre-optimized structures (grey), as is done in the regular operation of the algorithm when acquiring new structures and
 2.) predicting onto the post-DFT fingerprints (blue).
 %
-It is evident from the parity plot in Figure \ref{fig:iro2_al}b that the Gaussian process model is doing a poor job of predicting the DFT formation energy of the candidate space using the pre-optimized fingerprints,
-with an exceptionally poor MAE of \mytilde\num{1.5} eV/atom.
+It is evident from the parity plot in Figure \ref{fig:iro2_al}b that the GP model is not accurate in quantitatively predicting the DFT formation energy of the candidate space using the pre-optimized fingerprints,
+with a MAE of \mytilde\num{1.5} eV/atom.
 %
-The model's poor predictions are skewed towards the higher formation enthalpies, with the errors associated with low energy structures being much more robust.
+The model's most innacurate predictions are skewed towards the higher formation enthalpies.
 %
 The same GP model does comparatively much better at predicting the formation energies of post-DFT optimized structures with an MAE of \mytilde\num{0.2} eV/atom,
-which is expected since the post-DFT fingerprints directly corresponds to the DFT energies.
+roughly 100 meV/atom larger than the MAE reported by Ward \latin{et al.} of 0.8 eV/atom.
 %
-This is to show that the GP model's poor predictive capabilities is due to the large degree of structural reorganization that occurs after DFT relaxation of the pre-optimized structure.
+The fact that our models, trained on hundreds of DFT calculations,  achieves errors on par with the model of Ward \latin{et al.}, who trained on hundereds of thousands of DFT calculations, is due to the fact that we are training and predicting on a space whose properties are very narrolwy constrained, while Ward \latin{et al.} is predicting on structures whose elements span the entire periodic table.
+%
+This drastic decrease in prediction error is not surprising since the post-DFT fingerprints directly corresponds to the target DFT energies.
+%
+This is to show that the GP model's innacuracies are due to the large degree of structural reorganization that occurs after DFT relaxation of the pre-optimized structure.
 %
 Structures that are initialized in high energy configurations will therefore have high predicted formation enthalpies, and will then reconfigure into a lower nearby configuration, resulting in lower final energy and a large discrepancy between the predicted and final energies.
 %
-It's interesting to consider why the ALL appears to perform so well as outlined previously (discovering \num{7/10} of the most stable candidates after only \num{35} DFT calculations).
+Interestingly, despite the inaccuracy of predictions on unrelaxed structures the algorithm appears to perform well at discovering \num{7/10} of the most stable candidates after only \num{35} DFT calculations). \textbf{do determine the reason for this we did XYZ...}
 %
-The reason for this is that the pre-optimized structures that are similar enough to the most stable final equilibrium structures will not restructure considerably, meaning that their predicted formation energies will be close enough (and low enough) to be quickly picked up by the acquisition criteria.
+The reason for this is that the pre-optimized structures that are similar enough to the most stable final equilibrium structures will not restructure considerably, meaning that their predicted formation energies will be close enough (and low enough) to be quickly picked up by the acquisition criteria. \textbf{How do you know this?  This is in the section?  If it is you need to say it will be discussed in the next section here.}
 %
 % __|
 
@@ -102,7 +108,7 @@ The reason for this is that the pre-optimized structures that are similar enough
 %
 The low energy region of Figure \ref{fig:iro2_al}a.iii is shown in Figure \ref{fig:iro2_al}c.
 %
-And the \num{6} most stable structural polymorphs are shown in Figure \ref{fig:iro2_al}d.
+And the \num{6} most stable structural polymorphs are shown in Figure \ref{fig:iro2_al}d. \tetbf{misplaced text}
 
 
 % COMBAK Remove parity plot text from this caption
@@ -132,7 +138,7 @@ The vertical lines at the top of each subplot are tracking the positions of the 
 % (d) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 (d) Crystal structures of \num{6} most stable \IrOthree polymorphs.
 % (e) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-(e) The number of the top \num{10} most stable polymorphs of \IrOthree that are discovered as a function of the number of DFT bulk relaxations, averaged over \num{5} independent runs of the AL algorithm using the GP-UCB acquisition criteria (red) and a random acquisition method (grey).
+(e) The number of most stable \num{10} polymorphs of \IrOthree that are discovered as a function of the number of DFT bulk relaxations, averaged over \num{5} independent runs of the AL algorithm using the GP-UCB acquisition criteria (red) and a random acquisition method (grey).
 %
 Error bars indicate the standard deviation over \num{5} runs.
 %
