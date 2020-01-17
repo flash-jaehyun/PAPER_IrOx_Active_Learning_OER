@@ -104,7 +104,6 @@ The candidate space size is ideal in that that we can tractably optimize each eq
 The candidate data set was featurized using the Voronoi tessellation fingerprinting scheme developed by Ward \latin{et al.} \cite{Ward2017} which produces a \num{271} length feature vector for each material that is invariant to isotropic expansions/contractions of the lattice and to a degree, insensitive to the exact atomic coordinates of the atoms. \textbf{in one sentence you still need to explain what the physical meaning of the features it produces are}
 %
 % How many columns of the 271 are redundant if stoich and composition are frozen
-\textbf{don't use herein so much, it is almost never necessary and is not the way to write a sentence in active voice}
 We apply our active learning model to the \IrOtwo and \IrOthree spaces separately, because we are interested in the most stable polymorphs at each stoichiometry.
 %
 Constraining the stoicheometry per application of the AL algorithm further reduces the \num{271} length  feature vector to \num{101} non-zero variance features.%,
