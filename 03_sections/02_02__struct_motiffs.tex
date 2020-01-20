@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Structural analysis of IrO2 and IrO3 oxides %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - Structural analysis of IrO2 and IrO3 oxides %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TODO: Synthax for calling subplots in figure Figure 1.d or Figure 1.d)
 %
@@ -45,7 +45,7 @@
 % NOTES:
 %   * Describe convex hull, classes of structures (\ce{$\alpha$-AlF3} like, rutile like, and layered, should be segregated in hull plot)
 %   * Describe structures within each class, cite lit where appropriate
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 % ################################# Paragraph #################################
@@ -56,17 +56,24 @@
 % There should be a paragraph which discussed the structural drift and performance/acceleration in more detail
 % I would use the updated version of Figure 2c.
 %
-Here we assess the structural variety of the dataset consisting of 448 \IrOtwo and 258 \IrOthree unique polymorphs,
-where the relation between the enthalpy of formation and the inverse atomic density (Volume/atom) is shown in Figure~\ref{fig:E_vs_V} a) and b).
+Here we assess the structural variety of the AL dataset consisting of 448 \IrOtwo and 258 \IrOthree unique polymorphs,
+where the relation between the enthalpy of formation and the inverse atomic density (Volume/atom) is shown in Figure~\ref{fig:E_vs_V}a and b.
 %
 To obtain a physically meaningful cutoff for the formation enthalpy above which materials are unlikely to be synthesizabl, we computed the metastability limits for \IrOtwo and \IrOthree relative to their amorphous phases using the methodology of Persson \latin{et. al.}~\cite{Aykol2018}.
-where several meta-stable polymorphs have been identified.
+%
+The computed metastability limits were computed to be -0.33 and -0.34 eV/atom for \IrOtwo and \IrOthree, respectively,
+and are displayed as horizontal lines in Figure~\ref{fig:E_vs_V}a and b.
+%
+These values are almost identical, possibly indicating that the energy of the amourphous phases are insenstivie to the exact stoicheometry.
+%
+Measuring the metastability relative to the hull for each stoicheometry yields a metastability window of 0.5 and 0.3 eV/atom for \IrOtwo and \IrOthree, respectively.
 % __|
 
 
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TEMP
+% There is a large variety in density on this plot
+% IrO3 has a small dependance on the volume
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 We note that for both compositions,
@@ -76,15 +83,18 @@ such that both low volume (dense) and high volume (porous) structures are repres
 As expected, the most stable systems are found at low volume,
 where the shape of envelope curve (lowest energy for a given volume) is analogous to the shape of the Lennard-Jones potential.
 %
-However, for \IrOthree in particular,
-there is a rather weak relation between the energy and the volume,
-where highly porous structure are found to be meta-stable.
+% NOTE Can make a comment about the fact that these porous species may be over-stabilized with PBE DFT
+However, for \IrOthree there is a comparitively weak relationship between the energy and volume,
+allowing even highly porous structure to be meta-stable.
+%
+% COMBAK Explain this point better, this has to do with the oxidation state, coordination preservation rules that I've been playing around with
+This property is likey due to the fact that \IrOthree's oxidatation state can more can form readily form layered or porous structures.
 % __|
 
 
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TEMP
+% Explaining coordination motiff distribution (octahedral, tetrahedral
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 %
@@ -92,11 +102,17 @@ The structures have been classified with respect to the Ir-O coordination enviro
 (such as octahedral, square pyramidal, tetrahedral, cubic, etc.),
 by using the chemEnv package, developed by Waroquiers et. al. \cite{Waroquiers2017} and implemented in pymatgen \cite{Ong2013}.
 %
-Although the dataset was found to contain a large range of coordination environments, structures with a coordination number of 6 (octahedreal) or 4 (tetrahedreal) were found to be most prevalent and have been highlighted in blue and red respectively in Figure~\ref{fig:E_vs_V} a) and b).
+Although the dataset was found to contain a large range of coordination environments,
+structures with a coordination number of 6 (octahedreal) or 4 (tetrahedreal) were found to be most prevalent
+(accounting for roughly TEMP percent of all structures)
+and have been highlighted in blue and red respectively in Figure~\ref{fig:E_vs_V}a and b.
 %
-For both \IrOtwo and \IrOthree the most stable candidates are seen to have an octahedreal oxygen coordination, which is generally favored by many other metal oxides. \cite{Waroquiers2017}
+For both \IrOtwo and \IrOthree the most stable candidates are seen to have an octahedral oxygen coordination,
+a common coordination motiff found in many other metal oxides.\cite{Waroquiers2017}
 %
-The arrangement of the octahedreal units, which are connected through either corner-, edgesharing, can furthermore be used to classify the structures, that typically has a combination of the two. 
+% This has to be expanded upon or else maybe dropped, we can discuss
+The arrangement of the octahedreal units, which are connected through either corner-, edgesharing,
+can furthermore be used to classify the structures, that typically has a combination of the two. 
 % __|
 
 
@@ -106,24 +122,23 @@ The arrangement of the octahedreal units, which are connected through either cor
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 %
-In Figure~\ref{fig:E_vs_V} c) and d) a selection of meta-stable structures is shown for \IrOtwo and \IrOthree respectively.
+In Figure~\ref{fig:E_vs_V}c and d, a selection of meta-stable structures is shown for \IrOtwo and \IrOthree respectively.
 %
 For \IrOtwo, we found rutile to be the most stable,
 in correspondence with experiment \cite{}.
-% TODO Make active voice
-Also, several of the well-know crystal structures, including  columbite, purite, brookite and anatase (not all shown) are found to be meta-stable.
-% 
-For \IrOthree the five most stable systems were shown in Figure~\ref{},
-and have been labeled with numbers (1)-(5) in Figure~\ref{fig:E_vs_V} b).
 %
-However, we have identified several additional meta-stable structures, including 2D(i), highly porous(iii) and 1D(v) polymorphs,
+% TODO Make active voice
+Also, we found several of the well-know \IrOtwo crystal structures, including columbite, purite, brookite and anatase (not all shown).
+% 
+For \IrOthree the five most stable systems were shown in Figure~\ref{fig:iro2_al},
+and have been labeled with numbers (1)-(5) in Figure~\ref{fig:E_vs_V} b.
+%
+However, we have identified several additional meta-stable structures, including 2D(i), highly porous(iii) and 1D(v) polymorphs with varying degrees of poursity and conectivity,
 which could be interesting for battery applications \cite{}.
 %
-We note that the Cmcm polymorph in d) iv. is currently the lowest energy structure on Materials Project
+We note that the \IrOthree Cmcm polymorph in Figure~\ref{fig:E_vs_v}d (iv) is the the lowest energy \IrOthree structure on Materials Project.
 (cite https://materialsproject.org/materials/mp-1097041/) \cite{}.
 % __|
-
-
 
 
 
@@ -133,16 +148,17 @@ We note that the Cmcm polymorph in d) iv. is currently the lowest energy structu
 \centering
 \makebox[\textwidth][c]{\includegraphics[
 width=\textwidth,height=\textheight,keepaspectratio]
-% {02_figures/e_vs_v_motiffs.png}
 {02_figures/e_vs_v_motiffs.pdf}
 }
 \caption{\label{fig:E_vs_V}
 %
 Enthalpy of formation for the \num{448} \IrOtwo (a) and \num{258} \IrOthree (b) structures in the candidate data set plotted against the volume per atom.
 %
-%Color overlays indicate the dominant coordination motifs as indicated by the legend.
+Insets in the low energy region for (a) and (b) are shown.
 %
-%Select polymorphs systems are displayed around the plot area.\textbf{this caption needs to be fleshed out}
+The color bar represents the average coordination number between Ir and O, with 6 (octahedra) and 4 (tetrahedra) highlighted.
+%
+(c) and (d), select \IrOtwo and \IrOthree polymorph structures.
 }
 \end{figure*}
 % __|
@@ -150,12 +166,13 @@ Enthalpy of formation for the \num{448} \IrOtwo (a) and \num{258} \IrOthree (b) 
 
 
 
-% Additional esoteric coordination environments were identified manually, see SI.
-%
-%The resulting distribution is included in Figure~\ref{fig:E_vs_V}, which plots the formation enthalpy and volume, both normalized on a per atom basis. \textbf{this section needs to be fleshed out still and connections made between discovered structures and the literature, this seems like the place in the document that needs the most work}\\
 
 
 % | - __old__
+
+% Additional esoteric coordination environments were identified manually, see SI.
+%
+%The resulting distribution is included in Figure~\ref{fig:E_vs_V}, which plots the formation enthalpy and volume, both normalized on a per atom basis. \textbf{this section needs to be fleshed out still and connections made between discovered structures and the literature, this seems like the place in the document that needs the most work}\\
 
 % | - Figure | IrO2 Convergence Plot
 % \begin{figure*}
