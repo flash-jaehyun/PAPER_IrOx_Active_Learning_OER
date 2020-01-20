@@ -40,8 +40,6 @@ whereby a simple regression model is trained on a set of candidate materials by 
 %
 A high-level overview of algorithm is presented in Figure~\ref{fig:all_diagram}.
 %
-% TODO Add subplot labels to Figure 1
-\textbf{A and B do not appear in the figure}
 There are two primary parts of the algorithm, the first is the generation of the candidate space,
 which defines the list of candidate crystal structures to be searched through (see Figure~\ref{fig:all_diagram}.a).
 %
@@ -67,24 +65,28 @@ Structures that comprise the candidate data sets for \IrOtwo and \IrOthree were 
 (in total \num{4528} \ABtwo and \num{23764} \ABthree entries).
 %
 To reduce the size of the candidate space while maintaining maximum structural diversity, structurally redundant systems were removed via a space-group based structural classification scheme developed by Jain \latin{et al.} \cite{Jain2018},
-whereby structural uniqueness is defined by the element-nonspecific stoicheometry (\ABtwo, \ABthree, etc.), space group symmetry and Wyckoff positions of the atoms within the unit cell. \textbf{this needs another sentence here to explain what this means more plainly}
+whereby structural properties are defined by a unique combination of the element-nonspecific stoicheometry (\ABtwo, \ABthree, etc.), space group symmetry and Wyckoff positions, and are reffered to as a materials structural prototype.
 %
-Imposing structural uniqueness \textbf{you never define what this means} reduces the number of entries considerably to \num{697} and \num{259} structures for the \ABtwo and \ABthree stoichiometries, respectively.
-The orders of magnitude reduction between all structures and unique structures is a consequence of the lack of structural diversity in the OQMD and MP databases.
+% This is my attempt to further clarify the previous sentence
+Under this formulation, any two structures that share these properies can be considered as structurally identical.
 %
-% NUMBER
-\textbf{Write in active voice where possible}
-To reduce the computational expense of the DFT calculations only bulk structures containing $\leq$ \num{75} atoms were included in the final candidate pool, further reducing the candidates spaces to \num{567} and \num{256} \ABtwo and \ABthree structures respectively)
+Thus, for example the \num{300000} entry dataset of ABO3 style perovksites in OQMD, which only differ by the choice of elements for A, B, and C, all belong to the same structural prototype.
+%
+Eliminating structurally redundant systems from the materials databases reduces the number of entries considerably, to \num{697} and \num{259} structures for the \ABtwo and \ABthree stoichiometries, respectively.
+%
+The orders of magnitude reduction between all structures and unique structures points to the lack of structural diversity in the OQMD and MP databases.
+%
+To reduce the computational expense of the DFT calculations only bulk structures containing $\leq$ \num{75} atoms were included in the final candidate pool, further reducing the candidates spaces to \num{567} and \num{256} \ABtwo and \ABthree structures respectively.
 %
 Next, iridium and oxygen were substituted for the A and B sites, respectively,
-this was then followed by isotropic expansion/contraction of the unit cell to accommodate the atomic radii of iridium and oxygen, \textbf{details in SI XYZ}.
+this was then followed by isotropic expansion/contraction of the unit cell to accommodate the atomic radii of iridium and oxygen.
 %
 % NUMBER
 Because of the relatively small size of the candidate space, and to validate our methods fully, we performed bulk relaxations for all \num{823} structures in the candidate space.
 %
-Computational details for the bulk structure relaxations can be found in \textbf{SI XYZ} (SI Bulk polymorph DFT optimization).
+Further details on the isotropic cell expansion and DFT computational details can be found in the SI.
 %
-Of the \num{823} structures, \num{736} were able to be fully optimized, while \num{87}, primarily \ABtwo structures were not able to be converged due to highly voluminous and unphysical initial structures \textbf{Unphysical how?  Do not make sense for atoms like Ir and O?  Needs some more information here or link to an SI section on analysis of these structures.}.
+Of the \num{823} structures, \num{736} were able to be fully optimized, while \num{87}, primarily \ABtwo structures were not able to be converged due to a variety of SCF convergence issues apparently due to highly voluminous cells.
 %
 The resulting candidate space was composed of \num{487} \IrOtwo and \num{249} \IrOthree structures, all of which have unique space group/Wyckoff combinations, ensuring their structural uniqueness.
 %
@@ -101,7 +103,9 @@ The candidate space size is ideal in that that we can tractably optimize each eq
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 %
-The candidate data set was featurized using the Voronoi tessellation fingerprinting scheme developed by Ward \latin{et al.} \cite{Ward2017} which produces a \num{271} length feature vector for each material that is invariant to isotropic expansions/contractions of the lattice and to a degree, insensitive to the exact atomic coordinates of the atoms. \textbf{in one sentence you still need to explain what the physical meaning of the features it produces are}
+The candidate data set was featurized using the Voronoi tessellation fingerprinting scheme developed by Ward \latin{et al.} \cite{Ward2017} which produces a \num{271} length feature vector for each material that is invariant to isotropic expansions/contractions of the lattice and to a degree, insensitive to the exact atomic coordinates of the atoms.
+%
+The Voronoi tessellation feature vectors encode for both chemical and structural information by constructing attributes from elemental properties which are weighted by the local environment of the structure via the computation of the Voronoi decomposition of the cell lattice (Wigner–Seitz cell).
 %
 % How many columns of the 271 are redundant if stoich and composition are frozen
 We apply our active learning model to the \IrOtwo and \IrOthree spaces separately, because we are interested in the most stable polymorphs at each stoichiometry.
@@ -110,7 +114,7 @@ Constraining the stoicheometry per application of the AL algorithm further reduc
 %significantly reducing the dimensionality of the features.
 %
 % COMBAK TODO How much of the variance is captured by the PCA analysis
-Further dimensionality reduction is achieved via a principle component analysis (PCA) \cite{Tipping1999}, which was used to reduce the remaining \num{101} features to \num{11}.\textbf{why 11?  describes what \% of variance?}
+Further dimensionality reduction is achieved via a principle component analysis (PCA) \cite{Tipping1999}, which was used to reduce the remaining \num{101} features to \num{10}, which, while only capturing ~80 percent of the variance in the features, demonstrated the optimal cross-validation error, see SI TEMP.
 % __|
 
 
