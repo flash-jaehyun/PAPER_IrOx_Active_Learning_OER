@@ -64,16 +64,20 @@
 Here we assess the structural variety of the AL dataset consisting of 448 \IrOtwo and 258 \IrOthree unique polymorphs,
 where the relation between the enthalpy of formation and the inverse atomic density (Volume/atom) is shown in Figure~\ref{fig:E_vs_V}a and b.
 %
+Here, a large variety in structure densities and coordination environments is desirable, since this will enable us to discover novel systems.
+%
 To obtain a physically meaningful cutoff for the formation enthalpy above which materials are unlikely to be synthesizabl, we computed the metastability limits for \IrOtwo and \IrOthree relative to their amorphous phases using the methodology of Persson \latin{et. al.}~\cite{Aykol2018}.
 %
+% \textbf{you need to explain what this means, that they were computed using a previously reported algorithm (cite Murat's paper) and point to an SI section with the values.  is not clear where in the figure this is. Raul can you add this part?}
 The computed metastability limits were computed to be -0.33 and -0.34 eV/atom for \IrOtwo and \IrOthree, respectively,
 and are displayed as horizontal lines in Figure~\ref{fig:E_vs_V}a and b.
+% 
+There are XX and XX polymorphs for \IrOtwo and \IrOthree, respectively, that were found to be under the meta-stability line, and are therefore predicted to be meta-stable.
 %
 These values are almost identical, possibly indicating that the energy of the amourphous phases are insenstivie to the exact stoicheometry.
 %
 Measuring the metastability relative to the hull for each stoicheometry yields a metastability window of 0.5 and 0.3 eV/atom for \IrOtwo and \IrOthree, respectively.
 % __|
-
 
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -82,19 +86,28 @@ Measuring the metastability relative to the hull for each stoicheometry yields a
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 We note that for both compositions,
-there is a large variety in density,
+there is a large variety in density (from \textbf{XYZ} to \textbf{XYZ}),
 such that both low volume (dense) and high volume (porous) structures are represented.
 %
-As expected, the most stable systems are found at low volume,
-where the shape of envelope curve (lowest energy for a given volume) is analogous to the shape of the Lennard-Jones potential.
+As expected \textbf{why do you expect this?}, the most stable systems are found at low volume, \textbf{can we change this to ``at the low end of the volume range (xyz to xyz)''}
+where the shape of envelope curve (lowest energy for a given volume) is analogous to the shape of the Lennard-Jones potential. \textbf{is this important or expected?}
 %
 % NOTE Can make a comment about the fact that these porous species may be over-stabilized with PBE DFT
 However, for \IrOthree there is a comparitively weak relationship between the energy and volume,
-allowing even highly porous structure to be meta-stable.
+such that even highly porous structure are within the meta-stablity energy range.
 %
 % COMBAK Explain this point better, this has to do with the oxidation state, coordination preservation rules that I've been playing around with
 This property is likey due to the fact that \IrOthree's oxidatation state can more can form readily form layered or porous structures.
+%
+(We note that the stability of highly porous systems has a tendency to be overestimated on the DFT+GGA level, where van der Walls interactions should be included for a better description). \textbf{unclear what you mean here, vdw is attractive so shouldn't it just make them more stable?}
 % __|
+
+
+
+We classified the structures with respect to the Ir-O coordination environment (such as octahedral, square pyramidal, tetrahedral, cubic, etc.), by using the chemEnv package, developed by Waroquiers et. al. \cite{Waroquiers2017} and implemented in pymatgen \cite{Ong2013}. Although the dataset contains  coordination environments ranging from \textbf{xyz to xyz}, structures with a coordination number of 6 (octahedreal) or 4 (tetrahedreal) are the most prevalent and are highlighted in blue and red respectively in Figure \ref{fig:E_vs_V} a) and b). For both \IrOtwo and \IrOthree the most stable candidates are seen to have an octahedreal oxygen coordination\textbf{this is kind of vague, do you mean the most stable or most of the most stable?} , which is generally favored by many other metal oxides. \cite{Waroquiers2017} The arrangement of the octahedreal units, which are connected through either corner- or edge-sharing, can furthermore be used to classify the structures, that typically has a combination of the two. \textbf{I don't understand the end of this sentence.  Give some information of how this applies to your structures.}
+
+Figure \ref{fig:E_vs_V} c) and d) report a selection of meta-stable structures for \IrOtwo and \IrOthree, respectively. For \IrOtwo, rutile is the most stable, in correspondence with experiment \cite{}\textbf{what experiments?  is this  heats of formation?}. Also, several of the well-known\textbf{experimentally?  it is not clear here if you mean just the geometries or that these materials have been reported in the expt. literature} crystal structures, including  columbite, purite, brookite and anatase (not all shown) are computed to be meta-stable.
+Figure \ref{} reports the five most stable \IrOthree structures, corresponding to labels (1)-(5) in Figure \ref{fig:E_vs_V} b). However, we have identified several additional meta-stable structures, including 2D(i), highly porous(iii) and 1D(v) polymorphs, which could be interesting for battery applications\textbf{why?} \cite{}. We note that\textbf{try not to use ``we note that", it is generally always better to motivate why you are noting that} the Cmcm polymorph in d) iv. is currently the lowest energy structure on Materials Project (cite https://materialsproject.org/materials/mp-1097041/) \cite{} \textbf{the labeling scheme jumping between two figures is a little confusing here, and it obfuscates the point I think you are trying to make in this last sentence}.
 
 
 % ################################# Paragraph #################################
@@ -127,6 +140,7 @@ can furthermore be used to classify the structures, that typically has a combina
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
 %
+
 In Figure~\ref{fig:E_vs_V}c and d, a selection of meta-stable structures is shown for \IrOtwo and \IrOthree respectively.
 %
 For \IrOtwo, we found rutile to be the most stable,
