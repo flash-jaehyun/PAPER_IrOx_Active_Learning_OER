@@ -92,11 +92,12 @@ The algorithm avoids operating in the structural space by leveraging nature's pr
 As an alternative approach to GO, we first define the set of candidate crystal polymorphs, and secondly, search through the static list of candidates with a selection-type algorithm.
 %
 This approach relies on being able to prepare candidate structures that are likely to be physical and low in energy.
+%
 % TODO Find references for various ways of preparing candidate structures
 To date, there have been various techniques to prepare candidate structures, including generating structures randomly, enumerating space groups, etc.
 %
-Empirically, we know that nature tends to favor symmetric structures, and thus herein, we use construct a dataset candidate structures that leverage this intuition.
-%this looks  out of space. Consider moving up or eliminate. Also, this is more a discussion statememt.
+% This looks  out of space. Consider moving up or eliminate. Also, this is more a discussion statememt.
+Empirically, we know that nature tends to favor symmetric structures, and so we will leverage this intuition by building a dataset by explicitely enumerating through space groups.
 % __|
 
 
@@ -199,7 +200,7 @@ Finally, we construct thermodynamic OER volcano of most stable phases and discus
 % % 2  --> 3 key features (first is that we're not working in 3N space!!!)
 % The two key features of our algorithm that make the exploration of an expansive space possible are its use of surrogate models and active learning framework.
 % %
-% Because DFT calculations are prohibitively computationally expensive to carry out for large data sets, herein we train a Gaussian Process (GP) machine learning model to serve as a surrogate model.
+% Because DFT calculations are prohibitively computationally expensive to carry out for large data sets, here we train a Gaussian Process (GP) machine learning model to serve as a surrogate model.
 % %
 % In general active learning applications, the requisite training data is not available.
 % %
