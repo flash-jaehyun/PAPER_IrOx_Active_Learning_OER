@@ -68,7 +68,7 @@ To obtain a physically meaningful cutoff for the formation enthalpy above which 
 % \textbf{you need to explain what this means, that they were computed using a previously reported algorithm (cite Murat's paper) and point to an SI section with the values.  is not clear where in the figure this is. Raul can you add this part?}
 The computed metastability limits were computed to be -0.33 and -0.34 eV/atom for \IrOtwo and \IrOthree, respectively,
 and are displayed as horizontal lines in Figure~\ref{fig:E_vs_V}a and b.
-% 
+%
 There are XX and XX polymorphs for \IrOtwo and \IrOthree, respectively, that were found to be under the meta-stability line, and are therefore predicted to be meta-stable.
 %
 These values are almost identical, possibly indicating that the energy of the amourphous phases are insenstivie to the exact stoicheometry.
@@ -102,13 +102,6 @@ This property is likey due to the fact that \IrOthree's oxidatation state can mo
 % __|
 
 
-
-We classified the structures with respect to the Ir-O coordination environment (such as octahedral, square pyramidal, tetrahedral, cubic, etc.), by using the chemEnv package, developed by Waroquiers et. al. \cite{Waroquiers2017} and implemented in pymatgen \cite{Ong2013}. Although the dataset contains  coordination environments ranging from \textbf{xyz to xyz}, structures with a coordination number of 6 (octahedreal) or 4 (tetrahedreal) are the most prevalent and are highlighted in blue and red respectively in Figure \ref{fig:E_vs_V} a) and b). For both \IrOtwo and \IrOthree the most stable candidates are seen to have an octahedreal oxygen coordination\textbf{this is kind of vague, do you mean the most stable or most of the most stable?} , which is generally favored by many other metal oxides. \cite{Waroquiers2017} The arrangement of the octahedreal units, which are connected through either corner- or edge-sharing, can furthermore be used to classify the structures, that typically has a combination of the two. \textbf{I don't understand the end of this sentence.  Give some information of how this applies to your structures.}
-
-Figure \ref{fig:E_vs_V} c) and d) report a selection of meta-stable structures for \IrOtwo and \IrOthree, respectively. For \IrOtwo, rutile is the most stable, in correspondence with experiment \cite{}\textbf{what experiments?  is this  heats of formation?}. Also, several of the well-known\textbf{experimentally?  it is not clear here if you mean just the geometries or that these materials have been reported in the expt. literature} crystal structures, including  columbite, purite, brookite and anatase (not all shown) are computed to be meta-stable.
-Figure \ref{} reports the five most stable \IrOthree structures, corresponding to labels (1)-(5) in Figure \ref{fig:E_vs_V} b). However, we have identified several additional meta-stable structures, including 2D(i), highly porous(iii) and 1D(v) polymorphs, which could be interesting for battery applications\textbf{why?} \cite{}. We note that\textbf{try not to use ``we note that", it is generally always better to motivate why you are noting that} the Cmcm polymorph in d) iv. is currently the lowest energy structure on Materials Project (cite https://materialsproject.org/materials/mp-1097041/) \cite{} \textbf{the labeling scheme jumping between two figures is a little confusing here, and it obfuscates the point I think you are trying to make in this last sentence}.
-
-
 % ################################# Paragraph #################################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Explaining coordination motiff distribution (octahedral, tetrahedral
@@ -119,15 +112,17 @@ The structures have been classified with respect to the Ir-O coordination enviro
 (such as octahedral, square pyramidal, tetrahedral, cubic, etc.),
 by using the chemEnv package, developed by Waroquiers et. al. \cite{Waroquiers2017} and implemented in pymatgen \cite{Ong2013}.
 %
-Although the dataset was found to contain a large range of coordination environments,
+Although the dataset was found to contain a large range of coordination environments (ranging from \textbf{xyz to xyz}),
 structures with a coordination number of 6 (octahedreal) or 4 (tetrahedreal) were found to be most prevalent
 (accounting for roughly TEMP percent of all structures)
 and have been highlighted in blue and red respectively in Figure~\ref{fig:E_vs_V}a and b.
 %
+% \textbf{this is kind of vague, do you mean the most stable or most of the most stable?}
 For both \IrOtwo and \IrOthree the most stable candidates are seen to have an octahedral oxygen coordination,
 a common coordination motiff found in many other metal oxides.\cite{Waroquiers2017}
 %
 % This has to be expanded upon or else maybe dropped, we can discuss
+%% \textbf{I don't understand the end of this sentence.  Give some information of how this applies to your structures.}
 The arrangement of the octahedreal units, which are connected through either corner-, edgesharing,
 can furthermore be used to classify the structures, that typically has a combination of the two.
 % __|
@@ -138,22 +133,25 @@ can furthermore be used to classify the structures, that typically has a combina
 % TEMP
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph start
-%
-
 In Figure~\ref{fig:E_vs_V}c and d, a selection of meta-stable structures is shown for \IrOtwo and \IrOthree respectively.
 %
+%\textbf{what experiments?  is this  heats of formation?}
 For \IrOtwo, we found rutile to be the most stable,
 in correspondence with experiment \cite{}.
 %
+%\textbf{experimentally?  it is not clear here if you mean just the geometries or that these materials have been reported in the expt. literature}
 % TODO Make active voice
 Also, we found several of the well-know \IrOtwo crystal structures, including columbite, purite, brookite and anatase (not all shown).
 %
 For \IrOthree the five most stable systems were shown in Figure~\ref{fig:iro2_al},
 and have been labeled with numbers (1)-(5) in Figure~\ref{fig:E_vs_V} b.
 %
+% \textbf{why?}
 However, we have identified several additional meta-stable structures, including 2D(i), highly porous(iii) and 1D(v) polymorphs with varying degrees of poursity and conectivity,
 which could be interesting for battery applications \cite{}.
 %
+% \textbf{try not to use ``we note that", it is generally always better to motivate why you are noting that}
+% \textbf{the labeling scheme jumping between two figures is a little confusing here, and it obfuscates the point I think you are trying to make in this last sentence}
 We note that the \IrOthree Cmcm polymorph in Figure~\ref{fig:E_vs_V}d (iv) is the the lowest energy \IrOthree structure on Materials Project
 (see Materials Project entry mp-1097041~\cite{mp-1097041}).
 % __|
@@ -186,6 +184,12 @@ The color bar represents the average coordination number between Ir and O, with 
 
 
 % | - __old__
+% We classified the structures with respect to the Ir-O coordination environment (such as octahedral, square pyramidal, tetrahedral, cubic, etc.), by using the chemEnv package, developed by Waroquiers et. al. \cite{Waroquiers2017} and implemented in pymatgen \cite{Ong2013}. Although the dataset contains  coordination environments ranging from \textbf{xyz to xyz}, structures with a coordination number of 6 (octahedreal) or 4 (tetrahedreal) are the most prevalent and are highlighted in blue and red respectively in Figure \ref{fig:E_vs_V} a) and b). For both \IrOtwo and \IrOthree the most stable candidates are seen to have an octahedreal oxygen coordination\textbf{this is kind of vague, do you mean the most stable or most of the most stable?} , which is generally favored by many other metal oxides. \cite{Waroquiers2017} The arrangement of the octahedreal units, which are connected through either corner- or edge-sharing, can furthermore be used to classify the structures, that typically has a combination of the two. \textbf{I don't understand the end of this sentence.  Give some information of how this applies to your structures.}
+
+
+% Figure \ref{fig:E_vs_V} c) and d) report a selection of meta-stable structures for \IrOtwo and \IrOthree, respectively. For \IrOtwo, rutile is the most stable, in correspondence with experiment \cite{}\textbf{what experiments?  is this  heats of formation?}. Also, several of the well-known\textbf{experimentally?  it is not clear here if you mean just the geometries or that these materials have been reported in the expt. literature} crystal structures, including  columbite, purite, brookite and anatase (not all shown) are computed to be meta-stable.
+% Figure \ref{} reports the five most stable \IrOthree structures, corresponding to labels (1)-(5) in Figure \ref{fig:E_vs_V} b). However, we have identified several additional meta-stable structures, including 2D(i), highly porous(iii) and 1D(v) polymorphs, which could be interesting for battery applications\textbf{why?} \cite{}. We note that\textbf{try not to use ``we note that", it is generally always better to motivate why you are noting that} the Cmcm polymorph in d) iv. is currently the lowest energy structure on Materials Project (cite https://materialsproject.org/materials/mp-1097041/) \cite{} \textbf{the labeling scheme jumping between two figures is a little confusing here, and it obfuscates the point I think you are trying to make in this last sentence}.
+
 
 % | - COMBAK Kirsten's recent revision
 % Here we address the structural variety of the dataset consisting of 448 \IrOtwo and 258 \IrOthree unique polymorphs,
