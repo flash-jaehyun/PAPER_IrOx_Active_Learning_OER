@@ -31,7 +31,7 @@ Predicting the thermodynamically favorable crystal structures for an arbitrary i
 % Experimentally synthesized inorganic materials often conform to the global minimum energy structure (or similarly stable meta-stable phases).
 %
 % TODO Find reference to backup the importance of knowning the crystal structure to predict properties of real-world systems. I would consider this to be common knowledge but relevent article would be nice.
-When simulations are used to guide the search for new materials, the stable and meta-stable crystal structures, \latin{i.e.} polymorphs,  above the convex hull of stability must be known in order to predict the material properties.
+When simulations are used to guide the search for new materials, the stable and meta-stable crystal structures, \latin{i.e.} polymorphs,  close to the convex hull of stability must be known in order to predict the material properties.
 %
 % Structure vs. composition enumeration (composition done to death)
 % Give example of how over represented some motifs are
@@ -40,7 +40,7 @@ When simulations are used to guide the search for new materials, the stable and 
 Although there have been numerous examples in recent years of machine learning algorithms applied towards the prediction of formation energies of large \latin{ab-initio} data sets,
 these data sets are biased towards common structures and varying composition space.
 %
-For example, there are \mytilde\num{188000} entries in The Open Quantum Materials Database (OQMD) correspond to ternary-alloy combinations in the same close-packed cubic structure.\cite{Kirklin2015}
+For example the Open Quantum Materials Database (OQMD) contains a large dataset of ternary-alloy combinations in the same close-packed cubic structure.\cite{Kirklin2015}
 %
 % Should we say that enumerating comp. is easy and struct. is hard?
 As such, these efforts have been primarily concerned with the enumeration of composition (elemental identity and stoichiometries) and less so with the exploration of structural diversity.
@@ -64,37 +64,50 @@ As such, these efforts have been primarily concerned with the enumeration of com
 % TODO All global optimization papers go here
 % TODO Add review paper for GO
 Historically, the most common approach to crystal structure prediction relied on classical global optimization (GO) schemes,
-in which the local/global minimum are found via numerical optimization routines that operate within the continuous potential energy surface (PES).%highly dimensional is also next sentence
+in which the local/global minimum are found via numerical optimization routines that operate within the continuous potential energy surface (PES).  %highly dimensional is also next sentence
 %
 % TODO Find solid example of shortcomings of classical GO schemes
 These approaches, such as simulated annealing, are only tractable for the most simple systems,
-such as metallic crystals which tend to adopt highly symmetric close-packed configurations, but is less suited for more complex materials.  % Example when it fails? RF Not off of the top of my head, it's a kind of claim that is generically true, but we should find something more concrete
+such as metallic crystals which tend to adopt highly symmetric close-packed configurations.%, but is less suited for more complex materials.  % Example when it fails? RF Not off of the top of my head, it's a kind of claim that is generically true, but we should find something more concrete
 %
-This is because these methods are fundamentally limited by the curse of dimensionality associated with exploring the highly dimensional PES,
-whose degrees of freedoms (and potential number of polymorphs) rises exponentially with system size.\cite{Stillinger1999}
-%
-The class of structurally diverse metal-oxides are a prime example of a chemical space for which structure prediction is non-trivial.
-%
-Metal-oxides are an important class of materials which tend to organize themselves into well-defined local coordination environments (octahedral, tetrahedral, etc.) which can assemble in a large variety of configurations with a long-range order.
+These methods are fundamentally limited by the curse of dimensionality associated with exploring the highly dimensional PES,
+whose degrees of freedoms (and potential number of polymorphs) rises exponentially with system size.\cite{Stillinger1999} The class of structurally diverse metal-oxides are a prime example of a chemical space for which structure prediction is non-trivial, and the materials tend to organize into well-defined local coordination environments (octahedral, tetrahedral, etc.) which assemble in a large variety of configurations with long-range order.
+
+
+
+\textbf{We should mention genetic algorithm approaches. Include: machine-learning aided genetic algorithms for the composition of alloy nanoparticles \cite{Jennings2019} and tight-binding based genetic algorithm \cite{VanDenBossche2018}.}
+
+
+\textbf{We should mention recent paper for 'inverse design machine learning approach' where they find the stable Vanadium oxide phases \cite{noh2019inverse}}
+
+In paralel, active learning frameworks utilizing surrogate models have been demonstrated to successfully speed up ab initio calculations, including structural optimizations\cite{hansen2019atomistic}, transition-state searches \cite{torres2019low}, and fitting of interatomic potentials. \cite{podryabinkin2017active}
+
+
 %
 % Emphasize the candidate space generation as a KEY feature of algorithm
-To address the limitations of traditional global optimization methods,
-here we report on a crystal structure discovery algorithm that leverages machine learning surrogate models and an active learning framework to accelerate the discovery of novel crystal structures at fixed composition.
+
+%To address the limitations of traditional global optimization methods,
+% Not sure this is justified after VO study.
+
+Here we report on a crystal structure discovery algorithm that leverages machine learning surrogate models and an active learning framework to accelerate the discovery of novel crystal structures at fixed composition and does not rely on large sets of generated DFT data.
 %
-% COMBAK Does the hansen2019atomistic paper really demonstrate structural optimizations? Double check
-Active learning frameworks utilizing surrogate models have been demonstrated to successfully speed up materials discovery for alloy nanoparticles \cite{Jennings2019}, structural optimizations \cite{hansen2019atomistic}, and transition-state searches \cite{torres2019low}, as well as adaptive approaches for global optimization \cite{VanDenBossche2018}.
+ %\textbf{These references don't seem very balanced. I'm sure there are other papers outside of the Norskov group we can cite here}
 %
-The algorithm avoids operating in the structural space by leveraging nature's propensity for symmetry by preparing data sets with a large degree of structural diversity at fixed composition.  % this sounds little hand waving | RF Maybe it needs more exposition, I'm convoluting 2 points here, that we don't do traditional GO opt. in cont. PES and that we use the intuition of symmetry to our advantage
+%The algorithm avoids operating in the structural space by leveraging nature's propensity for symmetry by preparing data sets with a large degree of structural diversity at fixed composition.  
+% this sounds little hand waving | RF Maybe it needs more exposition, I'm convoluting 2 points here, that we don't do traditional GO opt. in cont. PES and that we use the intuition of symmetry to our advantage
 %
-As an alternative approach to GO, we first define the set of candidate crystal polymorphs, and secondly, search through the static list of candidates with a selection-type algorithm.
+%As an alternative approach to GO, 
+We first define a set of structurally diverse candidate crystal polymorphs, and secondly, search through the static list of candidates with a selection-type algorithm.
 %
-This approach relies on being able to prepare candidate structures that are likely to be physical and low in energy.
+%This approach relies on being able to prepare candidate structures that are physically reasonable and likely low in energy.
 %
 % TODO Find references for various ways of preparing candidate structures
-To date, there have been various techniques to prepare candidate structures, including generating structures randomly, enumerating space groups, etc.
+%To date, there have been various techniques to prepare candidate structures, including generating structures randomly, enumerating space groups, etc. \textbf{Refs?}
 %
 % This looks  out of space. Consider moving up or eliminate. Also, this is more a discussion statememt.
-Empirically, we know that nature tends to favor symmetric structures, and so we will leverage this intuition by building a dataset by explicitely enumerating through space groups.
+
+%Empirically, we know that nature tends to favor symmetric structures, and so we will leverage this intuition by building a dataset explicitly enumerating through space groups.
+
 % __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -103,8 +116,8 @@ Empirically, we know that nature tends to favor symmetric structures, and so we 
 % Introduce specific system (Ir-oxides), relevance (OER), and what is to be
 % gained by discovering new polymorphs
 % | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Herein, we focus on the chemical space of iridium oxide polymorphs,
-an important class of materials with applications in electrochemistry.
+We demonstrate this methodology in the space of iridium oxide polymorphs,
+an important class of materials with applications in electrochemistry. \textbf{Refs?}
 %
 % See following link for list of important IrO2 OER papers:
 % https://workflowy.com/#/e755141e2f66
@@ -113,7 +126,7 @@ of iridium-oxide at standard conditions,
 and is a well studied as one of the best electrocatalysts for the oxygen evolution reaction (OER).
 \cite{Seitz2016,Lee2012a,McCrory2015,Trotochaud2012,Danilovic2014,Carmo2013,Miles1978,Beni1979}
 %
-Previous studies on SrIrO\textsubscript{3} electrocatalyst for the OER demonstrated that Sr leaching might leave behind a highly oxidized Ir (Ir[6+] for hypothetical \IrOthree) and it was argued as one possibly for observed high OER activity.\cite{Seitz2016}
+Previous studies on SrIrO\textsubscript{3} electrocatalyst for the OER demonstrated that Sr leaching might leave behind a highly oxidized Ir (Ir[6+] for hypothetical \IrOthree) and it was argued as one possibly for observed high OER activity.\cite{Seitz2016}  \textbf{Need refer to the Schloegl work in this section}
 %
 % @Michal wants a Schlogl paper here, not sure which TODO
 Other groups also observed such dissociation of \IrOx catalyst and subsequent formation of amorphous-like layer of unknown structure. \cite{Pearce2017}
