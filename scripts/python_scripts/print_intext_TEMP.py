@@ -11,7 +11,8 @@ import sys
 #__|
 
 # | - Script Inputs
-count_comments = True  # whether to count WORD in comments or not
+#  count_comments = True  # whether to count WORD in comments or not
+count_comments = False  # whether to count WORD in comments or not
 
 words_to_check = [
     "TEMP",
@@ -34,10 +35,12 @@ for subdir, dirs, files in os.walk(root_dir):
         continue
     if "/__misc__" in subdir:
         continue
+    if "__old__" in subdir:
+        continue
     # __|
 
     for file in files:
-        if ".tex" in file:
+        if ".tex" in file and ".swp" not in file:
             print(80 * "*")
             print(file)
             print(80 * "*"); print("\n")

@@ -90,7 +90,7 @@ Combining the MP and OQMD data sets ultimately results in a dataset of \num{688}
 % | - Table of OQMD MP Structures
 \begin{table}[!htb]
 
-  \caption{
+  \caption{\label{table:database_structures}
     %
     (a) Number of entries in the OQMD and MP materials databases for the \ABtwo and \ABthree stoichiometries.
     %
@@ -434,8 +434,69 @@ The \DGOH line is  shown as guide to eye.
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % | - Table of OER energetics
 
+
+\begin{table}[!htb]
+
+  \caption{\label{table:oer_table}
+    %
+    (a) TEMP
+    }
+  %
+  % | - Subtable a
+  \begin{subtable}{.5\linewidth}
+  \centering
+  \caption{}
+  %
+   %
+    %
+    \begin{tabular}{cccc}
+    \textbf{}         & \textbf{}        & \multicolumn{2}{c}{\textbf{Entries}} \\
+    \textbf{Database} & \textbf{Stoich.} & \textbf{Total}   & \textbf{Unique}   \\
+    OQMD              &                  & 61,471           &                   \\
+                      & \ABtwo           & 4,736            & 397               \\
+                      & \ABthree         & 28,883           & 194               \\
+    \hline
+    MP                &                  & 435,583          &                   \\
+                      & \ABtwo           & 2,424            & 620               \\
+                      & \ABthree         & 2,341            & 219
+    \end{tabular}
+    %
+   %
+  %
+  \end{subtable}
+  % __|
+  %
+  %
+  \newline
+  \vspace*{0.8 cm}
+  \newline
+  %
+  %
+  % | - Subtable b
+  \begin{subtable}{.5\linewidth}
+  \centering
+  \caption{}
+  %
+   %
+    %
+    \begin{tabular}{cc}
+    \multicolumn{2}{c}{\textbf{Final Candidate Set}} \\
+    \textbf{Stoich.}   & \textbf{Unique Structures}  \\
+    \ABtwo             & 688                         \\
+    \ABthree           & 254
+    \end{tabular}
+    %
+   %
+  %
+  \end{subtable}
+  % __|
+  %
+\end{table}
 % __|
+
+
 
 % __|
