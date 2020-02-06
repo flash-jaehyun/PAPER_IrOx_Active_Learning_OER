@@ -1,23 +1,21 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Introduction %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - Introduction %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Key points:
 %   * Materials are composed of their "stoichiometry" and their "structure"
 %   * 3N dimensional Cartesian space of coordinates is prohibitelvey large
-%   * Our candidate space generation leverages symmetry to produce a set of
-%     structurally unique and well distributed (across the high dim. 3N space)
-%     polymorphs
+%   * Our candidate space generation leverages symmetry to produce a set of structurally unique and well distributed (across the high dim. 3N space) polymorphs
 %   * Mention other methods for bulk crystal structure Discovery
 %     - simulated annealing
 %     - paper that Hammer put out (R58)
-% __|
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
-% ################################# Paragraph #################################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ####################### Paragraph #######################
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % * General intro into problem, give proper context
 % * Make the point that structure has been all but ignored in recent years by the big-data/ML material science community (OQMD MP as examples)
 %
@@ -26,8 +24,7 @@
 %  * It's an important problem to solve because all chemical/physical properties of a material are fundementally linked to the atomic structure.
 %  * Although we've seen a lot of work in the past ~10 years from material science groups leveraging recent advances in big-data, ML, cheaper computational resources, high-throughput screening, materials databases, etc.
 %    * Most of the focus has been on exploring compositionas and not structure
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Paragraph start
+% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TODO this intro sentence will be a reference dump for literature in crystal structure prediction
 Predicting the thermodynamically favorable crystal structures for an arbitrary inorganic system remains a challenging problem in computational material science.\cite{Woodley2008}
 %
@@ -53,18 +50,17 @@ As such, these efforts have been primarily concerned with the enumeration of com
 % In the past, various groups have put forth methodologies to address the structural-diversity problem using computation for the MnO2~ and VOx~ polymorph spaces,
 % but most of these methodologies are limited by the fact that they are operating within the highly intractable/dimensional PES.
 %
-% __|
+% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-% ################################# Paragraph #################################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ####################### Paragraph #######################
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % * Introduction to global optimization and crystal structure predication community
 % * Arguments and motivations for our unique approach
 %
 % OUTLINE:
 %   * TEMP
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Paragraph start
+% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TODO All global optimization papers go here
 % TODO Add review paper for GO
 Historically, the most common approach to crystal structure prediction relied on classical global optimization (GO) schemes,
@@ -99,15 +95,14 @@ To date, there have been various techniques to prepare candidate structures, inc
 %
 % This looks  out of space. Consider moving up or eliminate. Also, this is more a discussion statememt.
 Empirically, we know that nature tends to favor symmetric structures, and so we will leverage this intuition by building a dataset by explicitely enumerating through space groups.
-% __|
+% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-% ################################# Paragraph #################################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ####################### Paragraph #######################
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Introduce specific system (Ir-oxides), relevance (OER), and what is to be
 % gained by discovering new polymorphs
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Paragraph start
+% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Herein, we focus on the chemical space of iridium oxide polymorphs,
 an important class of materials with applications in electrochemistry.
 %
@@ -142,14 +137,13 @@ Furthermore, such pure corner sharing octahedral crystals are known from in othe
 % Machine learning is the efficient way to explore this “exploring Antarctica for life” sparse space.
 % __|
 
-% __|
+% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-% ################################# Paragraph #################################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ####################### Paragraph #######################
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Paragraph outlining the structure of the paper
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Paragraph start
+%
+% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 In the first section, we define our prototype space and introduce the active-learning surrogate model.
 %
@@ -162,7 +156,7 @@ Here, we also extract and analyze the rich structural information of our set.
 In the section 3, we construct a revised bulk Pourbaix diagram of the Ir-H$_2$O system highlighting the importance of the \IrOthree phases under OER.
 %
 Finally, we construct thermodynamic OER volcano of most stable phases and discuss the trends in activities.
-% __|
+% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 

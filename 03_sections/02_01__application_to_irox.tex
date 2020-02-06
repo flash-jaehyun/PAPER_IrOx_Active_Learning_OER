@@ -1,6 +1,6 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Active Learning Machine Learning Results %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - Active Learning Machine Learning Results %%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Notes:
 %   - QUESTION Is there any physical intuition that we can gleam from the fingerprints?
@@ -9,27 +9,26 @@
 %     * ANSWER: Referring to Murat's paper R85
 %     * I don't think we can take advantage of this since there is no amorphous data for IrO3
 % Mention that we have ~15 metastable structures inbetween rutile and anatase IrO2
-% __|
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
-% ################################# Paragraph #################################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ####################### Paragraph #######################
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Intro/transition paragraph
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Paragraph start
+% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 We next utilized the active learning scheme to discover of the most stable forms of \IrOtwo and \IrOthree.
 %
 The algorithm is applied to each stoichiometry individually, and becasuse both cases demonstrate the efficacy of the algoirhm equally well, we will focus on walking through the algorithm for the more novel \IrOthree stoicheometry.
 %
 Will will briefly touch on the results for \IrOtwo at the end and refer the reader to the SI for further explaination.
-% __|
+% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-% ################################# Paragraph #################################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ####################### Paragraph #######################
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Results for IrO3
 % AL results for IrO3
 %   * Introduce the convergence plots
@@ -37,8 +36,7 @@ Will will briefly touch on the results for \IrOtwo at the end and refer the read
 %   * The GP can start to recognize the low energy systems after minimal DFT
 %   *
 % We need to call them something else than "convergence plots" (bad name)
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Paragraph start
+% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 Figure~\ref{fig:iro2_al}a shows a sequence of plots at various generations of the active learning algorithm applied to \IrOthree,
 starting with the initial generation of five randomly drawn candidate structures and ending with the 40th generation
@@ -68,14 +66,13 @@ The results of Figure~\ref{fig:iro2_al}e are averaged over independent runs of A
 Overall, the GP-UCB runs outperform the random acquisition runs, with only \num{50} DFT calculations on average needed to discover \num{7} of the \num{10} most stable systems.
 %
 This is compared to the \num{157} DFT calculations needed to discover \num{7/10} most stable polymorphs for the AL utilizing a random acquisition.
-% __|
+% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-% ################################# Paragraph #################################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ####################### Paragraph #######################
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Discussion on performance of the AL routine
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Paragraph start
+% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Having demonstrated the efficacy of the AL materials discovery scheme we will now turn our attention to evaluating the performance of the GP regressive model of the final generation (trained on all available \IrOthree DFT data).
 %
 Figure~\ref{fig:iro2_al}b plots the GP model predicted formation enthalpy against the DFT-computed values for two special cases,
@@ -102,12 +99,12 @@ Interestingly, despite the inaccuracy of predictions on unrelaxed structures the
 %
 The reason for this is that the pre-optimized structures that are similar enough to the most stable final equilibrium structures will not restructure considerably, meaning that their predicted formation energies will be close enough (and low enough) to be quickly picked up by the acquisition criteria. \textbf{How do you know this?  This is in the section?  If it is you need to say it will be discussed in the next section here.}
 %
-% __|
+% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 % COMBAK Remove parity plot text from this caption
-% =============================================================================
-% FIGURE ======================================================================
+% =========================================================
+% FIGURE ==================================================
 % | - Figure | IrO3 Convergence Plot
 \begin{figure*}[!htb]
 \centering
@@ -142,11 +139,11 @@ Red guide lines are displayed to show how many DFT calculations are needed to di
 }
 \end{figure*}
 % __|
-% =============================================================================
+% =========================================================
 
 
-% =============================================================================
-% FIGURE ======================================================================
+% =========================================================
+% FIGURE ==================================================
 % | - Figure | IrO2/3 Parity Plot
 \begin{figure*}[!htb]
 \centering
@@ -159,7 +156,7 @@ Parity plot of the final ML models for \IrOtwo and \IrOthree predicting on eithe
 }
 \end{figure*}
 % __|
-% =============================================================================
+% =========================================================
 
 
 % TEMP | Find a place for these sentences where they flow
