@@ -1,19 +1,18 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Machine Learning IrOx OER Paper %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Machine Learning IrOx OER Paper %%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % | - __latex_setup__
-
 \documentclass[%
   journal=jacsat,
   manuscript=article,
   % layout=twocolumn,  % Two-column formatting, more compact
   ]{achemso}
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[version=3]{mhchem}  % Formula subscripts using \ce{}
 \usepackage{xspace}  % To add space after macros
@@ -33,8 +32,8 @@
 % \usepackage{hyperref}  % TEST | Used to reference sections w/ hyperlinks
 % __|
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % - Author List
 \input{03_sections/authors}
 
@@ -42,7 +41,7 @@
 \input{03_sections/custom_macros}
 % __|
 
-% Article Title ***************************************************************
+% Article Title *******************************************
 \title[ML discovered \IrOx phases]{
 Active Learning accelerated discovery of stable IrOx polymorphs for the Oxygen Evolution Reaction
 }
@@ -58,50 +57,50 @@ Active Learning accelerated discovery of stable IrOx polymorphs for the Oxygen E
 % __|
 
 
-% #############################################################################
-% | - MAIN DOCUMENT ***********************************************************
-% - 00 | Abstract *************************************************************
+% #########################################################
+% | - MAIN DOCUMENT ***************************************
+% - 00 | Abstract *****************************************
 \begin{abstract}
 \input{03_sections/00_abstract}
 \end{abstract}
 
-% - 01 | Introduction *********************************************************
+% - 01 | Introduction *************************************
 \section{Introduction}
 \input{03_sections/01_introduction}
 
-% - 02 | Results and Discussion ***********************************************
+% - 02 | Results and Discussion ***************************
 \section{Results and discussion}
 
-  % - 02.00 | *****************************************************************
+  % - 02.00 | *********************************************
   \subsection{I. Candidate Space Generation and Active Learning Methodology}
   \input{03_sections/02_00__al_method}
 
-  % - 02.01 | *****************************************************************
+  % - 02.01 | *********************************************
   \subsection{II. Application of Active Learning to the discovery of stable Ir-O polymorphs}
   \input{03_sections/02_01__application_to_irox}
 
-  % - 02.02 | *****************************************************************
+  % - 02.02 | *********************************************
   \subsection{III. Crystal coordination analysis of discovered phases}
   \input{03_sections/02_02__struct_motiffs}
 
-  % - 02.03 | *****************************************************************
+  % - 02.03 | *********************************************
   \subsection{IV. Electrochemical OER Application}
   \input{03_sections/02_03__echem_oer}
 
-% - 03 | Conclusion ***********************************************************
+% - 03 | Conclusion ***************************************
 \section{Conclusion}
 \input{03_sections/03_conclusions}
 
-% #############################################################################
-% - Acknowledgment ************************************************************
+% #########################################################
+% - Acknowledgment ****************************************
 \begin{acknowledgement}
 \input{03_sections/acknowledgements}
 \end{acknowledgement}
 % __|
-% #############################################################################
+% #########################################################
 
 
-% | - Supplementary Information ***********************************************
+% | - Supplementary Information ***************************
 
 % | - __latex_setup__
 \clearpage
@@ -116,7 +115,7 @@ Active Learning accelerated discovery of stable IrOx polymorphs for the Oxygen E
 \end{suppinfo}
 % __|
 
-% | - Bibliography ************************************************************
+% | - Bibliography ****************************************
 \bibliography{%
 01_references/global_opt_refs.bib,%
 01_references/irox_refs.bib,%
