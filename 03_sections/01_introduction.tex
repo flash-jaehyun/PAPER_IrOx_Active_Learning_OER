@@ -9,7 +9,7 @@
 %   * Mention other methods for bulk crystal structure Discovery
     %     - simulated annealing
 %     - paper that Hammer put out (R58)
-% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
@@ -59,8 +59,9 @@ As such, these efforts have been primarily concerned with the enumeration of com
 % * Introduction to global optimization and crystal structure predication community
 % * Arguments and motivations for our unique approach
 %
-% OUTLINE:
-%   * TEMP
+% NOTES:
+%   * Emphasize the candidate space generation as a KEY feature of algorithm
+%
 % | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TODO All global optimization papers go here
 % TODO Add review paper for GO
@@ -69,28 +70,21 @@ in which the local/global minimum are found via numerical optimization routines 
 %
 % TODO Find solid example of shortcomings of classical GO schemes
 These approaches, such as simulated annealing, are only tractable for the most simple systems,
-such as metallic crystals which tend to adopt highly symmetric close-packed configurations.%, but is less suited for more complex materials.  % Example when it fails? RF Not off of the top of my head, it's a kind of claim that is generically true, but we should find something more concrete
+such as metallic crystals which tend to adopt highly symmetric close-packed configurations.
+%, but is less suited for more complex materials.  % Example when it fails? RF Not off of the top of my head, it's a kind of claim that is generically true, but we should find something more concrete
 %
 These methods are fundamentally limited by structures with a high dimensional PES, whose degrees of freedoms (and potential number of polymorphs) rises exponentially with system size.\cite{Stillinger1999} The class of structurally diverse metal-oxides are a prime example of a chemical space for which structure prediction is non-trivial, and the materials tend to organize into well-defined local coordination environments (octahedral, tetrahedral, etc.) which assemble in a large variety of configurations with long-range order.
-
-
-
-\textbf{We should mention genetic algorithm approaches. Include: machine-learning aided genetic algorithms for the composition of alloy nanoparticles \cite{Jennings2019} and tight-binding based genetic algorithm \cite{VanDenBossche2018}.}
-
-
-\textbf{We should mention recent paper for 'inverse design machine learning approach' where they find the stable Vanadium oxide phases \cite{noh2019inverse}}
-
-In parallel, active learning frameworks utilizing surrogate models have been demonstrated to successfully speed up ab initio calculations, including structural optimizations\cite{hansen2019atomistic}, transition-state searches \cite{torres2019low}, and fitting of inter-atomic potentials. \cite{podryabinkin2017active}
-\textbf{These references don't seem very balanced. I'm sure there are other papers outside of the Norskov group we can cite here}
-
 %
-% Emphasize the candidate space generation as a KEY feature of algorithm
-
-%To address the limitations of traditional global optimization methods,
-% Not sure this is justified after VO study.
-
+% COMBAK NOTE \textbf{These references don't seem very balanced. I'm sure there are other papers outside of the Norskov group we can cite here}
+% TODO Find more papers of AL in materials pace to put here
+In parallel, active learning (AL) frameworks utilizing surrogate models have been demonstrated to successfully speed up ab initio calculations, including structural optimizations\cite{hansen2019atomistic}, transition-state searches \cite{torres2019low}, optimal alloy nano-particle compositions~\cite{Jennings2019) and fitting of inter-atomic potentials.\cite{podryabinkin2017active}
+%
+% This sentence will be a dump for other recent GO papers that aren't necesarily just AL
+There have been numerous recent efforts in developing unique approaches to materials discovery, including a tight-binding model utilizing genetic algorithms~\cite{VanDenBossche2018}, and an image-based materials represenation procedure from Noh \latin{et al.}~\cite{noh2019inverse}, which was used to find stable vanadium oxide polymorphs.
+%
+% To address the limitations of traditional global optimization methods,
+%
 Here we report on a crystal structure discovery algorithm that leverages machine learning surrogate models and an active learning framework to accelerate the discovery of novel crystal structures at fixed composition and does not rely on large sets of generated DFT data.
-%
 %
 %The algorithm avoids operating in the structural space by leveraging nature's propensity for symmetry by preparing data sets with a large degree of structural diversity at fixed composition.  
 % this sounds little hand waving | RF Maybe it needs more exposition, I'm convoluting 2 points here, that we don't do traditional GO opt. in cont. PES and that we use the intuition of symmetry to our advantage
@@ -116,21 +110,23 @@ We first define a set of structurally diverse candidate crystal polymorphs, and 
 % gained by discovering new polymorphs
 % | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 We demonstrate this methodology in the space of iridium oxide polymorphs,
-an important class of materials with applications in electrochemistry. \textbf{Refs?}
+an important class of materials with applications in electrochemistry.
 %
 % See following link for list of important IrO2 OER papers:
 % https://workflowy.com/#/e755141e2f66
-In particular, \rIrOtwo (Ir[4+] oxidation state), is the most stable form  % best-known?
-of iridium-oxide at standard conditions,
+In particular, \rIrOtwo (Ir[4+] oxidation state), is the most stable form of iridium-oxide at standard conditions,
 and is a well studied electrocatalyst for the oxygen evolution reaction (OER).
 \cite{Seitz2016,Lee2012a,McCrory2015,Trotochaud2012,Danilovic2014,Carmo2013,Miles1978,Beni1979}
 %
-Previous studies on SrIrO\textsubscript{3} electrocatalyst for the OER demonstrated that Sr leaching might leave behind a highly oxidized Ir (Ir[6+] for hypothetical \IrOthree) and it was argued as one possibly for observed high OER activity.\cite{Seitz2016}  \textbf{Need refer to the Schloegl work in this section}
+% \textbf{Need refer to the Schloegl work in this section}
+% Which Schloegl papers are you all referring to?
+Previous studies on SrIrO\textsubscript{3} electrocatalyst for the OER demonstrated that Sr leaching might leave behind a highly oxidized Ir (Ir[6+] for hypothetical \IrOthree) and it was argued as one possibly for observed high OER activity.\cite{Seitz2016}
 %
 % @Michal wants a Schlogl paper here, not sure which TODO
 Other groups also observed reconstruction of \IrOx catalysts under reaction conditions and subsequent formation of an unknown structure. \cite{Pearce2017} 
 %
-Highly oxidized \IrOthree phases are also formed as the terminal structure of Li\textsubscript{x}IrO\textsubscript{3} anodes.\cite{Pearce2017}\textbf{more refs here}
+% COMBAK More references here (Chris)
+Highly oxidized \IrOthree phases are also formed as the terminal structure of Li\textsubscript{x}IrO\textsubscript{3} anodes.\cite{Pearce2017}
 %
 % TODO Find reference for IrOxHy phases and their importance
 For these reasons, we focused our study to search for stable polymorphs in the \IrOtwo stoicheometry and  oxidized \IrOthree stoicheometry.
@@ -158,18 +154,17 @@ For these reasons, we focused our study to search for stable polymorphs in the \
 %
 % | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-\textbf{this needs a lead in sentence that transitions from the last paragraph}
-We first define our prototype space for \IrOtwo and \IrOthree structure generation and introduce the active-learning surrogate model.
+% \textbf{this needs a lead in sentence that transitions from the last paragraph}
+This paper will be structured as follows,
+first, we outline the generation of our candidate structures for \IrOtwo and \IrOthree and introduce the AL accerlated surrogate model.
 %
-Next, we apply AL \textbf{please fix the inconsistent acronym abbreviations throughout the document} to the \IrOtwo and \IrOthree prototype space. We explore the acceleration/performance and practical limitations of this approach, and analyze the resultant crystallographic structural information and trends for the most stable polymorphs.
+Next, we demonstrate the application of our AL scheme to the \IrOtwo and \IrOthree prototype spaces and show the performance of our routine at finding the most stable polymorphs in the candidate sets.
 %
-%Here, we also extract and analyze the rich structural information of our set.
+We also analyze the crystallographic structural motiffs of the DFT relaxed structures and report the trends of the most stable polymorphs.
 %
 Lastly, we construct a revised bulk Pourbaix diagram of the Ir$_x$O$_y$ systems, and evaluate the OER performance for the most stable phases.
-
-%highlighting the importance of the \IrOthree phases under OER.
 %
-%Finally, we construct thermodynamic OER volcano of most stable phases and discuss the trends in activities.
+%highlighting the importance of the \IrOthree phases under OER.
 % __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
