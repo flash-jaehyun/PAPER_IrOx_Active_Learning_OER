@@ -21,7 +21,7 @@
 %
 We next utilized the active learning scheme to discover of the most stable forms of \IrOtwo and \IrOthree.
 %
-The algorithm is applied to each stoichiometry individually, and becasuse both cases demonstrate the efficacy of the algoirhm equally well, we will focus on walking through the algorithm for the more novel \IrOthree stoicheometry.
+The algorithm is applied to each stoichiometry individually, and because both cases demonstrate the efficacy of the algorithm equally well, we will focus on walking through the algorithm for the more novel \IrOthree stoicheometry.
 %
 Will will briefly touch on the results for \IrOtwo at the end and refer the reader to the Supporting Information for further information.
 % __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -53,7 +53,7 @@ with the short grey line turning into a longer red line when the structure is ac
 %
 At the first generation the ten most stable structures are randomly distributed across the entire candidate space because the GP model has not been trained sufficiently to correctly identify the most stable polymorphs.
 %
-After only three generations (Figure~\ref{fig:iro2_al}a.ii) the GP model is sufficiently trained to predict all of the 10 most stable polymorphs as being low energy configurations, as evidenced by the fact that their predicted energy ording within the candidate space has shifted towards the low energy portion of Figure~\ref{fig:iro2_al}a.ii.
+After only three generations (Figure~\ref{fig:iro2_al}a.ii) the GP model is sufficiently trained to predict all of the 10 most stable polymorphs as being low energy configurations, as evidenced by the fact that their predicted energy ordering within the candidate space has shifted towards the low energy portion of Figure~\ref{fig:iro2_al}a.ii.
 %
 By the third generation (\num{20} DFT calculations) \num{2/10} most stable polymorphs have been acquired.
 %
@@ -83,16 +83,16 @@ Figure~\ref{fig:iro2_al}b plots the GP model predicted formation enthalpy agains
 It is evident from the parity plot in Figure~\ref{fig:iro2_al}b that the GP model is not accurate in quantitatively predicting the DFT formation energy of the candidate space using the pre-optimized fingerprints,
 with a MAE of \mytilde\num{1.5} eV/atom.
 %
-The model's most innacurate predictions are skewed towards the higher formation enthalpies.
+The model's most inaccurate predictions are skewed towards the higher formation enthalpies.
 %
 The same GP model does comparatively much better at predicting the formation energies of post-DFT optimized structures with an MAE of \mytilde\num{0.2} eV/atom,
 roughly 100 meV/atom larger than the MAE reported by Ward \latin{et al.} of 0.8 eV/atom.
 %
-The fact that our models, trained on hundreds of DFT calculations,  achieves errors on par with the model of Ward \latin{et al.}, who trained on hundereds of thousands of DFT calculations, is due to the fact that we are training and predicting on a space whose properties are very narrolwy constrained, while Ward \latin{et al.} is predicting on structures whose elements span the entire periodic table.
+The fact that our models, trained on hundreds of DFT calculations,  achieves errors on par with the model of Ward \latin{et al.}, who trained on hundreds of thousands of DFT calculations, is due to the fact that we are training and predicting on a space whose properties are very narrowly constrained, while Ward \latin{et al.} is predicting on structures whose elements span the entire periodic table.
 %
 This drastic decrease in prediction error is not surprising since the post-DFT fingerprints directly corresponds to the target DFT energies.
 %
-This is to show that the GP model's innacuracies are due to the large degree of structural reorganization that occurs after DFT relaxation of the pre-optimized structure.
+This is to show that the GP model's inaccuracies are due to the large degree of structural reorganization that occurs after DFT relaxation of the pre-optimized structure.
 %
 Structures that are initialized in high energy configurations will therefore have high predicted formation enthalpies, and will then reconfigure into a lower nearby configuration, resulting in lower final energy and a large discrepancy between the predicted and final energies.
 %

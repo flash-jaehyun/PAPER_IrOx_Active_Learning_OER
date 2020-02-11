@@ -4,7 +4,7 @@
 %
 % Key points:
 %   * Materials are composed of their "stoichiometry" and their "structure"
-%   * 3N dimensional Cartesian space of coordinates is prohibitelvey large
+%   * 3N dimensional Cartesian space of coordinates is prohibitively large
 %   * Our candidate space generation leverages symmetry to produce a set of structurally unique and well distributed (across the high dim. 3N space) polymorphs
 %   * Mention other methods for bulk crystal structure Discovery
     %     - simulated annealing
@@ -21,16 +21,16 @@
 %
 % OUTLINE:
 %  * Solving for crystal structures in a generally difficult problem
-%  * It's an important problem to solve because all chemical/physical properties of a material are fundementally linked to the atomic structure.
+%  * It's an important problem to solve because all chemical/physical properties of a material are fundamentally linked to the atomic structure.
 %  * Although we've seen a lot of work in the past ~10 years from material science groups leveraging recent advances in big-data, ML, cheaper computational resources, high-throughput screening, materials databases, etc.
-%    * Most of the focus has been on exploring compositionas and not structure
+%    * Most of the focus has been on exploring compositions and not structure
 % | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TODO this intro sentence will be a reference dump for literature in crystal structure prediction
 Predicting the thermodynamically favorable crystal structures for an arbitrary inorganic system remains a challenging problem in computational material science.\cite{Woodley2008}
 %
 % Experimentally synthesized inorganic materials often conform to the global minimum energy structure (or similarly stable meta-stable phases).
 %
-% TODO Find reference to backup the importance of knowning the crystal structure to predict properties of real-world systems. I would consider this to be common knowledge but relevent article would be nice.
+% TODO Find reference to backup the importance of knowing the crystal structure to predict properties of real-world systems. I would consider this to be common knowledge but relevant article would be nice.
 To simulate the material properties of new meta-stable polymorphs, which are close in energy to the convex hull of stability, their structures must first be found. 
 %When simulations are used to guide the search for new materials, the stable and meta-stable crystal structures, \latin{i.e.} polymorphs,  close to the convex hull of stability must be known in order to predict the material properties.\textbf{the previous sentence doesn't make sense, I'm not sure what you are trying to say here}
 %
@@ -103,7 +103,7 @@ We first define a set of structurally diverse candidate crystal polymorphs, and 
 % TODO Find references for various ways of preparing candidate structures
 %To date, there have been various techniques to prepare candidate structures, including generating structures randomly, enumerating space groups, etc. \textbf{Refs?}
 %
-% This looks  out of space. Consider moving up or eliminate. Also, this is more a discussion statememt.
+% This looks  out of space. Consider moving up or eliminate. Also, this is more a discussion statement.
 
 %Empirically, we know that nature tends to favor symmetric structures, and so we will leverage this intuition by building a dataset explicitly enumerating through space groups.
 
