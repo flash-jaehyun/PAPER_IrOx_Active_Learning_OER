@@ -54,6 +54,7 @@
 % ####################### Paragraph #######################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TEMP
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % There should be a paragraph which discussed the structural drift and performance/acceleration in more detail
 % I would use the updated version of Figure 2c.
@@ -72,12 +73,38 @@ and are displayed as horizontal lines in Figure~\ref{fig:E_vs_V}a and b. There a
 %Measuring the metastability relative to the hull for each stoichiometry yields a metastability window of 0.5 and 0.3 eV/atom for \IrOtwo and \IrOthree, respectively.
 % __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+% =========================================================
+% FIGURE ==================================================
+% | - Figure | Energy vs. Volume (motif distribution)
+\begin{figure*}[!htb]
+\centering
+\makebox[\textwidth][c]{\includegraphics[
+width=\textwidth,height=\textheight,keepaspectratio]
+{02_figures/e_vs_v_motiffs.pdf}
+}
+\caption{\label{fig:E_vs_V}
+%381 \IrOtwo and 185
+Enthalpy of formation for the \num{381} \IrOtwo (a) and \num{185} \IrOthree (b) DFT optimized structures in the candidate data set plotted against the volume per atom.
+%
+Insets in the low energy region for (a) and (b) are shown.
+%
+The color bar represents the average coordination number between Ir and O, with 6 (octahedra) and 4 (tetrahedral) highlighted.
+%
+(c) and (d), select \IrOtwo and \IrOthree polymorph structures.
+}
+\end{figure*}
+% __| =====================================================
+% =========================================================
+
+
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ####################### Paragraph #######################
 % TODO Say that the \IrOthree bulk phase corresponds to the o-covered regime
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % There is a large variety in density on this plot
 % IrO3 has a small dependance on the volume
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 A large variety in structure density and coordination environment is desirable, since this will increase the likelihood of discovering novel materials. We note that for both compositions, there is a large variety in density such that both low volume (dense) and high volume (porous) structures are contained in the data set. The lowest volume (most dense) structures corresponds to an atomic packing factor of roughly 0.50, where the most stable structures are found. On the other end, the highest volume (most porous) systems sampled have atomic packing factors going as low as 0.15.
 %where the shape of envelope curve (lowest energy for a given volume) is analogous to the shape of the Lennard-Jones potential. \textbf{is this important or expected?}
@@ -99,6 +126,7 @@ such that even highly porous structure are within 0.1 eV of the most stable phas
 % ####################### Paragraph #######################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Explaining coordination motiff distribution (octahedral, tetrahedral
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 The structures have been classified with respect to the Ir-O coordination environment (such as octahedral, square pyramidal, tetrahedral, cubic, etc.),
@@ -128,6 +156,7 @@ This demonstrates that \IrOtwo's stoicheometry is more conducive towards forming
 % ####################### Paragraph #######################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TEMP
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 In Figure~\ref{fig:E_vs_V}c and d, a selection of meta-stable structures is shown for \IrOtwo and \IrOthree respectively.
 For \IrOtwo, we found the rutile structure to be the most stable, in correspondence with the Inorganic Crystal Structure Database (ICSD) where only the rutile and pyrite phases are reported to have been synthesized \cite{bolzan1997structural, shirako2014synthesis}, the pyrite phase also predicted to be metastable in this work. Additionally, several common \ABtwo crystal structures were found within the dataset, including columbite~\cite{columbite}, brookite~\cite{brookite} and anatase~\cite{anatase} phases (not all shown).
@@ -139,27 +168,3 @@ which could be interesting for battery applications \cite{}.
 % COMBAK
 Interestingly, the most stable \IrOthree structure in MP~\cite{mp-1097041} corresponds to the Nth most stable \IrOthree polymorph in our dataset (Cmcm space group and structure (iv) in Figure~\ref{fig:E_vs_V}d), meaning that we have uncovered N \IrOthree structures more stable than anything currently known.
 % __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-% =========================================================
-% FIGURE ==================================================
-% | - Figure | Energy vs. Volume (motif distribution)
-\begin{figure*}[!htb]
-\centering
-\makebox[\textwidth][c]{\includegraphics[
-width=\textwidth,height=\textheight,keepaspectratio]
-{02_figures/e_vs_v_motiffs.pdf}
-}
-\caption{\label{fig:E_vs_V}
-%381 \IrOtwo and 185
-Enthalpy of formation for the \num{381} \IrOtwo (a) and \num{185} \IrOthree (b) DFT optimized structures in the candidate data set plotted against the volume per atom.
-%
-Insets in the low energy region for (a) and (b) are shown.
-%
-The color bar represents the average coordination number between Ir and O, with 6 (octahedra) and 4 (tetrahedral) highlighted.
-%
-(c) and (d), select \IrOtwo and \IrOthree polymorph structures.
-}
-\end{figure*}
-% __|
-% =========================================================

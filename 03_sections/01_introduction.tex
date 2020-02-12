@@ -9,7 +9,7 @@
 %   * Mention other methods for bulk crystal structure Discovery
     %     - simulated annealing
 %     - paper that Hammer put out (R58)
-    % __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
@@ -24,6 +24,7 @@
 %  * It's an important problem to solve because all chemical/physical properties of a material are fundamentally linked to the atomic structure.
 %  * Although we've seen a lot of work in the past ~10 years from material science groups leveraging recent advances in big-data, ML, cheaper computational resources, high-throughput screening, materials databases, etc.
 %    * Most of the focus has been on exploring compositions and not structure
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TODO this intro sentence will be a reference dump for literature in crystal structure prediction
 Predicting the thermodynamically favorable crystal structures for an arbitrary inorganic system remains a challenging problem in computational material science.\cite{Woodley2008}
@@ -31,7 +32,7 @@ Predicting the thermodynamically favorable crystal structures for an arbitrary i
 % Experimentally synthesized inorganic materials often conform to the global minimum energy structure (or similarly stable meta-stable phases).
 %
 % TODO Find reference to backup the importance of knowing the crystal structure to predict properties of real-world systems. I would consider this to be common knowledge but relevant article would be nice.
-To simulate the material properties of new meta-stable polymorphs, which are close in energy to the convex hull of stability, their structures must first be found. 
+To simulate the material properties of new meta-stable polymorphs, which are close in energy to the convex hull of stability, their structures must first be found.
 %When simulations are used to guide the search for new materials, the stable and meta-stable crystal structures, \latin{i.e.} polymorphs,  close to the convex hull of stability must be known in order to predict the material properties.\textbf{the previous sentence doesn't make sense, I'm not sure what you are trying to say here}
 %
 % Structure vs. composition enumeration (composition done to death)
@@ -62,6 +63,7 @@ As such, these efforts have been primarily concerned with the enumeration of com
 % NOTES:
 %   * Emphasize the candidate space generation as a KEY feature of algorithm
 %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TODO All global optimization papers go here
 % TODO Add review paper for GO
@@ -86,10 +88,10 @@ There have been numerous recent efforts in developing unique approaches to mater
 %
 Here we report on a crystal structure discovery algorithm that leverages machine learning surrogate models and an active learning framework to accelerate the discovery of novel crystal structures at fixed composition and does not rely on large sets of generated DFT data.
 %
-%The algorithm avoids operating in the structural space by leveraging nature's propensity for symmetry by preparing data sets with a large degree of structural diversity at fixed composition.  
+%The algorithm avoids operating in the structural space by leveraging nature's propensity for symmetry by preparing data sets with a large degree of structural diversity at fixed composition.
 % this sounds little hand waving | RF Maybe it needs more exposition, I'm convoluting 2 points here, that we don't do traditional GO opt. in cont. PES and that we use the intuition of symmetry to our advantage
 %
-%As an alternative approach to GO, 
+%As an alternative approach to GO,
 We first define a set of structurally diverse candidate crystal polymorphs, and secondly, search through the static list of candidates with a selection-type algorithm.
 %
 %This approach relies on being able to prepare candidate structures that are physically reasonable and likely low in energy.
@@ -98,9 +100,8 @@ We first define a set of structurally diverse candidate crystal polymorphs, and 
 %To date, there have been various techniques to prepare candidate structures, including generating structures randomly, enumerating space groups, etc. \textbf{Refs?}
 %
 % This looks  out of space. Consider moving up or eliminate. Also, this is more a discussion statement.
-
-%Empirically, we know that nature tends to favor symmetric structures, and so we will leverage this intuition by building a dataset explicitly enumerating through space groups.
-
+%
+% Empirically, we know that nature tends to favor symmetric structures, and so we will leverage this intuition by building a dataset explicitly enumerating through space groups.
 % __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -108,6 +109,7 @@ We first define a set of structurally diverse candidate crystal polymorphs, and 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Introduce specific system (Ir-oxides), relevance (OER), and what is to be
 % gained by discovering new polymorphs
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 We demonstrate this methodology in the space of iridium oxide polymorphs,
 an important class of materials with applications in electrochemistry.
@@ -123,7 +125,7 @@ and is a well studied electrocatalyst for the oxygen evolution reaction (OER).
 Previous studies on SrIrO\textsubscript{3} electrocatalyst for the OER demonstrated that Sr leaching might leave behind a highly oxidized Ir (Ir[6+] for hypothetical \IrOthree) and it was argued as one possibly for observed high OER activity.\cite{Seitz2016}
 %
 % @Michal wants a Schlogl paper here, not sure which TODO
-Other groups also observed reconstruction of \IrOx catalysts under reaction conditions and subsequent formation of an unknown structure. \cite{Pearce2017} 
+Other groups also observed reconstruction of \IrOx catalysts under reaction conditions and subsequent formation of an unknown structure. \cite{Pearce2017}
 %
 % COMBAK More references here (Chris)
 Highly oxidized \IrOthree phases are also formed as the terminal structure of Li\textsubscript{x}IrO\textsubscript{3} anodes.\cite{Pearce2017}
@@ -152,6 +154,7 @@ For these reasons, we focused our study to search for stable polymorphs in the \
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Paragraph outlining the structure of the paper
 %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % \textbf{this needs a lead in sentence that transitions from the last paragraph}
@@ -166,59 +169,3 @@ Lastly, we construct a revised bulk Pourbaix diagram of the Ir$_x$O$_y$ systems,
 %
 %highlighting the importance of the \IrOthree phases under OER.
 % __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-
-
-% | - __old__
-
-% Very hard to exhaustively sample all structures, therefore it's hard to know if you are considering the global minimum structure
-
-
-% | - __old__
-% By considering only systems of unique stoicheometry we leave the search space of 3N Cartesian coordinates and enter a one dimensinal search space of structurally unique candidates.
-%
-% Within this search space, machine learning is used to accelerate and guide the search for promising and stable structures by by-passing the need to perform expensive electronic structure calculations for the entire candidate space.
-% In order to navigate this vast space of materials, Machine Learning approaches has a huge potential to guide the search for structures of interest, and by-passing the need for expensive computations for all possible arrangements.
-% Motivation for \ce{IrO_x}, low representation, longstanding controversy over oxidation states and topology, and demonstrates promise for OER and Li ion batteries.
-% These basic building blocks can then be connected through 3 primary modes, vertex-sharing, edge-sharing, and face-sharing configurations (mid-range order) which can give rise to long-range order by forming porous or layered systems.
-% Other classical crystal structure finding methods here
-% The potential to form structures with different arrangements on multiple length-scales gives oxides a large degree of structural variety which it turn makes the space of possible polymorphs intractably large for traditional methods like simulated annealing, TEMP, or TEMP.
-% __|
-
-
-% ################################# Paragraph #############
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Paragraph that starts to focus in on our actual algorithm
-% Talk about the problem with optimizing in 3N Cartesian space
-% Best way to create a population of polymorphs is to consider symmetry
-%   - nature loves symmetry
-%   - Talk about other material databases
-%   - They mostly explore composition space, despite this though, there does exist a lot of variety in structure
-%       * QUESTION How much data do we have on the OQMD+MP structure uniqueness search
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Paragraph start
-% % 2  --> 3 key features (first is that we're not working in 3N space!!!)
-% The two key features of our algorithm that make the exploration of an expansive space possible are its use of surrogate models and active learning framework.
-% %
-% Because DFT calculations are prohibitively computationally expensive to carry out for large data sets, here we train a Gaussian Process (GP) machine learning model to serve as a surrogate model.
-% %
-% In general active learning applications, the requisite training data is not available.
-% %
-% __|
-
-
-% ################################# Paragraph #############
-% Crystallographic Discovery and Machine Learning.
-% Current state of databases (OQMD, MP, CatHub, alfowlib).
-% What parts of the database are missing (e.g. \ce{IrO_3}).
-% Ankit - Condensed version of Ankit paper
-% Prototyping databases to identify knowledge gaps.
-% Deriving features from structures to describe heats of formation.
-% What has been done (simple models) more recently using DFT+Machine Learning.
-
-% ################################# Paragraph #############
-% Oxides for batteries/fuel cells, Iridium Oxide, OER, Lithiated \ce{IrO_3}.
-% Highly oxidized phases of oxides for fuel cell and energy storage applications.
-% __|

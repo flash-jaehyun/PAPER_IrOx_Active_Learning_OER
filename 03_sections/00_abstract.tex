@@ -1,8 +1,8 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Abstract %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Abstract %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
@@ -11,28 +11,29 @@ Machine learning (ML) based surrogate models have become an increasingly common 
 %
 Training such models on expansive DFT data sets has been used to discover new materials in the vast space of material compositions. However, surrogate model applications to the structural space of bulk crystals, \latin{i.e.} polymorphs, remain relatively unexplored.
 %
-%However, surrogate model applications to the structural space of bulk-crystals, \latin{i.e.} polymorphs, are very scarce due to the inherent bias of \latin{ab-initio} datasets towards systems with a large variety in composition but with limited structural diversity. 
+Herein, we report on an active learning (AL) framework that searches for the most stable polymorph of \IrOtwo and \IrOthree by utilizing a surrogate model which is updated on the fly with generated DFT data.
 %
-Herein, we report on an active learning (AL) methodology that searches for the most stable crystal structures of \IrOtwo and \IrOthree by utilizing surrogate models which are updated on the fly with generated DFT data. The model search within a candidate data set of crystal motifs sourced from publicly available materials databases.
-% NUMBER
+The model searches within a candidate data set of crystal motifs sourced from publicly available materials databases.
+%
 We demonstrate the efficacy of this AL-accelerated methodology by discovering 7 out of the 10 most stable crystal structures for \IrOtwo and \IrOthree with less than 50 DFT calculations.
 %
-% This needs to be filled ASAP. We have the results 
-% TODO COMBAK I'd like a more meaningful meta-stability cutoff other than 0.2 eV/atom, I'm thinking of some possibilities, will update
+% COMBAK TODO Update number of unique polymorphs discovered to something more meaningful
+% Let's report how many meta-stable IrO2/3 we discovered, much better than how it is currently phrased
 For \IrOtwo, we reaffirm that the rutile phase is the globally stable polymorph,
-while for the \IrOthree composition we discover more than 10 unique polymorphs, that are more stable than previously proposed structures, including a $\alpha$-AlF\textsubscript{3} type and a rutile-like \IrOthree structure.
-%structures are discovered within the metastability limit of ??? eV per atom.
+while for \IrOthree we discover TEMP unique polymorphs that are more stable than previously proposed structures, including a $\alpha$-AlF\textsubscript{3} type and a rutile-like \IrOthree structure.
 %
 % There are 10 IrO3 polymorphs within 0.2 eV/atom of the lowest structure and 5 IrO3 polymorphs within 0.1 eV/atom of the lowest structure
 % Of these 10, how many were unknown? Maybe 8ish? TODO double check
-% NUMBER
-%For \IrOthree, we discover 10 previously unknown polymorphs, and the most stable 
-%$\alpha$-AlF\textsubscript{3} type and a rutile-like \IrOthree structure with stabilities lower than 0.2 per atom than anything known to date. 
-% Add in result of new phase of IrO3 that has implications to OER chemistries (@Raul)
 %
-%No new paragraphs should be present in the abstract
-Based on the above results, revised  bulk Pourbaix diagram of the Ir-H\textsubscript{2}O system now includes\IrOthree as the dominant and fully stable phase under acidic oxygen-evolution reaction (OER) conditions.
-% no new paragraphs
-Using thermodynamic criteria for the proficiency of these phases towards OER we find that the above stable \IrOthree polymorphs have significantly higher theoretical activity that the rutile \IrOtwo phase, due to a weaker bonding of the intermediates on more oxidized \IrOthree surfaces. 
-% no new paragraphs
+%For \IrOthree, we discover 10 previously unknown polymorphs, and the most stable
+%$\alpha$-AlF\textsubscript{3} type and a rutile-like \IrOthree structure with stabilities lower than 0.2 per atom than anything known to date.
+%
+Based on the above results, we constructed a revised bulk Pourbaix diagram of the Ir-H\textsubscript{2}O system by including \IrOthree, and show that our \aIrOthree phase is the dominant and fully stable phase under acidic oxygen-evolution reaction (OER) conditions.
+%
+% COMBAK "the OER" or just "OER"
+Using a thermodynamic criteria for the activity towards OER we find that the above stable \IrOthree polymorphs have significantly lower theoretical overpotentials than the rutile \IrOtwo phase.
+%
+This is due to a weaker and more ideal binding of the OER intermediates on the more oxidized \IrOthree surfaces.
+%
+% Less cheesy closing thoughts
 This work opens up an opportunity to structural discovery of materials and catalysts on unprecedented scale.
