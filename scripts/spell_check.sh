@@ -51,15 +51,8 @@ tmp1=" --add-extra-dicts=$acro_dict_file -t -c"
 flags=$tmp0$tmp1
 #__|
 
+
 cd "$(dirname "$0")"
-
-# for val in ${StringArray[@]}; do
-#     echo $val
-#     echo "#####################################################################"
-#     aspell --home-dir=. $flags $val
-#     echo ""
-# done
-
 
 for val in ${StringArray[@]}; do
   echo $val
@@ -72,6 +65,13 @@ done
 
 
 #| - __old__
+# for val in ${StringArray[@]}; do
+#     echo $val
+#     echo "#####################################################################"
+#     aspell --home-dir=. $flags $val
+#     echo ""
+# done
+
 # aspell --home-dir=. $flags ../00_main_manuscript.tex
 # aspell --home-dir=. $flags ../03_sections/00_abstract.tex
 # aspell --home-dir=. $flags ../03_sections/01_introduction.tex

@@ -9,7 +9,7 @@
 %   * Mention other methods for bulk crystal structure Discovery
     %     - simulated annealing
 %     - paper that Hammer put out (R58)
-% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
@@ -42,6 +42,7 @@ To simulate the material properties of new meta-stable polymorphs, which are clo
 Although there have been numerous examples in recent years of machine learning algorithms applied towards the prediction of formation energies of large \latin{ab-initio} data sets,
 these data sets are biased towards common structures and varying composition space.
 %
+% TODO Input the number or fraction of AB3 Perokskite structures that are present in OQMD
 For example the Open Quantum Materials Database (OQMD) contains a large dataset of ternary-alloy combinations in the same close-packed cubic structure.\cite{Kirklin2015}
 %
 % Should we say that enumerating comp. is easy and struct. is hard?
@@ -64,22 +65,33 @@ As such, these efforts have been primarily concerned with the enumeration of com
 %   * Emphasize the candidate space generation as a KEY feature of algorithm
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TODO All global optimization papers go here
 % TODO Add review paper for GO
-Historically, the most common approach to crystal structure prediction relied on classical global optimization (GO) schemes,
-in which the local/global minimum are found via numerical optimization routines that operate within the continuous potential energy surface (PES).  %highly dimensional is also next sentence
+% Highly dimensional is also next sentence, but this sentence is a good spot for it though
+Historically, the most common approach to crystal structure prediction relied on classical global optimization schemes,
+in which the local and global minimum are found via numerical optimization routines that operate within the continuous potential energy surface (PES).
 %
 % TODO Find solid example of shortcomings of classical GO schemes
-These approaches, such as simulated annealing, are only tractable for the most simple systems,
-such as metallic crystals which tend to adopt highly symmetric close-packed configurations.
-%, but is less suited for more complex materials.  % Example when it fails? RF Not off of the top of my head, it's a kind of claim that is generically true, but we should find something more concrete
+These approaches are only tractable for simple systems, such as close-packed metallic crystals,
+as the number of potential polymorphs increases exponentially with systems size and degrees of freedom.\cite{Stillinger1999}
 %
-These methods are fundamentally limited by structures with a high dimensional PES, whose degrees of freedoms (and potential number of polymorphs) rises exponentially with system size.\cite{Stillinger1999} The class of structurally diverse metal-oxides are a prime example of a chemical space for which structure prediction is non-trivial, and the materials tend to organize into well-defined local coordination environments (octahedral, tetrahedral, etc.) which assemble in a large variety of configurations with long-range order.
+The class of structurally diverse metal-oxides are a prime example of a chemical space for which structure prediction is non-trivial, as materials tend to organize into a variety of well-defined local coordination environments such octahedra, tetrahedra.
+%
+These local coordination motifs can further assemble to form systems with long-range order.
+\textbf{Trying to say that the infinite number of ways to pack octahedra lead to a very very large number of possible polymorphs}
+% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ####################### Paragraph #######################
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Start talking about AL background
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % COMBAK NOTE \textbf{These references don't seem very balanced. I'm sure there are other papers outside of the Norskov group we can cite here}
 % TODO Find more papers of AL in materials pace to put here
-In parallel, active learning (AL) frameworks utilizing surrogate models have been demonstrated to successfully speed up ab initio calculations, including structural optimizations\cite{hansen2019atomistic}, transition-state searches \cite{torres2019low}, optimal alloy nano-particle compositions~\cite{Jennings2019} and fitting of inter-atomic potentials.\cite{podryabinkin2017active}
+Alternatively, active learning (AL) frameworks utilizing surrogate models have been demonstrated to successfully speed up \latin{ab initio} calculations, including structural optimizations\cite{hansen2019atomistic}, transition-state searches \cite{torres2019low}, optimal alloy nano-particle compositions~\cite{Jennings2019} and fitting of inter-atomic potentials.\cite{podryabinkin2017active}
 %
 % This sentence will be a dump for other recent GO papers that aren't necessarily just AL
 There have been numerous recent efforts in developing unique approaches to materials discovery, including a tight-binding model utilizing genetic algorithms~\cite{VanDenBossche2018}, and an image-based materials representation procedure from Noh \latin{et al.}~\cite{noh2019inverse}, which was used to find stable vanadium oxide polymorphs.
@@ -131,9 +143,7 @@ Other groups also observed reconstruction of \IrOx catalysts under reaction cond
 Highly oxidized \IrOthree phases are also formed as the terminal structure of Li\textsubscript{x}IrO\textsubscript{3} anodes.\cite{Pearce2017}
 %
 % TODO Find reference for IrOxHy phases and their importance
-For these reasons, we focused our study to search for stable polymorphs in the \IrOtwo stoicheometry and  oxidized \IrOthree stoicheometry.
-stoichiometry
-
+For these reasons, we focused our study to search for stable polymorphs in the \IrOtwo stoichiometry and  oxidized \IrOthree stoichiometry.
 %thereby neglecting the possibility of metal-hydroxide phases which have previously been shown to important.
 %
 %Purely octahedral \IrOthree leads naturally to 100\% corner sharing octahedra,
@@ -165,9 +175,9 @@ first, we outline the generation of our candidate structures for \IrOtwo and \Ir
 %
 Next, we demonstrate the application of our AL scheme to the \IrOtwo and \IrOthree prototype spaces and show the performance of our routine at finding the most stable polymorphs in the candidate sets.
 %
-We also analyze the crystallographic structural motifs of the DFT relaxed structures and report the trends of the most stable polymorphs.
+Next, we analyze the crystallographic structural motifs of the DFT relaxed structures and discuss the trends between the most stable polymorphs.
 %
-Lastly, we construct a revised bulk Pourbaix diagram of the Ir$_x$O$_y$ systems, and evaluate the OER performance for the most stable phases.
+Lastly, we construct a revised bulk Pourbaix diagram of the Ir-H$_2$O systems, and evaluate the OER performance for the most stable phases.
 %
 %highlighting the importance of the \IrOthree phases under OER.
 % __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
