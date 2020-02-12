@@ -114,31 +114,43 @@ The reason for this is that the pre-optimized structures that are similar enough
 }
 \caption{\label{fig:iro2_al}
 % (a) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-(a) Progress of the active learning algorithm at five subsequent generations.
 %
-The AL generation and number of DFT training data at each generation is shown for each subplot.
+(a) The state of the AL algorithm at five generations.
 %
-The enthalpy of formation is plotted, ordered from most to least stable, against all \IrOthree candidates.
+The enthalpy of formation per atom is plotted, ordered from most to least stable, against all \IrOthree candidates.
 %
-Grey markers indicate predicted formation enthalpies from the ML model while red markers correspond to DFT-computed quantities.
+The number of DFT training points the GP model at each generation is displayed.
 %
-Error bars from the GP model corresponding to 1 sigma are shown for all predictions.
+Hollow grey markers indicate a GP model predicted formation enthalpy while red points indicate a DFT-computed quantity.
 %
-The vertical lines at the top of each subplot are tracking the positions of the \num{10} most stable polymorphs at each generation and whether they have been acquired (red) or not (grey) by the AL routine.
+GP uncertainty estimates corresponding to one sigma are shown for all predictions.
+%
+At the top of subplots a.i through a.v, the x-axis positions of the ten most stable polymorphs are tracked at each generation by either red (acquired) or grey (not acquired) vertical lines.
+%
+Insets of the low energy region for each generation is displayed below each subplot.
+%
+The top ten most stable systems are colored and labeled to indicate their identity.
 % (b) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% (b) Parity plot of the final ML models for \IrOtwo and \IrOthree predicting on either the pre-optimized (grey) or the post-optimized structures of \IrOtwo and \IrOthree.
-% (c) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% (c) Zoomed inset of the 6th generation of the AL loop.
-% (d) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-(b) Crystal structures of \num{6} most stable \IrOthree polymorphs.
-% (e) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-(c) The number of most stable \num{10} polymorphs of \IrOthree that are discovered as a function of the number of DFT bulk relaxations, averaged over \num{5} independent runs of the AL algorithm using the GP-UCB acquisition criteria (red) and a random acquisition method (grey).
 %
-Error bars indicate the standard deviation over \num{5} runs.
+(b) Crystal structures of the \num{8} most stable \IrOthree polymorphs.
+%
+The third most stable polymorphs is excluded since it is a combination of the first and second most stable systems.
+% (c) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+(c) The number of most stable \num{10} polymorphs of \IrOthree that are discovered as a function of the number of DFT bulk relaxations,
+averaged over \num{100} independent runs of the AL algorithm using the GP-UCB acquisition criteria (blue) and a random acquisition (grey).
+%
+The error bars indicate the standard deviation over \num{100} runs.
 %
 Red guide lines are displayed to show how many DFT calculations are needed to discover \num{7/10} of most stable polymorphs for the GP-UCB and random acquisition.
 }
 \end{figure*}
+
+% (b) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% (b) Parity plot of the final ML models for \IrOtwo and \IrOthree predicting on either the pre-optimized (grey) or the post-optimized structures of \IrOtwo and \IrOthree.
+% (c) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% (c) Zoomed inset of the 6th generation of the AL loop.
+
 % __|
 % =========================================================
 
