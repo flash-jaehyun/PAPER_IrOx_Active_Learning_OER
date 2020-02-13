@@ -1,4 +1,7 @@
 personal_ws-1.1 en 62
+anatase
+columbite
+Columbite
 Voronoi
 Winther
 Garrido
