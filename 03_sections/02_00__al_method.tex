@@ -70,7 +70,7 @@ Structural properties were defined by a unique combination of the element-nonspe
 % This is my attempt to further clarify the previous sentence
 Structures that share these properties are considered identical.
 %
-For example, the \num{300000} entry dataset of ABO3 style perovksites in OQMD, which only differ by the choice of elements for A, B, and C, all belong to the same structural prototype.
+For example, the \num{300000} entry dataset of \ABOthree style perovskites in OQMD, which only differ by the choice of elements for A, B, and C, all belong to the same structural prototype.
 %
 Eliminating structurally redundant systems from the materials databases reduces the number of entries to \num{697} and \num{259} structures for the \ABtwo and \ABthree stoichiometries, respectively.
 %
@@ -116,7 +116,7 @@ Constraining the stoichiometry per application of the AL algorithm further reduc
 %significantly reducing the dimensionality of the features.
 %
 % TODO Create cross-validation plot
-Further dimensionality reduction was achieved via a principle component analysis (PCA) \cite{Tipping1999}, which was used to reduce the remaining \num{101} features to \num{10}, which, while only capturing ~80 percent of the variance in the features, demonstrated the optimal cross-validation error (see the Supporting Information).  \textbf{Im a little dubious of this, where is it shown in SI?}
+Further dimensionality reduction was achieved via a principle component analysis (PCA) \cite{Tipping1999}, which was used to reduce the remaining \num{101} features to \num{10}, which, while only capturing ~80 percent of the variance in the features, demonstrated the optimal cross-validation error (see the Supporting Information).  \textbf{I'm a little dubious of this, where is it shown in SI?}
 % __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -172,7 +172,7 @@ Although initially unique, the structures in the candidate set often relax into 
 %
 These duplicate structures are removed during each generation of the AL algorithm, leaving only a single instance of lowest energy in the candidate pool.
 %
-The coordination characterization function (CCF) based methodology to quantify the simalarity between structures was used to identify and remove duplicate structures.\cite{Su2017}
+The coordination characterization function (CCF) based methodology to quantify the similarity between structures was used to identify and remove duplicate structures.\cite{Su2017}
 %
 % COMBAK We are discussing alternative convergence criteria, or whether to even have convergence criteria here
 The AL loop proceeds until convergence is achieved, which here is chosen to be the generation at which the structures within the range of metastability, here taken as \num{0.1} eV/atom, are unchanging over three consecutive generations.

@@ -1,4 +1,12 @@
 personal_ws-1.1 en 34
+parallelization
+unrelaxed
+meV
+delithiated
+atomistic
+CatLearn
+tetrahedra
+nano
 unassociated
 thermodynamical
 enthalpy

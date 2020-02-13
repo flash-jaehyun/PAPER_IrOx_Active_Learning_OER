@@ -18,9 +18,9 @@
 % | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % TODO In the previous sections make sure to highlight the alpha and rutile IrO3 phases explicitely so that this sentence makes sense here.
-We next performed \latin{ab-initio} thermodynamic simulations to elucidate the electrochemical operational stability of \IrOx and the OER activity of various \IrOthree phases previously computed.
+We next performed \latin{ab-initio} thermodynamic simulations to elucidate the electrochemical operational stability of \IrOx and the oxygen evolution reaction (OER) activity of various \IrOthree phases previously computed.
 %
-In particular we chose to simulate the OER activity of the most stable \IrOtwo and \IrOthree polymorphs (rutile and our newly discovered \aIrOthree phase), the rutile-like \IrOthree polymorph.
+In particular, we have decided to compare the stability and activity of the most stable \IrOtwo and \IrOthree polymorphs (rutile and our newly discovered \aIrOthree phase), and the rutile-like \IrOthree polymorph.
 %
 In addition, we computed the OER activity of a delithiated form of a recently reported $\beta$-Li\textsubscript{x}IrO\textsubscript{3} (referred to here as \bIrOthree) structure, as it is a notable recent example of a experimentally synthesized \IrOthree system.~\cite{Pearce2017}
 % __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -35,7 +35,9 @@ In addition, we computed the OER activity of a delithiated form of a recently re
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-Figure~\ref{fig:bulk_pourbaix} reports the bulk \IrOx Pourbaix diagram (E vs. pH) constructed with the following species: Ir, \rIrOtwo, \aIrOthree,  \rIrOthree, \bIrOthree, and an aqueous dissolved \ce{IrO[4-]} species.
+The bulk Pourbaix diagram of the Ir-H2O system is shown in Figure~\ref{fig:bulk_pourbaix}.
+%
+The diagram was constructed by considering the equilibrium between with the following species: Ir, \rIrOtwo, \aIrOthree,  \rIrOthree, \bIrOthree, and an aqueous dissolved \ce{IrO[4-]} species.
 %
 While Ir and \rIrOtwo are most stable at low bias, \aIrOthree becomes the thermodynamically dominant phase under the relevant conditions for the OER (potentials around \mytilde1.23 V vs. RHE and an acidic environment)
 %
@@ -111,36 +113,6 @@ At modest overpotentials ($\eta$ \mytilde\num{0.3} or equivalently potentials of
 Consequently, we consider mainly oxygen terminated surfaces for the OER analysis.
 % __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ####################### Paragraph #######################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% OER results
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Replace G_O and G_OH with my custom macros for consistency
-The OER activity (expressed in terms of the limiting potential) for select oxygen terminated surfaces are shown in Figure~\ref{fig:oer_volcano} as a function of the $\Delta G_\mathrm{O} - \Delta G_\mathrm{OH}$ thermodynamic descriptor.
-%
-The two \rIrOtwo surfaces (100 and 110) bind the OER intermediates too strongly,
-locating them at a theoretical limiting potential of \mytilde\num{1.8} V vs. RHE.
-%
-The predicted overpotentials of our \rIrOtwo systems are within the range of experimentally observed overpotentials found in literature.
-%
-% Reference all experimental IrO2 overpotentials I can find
-The three \IrOthree polymorph surfaces all have a $\Delta G_\mathrm{O} - \Delta G_\mathrm{OH}$ descriptor towards the top and right of the volcano, indicative of weaker binding energetics.
-%
-% TODO How much weaker does IrO3 bind than IrO2 on average
-This is evident from Figure~\ref{fig:scaling_relations}, which shows a clear distinction between the \IrOtwo and \IrOthree polymorphs, with \IrOthree binding on average 1.1 eV weaker than \IrOtwo.
-%
-The best performing systems, including the (100), (110), and (211) facets of \aIrOthree, \bIrOthree (101), and \rIrOthree (110), have overpotentials of \mytilde\num{0.4} V vs. RHE,
-a \mytilde\num{0.2} V vs. RHE improvement over the \rIrOtwo system.
-%
-We note that the computed  overpotentials for our \rIrOtwo system differs from that reported in literature~\cite{Seitz2016} by \mytilde\num{0.2} V.
-%
-This discrepancy is due to our inclusion of spin-polarization in our \latin{ab-initio} calculations, which was neglected in Seitz \latin{et al.}.
-%
-For further details, we'll refer readers to the SI of a previous publication.\cite{Strickler2019}
-% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 % =========================================================
 % FIGURE ==================================================
@@ -171,3 +143,35 @@ Color legend: oxygen (red), purple (iridium), coordination motif (white).
 \end{figure*}
 % __| =====================================================
 % =========================================================
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ####################### Paragraph #######################
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% OER results
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Replace G_O and G_OH with my custom macros for consistency
+The OER activity (expressed in terms of the limiting potential) for select oxygen terminated surfaces are shown in Figure~\ref{fig:oer_volcano} as a function of the $\Delta G_\mathrm{O} - \Delta G_\mathrm{OH}$ thermodynamic descriptor.
+%
+The two \rIrOtwo surfaces (100 and 110) bind the OER intermediates too strongly,
+locating them at a theoretical limiting potential of \mytilde\num{1.8} V vs. RHE.
+%
+The predicted overpotentials of our \rIrOtwo systems are within the range of experimentally observed overpotentials found in literature.
+%
+% Reference all experimental IrO2 overpotentials I can find
+The three \IrOthree polymorph surfaces all have a $\Delta G_\mathrm{O} - \Delta G_\mathrm{OH}$ descriptor towards the top and right of the volcano, indicative of weaker binding energetics.
+%
+% TODO How much weaker does IrO3 bind than IrO2 on average
+This is evident from Figure~\ref{fig:scaling_relations}, which shows a clear distinction between the \IrOtwo and \IrOthree polymorphs, with \IrOthree binding on average 1.1 eV weaker than \IrOtwo.
+%
+The best performing systems, including the (100), (110), and (211) facets of \aIrOthree, \bIrOthree (101), and \rIrOthree (110), have overpotentials of \mytilde\num{0.4} V vs. RHE,
+a \mytilde\num{0.2} V vs. RHE improvement over the \rIrOtwo system.
+%
+We note that the computed  overpotentials for our \rIrOtwo system differs from that reported in literature~\cite{Seitz2016} by \mytilde\num{0.2} V.
+%
+This discrepancy is due to our inclusion of spin-polarization in our \latin{ab-initio} calculations, which was neglected in Seitz \latin{et al.}.
+%
+For further details, we'll refer readers to the SI of a previous publication.\cite{Strickler2019}
+% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
