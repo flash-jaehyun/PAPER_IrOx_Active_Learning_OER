@@ -54,18 +54,24 @@
 % ####################### Paragraph #######################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TEMP
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 % There should be a paragraph which discussed the structural drift and performance/acceleration in more detail
 % I would use the updated version of Figure 2c.
-% #########################################################
-
-As a next step we assess the stability as well as the structural variety of the DFT optimized structures, consisting of 381 \IrOtwo and 185 \IrOthree unique polymorphs, showing the enthalpy of formation plotted versus the volume per atom in Figure~\ref{fig:E_vs_V} a and b.
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-To obtain a physically meaningful cutoff for the enthalpy of formation above which materials are unlikely to be synthesizable, we computed the metastability limits for \IrOtwo and \IrOthree relative to their amorphous phases using the methodology of Persson \latin{et.~al.}~\cite{Aykol2018} (see SI for more details on methodology).
+As a next step we assess the stability as well as the structural variety of the DFT optimized structures, consisting of 381 \IrOtwo and 185 \IrOthree unique polymorphs.
 %
-The metastability limits were computed to be -0.33 and -0.34 eV/atom for \IrOtwo and \IrOthree, respectively,
-and are displayed as horizontal lines in Figure~\ref{fig:E_vs_V}a and b. There are 195 and 74 polymorphs for \IrOtwo and \IrOthree, respectively, that are within the meta-stability line, and are therefore potential candidates for synthesizable polymorphs.
+% Why do we show this plot, motivate earlier/here
+Figure~\ref{fig:E_vs_V} a and b shows the DFT computed enthalpy of formation for \IrOtwo and \IrOthree plotted against the inverse density.
+%
+To obtain a physically meaningful cutoff for the enthalpy of formation, we computed the metastability limits for \IrOtwo and \IrOthree relative to their amorphous phases using the methodology of Persson \latin{et. al.}~\cite{Aykol2018}.
+%
+Further computational details can be found in the Supporting Information.
+%
+The metastability limit for both \IrOtwo and \IrOthree were comptuted to occur at an enthalpy of formation of -0.34 eV/atom and are displayed as horizontal lines in Figure~\ref{fig:E_vs_V}a and b.
+%
+There are 195 and 74 polymorphs for \IrOtwo and \IrOthree, respectively, that are within the meta-stability line, and can therefore, in principle be synthesized.
 %
 % These last two sentences can be removed
 %These values are almost identical, possibly indicating that the energy of the amorphous phases are insensitive to the exact stoichiometry.
@@ -89,9 +95,9 @@ Enthalpy of formation for the \num{381} \IrOtwo (a) and \num{185} \IrOthree (b) 
 %
 Insets in the low energy region for (a) and (b) are shown.
 %
-The color bar represents the average coordination number between Ir and O, with 6 (octahedra) and 4 (tetrahedral) highlighted.
+The color bar represents the average coordination number between Ir and O, with the most common, 6 (octahedra) and 4 (tetrahedral) coordinations, highlighted.
 %
-(c) and (d), select \IrOtwo and \IrOthree polymorph structures.
+For \IrOtwo (c) and \IrOthree (d) we highlight the structures of select polymorphs.
 }
 \end{figure*}
 % __| =====================================================
@@ -100,26 +106,34 @@ The color bar represents the average coordination number between Ir and O, with 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ####################### Paragraph #######################
-% TODO Say that the \IrOthree bulk phase corresponds to the o-covered regime
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TODO Say that the \IrOthree bulk phase corresponds to the o-covered regime
 % There is a large variety in density on this plot
 % IrO3 has a small dependance on the volume
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-A large variety in structure density and coordination environment is desirable, since this will increase the likelihood of discovering novel materials. We note that for both compositions, there is a large variety in density such that both low volume (dense) and high volume (porous) structures are contained in the data set. The lowest volume (most dense) structures corresponds to an atomic packing factor of roughly 0.50, where the most stable structures are found. On the other end, the highest volume (most porous) systems sampled have atomic packing factors going as low as 0.15.
+To increase the likelihood of discovering novel material types it is desirable that our candidate space be structurally diverse, with materials that span a large range of densities and coordination environments.
+%
+We note that for both compositions, there is a large variety in density such that both low volume (dense) and high volume (porous) structures are contained in the data set.
+%
+The highest density structures corresponds to an atomic packing factor of roughly 0.50, and are where the most stable structures are found.
+%
+On the other end, the lowest density systems sampled have atomic packing factors as low as 0.15.
 %where the shape of envelope curve (lowest energy for a given volume) is analogous to the shape of the Lennard-Jones potential. \textbf{is this important or expected?}
 %
 % NOTE Can make a comment about the fact that these porous species may be over-stabilized with PBE DFT
-However, for \IrOthree there is a comparatively weak relationship between the energy and volume,
-such that even highly porous structure are within 0.1 eV of the most stable phase. We note that the stability of highly porous systems has a tendency to be overestimated on the DFT+GGA level, where van der Walls interactions should be included for a more accurate description. \cite{}. % What is the error in estimated energy?
-
+However, for \IrOthree there is a comparatively weaker relationship between the energy and volume,
+such that even highly porous structure are within 0.1 eV of the most stable phase. 
+%
+% What is the error in estimated energy?
+The stability of highly porous systems have a tendency to be overestimated on the DFT+GGA level, due to missing van der Walls interactions \cite{}. 
 %
 % COMBAK Explain this point better, this has to do with the oxidation state, coordination preservation rules that I've been playing around with
-
+%
 %This property is likely due to the fact that \IrOthree's oxidation state can more can form readily form layered or porous structures.
 %
 % \textbf{unclear what you mean here, vdw is attractive so shouldn't it just make them more stable?}
-
+%
 %Although formation energies for highly porous systems tend to be over stabilized at the DFT+GGA level of theory because of the improper description of van der Walls interactions, the magnitude of these errors \textbf{don't severely impact the results or something}
 % __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -129,15 +143,15 @@ such that even highly porous structure are within 0.1 eV of the most stable phas
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-The structures have been classified with respect to the Ir-O coordination environment (such as octahedral, square pyramidal, tetrahedral, cubic, etc.),
-by using the chemEnv package, developed by Waroquiers et. al. \cite{Waroquiers2017} and implemented in pymatgen \cite{Ong2013}.
+All structures have been classified with respect to the Ir-O coordination environment (such as octahedral, square pyramidal, tetrahedral, cubic, etc.),
+by using the chemEnv package, developed by Waroquiers et. al. \cite{Waroquiers2017} as implemented in the Pymatgen software \cite{Ong2013}.
 %
 Although the dataset was found to contain a large range of coordination environments ranging from 2 to 10,
 structures with a coordination number of 6 (octahedral) or 4 (tetrahedral) were found to be most prevalent
 % (accounting for roughly TEMP percent of all structures)
 and have been highlighted in blue and red respectively in Figure~\ref{fig:E_vs_V}a and b.
 %
-For both \IrOtwo and \IrOthree the vast majority of most stable (within 0.1 eV) compounds adopt an octahedral coordination environment, a common coordination motif found to be favorable in many other transition metal oxides.\cite{Waroquiers2017}
+For both \IrOtwo and \IrOthree the vast majority of most stable (within 0.1 eV) structures adopt an octahedral coordination environment, a common coordination motif found to be favorable in many other transition metal oxides.\cite{Waroquiers2017}
 %
 % This has to be expanded upon or else maybe dropped, we can discuss
 % I don't understand the end of this sentence.  Give some information of how this applies to your structures.
@@ -148,9 +162,9 @@ can furthermore be used to classify the structures, that typically has a combina
 % Look into this deeper, there is probably a difference in fraction of mixed corner+edge between IrO2 and IrO3
 Of the top 10 \IrOtwo and \IrOthree structures, 9/10 of \IrOtwo and 5/10 of \IrOthree have a mixed corner and edge sharing octahedral packing.
 %
-This demonstrates that \IrOtwo's stoichiometry is more conducive towards forming edge sharing bonds between the octahedra as a result of having to share more oxygens to maintain its stoichiometry.
+This demonstrates that \IrOtwo prefers to form edge sharing octahedra as a result of having to share more oxygens to maintain its stoichiometry.
 %
-\IrOthree has comparatively more oxygens per unit cell, and as such can adopt completely corner sharing arrangements like that of cubic perovkite structures.
+\IrOthree has comparatively more oxygens per unit cell, and as such can adopt completely corner sharing arrangements similar to cubic perovkite-type structures.
 % __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % ####################### Paragraph #######################
@@ -158,13 +172,28 @@ This demonstrates that \IrOtwo's stoichiometry is more conducive towards forming
 % TEMP
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-In Figure~\ref{fig:E_vs_V}c and d, a selection of meta-stable structures is shown for \IrOtwo and \IrOthree respectively.
-For \IrOtwo, we found the rutile structure to be the most stable, in correspondence with the Inorganic Crystal Structure Database (ICSD) where only the rutile and pyrite phases are reported to have been synthesized \cite{bolzan1997structural, shirako2014synthesis}, the pyrite phase also predicted to be metastable in this work. Additionally, several common \ABtwo crystal structures were found within the dataset, including columbite~\cite{columbite}, brookite~\cite{brookite} and anatase~\cite{anatase} phases (not all shown).
+Figure~\ref{fig:E_vs_V}c,d shows a selection of meta-stable structures is shown for \IrOtwo and \IrOthree respectively.
 %
-For \IrOthree the five most stable systems were shown in Figure~\ref{fig:iro2_al},and have been labeled with numbers (1)-(5) in Figure~\ref{fig:E_vs_V} b. However, we have identified several additional meta-stable structures, including 2D(i), highly porous(iii) and 1D(v) polymorphs with varying degrees of porosity and connectivity,
-which could be interesting for battery applications \cite{}.
+For \IrOtwo, we found the rutile structure to be the most stable,
+in agreement with experimental and known crystalographic data.
+%
+Additionally, the experimentally synthesized high pressure pyrite phase of \IrOtwo was found in our dataset and has a formation enthalpy TEMP greater than rutile, in agreement with experimental calorimetric data.~\cite{bolzan1997structural, shirako2014synthesis}
+%
+% where only the rutile and pyrite phases are reported to have been synthesized \cite{bolzan1997structural, shirako2014synthesis}, the pyrite phase also predicted to be metastable in this work. 
+%
+In addition, several common \ABtwo crystal structures were found within the dataset, including columbite~\cite{columbite}, brookite~\cite{brookite} and anatase~\cite{anatase} phases
+(all bulk structures can be viewed online at catalysis-hub.org).
+%
+For \IrOthree the five most stable systems were shown in Figure~\ref{fig:iro2_al}, and have been labeled with numbers (1)-(5) in Figure~\ref{fig:E_vs_V} b.
+%
+We have identified several interesting meta-stable structures, including two dimensional(i), highly porous(iii) and on dimensional(v) polymorphs with varying degrees of porosity and connectivity,
+which is important for applications as battery cathodes or ionic conductors.\cite{}
+% which could be interesting for battery applications .
 %
 % \textbf{the labeling scheme jumping between two figures is a little confusing here, and it obfuscates the point I think you are trying to make in this last sentence}
+%
 % COMBAK
-Interestingly, the most stable \IrOthree structure in MP~\cite{mp-1097041} corresponds to the Nth most stable \IrOthree polymorph in our dataset (Cmcm space group and structure (iv) in Figure~\ref{fig:E_vs_V}d), meaning that we have uncovered N \IrOthree structures more stable than anything currently known.
+Interestingly, the most stable \IrOthree structure in the MP dataset~\cite{mp-1097041} corresponds to the TEMP th most stable \IrOthree polymorph in our dataset
+(iv in Figure~\ref{fig:E_vs_V}d with a Cmcm space group), 
+meaning that we have uncovered TEMP new and more stable \IrOthree structures than previously known.
 % __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -20,9 +20,12 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-We next utilized the active learning scheme to discover of the most stable forms of \IrOtwo and \IrOthree.
+We now demonstrate the AL algorithm by applying it to the discovery of stable and unique polymorphs of \IrOtwo and \IrOthree.
+% We next utilized the active learning scheme to discover of the most stable forms of \IrOtwo and \IrOthree.
 %
-The algorithm is applied to each stoichiometry individually, and because both cases demonstrate the efficacy of the algorithm equally well, we will focus on walking through the algorithm for the more novel \IrOthree stoichiometry.
+Since the algorithm is applied to each stoichiometry individually, we will only illustrate the results for \IrOthree, a comparatively less explored oxide
+
+and because both cases demonstrate the efficacy of the algorithm equally well, we will focus on walking through the algorithm for the more novel \IrOthree stoichiometry.
 %
 Will will briefly touch on the results for \IrOtwo at the end and refer the reader to the Supporting Information for further information.
 % __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -62,7 +65,7 @@ including the globally stable phase of \IrOthree.
 % COMBAK Does this syntax work with num?
 After an additional nine generations of the AL
 (Figure~\ref{fig:iro2_al}a.iv),
-the algorithm has aquired all but one of the top ten low energy structures.
+the algorithm has acquired all but one of the top ten low energy structures.
 %
 % THERE HAS TO BE SOME DISCUSSION HERE ABOUT THE STRUCTURES
 %
@@ -156,7 +159,7 @@ This is to show that the GP model's inaccuracies are due to the large degree of 
 %
 Structures that are initialized in high energy configurations will therefore have high predicted formation enthalpies, and will then reconfigure into a lower nearby configuration, resulting in lower final energy and a large discrepancy between the predicted and final energies.
 %
-Interestingly, despite the inaccuracy of predictions on unrelaxed structures the algorithm appears to perform well at discovering \num{7/10} of the most stable candidates after only \num{35} DFT calculations). \textbf{do determine the reason for this we did XYZ...}
+Interestingly, despite the inaccuracy of predictions on unrelaxed structures the algorithm appears to perform well at discovering \num{7/10} of the most stable candidates after only \num{35} DFT calculations). \textbf{do determine the reason for this we did TEMP...}
 %
 The reason for this is that the pre-optimized structures that are similar enough to the most stable final equilibrium structures will not restructure considerably, meaning that their predicted formation energies will be close enough (and low enough) to be quickly picked up by the acquisition criteria. \textbf{How do you know this?  This is in the section?  If it is you need to say it will be discussed in the next section here.}
 % __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
