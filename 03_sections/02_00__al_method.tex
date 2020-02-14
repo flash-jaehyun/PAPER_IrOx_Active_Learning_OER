@@ -159,53 +159,46 @@ The \num{10} PCA features account for roughly 80 percent of the variance in the 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-The active learning algorithm proceeds through iterative generations of ML training, prediction, and acquisition steps that are visualized in Figure~\ref{fig:iro2_al}.
+The active learning algorithm proceeds through iterative generations of ML training, prediction, and acquisition steps that are visualized in Figure~\ref{fig:all_diagram}.
 %
 % COMBAK Did I get all of the important features of GP here? @Jose
-To start, we utilized Gaussian process (GP) regression with Gaussian (or RBF) kernels as implemented in the CatLearn\cite{hansen2019atomistic,CatLearn_Repo} package for atomistic machine learning applications, and used it to train a regression model on a small seed set of DFT formation energies from randomly selected structures in the candidate space.
+To start, we utilized Gaussian process (GP) regression with an RBF kernel as implemented in the CatLearn~\cite{hansen2019atomistic,CatLearn_Repo} due their highly flexible fits with built-in uncertainty quantification.
 %
 % NOTE I've introduced the aquis. crit. with the GP uncertainty before talking about aquis. in more detail, need to restructure
-Herein, we utilized Gaussian process regression because they are highly flexible regression models which have built-in error quantification for each prediction.
 %
-The model is then used to predict the formation energies of the entire candidate space.
+The model is initially trained on randomly sampled candidates, and this model is then used to predict the formation energies of the entire candidate space.
 %
-This predicted energy landscape is then used to select the next systems to calculate via a acquisition function, which defines a fitness score for each system, and systems that minimize this quantity are then selected.
+This predicted energy landscape is then used to select the next systems to calculate by selecting systems that minimize the aquisition function $U = \mu - \kappa \sigma$.
 %
-Herein, we use the so-called GP-UCB acquisition function
+Here, $\mu$ and $\sigma$ are the predicted mean and uncertainty of the formation energy, respectively,
+and $\kappa$ is a parameter to that weights exploitation vs exploration of the candidate space (herein set to 1).
 %
-% TODO Should we change the sigma to an uncertainty term? (more precise/direct)
-% The name for this kind of acquisition is calld GP-UCB (Upper confidence bound)
-% https://www.cse.wustl.edu/~garnett/cse515t/spring_2015/files/lecture_notes/12.pdf
-\begin{equation}
-    U = \mu - \kappa \sigma,
-\end{equation}
-%
-where $\mu$ and $\sigma$ is the predicted mean and uncertainty of the formation energy,
-and $\kappa$ is a free parameter to tune the relative weighting between exploiting low formation energy systems (small $\kappa$) and exploring high uncertainty regions of the candidate space (large $\kappa$).
-%
-Here, $\kappa$ is set to \num{1} which equally weights the energy and uncertainty.
-%
-In this work we attempt to trade off exploitation and exploration by weighting the predicted formation energy and the associated uncertainty to bias systems that are both low energy and high uncertainty.
+At every generation of the AL loop, $N$ systems that minimize the acquisition function are acquired for DFT optimization and are subsequently added to the training data set, where $N$ is AL bin size (here set to 5)
 %
 % TODO N is used into mean number of atoms (FIX)
-Once ranked, the N systems that minimize the acquisition function are selected for full DFT calculations, which are included in the training data of subsequent AL generations.
-%
-Here we chose a bin size ($N$) of \num{5}, the value of which determines how many structures are selected for DFT calculations,
+The value of $N$ determines how many structures are selected for DFT calculations,
 and as such, determines the degree of parallelization of the routine.
 %
-The optimal value of $N$ depends on the computational resources available, as small values can result in slow down the discovery rate of the AL algorithm,
-as every DFT calculation needs to be performed more serially.
+% The optimal value of $N$ depends on the computational resources available, as small values can result in slow down the discovery rate of the AL algorithm,
+% as every DFT calculation needs to be performed more serially.
 %
 % TODO: Is this statement true?
-Larger values of $N$ speed up the active-learning algorithm, but leads to a higher number of DFT calculations performed before convergence.
+% Larger values of $N$ speed up the active-learning algorithm, but leads to a higher number of DFT calculations performed before convergence.
+%
+% COMBAK We are discussing alternative convergence criteria, or whether to even have convergence criteria here
+The AL loop proceeds until convergence is achieved, which here is chosen to be the generation at which the structures within the range of metastability, here taken as \num{0.1} eV/atom, are unchanging over three consecutive generations.
+% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ####################### Paragraph #######################
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 Although initially unique, the structures in the candidate set often relax into one another over the course of the DFT optimization, introducing duplicate structures in the post-DFT structures.
 %
 These duplicate structures are removed during each generation of the AL algorithm, leaving only a single instance of lowest energy in the candidate pool.
 %
 The coordination characterization function (CCF) based methodology to quantify the similarity between structures was used to identify and remove duplicate structures.\cite{Su2017}
-%
-% COMBAK We are discussing alternative convergence criteria, or whether to even have convergence criteria here
-The AL loop proceeds until convergence is achieved, which here is chosen to be the generation at which the structures within the range of metastability, here taken as \num{0.1} eV/atom, are unchanging over three consecutive generations.
 % __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
