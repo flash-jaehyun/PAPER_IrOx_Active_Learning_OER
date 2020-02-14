@@ -1,21 +1,20 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Electrochemical OER Application %%%%%%%%%%%%%%%%%%%%%
+% | - Electrochemical OER Application
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % OER DFT modelling references:
 %   * Man2011
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - Short Intro EChem Section
 %
-% \chris{Im losing the big picture here at the end of the section, I think you are convoluting two different things that need to be broken up into their own paragraphs.  This OER activity part needs some work, let's discuss}
-% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
+% __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ####################### Paragraph #######################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Short introduction into the catalysis section
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
 %
 % TODO In the previous sections make sure to highlight the alpha and rutile IrO3 phases explicitely so that this sentence makes sense here.
 We next performed \latin{ab-initio} thermodynamic simulations to elucidate the electrochemical operational stability of \IrOx and the oxygen evolution reaction (OER) activity of various \IrOthree phases previously computed.
@@ -23,17 +22,19 @@ We next performed \latin{ab-initio} thermodynamic simulations to elucidate the e
 In particular, we have decided to compare the stability and activity of the most stable \IrOtwo and \IrOthree polymorphs (rutile and our newly discovered \aIrOthree phase), and the rutile-like \IrOthree polymorph.
 %
 In addition, we computed the OER activity of a delithiated form of a recently reported $\beta$-Li\textsubscript{x}IrO\textsubscript{3} (referred to here as \bIrOthree) structure, as it is a notable recent example of a experimentally synthesized \IrOthree system.~\cite{Pearce2017}
-% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ####################### Paragraph #######################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH HEADER
 % Revised Bulk Pourbaix Diagram
 %
 % Explain the Ir and IrO[4-] species
 % QUESTION Use E or U for potential variable
+% __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
 %
 The bulk Pourbaix diagram of the Ir-H2O system is shown in Figure~\ref{fig:bulk_pourbaix}.
 %
@@ -50,39 +51,26 @@ The stability regions of the metastable \rIrOthree and \bIrOthree phases (In the
 %
 % TODO Create energy table for main bulk systems in SI
 The similar formation energies (see Table \ref{table:oer_table}) for all three \IrOthree species suggest some or all of these \IrOthree phases may be present and are stable under OER conditions.
-
-
-% | - __old__
-% , in the absence of any other competing \ce{IrO_3} polymorphs, are indicated by unfilled solid lines.
-%
-% As shown, these metastable phases appear to also have a wide region of stability in the OER region,
-%due to to their formation energies being within TEMP eV of the globally stable \aIrOthree phase, see SI table TEMP for the bulk energies of all considered phases.
-%
-%Because of their similar energies it is possible that some or all of these \ce{IrO_3} phases may be present and relevant for the OER.
-%
-%In the next section, we explore this possibility by computing the theoretical OER activity of these polymorph systems.
 % __|
-
-% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 % =========================================================
 % FIGURE ==================================================
+% =========================================================
 % | - Figure | Bulk Pourbaix Diagram
 \begin{figure*}[!htb]
 \centering
 \makebox[\textwidth][c]{\includegraphics{02_figures/oer_activity_stability/bulk_pourbaix.pdf}}
 \caption{\label{fig:bulk_pourbaix}
-The revised Pourbaix diagram (electrochemical bulk phase stability) of the Ir-H$_2$O system as a function of applied potential (vs. SHE) and pH.
+%
+The revised Pourbaix diagram (electrochemical bulk phase stability) of the Ir-H$_2$O system as a function of applied potential (U vs. SHE) and pH.
 %
 The most stable system studied (see Table XX in SI for a full list) are Ir-metal Ir(s) (blue), a \rIrOtwo  (green), and a dissolved \ce{IrO4[4-]} (gray).
 %
 These are compared to the \ce{IrO_3} polymorphs, \aIrOthree (purple), \rIrOthree (orange), and \bIrOthree (pink).
 %
-% I would like to add Srx IrO3 to show much less stable it is than alpha
 The water equilibrium line at U\num{=1.23} V vs. RHE shows the ideal onset of OER.
-%
-% This plot highlights the importance of the \ce{IrO3} for OER operational stability.
 }
 \end{figure*}
 % __| =====================================================
@@ -90,11 +78,12 @@ The water equilibrium line at U\num{=1.23} V vs. RHE shows the ideal onset of OE
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ####################### Paragraph #######################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH HEADER
 % Introduction to OER results
+% __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
+%
 Figure~\ref{fig:oer_volcano} summarizes the results of the electrochemical activity and surface stability analysis.
 %
 Figure~\ref{fig:oer_volcano}a reports the surface energy Pourbaix plots as a function of applied potential (at pH\num{=0}) for the four \IrOx crystals of interest.
@@ -111,11 +100,13 @@ At modest overpotentials ($\eta$ \mytilde\num{0.3} or equivalently potentials of
 %
 % COMBAK, Revise "mainly" if we include some different coverages
 Consequently, we consider mainly oxygen terminated surfaces for the OER analysis.
-% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 % =========================================================
 % FIGURE ==================================================
+% =========================================================
 % | - Figure | OER Volcano/Surface Pourbaix
 \begin{figure*}
 \centering
@@ -146,11 +137,12 @@ Color legend: oxygen (red), purple (iridium), coordination motif (white).
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ####################### Paragraph #######################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH HEADER
 % OER results
+% __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
+%
 % Replace G_O and G_OH with my custom macros for consistency
 The OER activity (expressed in terms of the limiting potential) for select oxygen terminated surfaces are shown in Figure~\ref{fig:oer_volcano} as a function of the $\Delta G_\mathrm{O} - \Delta G_\mathrm{OH}$ thermodynamic descriptor.
 %
@@ -173,5 +165,5 @@ We note that the computed  overpotentials for our \rIrOtwo system differs from t
 This discrepancy is due to our inclusion of spin-polarization in our \latin{ab-initio} calculations, which was neglected in Seitz \latin{et al.}.
 %
 For further details, we'll refer readers to the SI of a previous publication.\cite{Strickler2019}
-% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

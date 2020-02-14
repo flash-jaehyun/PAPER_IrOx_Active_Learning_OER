@@ -1,5 +1,5 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Active Learning Machine Learning Methodology %%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - Active Learning Machine Learning Methodology
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Outline:
 %   * PARAGRAPH 00
@@ -21,17 +21,18 @@
 %   * The search space of materials is not a continuous space but a discrete array of individual structures
 %
 % TODO:
-% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ####################### Paragraph #######################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH HEADER
 % General intro to AL scheme
 %
+% __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
 %
 %Here, we present an active learning accelerated methodology for discovering novel and stable crystal polymorphs.
 %
@@ -45,7 +46,8 @@ There are two primary components of the algorithm, the first (Figure~\ref{fig:al
 which defines the list of candidate crystal structures to be searched through.
 %
 The second component is the iterative search through candidate space via a continuously retrained surrogate model, (Figure~\ref{fig:all_diagram}.b).
-% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 % =========================================================
@@ -69,12 +71,13 @@ Process flow diagram for the active learning accelerated algorithm. The procedur
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ####################### Paragraph #######################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH HEADER
 % CANDIDATE SPACE GENERATION
 %
+% __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
+%
 %The generation of the candidate space is a critical step in the discovery of novel crystal structures for a given system,
 %since the initial candidate pool determines which structures that can ultimately be discovered, it is imperative to construct candidates that are sufficiently diverse, such that they encompass as much of the structural diversity in the PES as possible.
 %
@@ -120,15 +123,17 @@ The full details of the candidate space generation and DFT calculations are in t
 %
 %The candidate space size is ideal in that that we can tractably optimize each equilibrium structure for the entire dataset with DFT, thus allowing us to validate our AL approach.
 %Further details on the isotropic cell expansion and DFT computational details can be found in the SI.
-% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ####################### Paragraph #######################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH HEADER
 % Short paragraph on featurization method
 %
+% __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
 %
 The candidate data set was featurized using the Voronoi tessellation fingerprinting scheme developed by Ward \latin{et al.} \cite{Ward2017} which produces a \num{271} length feature vector for bulk candidate that is invariant to isotropic volume changes of the lattice, and somewhat insensitive to the precise atomic coordinates.
 %
@@ -148,16 +153,18 @@ Further dimensionality reduction was achieved via a principle component analysis
 %
 The \num{10} PCA features account for roughly 80 percent of the variance in the feaures, and demonstrate the optimal cross-validation error.
 (see \ref{fig:cv_anal}).
-% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ####################### Paragraph #######################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH HEADER
 % Active Learning Loop
 %
 % NOTE This paragraph is a bit long, find way to split into 2
+% __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
 %
 The active learning algorithm proceeds through iterative generations of ML training, prediction, and acquisition steps that are visualized in Figure~\ref{fig:all_diagram}.
 %
@@ -187,18 +194,21 @@ and as such, determines the degree of parallelization of the routine.
 %
 % COMBAK We are discussing alternative convergence criteria, or whether to even have convergence criteria here
 The AL loop proceeds until convergence is achieved, which here is chosen to be the generation at which the structures within the range of metastability, here taken as \num{0.1} eV/atom, are unchanging over three consecutive generations.
-% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ####################### Paragraph #######################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH HEADER
 %
+% __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
 %
 Although initially unique, the structures in the candidate set often relax into one another over the course of the DFT optimization, introducing duplicate structures in the post-DFT structures.
 %
 These duplicate structures are removed during each generation of the AL algorithm, leaving only a single instance of lowest energy in the candidate pool.
 %
 The coordination characterization function (CCF) based methodology to quantify the similarity between structures was used to identify and remove duplicate structures.\cite{Su2017}
-% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

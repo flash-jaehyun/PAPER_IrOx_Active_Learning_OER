@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Active Learning Machine Learning Results %%%%%%%%%%%%
+% | - Active Learning Machine Learning Results
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Notes:
@@ -9,16 +9,17 @@
 %     * ANSWER: Referring to Murat's paper R85
 %     * I don't think we can take advantage of this since there is no amorphous data for IrO3
 % Mention that we have ~15 metastable structures inbetween rutile and anatase IrO2
-% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ####################### Paragraph #######################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH HEADER
 % Intro/transition paragraph
+% __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
 %
 We now demonstrate the AL algorithm by applying it to the discovery of stable and unique polymorphs of \IrOtwo and \IrOthree.
 % We next utilized the active learning scheme to discover of the most stable forms of \IrOtwo and \IrOthree.
@@ -27,11 +28,12 @@ Since the algorithm is applied to each stoichiometry individually, we will only 
 % and because both cases demonstrate the efficacy of the algorithm equally well, we will focus on walking through the algorithm for the more novel \IrOthree stoichiometry.
 %
 Will will briefly touch on the results for \IrOtwo at the end and refer the reader to the Supporting Information for further information.
-% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ####################### Paragraph #######################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH HEADER
 % Results for IrO3
 % AL results for IrO3
 %   * Introduce the convergence plots
@@ -39,8 +41,9 @@ Will will briefly touch on the results for \IrOtwo at the end and refer the read
 %   * The GP can start to recognize the low energy systems after minimal DFT
 %   *
 % We need to call them something else than "convergence plots" (bad name)
+% __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
 %
 Figure~\ref{fig:iro3_al}a shows a sequence generations of the AL algorithm applied to \IrOthree,
 starting with the initial generation of five randomly drawn candidate structures and ending with the twentieth generation, where \num{105} DFT structures were computed out of the \num{248} total candidates).
@@ -63,25 +66,29 @@ including the globally stable phase of \IrOthree.
 After an additional nine generations of the AL
 (Figure~\ref{fig:iro3_al}a.iv),
 the algorithm has acquired all but one of the top ten low energy structures.
-% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ####################### Paragraph #######################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH HEADER
 % PARAGRAPH ABOUT STRUCTURES FOUND
 % How to balance this with the next section that has more details on structural stuff?
+% __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
 %
 TEMP PARAGRAPH ON STRUCTURES FOUND
-% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ####################### Paragraph #######################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH HEADER
 % Performance of model
+% __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
 %
 Figure~\ref{fig:iro3_al}c plots the quantity of the most stable ten systems acquired as a function of DFT calculations for the AL algorithm with the GP-UCB acquisition function and a baseline random acquisition scheme.
 %
@@ -91,11 +98,13 @@ The results of Figure~\ref{fig:iro3_al}c are averaged over 100 independent runs 
 Overall, the GP-UCB runs outperform the random acquisition runs, with only \num{50} DFT calculations on average needed to discover \num{7} of the \num{10} most stable systems.
 %
 This is compared to the \num{157} DFT calculations needed to discover \num{7/10} most stable polymorphs for the AL utilizing a random acquisition.
-% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 % =========================================================
 % FIGURE ==================================================
+% =========================================================
 % | - Figure | IrO3 Convergence Plot
 \begin{figure*}[!htb]
     \centering
@@ -146,11 +155,11 @@ This is compared to the \num{157} DFT calculations needed to discover \num{7/10}
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ####################### Paragraph #######################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH HEADER
 % Discussion on performance of the AL routine
+% __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
 Having demonstrated the viability of the AL materials discovery scheme we will now turn our attention to evaluating the performance of the \IrOtwo and \IrOthree GP regression models trained on the full DFT dataset (corresponding to the final AL generation).
 %
 Figure~\ref{fig:parity} plots the GP model predicted \DHf against the DFT-computed values for two special cases.
@@ -166,14 +175,16 @@ The largest errors are highly skewed towards the more unstable systems.
 The same GP model does comparatively much better at predicting the formation energies of post-DFT optimized structures with an MAE of \mytilde\num{0.2} eV/atom,
 roughly 100 meV/atom larger than model reported by Ward \latin{et al.}, which was trained on hundreds of thousands of DFT bulk calculations and reached an MAE of 0.8 eV/atom.
 %
-% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ####################### Paragraph #######################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH HEADER
 % DISCUSS PERFORMANCE AND STRUCTURAL SHIFT
+% __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
 The fact that our models,
 trained on orders of magnitude less data than those of Ward \latin{et al.},
 achieve errors on par with those of Ward \latin{et al.},
@@ -191,7 +202,8 @@ Interestingly, despite the inaccuracy of predictions on unrelaxed structures the
 %
 % \textbf{How do you know this?  This is in the section?  If it is you need to say it will be discussed in the next section here.}
 The reason for this is that the pre-optimized structures that are similar enough to the most stable final equilibrium structures will not restructure considerably, meaning that their predicted formation energies will be close enough (and low enough) to be quickly picked up by the acquisition criteria.
-% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 % =========================================================

@@ -1,5 +1,5 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Introduction %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - Introduction
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Key points:
@@ -9,13 +9,13 @@
 %   * Mention other methods for bulk crystal structure Discovery
     %     - simulated annealing
 %     - paper that Hammer put out (R58)
-    % __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ####################### Paragraph #######################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH HEADER
 % * General intro into problem, give proper context
 % * Make the point that structure has been all but ignored in recent years by the big-data/ML material science community (OQMD MP as examples)
 %
@@ -24,8 +24,9 @@
 %  * It's an important problem to solve because all chemical/physical properties of a material are fundamentally linked to the atomic structure.
 %  * Although we've seen a lot of work in the past ~10 years from material science groups leveraging recent advances in big-data, ML, cheaper computational resources, high-throughput screening, materials databases, etc.
 %    * Most of the focus has been on exploring compositions and not structure
+% __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
 % TODO this intro sentence will be a reference dump for literature in crystal structure prediction
 Predicting the thermodynamically favorable crystal structures for an arbitrary inorganic system remains a challenging problem in computational material science.\cite{Woodley2008}
 %
@@ -52,20 +53,21 @@ As such, these efforts have been primarily concerned with the enumeration of com
 % I'm leaning away from framing as a "structural-diversity" problem with the databases and more so as a method of global optimization
 % In the past, various groups have put forth methodologies to address the structural-diversity problem using computation for the MnO2~ and VOx~ polymorph spaces,
 % but most of these methodologies are limited by the fact that they are operating within the highly intractable/dimensional PES.
-%
-% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% __|
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ####################### Paragraph #######################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH HEADER
 % * Introduction to global optimization and crystal structure predication community
 % * Arguments and motivations for our unique approach
 %
 % NOTES:
 %   * Emphasize the candidate space generation as a KEY feature of algorithm
 %
+% __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
 % TODO All global optimization papers go here
 % TODO Add review paper for GO
 % Highly dimensional is also next sentence, but this sentence is a good spot for it though
@@ -80,14 +82,16 @@ The class of structurally diverse metal-oxides are a prime example of a chemical
 %
 These local coordination motifs can further assemble to form systems with long-range order.
 \textbf{Trying to say that the infinite number of ways to pack octahedra lead to a very very large number of possible polymorphs}
-% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% __|
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ####################### Paragraph #######################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH HEADER
 % Start talking about AL background
+% __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
 %
 % COMBAK NOTE \textbf{These references don't seem very balanced. I'm sure there are other papers outside of the Norskov group we can cite here}
 % TODO Find more papers of AL in materials pace to put here
@@ -114,15 +118,17 @@ We first define a set of structurally diverse candidate crystal polymorphs, and 
 % This looks  out of space. Consider moving up or eliminate. Also, this is more a discussion statement.
 %
 % Empirically, we know that nature tends to favor symmetric structures, and so we will leverage this intuition by building a dataset explicitly enumerating through space groups.
-% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% __|
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ####################### Paragraph #######################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH HEADER
 % Introduce specific system (Ir-oxides), relevance (OER), and what is to be
 % gained by discovering new polymorphs
+% __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
 We demonstrate this methodology in the space of iridium oxide polymorphs,
 an important class of materials with applications in electrochemistry.
 %
@@ -151,23 +157,16 @@ For these reasons, we focused our study to search for stable polymorphs in the \
 %
 % TODO Add references to octahedra literature
 %Furthermore, such pure corner sharing octahedral crystals are known from in other systems such fluorites and chlorites.
-
-
-% | - __old__
-%Reported +6 oxidation state phases are achievable leading to high degree of structural variability, which is the highest for transition metals.
-%High oxidation states (low pH high anodic voltage, harsh oxidizing conditions) unexplored, need very specific structures with precise oxygen connectivity (aka high pressure \ce{SrIrO_3}) that can exist.
-% Machine learning is the efficient way to explore this “exploring Antarctica for life” sparse space.
 % __|
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ####################### Paragraph #######################
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH HEADER
 % Paragraph outlining the structure of the paper
-%
+% __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
 %
 % \textbf{this needs a lead in sentence that transitions from the last paragraph}
 This paper will be structured as follows,
@@ -181,3 +180,4 @@ Lastly, we construct a revised bulk Pourbaix diagram of the Ir-H$_2$O systems, a
 %
 %highlighting the importance of the \IrOthree phases under OER.
 % __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
