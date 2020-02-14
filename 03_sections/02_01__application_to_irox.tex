@@ -42,26 +42,26 @@ Will will briefly touch on the results for \IrOtwo at the end and refer the read
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-Figure~\ref{fig:iro2_al}a shows a sequence generations of the AL algorithm applied to \IrOthree,
+Figure~\ref{fig:iro3_al}a shows a sequence generations of the AL algorithm applied to \IrOthree,
 starting with the initial generation of five randomly drawn candidate structures and ending with the twentieth generation, where \num{105} DFT structures were computed out of the \num{248} total candidates).
 %
 % COMBAK Why are we sorting? Explain
 Each plot reports the predicted (hollow grey) and DFT-derived (solid red) formation enthalpies (\DHf) ($y$-axis) for each structure sorted by stability ($x$-axis).
 %
-As the algorithm acquires DFT \DHf values, the GP model becomes more accurate, as evidenced by the decreasing uncertainties when comparing the the initial generations to the latter generations of the AL (\ref{fig:iro2_al}a.i-v).
+As the algorithm acquires DFT \DHf values, the GP model becomes more accurate, as evidenced by the decreasing uncertainties when comparing the the initial generations to the latter generations of the AL (\ref{fig:iro3_al}a.i-v).
 %
-At the top of each subplot of Figure~\ref{fig:iro2_al}a the identity of ten most stable polymorphs is tracked.
+At the top of each subplot of Figure~\ref{fig:iro3_al}a the identity of ten most stable polymorphs is tracked.
 %
 Initially, the ten most stable structures are randomly distributed across the entire candidate space due to the insufficiently trained GP model.
 %
-After only three generations (Figure~\ref{fig:iro2_al}a.ii) the GP model is sufficiently accurate to identify all top ten of the most stable polymorphs as being low in energy.
+After only three generations (Figure~\ref{fig:iro3_al}a.ii) the GP model is sufficiently accurate to identify all top ten of the most stable polymorphs as being low in energy.
 %
 By the fifth generation (\num{30} DFT relaxation) \num{4/10} of the most stable polymorphs have been acquired,
 including the globally stable phase of \IrOthree.
 %
 % COMBAK Does this syntax work with num?
 After an additional nine generations of the AL
-(Figure~\ref{fig:iro2_al}a.iv),
+(Figure~\ref{fig:iro3_al}a.iv),
 the algorithm has acquired all but one of the top ten low energy structures.
 % __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -83,9 +83,9 @@ TEMP PARAGRAPH ON STRUCTURES FOUND
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-Figure~\ref{fig:iro2_al}c plots the quantity of the most stable ten systems acquired as a function of DFT calculations for the AL algorithm with the GP-UCB acquisition function and a baseline random acquisition scheme.
+Figure~\ref{fig:iro3_al}c plots the quantity of the most stable ten systems acquired as a function of DFT calculations for the AL algorithm with the GP-UCB acquisition function and a baseline random acquisition scheme.
 %
-The results of Figure~\ref{fig:iro2_al}c are averaged over 100 independent runs of AL algorithms with the 1 sigma standard deviation between these runs shown.
+The results of Figure~\ref{fig:iro3_al}c are averaged over 100 independent runs of AL algorithms with the 1 sigma standard deviation between these runs shown.
 %
 % COMBAK Pick better point to compare
 Overall, the GP-UCB runs outperform the random acquisition runs, with only \num{50} DFT calculations on average needed to discover \num{7} of the \num{10} most stable systems.
@@ -102,7 +102,7 @@ This is compared to the \num{157} DFT calculations needed to discover \num{7/10}
     \makebox[\textwidth][c]{\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]
         {02_figures/ml_convergence_plots/test_iro3_al.pdf}
     }
-    \caption{\label{fig:iro2_al}
+    \caption{\label{fig:iro3_al}
         % (a) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %
         (a) The state of the AL algorithm at five generations.
@@ -190,7 +190,7 @@ and will then reconfigure into a lower nearby configuration, resulting in lower 
 Interestingly, despite the inaccuracy of predictions on unrelaxed structures the algorithm appears to perform well at discovering \num{7/10} of the most stable candidates after only \num{35} DFT calculations.
 %
 % \textbf{How do you know this?  This is in the section?  If it is you need to say it will be discussed in the next section here.}
-The reason for this is that the pre-optimized structures that are similar enough to the most stable final equilibrium structures will not restructure considerably, meaning that their predicted formation energies will be close enough (and low enough) to be quickly picked up by the acquisition criteria. 
+The reason for this is that the pre-optimized structures that are similar enough to the most stable final equilibrium structures will not restructure considerably, meaning that their predicted formation energies will be close enough (and low enough) to be quickly picked up by the acquisition criteria.
 % __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
