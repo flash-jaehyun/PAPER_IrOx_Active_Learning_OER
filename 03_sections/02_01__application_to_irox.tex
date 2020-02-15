@@ -27,7 +27,7 @@ We now demonstrate the AL algorithm by applying it to the discovery of stable an
 Since the algorithm is applied to each stoichiometry individually, we will only illustrate the results for \IrOthree, a comparatively less explored oxide
 % and because both cases demonstrate the efficacy of the algorithm equally well, we will focus on walking through the algorithm for the more novel \IrOthree stoichiometry.
 %
-Will will briefly touch on the results for \IrOtwo at the end and refer the reader to the Supporting Information for further information.
+We will briefly touch on the results for \IrOtwo at the end and refer the reader to the Supporting Information for further information.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -45,13 +45,14 @@ Will will briefly touch on the results for \IrOtwo at the end and refer the read
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-Figure~\ref{fig:iro3_al}a shows a sequence generations of the AL algorithm applied to \IrOthree,
-starting with the initial generation of five randomly drawn candidate structures and ending with the twentieth generation, where \num{105} DFT structures were computed out of the \num{248} total candidates).
+The application of the AL algorithm to identifying the stable polymorphs of the \IrOthree candidate space is shown in
+Figure~\ref{fig:iro3_al}a,
+which shows a sequence of snapshots of the AL routine at different generations.
 %
 % COMBAK Why are we sorting? Explain
 Each plot reports the predicted (hollow grey) and DFT-derived (solid red) formation enthalpies (\DHf) ($y$-axis) for each structure sorted by stability ($x$-axis).
 %
-As the algorithm acquires DFT \DHf values, the GP model becomes more accurate, as evidenced by the decreasing uncertainties when comparing the the initial generations to the latter generations of the AL (\ref{fig:iro3_al}a.i-v).
+As the algorithm acquires DFT \DHf values, the GP model becomes more accurate, as evidenced by the decreasing uncertainties when comparing the initial generations to the latter generations of the AL (\ref{fig:iro3_al}a.i-v).
 %
 At the top of each subplot of Figure~\ref{fig:iro3_al}a the identity of ten most stable polymorphs is tracked.
 %
@@ -192,7 +193,7 @@ is due to the fact that we are training and predicting on a space whose properti
 %
 This drastic decrease in prediction error is not surprising since the post-DFT fingerprints directly corresponds to the target DFT energies.
 %
-Our comparison in \ref{fig:parity} is to show that our model's inaccuracies are due to the large degree of structural drift that occurs after DFT relaxation, and the extent of this drift is not known apriori.
+Our comparison in \ref{fig:parity} is to show that our model's inaccuracies are due to the large degree of structural drift that occurs after DFT relaxation, and the extent of this drift is not known \latin{a priori}.
 %
 Structures that are initialized in high energy configurations will therefore have high predicted \DHf,
 and will then reconfigure into a lower nearby configuration, resulting in lower final energy and a large discrepancy between the predicted and final energies.

@@ -87,7 +87,7 @@ Process flow diagram for the active learning accelerated algorithm. The procedur
 The candidate structure datasets for \IrOtwo and \IrOthree were constructed by first obtaining all \ABtwo and \ABthree structures in the Materials Project\cite{Jain2013} and OQMD\cite{Kirklin2015} databases
 (in total \num{4528} \ABtwo and \num{23764} \ABthree entries).
 %
-To reduce the size of the candidate space while maintaining maximum structural diversity, structurally redundant systems were removed via a space-group based structural classification scheme developed by Jain \latin{et al.} \cite{Jain2018}.
+To reduce the size of the candidate space while maintaining maximum structural diversity, structurally redundant systems were removed via a space group based structural classification scheme developed by Jain \latin{et al.} \cite{Jain2018}.
 %
 In short, a materials structural identity is defined by a unique combination of the element-nonspecific stoichiometry (\ABtwo, \ABthree, etc.), space group symmetry and Wyckoff positions, and are referred to as a materials structural prototype.
 %
@@ -107,7 +107,7 @@ This further reduces the candidate spaces to \num{567} and \num{256} \ABtwo and 
 We next substituted iridium and oxygen for the A and B sites, and these Ir-O adapted polymorphs were isotropically relaxed to accommodate their atomic radii
 (further details in the Supplementary Information).
 %
-An additional 87 structures with unphysical geometries were discarded as they were unable to be succefully converged with DFT.
+An additional 87 structures with unphysical geometries were discarded as they were unable to be successfully converged with DFT.
 %
 %Because of the reasonable size of the reduced candidate space, and to validate our methods fully, we performed bulk relaxations for all \num{736} structures.
 %
@@ -151,7 +151,7 @@ We applied the active learning model to the \IrOtwo and \IrOthree spaces separat
 % \textbf{I'm a little dubious of this, where is it shown in SI?}
 Further dimensionality reduction was achieved via a principle component analysis (PCA) \cite{Tipping1999}, which was used to reduce the remaining \num{101} features to \num{10}.
 %
-The \num{10} PCA features account for roughly 80 percent of the variance in the feaures, and demonstrate the optimal cross-validation error.
+The \num{10} PCA features account for roughly 80 percent of the variance in the features, and demonstrate the optimal cross-validation error.
 (see \ref{fig:cv_anal}).
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -175,10 +175,10 @@ To start, we utilized Gaussian process (GP) regression with an RBF kernel as imp
 %
 The model is initially trained on randomly sampled candidates, and this model is then used to predict the formation energies of the entire candidate space.
 %
-This predicted energy landscape is then used to select the next systems to calculate by selecting systems that minimize the aquisition function $U = \mu - \kappa \sigma$.
+This predicted energy landscape is then used to select the next systems to calculate by selecting systems that minimize the GP-UCB (Gaussian process lower confidence bound) acquisition function $U = \mu - \kappa \sigma$~\cite{Cox1992}.
 %
 Here, $\mu$ and $\sigma$ are the predicted mean and uncertainty of the formation energy, respectively,
-and $\kappa$ is a parameter to that weights exploitation vs exploration of the candidate space (herein set to 1).
+and $\kappa$ is a parameter to that weights exploitation vs exploration of the searchspace (herein set to 1).
 %
 At every generation of the AL loop, $N$ systems that minimize the acquisition function are acquired for DFT optimization and are subsequently added to the training data set, where $N$ is AL bin size (here set to 5)
 %
