@@ -19,8 +19,6 @@
 % Points to mention:
 %   * Active learning frameworks are a means by which to generate the most valuable training data set, on the fly.
 %   * The search space of materials is not a continuous space but a discrete array of individual structures
-%
-% TODO:
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -34,9 +32,7 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-%Here, we present an active learning accelerated methodology for discovering novel and stable crystal polymorphs.
-%
-Our approach utilizes an active learning framework and surrogate-models,
+Our approach utilizes an active learning framework and surrogate models,
 whereby a regression model is trained on a set of candidate materials by iteratively and intelligently sampling structures from a candidate set.
 %
 % is presented in Figure~\ref{fig:all_diagram}.
@@ -94,21 +90,20 @@ In short, a materials structural identity is defined by a unique combination of 
 % This is my attempt to further clarify the previous sentence
 Structures that share these properties are considered identical.
 %
-For example, the \num{300000} entry dataset of \ABOthree style perovskites in OQMD, which only differ by the choice of elements for A, B, and C, all belong to the same structural prototype.
+For example, the \num{300000} entry dataset of \ABOthree style perovskites in OQMD, which only differ by the choice of elements for A, B, and C, all belong to the same structural prototype, and are thus structurally equivalent.
 %
-Eliminating structurally redundant systems from the materials databases reduces the number of entries to \num{697} and \num{259} structures for the \ABtwo and \ABthree stoichiometries, respectively.
+Eliminating these redundant systems from the materials databases reduces the number of entries to \num{697} and \num{259} structures for the \ABtwo and \ABthree stoichiometries, respectively.
 %
 %The orders of magnitude reduction between all structures and unique structures highlights the lack of structural diversity in the OQMD and MP databases.
 This reduction leads to orders of magnitude reduction of the search space, as opposed to full utilization of the OQMD and Materials Project databases.
 %
-Finally, only structures containing 75 atoms or less were included to the reduce computational expense.
+Finally, only structures containing $\leq\num{75}$ atoms
+(\num{567} and \num{256} \ABtwo and \ABthree structures respectively)
+included to the reduce computational expense of subsequent DFT calculations.
 %
-This further reduces the candidate spaces to \num{567} and \num{256} \ABtwo and \ABthree structures respectively.
-%
-
 We next substituted iridium and oxygen for the A and B sites, and these Ir-O adapted polymorphs were isotropically relaxed to accommodate their atomic radii
-(further details in the Supplementary Information).
 %
+% TODO Explain that all DFT is done and that 87 systems didn't converge
 Further reduction of the set was needed, due to 87 structures with unphysical Ir-O distances.
 %
 %Because of the reasonable size of the reduced candidate space, and to validate our methods fully, we performed bulk relaxations for all \num{736} structures.
@@ -130,31 +125,28 @@ The full details of the candidate space generation and DFT calculations are in t
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - PARAGRAPH HEADER
-% Short paragraph on featurization method
-%
+% | - Featurization Strategy
+% Short paragraph on Voronoi featurization
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-The candidate data set was featurized using the Voronoi tessellation fingerprinting scheme developed by Ward \latin{et al.} \cite{Ward2017} which produces a \num{271} length feature vector for bulk candidate that is invariant to isotropic volume changes of the lattice, and somewhat insensitive to the precise atomic coordinates.
+The candidate data set was featurized using the Voronoi tessellation fingerprinting scheme developed by Ward \latin{et al.} \cite{Ward2017} which produces a \num{271} length fingerprint vector that is invariant to isotropic lattice changes and somewhat insensitive to the precise atomic coordinates.
 %
 % TODO Get reference for Wigner-Seitz cell
 % This one maybe
 % https://journals.aps.org/pr/abstract/10.1103/PhysRev.43.804
 These features encode both chemical and structural information by constructing attributes from elemental properties which are weighted by the local environment of the structure via the construction of the Wigner-Seitz cell.
 %
-% How many columns of the 271 are redundant if stoich and composition are frozen
-We applied the active learning model to the \IrOtwo and \IrOthree spaces separately, i.e. at fixed stoichiometry, which further reduces the \num{271} length feature vector to \num{101} non-zero variance features.
+We applied the active learning model to the \IrOtwo and \IrOthree spaces separately, i.e. at fixed stoichiometry, which further reduces the \num{271} length fingerprint vector to \num{101} non-zero variance features.
 %significantly reducing the dimensionality of the features.
 %
 % TODO Create cross-validation plot
 % TODO Put real percent sign here
 % \textbf{I'm a little dubious of this, where is it shown in SI?}
-Further dimensionality reduction was achieved via a principle component analysis (PCA) \cite{Tipping1999}, which was used to reduce the remaining \num{101} features to \num{10}.
+Further dimensionality reduction was achieved via a principle component analysis (PCA) \cite{Tipping1999}, which was used to reduce the remaining \num{101} fingerprints to \num{10}.
 %
-The \num{10} PCA features account for roughly 80 percent of the variance in the features, and demonstrate the optimal cross-validation error.
-(see \ref{fig:cv_anal}).
+\num{10} PCA components demonstrated the optimal cross-validation MAE error, although only capturing 80\% of the fingerprint's variance (see \ref{fig:cv_anal}).
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -168,21 +160,23 @@ The \num{10} PCA features account for roughly 80 percent of the variance in the 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-The active learning algorithm proceeds through iterative generations of ML training, prediction, and acquisition steps that are visualized in Figure~\ref{fig:all_diagram}.
+The active learning algorithm proceeds through iterative generations of ML training, prediction, and acquisition steps that are visualized in Figure~\ref{fig:all_diagram}b.
 %
 % COMBAK Did I get all of the important features of GP here? @Jose
-To start, we utilized Gaussian process (GP) regression with an RBF kernel as implemented in the CatLearn~\cite{hansen2019atomistic,CatLearn_Repo} due their highly flexible fits with built-in uncertainty quantification.
+To start, we utilized Gaussian process (GP) regression with an RBF kernel as implemented in CatLearn~\cite{hansen2019atomistic,CatLearn_Repo} due to their highly flexible fits and built-in uncertainty quantification.
 %
 % NOTE I've introduced the aquis. crit. with the GP uncertainty before talking about aquis. in more detail, need to restructure
 %
-The model is initially trained on randomly sampled candidates, and this model is then used to predict the formation energies of the entire candidate space.
+At the first generation, the model is trained on randomly sampled candidates,
+and is then used to predict the formation enthalpy (\DHf) of all structures in the candidate space.
 %
-This predicted energy landscape is then used to select the next systems to calculate by selecting systems that minimize the GP-UCB (Gaussian process lower confidence bound) acquisition function $U = \mu - \kappa \sigma$~\cite{Cox1992}.
+This predicted energy landscape is then used to choose the next systems to acquire (calculate via DFT) by selecting systems that minimize the GP-UCB (Gaussian process lower confidence bound) acquisition function,
+$U = \mu - \kappa \sigma$~\cite{Cox1992}.
 %
-Here, $\mu$ and $\sigma$ are the predicted mean and uncertainty of the formation energy, respectively,
-and $\kappa$ is a parameter to that weights exploitation vs exploration of the searchspace (herein set to 1).
+Here, $\mu$ and $\sigma$ are the predicted \DHf mean and uncertainty, respectively,
+and $\kappa$ is a parameter that weights exploitation vs exploration of the search-space (set to 1).
 %
-At every generation of the AL loop, $N$ systems that minimize the acquisition function are acquired for DFT optimization and are subsequently added to the training data set, where $N$ is AL bin size (here set to 5)
+At every generation of the AL loop, $N$ systems that minimize the acquisition function are acquired for DFT optimization and are subsequently added to the training data set, where $N$ is AL bin size (here set to 5).
 %
 % TODO N is used into mean number of atoms (FIX)
 The value of $N$ determines how many structures are selected for DFT calculations,
@@ -195,22 +189,26 @@ and as such, determines the degree of parallelization of the routine.
 % Larger values of $N$ speed up the active-learning algorithm, but leads to a higher number of DFT calculations performed before convergence.
 %
 % COMBAK We are discussing alternative convergence criteria, or whether to even have convergence criteria here
-The AL loop proceeds until convergence is achieved, which here is chosen to be the generation at which the structures within the range of metastability, here taken as \num{0.1} eV/atom, are unchanging over three consecutive generations.
+% I think this is fine, just mention a few possible convergence criteria and leave at that
+In practice, the AL algorithm proceeds until no more stable polymoporphs are found, or after the allocated computational budget is exhausted.
+% convergence is achieved, which here is chosen to be the generation at which the structures within the range of metastability, here taken as \num{0.1} eV/atom, are unchanging over three consecutive generations.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - PARAGRAPH HEADER
+% | - Duplicate Structure Removal
 %
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-Although initially unique, the structures in the candidate set often relax into one another over the course of the DFT optimization, introducing duplicate structures in the post-DFT structures.
+Although initially unique, the structures in the candidate set often relax into one another over the course of the DFT optimization, introducing duplicates in the post-DFT structures.
 %
-These duplicate structures are removed during each generation of the AL algorithm, leaving only a single instance of lowest energy in the candidate pool.
+The duplicates are removed, on the fly, during each generation of the AL algorithm
+by using the structure similarity quantification method of Su \latin{et al.}.
+\cite{Su2017}
 %
-The coordination characterization function (CCF) based methodology to quantify the similarity between structures was used to identify and remove duplicate structures.\cite{Su2017}
+% The coordination characterization function (CCF) based methodology to quantify the similarity between structures was used to identify and remove duplicate structures.\cite{Su2017}
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
