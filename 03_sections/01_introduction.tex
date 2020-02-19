@@ -28,31 +28,21 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 % TODO this intro sentence will be a reference dump for literature in crystal structure prediction
-Predicting the thermodynamically favorable crystal structures for an arbitrary inorganic system remains a challenging problem in computational material science.\cite{Woodley2008}
-%
-% Experimentally synthesized inorganic materials often conform to the global minimum energy structure (or similarly stable meta-stable phases).
+Predicting the thermodynamically favored crystal structure for arbitrary inorganic systems remains a challenging problem in computational material science.
+\cite{Woodley2008,Graser2018}
 %
 % TODO Find reference to backup the importance of knowing the crystal structure to predict properties of real-world systems. I would consider this to be common knowledge but relevant article would be nice.
-To simulate the material properties of new meta-stable polymorphs, which are close in energy to the convex hull of stability, their structures must first be found.
-%When simulations are used to guide the search for new materials, the stable and meta-stable crystal structures, \latin{i.e.} polymorphs,  close to the convex hull of stability must be known in order to predict the material properties.\textbf{the previous sentence doesn't make sense, I'm not sure what you are trying to say here}
-%
-% Structure vs. composition enumeration (composition done to death)
-% Give example of how over represented some motifs are
+To simulate the properties of novel polymorphs their crystal structure must first be solved for.
 %
 % TODO Cite multiple materials databases here
 Although there have been numerous examples in recent years of machine learning algorithms applied towards the prediction of formation energies of large \latin{ab-initio} data sets,
-these data sets are biased towards common structures and varying composition space.
+these data sets are often biased towards common crystal structures.
 %
 % TODO Input the number or fraction of AB3 Perokskite structures that are present in OQMD
-For example the Open Quantum Materials Database (OQMD) contains a large dataset of ternary-alloy combinations in the same close-packed cubic structure.\cite{Kirklin2015}
+For example, the Open Quantum Materials Database (OQMD) contains a large dataset of ternary-alloy combinations in the same close-packed cubic structure.
+\cite{Kirklin2015}
 %
-% Should we say that enumerating comp. is easy and struct. is hard?
-As such, these efforts have been primarily concerned with the enumeration of composition (elemental identity and stoichiometries) and less so with the exploration of structural diversity.
-%
-% There are way more papers in the general area of GO than these
-% I'm leaning away from framing as a "structural-diversity" problem with the databases and more so as a method of global optimization
-% In the past, various groups have put forth methodologies to address the structural-diversity problem using computation for the MnO2~ and VOx~ polymorph spaces,
-% but most of these methodologies are limited by the fact that they are operating within the highly intractable/dimensional PES.
+As such, these efforts have been primarily concerned with the enumeration of composition (elemental identity and stoichiometries) and less so with the exploration of structural diversity, a less trivial variable to systematically explore.
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -72,13 +62,14 @@ As such, these efforts have been primarily concerned with the enumeration of com
 % TODO Add review paper for GO
 % Highly dimensional is also next sentence, but this sentence is a good spot for it though
 Historically, the most common approach to crystal structure prediction relied on classical global optimization schemes,
-in which the local and global minimum are found via numerical optimization routines that operate within the continuous potential energy surface (PES).
+in which the local and global minimum are found via numerical optimization routines that operate within the highly dimensional and continuous potential energy surface.
 %
 % TODO Find solid example of shortcomings of classical GO schemes
-These approaches are only tractable for simple systems, such as close-packed metallic crystals,
-as the number of potential polymorphs increases exponentially with systems size and degrees of freedom.\cite{Stillinger1999}
+These approaches are computationally expensive, and are only tractable for simple systems, such as close-packed metallic crystals,
+as the number of potential polymorphs increases exponentially with systems size and degrees of freedom.
+\cite{Stillinger1999}
 %
-The class of structurally diverse metal-oxides are a prime example of a chemical space for which structure prediction is non-trivial, as materials tend to organize into a variety of well-defined local coordination environments such octahedra, tetrahedra.
+The class of structurally diverse metal-oxides are a prime example of a chemical space for which structure prediction is non-trivial, as materials tend to organize into a variety of well-defined local coordination environments such as octahedra and tetrahedra.
 %
 These local coordination motifs can further assemble to form systems with long-range order.
 \textbf{Trying to say that the infinite number of ways to pack octahedra lead to a very very large number of possible polymorphs}
@@ -100,9 +91,9 @@ Alternatively, active learning (AL) frameworks utilizing surrogate models have b
 % This sentence will be a dump for other recent GO papers that aren't necessarily just AL
 There have been numerous recent efforts in developing unique approaches to materials discovery, including a tight-binding model utilizing genetic algorithms~\cite{VanDenBossche2018}, and an image-based materials representation procedure from Noh \latin{et al.}~\cite{noh2019inverse}, which was used to find stable vanadium oxide polymorphs.
 %
-% To address the limitations of traditional global optimization methods,
+Here we report on a crystal structure discovery algorithm that leverages machine learning surrogate models and an active learning framework to accelerate the discovery of novel crystal structures.
 %
-Here we report on a crystal structure discovery algorithm that leverages machine learning surrogate models and an active learning framework to accelerate the discovery of novel crystal structures at fixed composition and does not rely on large sets of generated DFT data.
+The proposed method does not rely on large sets of generated DFT data, but instead sequentially generates the minimum amount of data to effictively search within a space of candidate structures.
 %
 %The algorithm avoids operating in the structural space by leveraging nature's propensity for symmetry by preparing data sets with a large degree of structural diversity at fixed composition.
 % this sounds little hand waving | RF Maybe it needs more exposition, I'm convoluting 2 points here, that we don't do traditional GO opt. in cont. PES and that we use the intuition of symmetry to our advantage
@@ -112,7 +103,6 @@ We first define a set of structurally diverse candidate crystal polymorphs, and 
 %
 %This approach relies on being able to prepare candidate structures that are physically reasonable and likely low in energy.
 %
-% TODO Find references for various ways of preparing candidate structures
 %To date, there have been various techniques to prepare candidate structures, including generating structures randomly, enumerating space groups, etc. \textbf{Refs?}
 %
 % This looks  out of space. Consider moving up or eliminate. Also, this is more a discussion statement.
@@ -123,9 +113,8 @@ We first define a set of structurally diverse candidate crystal polymorphs, and 
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - PARAGRAPH HEADER
-% Introduce specific system (Ir-oxides), relevance (OER), and what is to be
-% gained by discovering new polymorphs
+% | - Introduce IrOx Chemical Space
+% Introduce specific system (Ir-oxides), relevance (OER), and what is to be gained by discovering new polymorphs
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
@@ -140,7 +129,8 @@ and is a well studied electrocatalyst for the oxygen evolution reaction (OER).
 %
 % \textbf{Need refer to the Schloegl work in this section}
 % Which Schloegl papers are you all referring to?
-Previous studies on SrIrO\textsubscript{3} electrocatalyst for the OER demonstrated that Sr leaching might leave behind a highly oxidized Ir (Ir[6+] for hypothetical \IrOthree) and it was argued as one possibly for observed high OER activity.\cite{Seitz2016}
+Previous studies on SrIrO\textsubscript{3} electrocatalyst for the OER demonstrated that Sr leaching might leave behind a highly oxidized Ir^{6+} species which was argued to be responsible for the observed OER activity.
+\cite{Seitz2016}
 %
 % @Michal wants a Schlogl paper here, not sure which TODO
 Other groups also observed reconstruction of \IrOx catalysts under reaction conditions and subsequent formation of an unknown structure. \cite{Pearce2017}
