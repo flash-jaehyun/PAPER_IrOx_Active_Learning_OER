@@ -13,47 +13,57 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-In conclusion, we have demonstrated an active-learning accelerated algorithm for the discovery of stable crystal polymorphs by searching through a candidate space of structurally distinct iridium-oxide phases.
-%
-% TODO Can I generalize this result for both IrO2 and IrO3?
-% TODO Use percentage of total systems instead of just # of DFT calcs
-The algorithm can identify a majority of the most stable polymorphs (7 of the 10 most stable) in a candidate set after only computing a fraction of them via DFT (\mytilde90 DFT optimizations).
-%
-For \IrOtwo, we find confirm the rutile phase as the most stable crystal structure, while also finding several well known phases, including anatase, columbite, as well as several new phases of \IrOtwo.
-%
-For the relatively unexplored \IrOthree we found a new globally stable phase (\aIrOthree), a completely corner sharing octahedral structure with space group 182.
-%
-% Implications for for future studies of polymorphs
-%
-% Describe the level of acceleration achieved, effect of structural drift, implications for future studies
-We have analyzed the local and global structural coordination and revealed that octahedral coordination environments are predominantly preferred, although we also have a large degree of structural diversity in our dataset (octahedral, tetrahedral, square-pyramidal, cubic, and square-planar are all represented)
-%
-% Discuss the differences  connectivity/M-O bonds lengths is different between IrO2 and IrO3
-%
-We constructed a revised bulk Pourbaix diagram for Ir-H$_2$O, including the newly found \aIrOthree phase and revealed that \aIrOthree has a substantial window of stability in the OER relevant potentials and pH.
-% __|
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Points our results address that are raised in the intro:}
+
+\textbf{Generation of structurally diverse search space and efficient sampling of it.}
+
+Our results evidence a cogent procedure for generating a structurally diverse candidate space and adapting it to elemental composition.  Once this space is enumerated, we show it can be efficiently sampled using an AL loop without knowledge of precise atomic coordinates from ab initio simulations, identifying the most stable polymorphs in the candidate set after only computing a fraction of them via DFT.  In particular, this approach is well-suited for discovery in structurally diverse systems, such as metal oxides, demonstrated by the large degree of structural diversity in our dataset with octahedral, tetrahedral,  square-pyramidal,  cubic,  and  square-planar Ir-O conformers all represented.
+
+\textbf{Discovery of stable new and existing IrO2/IrO3 polymorphs.}
+Algorithm results include rapid acquisition of experimentally characterized IrO2 and IrO3 polymorphs, including rutile IrO2, and several layered IrO3 phases utilized for Li intercalation. We identified a number of novel IrO3 polymorphs below the metastability limit, including a new globally stable phase, $\alpha$-IrO3.   This high valency Ir$^{6+}$ phase is stable under OER relevant conditions and has an ideal 100\% corner-sharing octahedral structure with maximum coverage of oxygen atoms, all having optimal 2p-energy.  Surface and kinetic analyses reveal this structure and other OER stable IrO3 phases have much higher OER activity relative to rutile IrO2.  The thermodynamic stability and high OER activity of the $\alpha$-IrO3 phase may provide clues as to the nature of the yet uncharacterized structures reported after reconstruction of SrIrO3 and IrOx precursors under OER reaction conditions.  Combining diverse structural generation, AL-enabled accelerated searches, and ab initio simulation of material performance, could open up new avenues for in silico material design with application tailored structural properties.
+
+% In conclusion, we have demonstrated an active-learning accelerated algorithm for the discovery of stable crystal polymorphs by searching through a candidate space of structurally distinct iridium-oxide phases.
+% %
+% % TODO Can I generalize this result for both IrO2 and IrO3?
+% % TODO Use percentage of total systems instead of just # of DFT calcs
+% The algorithm can identify a majority of the most stable polymorphs (7 of the 10 most stable) in a candidate set after only computing a fraction of them via DFT (\mytilde90 DFT optimizations).
+% %
+% For \IrOtwo, we find confirm the rutile phase as the most stable crystal structure, while also finding several well known phases, including anatase, columbite, as well as several new phases of \IrOtwo.
+% %
+% For the relatively unexplored \IrOthree we found a new globally stable phase (\aIrOthree), a completely corner sharing octahedral structure with space group 182.
+% %
+% % Implications for for future studies of polymorphs
+% %
+% % Describe the level of acceleration achieved, effect of structural drift, implications for future studies
+% We have analyzed the local and global structural coordination and revealed that octahedral coordination environments are predominantly preferred, although we also have a large degree of structural diversity in our dataset (octahedral, tetrahedral, square-pyramidal, cubic, and square-planar are all represented)
+% %
+% % Discuss the differences  connectivity/M-O bonds lengths is different between IrO2 and IrO3
+% %
+% We constructed a revised bulk Pourbaix diagram for Ir-H$_2$O, including the newly found \aIrOthree phase and revealed that \aIrOthree has a substantial window of stability in the OER relevant potentials and pH.
+% % __|
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - PARAGRAPH HEADER
-% Conclusions OER results (APPLICATIONS)
-% __|
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - PARAGRAPH BODY
-%
-Finally, using a thermodynamic approach to OER, we show,
-that surfaces of selected \IrOthree have much higher relative activity that \IrOtwo due to presence of high valency Ir[6+] states.
-%
-The \num{100}\% corner-sharing octahedral structures feature maximum coverage of oxygens with optimal $2p$-energy.
-%
-The OER results has broader implications for related OER systems.
-%
-Overall, the AL ML has tremendous potential for discovery of structurally diverse systems particularly where the known diversity is currently very small (Highly oxidized oxides).
-%
-Because our method provides readily available structural information which a necessary input for any characterization/simulation analysis we envision it as a indispensable tool in identifying novel phases for materials applications.
-%
-This opens up new avenues of the materials/catalysis research with tailored structural properties.
+% % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % | - PARAGRAPH HEADER
+% % Conclusions OER results (APPLICATIONS)
+% % __|
+% % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % | - PARAGRAPH BODY
+% %
+% Finally, using a thermodynamic approach to OER, we show,
+% that surfaces of selected \IrOthree have much higher relative activity that \IrOtwo due to presence of high valency \ce{Ir^{6+}} states.
+% %
+% The \num{100}\% corner-sharing octahedral structures feature maximum coverage of oxygens with optimal $2p$-energy.
+% %
+% The OER results has broader implications for related OER systems.
+% %
+% Overall, the AL ML has tremendous potential for discovery of structurally diverse systems particularly where the known diversity is currently very small (Highly oxidized oxides).
+% %
+% Because our method provides readily available structural information which a necessary input for any characterization/simulation analysis we envision it as a indispensable tool in identifying novel phases for materials applications.
+% %
+% This opens up new avenues of the materials/catalysis research with tailored structural properties.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
