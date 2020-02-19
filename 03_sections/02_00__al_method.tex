@@ -133,10 +133,8 @@ The full details of the candidate space generation and DFT calculations are in t
 %
 The candidate data set was featurized using the Voronoi tessellation fingerprinting scheme developed by Ward \latin{et al.} \cite{Ward2017} which produces a \num{271} length fingerprint vector that is invariant to isotropic lattice changes and somewhat insensitive to the precise atomic coordinates.
 %
-% TODO Get reference for Wigner-Seitz cell
-% This one maybe
-% https://journals.aps.org/pr/abstract/10.1103/PhysRev.43.804
-These features encode both chemical and structural information by constructing attributes from elemental properties which are weighted by the local environment of the structure via the construction of the Wigner-Seitz cell.
+These fingerprints encode both chemical and structural information by constructing attributes from elemental properties which are weighted by the local environment of the structure via the construction of the Wigner-Seitz cell.
+\cite{Wigner1933}
 %
 We applied the active learning model to the \IrOtwo and \IrOthree spaces separately, i.e. at fixed stoichiometry, which further reduces the \num{271} length fingerprint vector to \num{101} non-zero variance features.
 %significantly reducing the dimensionality of the features.
