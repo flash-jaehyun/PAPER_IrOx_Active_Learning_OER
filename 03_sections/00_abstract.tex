@@ -9,9 +9,11 @@
 %
 Machine learning (ML) based surrogate models have become an increasingly common tool in the field computational materials discovery to overcome the relative expense of \latin{ab-initio} density functional theory (DFT).
 %
-Training such models on expansive DFT data sets has been used to discover new materials in the vast space of material compositions. However, surrogate model applications to the structural space of bulk crystals, \latin{i.e.} polymorphs, remain relatively unexplored.
+Training such models on expansive DFT data sets has been used to discover new materials in the vast space of material compositions.
 %
-Herein, we report on an active learning (AL) framework that searches for the most stable polymorph of \IrOtwo and \IrOthree by utilizing a surrogate model which is updated on the fly with generated DFT data.
+However, surrogate model applications to the structural space of bulk crystals, \latin{i.e.} polymorphs, remain relatively unexplored.
+%
+Herein, we report on an active learning (AL) framework that searches for the most stable polymorph of a chemical space by utilizing a surrogate model which is sequentially updated on the fly with generated DFT data.
 %
 The model searches within a candidate data set of crystal motifs sourced from publicly available materials databases.
 %
@@ -19,8 +21,11 @@ We demonstrate the efficacy of this AL-accelerated methodology by discovering 7 
 %
 % COMBAK TODO Update number of unique polymorphs discovered to something more meaningful
 % Let's report how many meta-stable IrO2/3 we discovered, much better than how it is currently phrased
-For \IrOtwo, we reaffirm that the rutile phase is the globally stable polymorph,
-while for \IrOthree we discover TEMP unique polymorphs that are more stable than previously proposed structures, including a $\alpha$-AlF\textsubscript{3} type and a rutile-like \IrOthree structure.
+For \IrOtwo, we reaffirm the rutile phase as the globally stable polymorph, while also finding \mytilde200 polymorphs that are within the synthesizability limit.
+%
+For \IrOthree we discovered ~70 unique metastable polymorphs, with \mytilde20 that are more stable than anything previously reported.
+%
+The globally stable polymorph of \IrOthree is a FeF\textsubscript{3} structure type polymorph with a space group number of 167, herein referred to as \aIrOthree.
 %
 % There are 10 IrO3 polymorphs within 0.2 eV/atom of the lowest structure and 5 IrO3 polymorphs within 0.1 eV/atom of the lowest structure
 % Of these 10, how many were unknown? Maybe 8ish? TODO double check
@@ -33,7 +38,7 @@ Based on the above results, we constructed a revised bulk Pourbaix diagram of th
 % COMBAK "the OER" or just "OER"
 Using a thermodynamic criteria for the activity towards OER we find that the above stable \IrOthree polymorphs have significantly lower theoretical overpotentials than the rutile \IrOtwo phase.
 %
-This is due to a weaker and more ideal binding of the OER intermediates on the more oxidized \IrOthree surfaces.
+This elevated catalytic activity is due to the weaker and more ideal binding of the OER intermediates on the more oxidized \IrOthree surfaces.
 %
-% Less cheesy closing thoughts
+% TODO Less cheesy closing thoughts
 This work opens up an opportunity to structural discovery of materials and catalysts on unprecedented scale.
