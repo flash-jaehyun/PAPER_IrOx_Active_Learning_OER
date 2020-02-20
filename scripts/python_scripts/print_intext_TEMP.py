@@ -11,8 +11,8 @@ import sys
 #__|
 
 # | - Script Inputs
-#  count_comments = True  # whether to count WORD in comments or not
-count_comments = False  # whether to count WORD in comments or not
+count_comments = True  # whether to count WORD in comments or not
+#  count_comments = False  # whether to count WORD in comments or not
 
 words_to_check = [
     "TEMP",
