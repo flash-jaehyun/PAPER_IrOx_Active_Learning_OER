@@ -99,42 +99,42 @@ This is compared to the \num{157} DFT calculations needed to discover \num{7/10}
 % =========================================================
 % | - Figure | IrO3 Convergence Plot
 \begin{figure*}[!htb]
-    \centering
-    \makebox[\textwidth][c]{\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]
-        {02_figures/ml_convergence_plots/test_iro3_al.pdf}
-    }
-    \caption{\label{fig:iro3_al}
-        % (a) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        %
-        (a) The state of the AL algorithm at five generations.
-        %
-        The enthalpy of formation per atom (\DHf) is plotted, ordered from most to least stable, against all \IrOthree candidates.
-        %
-        The number of DFT training points the GP model at each generation is displayed.
-        %
-        Hollow grey markers indicate a GP model predicted \DHf while red points indicate a DFT-computed quantity.
-        %
-        GP uncertainty estimates corresponding to one sigma are shown for all predictions.
-        %
-        At the top of subplots a.i through a.v, the x-axis positions of the ten most stable polymorphs are tracked at each generation by either red (acquired) or grey (not acquired) vertical lines.
-        %
-        Insets of the low energy region for each generation is displayed below each subplot.
-        %
-        The top ten most stable systems are colored and labeled to indicate their identity.
-        % (b) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        %
-        (b) Crystal structures of the \num{8} most stable \IrOthree polymorphs.
-        %
-        The third most stable polymorphs is excluded since it is a combination of the first and second most stable systems.
-        % (c) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        %
-        (c) The number of most stable \num{10} polymorphs of \IrOthree that are discovered as a function of the number of DFT bulk relaxations,
-        averaged over \num{100} independent runs of the AL algorithm using the GP-UCB acquisition criteria (blue) and a random acquisition (grey).
-        %
-        The error bars indicate the standard deviation over \num{100} runs.
-        %
-        Red guide lines are displayed to show how many DFT calculations are needed to discover \num{7/10} of most stable polymorphs for the GP-UCB and random acquisition.
-    }
+\centering
+\makebox[\textwidth][c]{\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]
+{02_figures/ml_convergence_plots/test_iro3_al.pdf}
+}
+\caption{\label{fig:iro3_al}
+% (a) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+(a) The state of the AL algorithm at five generations.
+%
+The enthalpy of formation per atom (\DHf) is plotted, ordered from most to least stable, against all \IrOthree candidates.
+%
+The number of DFT training points the GP model at each generation is displayed.
+%
+Hollow grey markers indicate a GP model predicted \DHf while red points indicate a DFT-computed quantity.
+%
+GP uncertainty estimates corresponding to one sigma are shown for all predictions.
+%
+At the top of subplots a.i through a.v, the x-axis positions of the ten most stable polymorphs are tracked at each generation by either red (acquired) or grey (not acquired) vertical lines.
+%
+Insets of the low energy region for each generation is displayed below each subplot.
+%
+The top ten most stable systems are colored and labeled to indicate their identity.
+% (b) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+(b) Crystal structures of the \num{8} most stable \IrOthree polymorphs.
+%
+The third most stable polymorphs is excluded since it is a combination of the first and second most stable systems.
+% (c) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+(c) The number of most stable \num{10} polymorphs of \IrOthree that are discovered as a function of the number of DFT bulk relaxations,
+averaged over \num{100} independent runs of the AL algorithm using the GP-UCB acquisition criteria (blue) and a random acquisition (grey).
+%
+The error bars indicate the standard deviation over \num{100} runs.
+%
+Red guide lines are displayed to show how many DFT calculations are needed to discover \num{7/10} of most stable polymorphs for the GP-UCB and random acquisition.
+}
 \end{figure*}
 
 % (b) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
