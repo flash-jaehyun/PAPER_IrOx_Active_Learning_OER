@@ -6,13 +6,11 @@
 
 % | - __latex_setup__
 \documentclass[%
-  % journal=jacsat,
-  journal=cmatex,
+  journal=cmatex,  % jacsat
   manuscript=article,
   % layout=twocolumn,  % Two-column formatting, more compact
   ]{achemso}
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[version=3]{mhchem}  % Formula subscripts using \ce{}
@@ -21,28 +19,32 @@
 \captionsetup{justification=raggedright,singlelinecheck=false}  % Trying to get the tables a bit more centered
 \usepackage[group-separator={,},group-minimum-digits={3}]{siunitx}  % Format numbers (with commas)
 
+
+% Boolean options
+% \usepackage{endfloat}  % 190731 | RF | Put's all figures at the end
+% \usepackage{hyperref}  % TEST | Used to reference sections w/ hyperlinks
+
 %| - Unused packages, maybe will be necessary later
 % \usepackage[table,xcdraw]{xcolor}
 % \usepackage[normalem]{ulem}  % Used for underlining and crossing out text
 % \usepackage{subfig}  % Support for subfiguress
 % \usepackage{multirow}  % Used for tables I think
 % \usepackage{hhline}  % Used for making lines in tables I think
-
-% Boolean options
-% \usepackage{endfloat}  % 190731 | RF | Put's all figures at the end
-% \usepackage{hyperref}  % TEST | Used to reference sections w/ hyperlinks
 % __|
 
+% __|
+
+
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% - Author List
+% Author List %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{03_sections/authors}
 
-% - Custom Macros
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Custom Macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{03_sections/custom_macros}
-% __|
 
-% Article Title *******************************************
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Article Title %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title[ML discovered \IrOx phases]{
 Active Learning Accelerated Discovery of Stable \IrOx Polymorphs for the Oxygen Evolution Reaction
 }
