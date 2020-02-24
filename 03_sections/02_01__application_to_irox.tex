@@ -9,7 +9,7 @@
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - PARAGRAPH HEADER
+% | - Intro To Section
 % Intro/transition paragraph
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -21,6 +21,7 @@ Since the algorithm is applied to each stoichiometry individually,
 we will only illustrate the results for \IrOthree,
 a comparatively unstudied oxide system.
 %
+% TODO I don't talk about IrO2 enough
 We will briefly touch on the results for \IrOtwo at the end and refer the reader to the Supporting Information for further details.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -44,18 +45,17 @@ Each subplot reports the predicted (hollow grey) and DFT-derived (solid red) for
 As the algorithm acquires DFT data, the GP model's accuracy increases,
 as evidenced by the decreasing uncertainties when comparing the initial and latter generations (\ref{fig:iro3_al}a.i-v).
 %
-At the top of each subplot of Figure~\ref{fig:iro3_al}a the identity of ten most stable polymorphs is tracked.
+At the top of each subplot of Figure~\ref{fig:iro3_al}a the x-axis positioning of the ten most stable polymorphs is tracked.
 %
 Initially, these ten structures are randomly distributed across the entire candidate space due to the insufficiently trained GP model.
 %
-After only three generations (Figure~\ref{fig:iro3_al}a.ii) the GP model is sufficiently accurate to predict the ten most stable polymorphs as being low in energy.
+But, after only three generations (Figure~\ref{fig:iro3_al}a.ii) the GP model is sufficiently accurate to predict the most stable polymorphs as being low energy.
 %
 By the fifth generation (\num{30} DFT relaxations) \num{4/10} of the most stable polymorphs have been acquired,
-including the globally stable phase of \IrOthree.
+including the globally stable phase of \IrOthree, which on average over 100 independent runs was found after only 4 generations.
 %
 % COMBAK Does this syntax work with num?
-By the 14th generation of the AL
-(Figure~\ref{fig:iro3_al}a.iv),
+By the 14th generation of the AL,
 all but one of the top ten most stable structures have been acquired.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -69,13 +69,31 @@ all but one of the top ten most stable structures have been acquired.
 % | - PARAGRAPH BODY
 %
 % TEMP PARAGRAPH ON STRUCTURES FOUND
+% COMBAK Change number after updating figure
+The eight most stable polymorphs of \IrOthree found during the AL algorithm are shown in Figure~\ref{fig:iro3_al}b (with the exception of the third most stable polymorph).
+%
+All of the low energy \IrOthree structures are constructed from octahedrally coordinated units, with a variety of symmetries and packing modes.
+%
+The globally stable crystal structure has a space group number of 167 (R3c), a rhombohedral primitive cell with a formula unit of \ce{Ir_{2}O_{6}} (The extended standardized cell is displayed), and a completely corner-sharing octahedra network.
+%
+Herein, this structure will be referred to as \aIrOthree, where $\alpha$ indicates that it is the most stable \IrOthree polymorph.
+%
+% TODO Fill in references
+The structue is isomorphic to that of \ce{TeO_{3}}, \ce{FeF_{3}}, and other crystal systems.
+%
+The second most stable polymorph
+(Figure~\ref{fig:iro3_al}b.ii)
+is structurally very similar to Figure~\ref{fig:iro3_al}b.i,
+only differing by the stacking of the alternating layers orthagonal to the c lattice vector, which increases the symmetry to a hexagonal symmetry space group (182) and reveals hexagonal pores through the c-axis.
+%
+Additionally, The second most stable polymorph is only 2 meV less stable than the first, which is well within the margin of error for DFT.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - PARAGRAPH HEADER
-% Performance of model
+% | - Performance of AL Model
+% 
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
@@ -106,7 +124,7 @@ This demonstrates over a factor of two improvment in performance compared to the
 %
 (a) The state of the AL algorithm at five generations.
 %
-The enthalpy of formation per atom (\DHf) is plotted, ordered by stability, against all \IrOthree candidates, with the 1 \sigma uncertainty estimate shown for each prediction.
+The enthalpy of formation per atom (\DHf) is plotted, ordered by stability, against all \IrOthree candidates, with the 1 $\sigma$ uncertainty estimate shown for each prediction.
 %
 The number of DFT training points at each generation is displayed.
 %
@@ -125,23 +143,17 @@ The top ten most stable systems are colored and labeled (i-vii) to indicate thei
 %
 (c) The number of most stable \num{10} polymorphs of \IrOthree discovered vs the number of DFT calculations for the GP-UCB (blue) and random (grey) acquisition methods.
 %
-The results are averaged over \num{100} independent runs and the 1 \sigma standard deviation between these runs are displayed.
+The results are averaged over \num{100} independent runs and the 1 $\sigma$ standard deviation between these runs are displayed.
 %
 Red guide lines show the number of DFT calculations needed to discover \num{7/10} of the most stable polymorphs.
 }
 \end{figure*}
-
-% (b) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% (b) Parity plot of the final ML models for \IrOtwo and \IrOthree predicting on either the pre-optimized (grey) or the post-optimized structures of \IrOtwo and \IrOthree.
-% (c) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% (c) Zoomed inset of the 6th generation of the AL loop.
-
 % __| =====================================================
 % =========================================================
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - PARAGRAPH HEADER
+% | - Parity Plot Discussion
 % Discussion on performance of the AL routine
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -166,8 +178,8 @@ roughly 100 meV/atom larger than model reported by Ward \latin{et al.}, which wa
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - PARAGRAPH HEADER
-% DISCUSS PERFORMANCE AND STRUCTURAL SHIFT
+% | - Discuss Performance And Structural Shift
+%
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
