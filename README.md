@@ -29,6 +29,7 @@ Latex table generation: https://www.tablesgenerator.com/latex_tables
 ---
 
 ## TODO List:
+  * Change name of algorithm to ALA and change references in text to this
   * Reference the Catlearn paper and codebase
   * Be consistent about use of 'fingerprint' vs 'feature', just use 1
   * Give tables in SI that have more sig figs than numbers in text/plots

@@ -1,9 +1,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Active Learning Machine Learning Results
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TODO Change guiding lines of performance plot because 7/10 systems isn't the best metric anymore
 %
-% Notes:
-% Mention that we have ~15 metastable structures inbetween rutile and anatase IrO2
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -40,7 +39,6 @@ We will briefly touch on the results for \IrOtwo at the end and refer the reader
 %
 Figure~\ref{fig:iro3_al}a, shows a sequence of snapshots of the AL algorithm at different generations for \IrOthree.
 %
-% COMBAK Why are we sorting? Explain
 Each subplot reports the predicted (hollow grey) and DFT-derived (solid red) formation enthalpies (\DHf) for each structure, sorted by stability.
 %
 As the algorithm acquires DFT data, the GP model's accuracy increases,
@@ -48,7 +46,7 @@ as evidenced by the decreasing uncertainties when comparing the initial and latt
 %
 At the top of each subplot of Figure~\ref{fig:iro3_al}a the identity of ten most stable polymorphs is tracked.
 %
-Initially, the ten most stable structures are randomly distributed across the entire candidate space due to the insufficiently trained GP model.
+Initially, these ten structures are randomly distributed across the entire candidate space due to the insufficiently trained GP model.
 %
 After only three generations (Figure~\ref{fig:iro3_al}a.ii) the GP model is sufficiently accurate to predict the ten most stable polymorphs as being low in energy.
 %
@@ -87,9 +85,9 @@ Figure~\ref{fig:iro3_al}c reports the number of the ten most stable systems acqu
 The results of Figure~\ref{fig:iro3_al}c are averaged over 100 independent runs of AL algorithms with the 1 sigma standard deviation between these runs shown.
 %
 % COMBAK Pick better point to compare
-Overall, the GP-UCB runs outperform the random acquisition runs, with only \num{50} DFT calculations on average needed to discover \num{7} of the \num{10} most stable systems.
+Overall, the GP-UCB runs outperform the random acquisition runs, with only \num{100} DFT calculations on average needed to discover the ten most stable structures.
 %
-This is compared to the \num{157} DFT calculations needed to discover \num{7/10} most stable polymorphs for the AL utilizing a random acquisition.
+This demonstrates over a factor of two improvment in performance compared to the random acquisition, which requires \mytilde\num{250} DFT calculations to acquire the ten most stable polymorphs.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -108,32 +106,28 @@ This is compared to the \num{157} DFT calculations needed to discover \num{7/10}
 %
 (a) The state of the AL algorithm at five generations.
 %
-The enthalpy of formation per atom (\DHf) is plotted, ordered from most to least stable, against all \IrOthree candidates.
+The enthalpy of formation per atom (\DHf) is plotted, ordered by stability, against all \IrOthree candidates, with the 1 \sigma uncertainty estimate shown for each prediction.
 %
-The number of DFT training points the GP model at each generation is displayed.
+The number of DFT training points at each generation is displayed.
 %
-Hollow grey markers indicate a GP model predicted \DHf while red points indicate a DFT-computed quantity.
+Hollow grey markers indicate a GP model predicted \DHf while red indicate a DFT-computed quantity.
 %
-GP uncertainty estimates corresponding to one sigma are shown for all predictions.
-%
-At the top of subplots a.i through a.v, the x-axis positions of the ten most stable polymorphs are tracked at each generation by either red (acquired) or grey (not acquired) vertical lines.
+At the top of subplots a.i - a.v, the x-axis positions of the ten most stable polymorphs are tracked at each generation by either red (acquired) or grey (not acquired) vertical lines.
 %
 Insets of the low energy region for each generation is displayed below each subplot.
 %
-The top ten most stable systems are colored and labeled to indicate their identity.
+The top ten most stable systems are colored and labeled (i-vii) to indicate their identity.
 % (b) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-(b) Crystal structures of the \num{8} most stable \IrOthree polymorphs.
+(b) Crystal structures of the \num{8} most stable \IrOthree polymorphs (structure iii. not shown).
 %
-The third most stable polymorphs is excluded since it is a combination of the first and second most stable systems.
 % (c) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-(c) The number of most stable \num{10} polymorphs of \IrOthree that are discovered as a function of the number of DFT bulk relaxations,
-averaged over \num{100} independent runs of the AL algorithm using the GP-UCB acquisition criteria (blue) and a random acquisition (grey).
+(c) The number of most stable \num{10} polymorphs of \IrOthree discovered vs the number of DFT calculations for the GP-UCB (blue) and random (grey) acquisition methods.
 %
-The error bars indicate the standard deviation over \num{100} runs.
+The results are averaged over \num{100} independent runs and the 1 \sigma standard deviation between these runs are displayed.
 %
-Red guide lines are displayed to show how many DFT calculations are needed to discover \num{7/10} of most stable polymorphs for the GP-UCB and random acquisition.
+Red guide lines show the number of DFT calculations needed to discover \num{7/10} of the most stable polymorphs.
 }
 \end{figure*}
 
