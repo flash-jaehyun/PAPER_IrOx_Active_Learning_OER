@@ -21,8 +21,13 @@ https://www.dropbox.com/sh/ulvd8mnl52p6bu8/AAAMKH95XtwLex7S3jg1z6T5a?dl=0
 ### Location of figure files
 https://www.dropbox.com/sh/77hz3rvjtpa3k6b/AAA3y0-m69bxQHD8Za2FpTxLa?dl=0
 
+### Manuscript Feedback Notes:
 
-Workflowy: https://workflowy.com/s/ml-irox-oer-publicat/kA13CTQkFbAzFkBd
+https://www.dropbox.com/sh/w3g4lojpxownz5a/AACczNfQGUqsWnmzIHgG1a2Ja?dl=0
+
+### Workflowy:
+
+https://workflowy.com/s/ml-irox-oer-publicat/kA13CTQkFbAzFkBd
 
 Latex table generation: https://www.tablesgenerator.com/latex_tables
 
