@@ -74,7 +74,8 @@ The eight most stable polymorphs of \IrOthree found during the AL algorithm are 
 %
 All of the low energy \IrOthree structures are constructed from octahedrally coordinated units, with a variety of symmetries and packing modes.
 %
-The globally stable crystal structure has a space group number of 167 (R3c), a rhombohedral primitive cell with a formula unit of \ce{Ir_{2}O_{6}} (The extended standardized cell is displayed), and a completely corner-sharing octahedra network.
+The globally stable crystal structure consists of a six atom primitive cell with a spacegroup of 167 in the rhombohedral crystal system and features completely corner-sharing octahedra connectivity.
+ % has a space group number of 167 (R3c), a rhombohedral primitive cell with a formula unit of \ce{Ir_{2}O_{6}} (The extended standardized cell is displayed), and a completely corner-sharing octahedra network.
 %
 Herein, this structure will be referred to as \aIrOthree, where $\alpha$ indicates that it is the most stable \IrOthree polymorph.
 %
@@ -86,21 +87,21 @@ The second most stable polymorph
 is structurally very similar to Figure~\ref{fig:iro3_al}b.i,
 only differing by the stacking of the alternating layers orthogonal to the c lattice vector, which increases the symmetry to a hexagonal symmetry space group (182) and reveals hexagonal pores through the c-axis.
 %
-Additionally, The second most stable polymorph is only 2 meV less stable than the first, which is well within the margin of error for DFT.
+Additionally, the second most stable polymorph is only 2 meV less stable than the first, which is well within the margin of error for DFT.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Performance of AL Model
-% 
+%
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
 Figure~\ref{fig:iro3_al}c reports the number of the ten most stable systems acquired against the number of DFT calculations for the AL algorithm with the GP-UCB acquisition described previously and a random acquisition scheme to serve as a control.
 %
-The results of Figure~\ref{fig:iro3_al}c are averaged over 100 independent runs of AL algorithms with the 1 sigma standard deviation between these runs shown.
+The results of Figure~\ref{fig:iro3_al}c are averaged over 100 independent runs of AL algorithms with the one sigma standard deviation between these runs indicated.
 %
 % COMBAK Pick better point to compare
 Overall, the GP-UCB runs outperform the random acquisition runs, with only \num{100} DFT calculations on average needed to discover the ten most stable structures.
@@ -170,23 +171,7 @@ with a MAE of \mytilde\num{1.5} eV/atom.
 %
 The largest errors are highly skewed towards the unstable systems.
 %
-The same GP model does comparatively much better at predicting the formation energies of post-DFT optimized structures with an MAE of \mytilde\num{0.2} eV/atom,
-roughly 100 meV/atom larger than model reported by Ward \latin{et al.}, which was trained on hundreds of thousands of DFT bulk calculations and reached an MAE of 0.8 eV/atom.
-%
-% __|
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Discuss Performance And Structural Shift
-%
-% __|
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - PARAGRAPH BODY
-The fact that our models,
-trained on orders of magnitude less data than those of Ward \latin{et al.},
-achieve errors on par with them,
-is due to the fact that we are training and predicting on a space whose properties are very narrowly constrained, while Ward \latin{et al.} is predicting on structures whose elements span the entire periodic table.
+The same GP model does comparatively much better at predicting the formation energies of post-DFT optimized structures with an MAE of \mytilde\num{0.2} eV/atom.
 %
 This drastic decrease in prediction error is not surprising since the post-DFT fingerprints directly corresponds to the target DFT energies.
 %
@@ -197,12 +182,28 @@ Structures that are initialized in high energy configurations will therefore hav
 and will then reconfigure into a more stable local configuration,
 resulting in a large discrepancy between the pre-DFT predicted and final formation energies.
 %
-% COMBAK TODO \textbf{do determine the reason for this we did TEMP...}
 Interestingly, despite the inaccuracy of predictions on unrelaxed structures,
 the algorithm appears to perform well at discovering \num{7/10} of the most stable candidates after only \num{35} DFT calculations.
 %
-% COMBAK TODO \textbf{How do you know this?  This is in the section?  If it is you need to say it will be discussed in the next section here.}
-The reason for this is that the pre-optimized structures that are similar enough to the most stable final equilibrium structures will not restructure considerably, meaning that their predicted formation energies will be close enough (and low enough) to be quickly picked up by the acquisition criteria.
+The reason for this is that the pre-optimized structures that are similar enough to the most stable final equilibrium structures will not restructure considerably,
+meaning that their predicted formation energies will be close enough (and low enough) to be quickly picked up by the acquisition criteria.
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - Out Model's Accuracy vs. MP Models
+% COMBAK Fix this paragraph and include
+% __|
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
+% The same GP model does comparatively much better at predicting the formation energies of post-DFT optimized structures with an MAE of \mytilde\num{0.2} eV/atom,
+% roughly 120 meV/atom larger than model reported by Ward \latin{et al.}, which was trained on hundreds of thousands of DFT bulk calculations and reached an MAE of 0.8 eV/atom.
+% %
+% The fact that our models,
+% trained on orders of magnitude less data than those of Ward \latin{et al.},
+% achieve errors on par with them,
+% is due to the fact that we are training and predicting on a space whose properties are very narrowly constrained, while Ward \latin{et al.} is predicting on structures whose elements span the entire periodic table.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
