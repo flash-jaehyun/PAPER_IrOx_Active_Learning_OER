@@ -97,27 +97,18 @@ This reduction leads to orders of magnitude reduction of the search space, as op
 %
 Finally, only structures containing $\leq\num{75}$ atoms
 (\num{567} and \num{256} \ABtwo and \ABthree structures respectively)
-included to the reduce computational expense of subsequent DFT calculations.
+were included to the reduce the computational expense of subsequent DFT calculations.
 %
-We next substituted iridium and oxygen for the A and B sites, and these Ir-O adapted polymorphs were isotropically relaxed to accommodate their atomic radii
+We next substituted iridium and oxygen for the A and B sites, and these Ir-O adapted polymorphs were isotropically relaxed to accommodate their atomic radii.
 %
-% TODO Explain that all DFT is done and that 87 systems didn't converge
-Further reduction of the set was needed, due to 87 structures with unphysical Ir-O distances.
+A full bulk DFT optimization recipe was performed on these systems,
+yielding a data set of \num{736} relaxed bulk \IrOx polymorphs
+(\num{487} and \num{249} structures for \IrOtwo and \IrOthree, respectively),
+after discarding 87 non-converged structures.
 %
-%Because of the reasonable size of the reduced candidate space, and to validate our methods fully, we performed bulk relaxations for all \num{736} structures.
-%
-%Of the \num{823} structures, \num{736} were able to be fully optimized, while \num{87}, primarily \ABtwo structures were not able to be converged due to a variety of SCF convergence issues apparently due to highly voluminous cells.
-%
-The resulting candidate spaces were composed of \num{487} \IrOtwo and \num{249} \IrOthree structures with unique structure prototypes.
-%
-We performed bulk relaxations of the cell vectors and atomic positions with DFT for all \num{736} structures for validation of our AL methodology.
+While not particularly large, our candidate space's size allows us to tractably compute all DFT optimized structures, thus allowing us to benchmark the performance of our methodology.
 %
 The full details of the candidate space generation and DFT calculations are in the Supplementary Information.
-%
-%While not particularly large in size, this data set will serve as a proof of concept.
-%
-%The candidate space size is ideal in that that we can tractably optimize each equilibrium structure for the entire dataset with DFT, thus allowing us to validate our AL approach.
-%Further details on the isotropic cell expansion and DFT computational details can be found in the SI.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -129,7 +120,7 @@ The full details of the candidate space generation and DFT calculations are in t
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-The candidate data set was featurized using the Voronoi tessellation fingerprinting scheme developed by Ward \latin{et al.} \cite{Ward2017} which produces a \num{271} length fingerprint vector that is invariant to isotropic lattice changes and somewhat insensitive to the precise atomic coordinates.
+The active learning algorithm proceeds through a structure featurization scheme based on Voronoi tessellation developed by Ward \latin{et al.} \cite{Ward2017} which produces a \num{271} length fingerprint vector that is invariant to isotropic lattice changes and somewhat insensitive to the precise atomic coordinates.
 %
 These fingerprints encode both chemical and structural information by constructing attributes from elemental properties which are weighted by the local environment of the structure via the construction of the Wigner-Seitz cell.
 \cite{Wigner1933}
@@ -138,11 +129,9 @@ We applied the active learning model to the \IrOtwo and \IrOthree spaces separat
 %significantly reducing the dimensionality of the features.
 %
 % TODO Create cross-validation plot
-% TODO Put real percent sign here
-% \textbf{I'm a little dubious of this, where is it shown in SI?}
 Further dimensionality reduction was achieved via a principle component analysis (PCA) \cite{Tipping1999}, which was used to reduce the remaining \num{101} fingerprints to \num{10}.
 %
-\num{10} PCA components demonstrated the optimal cross-validation MAE error, although only capturing 80\% of the fingerprint's variance (see \ref{fig:cv_anal}).
+\num{10} PCA components demonstrated the optimal cross-validation mean absolute error (MAE), although only capturing 80\% of the fingerprint's variance (see \ref{fig:cv_anal}).
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
