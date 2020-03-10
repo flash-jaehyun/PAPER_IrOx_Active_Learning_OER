@@ -49,15 +49,32 @@ The second component is the iterative search through candidate space via a conti
 % =========================================================
 % FIGURE ==================================================
 % | - Figure | Active Learning Algorithm ******************
-\begin{figure*}
+\begin{figure*}[!htb]
 \centering
-\includegraphics[width=0.5\textwidth]{02_figures/al_diagram/Active_learning_diagram__v2.pdf}
+\makebox[\textwidth][c]{\includegraphics{
+  02_figures/al_diagram/Active_learning_diagram__v2.pdf}}
 \caption{\label{fig:all_diagram}
 %
 % Probably better to keep this caption really concise and refer to the text
-Process flow diagram for the active learning accelerated algorithm. The procedure is composed of
-(a) generation of the candidate set of considered crystal structures constructed from DFT materials databases and
-(b) iterative active learning surrogate search of the candidate space.
+Process flow diagram for the active learning accelerated algorithm.
+%
+The procedure is composed of two distinct steps.
+%
+The first step is the generation of the hypothetical crystal structure data set (candidate space), which is constructed through data mining the unique structural motiffs in the OQMD and MP materials databases.
+%
+The second component is the active learning algorithm,
+which proceeds through iterative steps of 
+candidate selection in which a subset of structures in the candidate space are selected based on an aquisition function,
+these structures are then relaxed to a local energy minima via a DFT bulk optimization routine to obtain the DFT formation enthalpy (\DHf) and are then featurized via a Voronoi tesselation fingerprinting methodology.
+%
+The resultant formation energies and structural fingerprints are then used to train a Gaussian Process (GP) machine learning model, which in turn is used to predict the formation energy of the remaining systems in the candidate space.
+%
+This predicted energy landscape is then used to inform the aquisition function at which point the loop has completed a full generation.
+%
+This iterative loop proceeds until all low energy polymorphs have been acquired or in practice until the alloted DFT budget has been exhausted.
+%
+% (a) generation of the candidate set of considered crystal structures constructed from DFT materials databases and
+% (b) iterative active learning surrogate search of the candidate space.
 }
 \end{figure*}
 % __|
