@@ -15,7 +15,7 @@
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - PARAGRAPH HEADER
+% | - High Level Intro to Problem
 % * General intro into problem, give proper context
 % * Make the point that structure has been all but ignored in recent years by the big-data/ML material science community (OQMD MP as examples)
 %
@@ -27,22 +27,19 @@
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
+%
 % TODO this intro sentence will be a reference dump for literature in crystal structure prediction
-Predicting the thermodynamically favored crystal structure for arbitrary inorganic systems remains a challenging problem in computational material science.
+To understand or simulate the properties of novel polymorphs of functional materials their crystal structure must first be solved for,
+which remains a challenging problem in materials science.
 \cite{Woodley2008,Graser2018}
 %
-% TODO Find reference to backup the importance of knowing the crystal structure to predict properties of real-world systems. I would consider this to be common knowledge but relevant article would be nice.
-To simulate the properties of novel polymorphs their crystal structure must first be solved for.
-%
-% TODO Cite multiple materials databases here
-Although there have been numerous examples in recent years of machine learning algorithms applied towards the prediction of formation energies of large \latin{ab-initio} data sets,
-these data sets are often biased towards common crystal structures.
-%
-% TODO Input the number or fraction of AB3 Perokskite structures that are present in OQMD
-For example, the Open Quantum Materials Database (OQMD) contains a large dataset of ternary-alloy combinations in the same close-packed cubic structure.
+Large high-throughput ab-initio datasets
+\cite{Saal2013,Jain2013,Curtarolo2012}
+have enabled approaching many problems in materials research with machine-learning,
 \cite{Kirklin2015}
+but these datasets are systematically biased towards known materials or hypothetical materials derived from common crystal protoypes.
 %
-As such, these efforts have been primarily concerned with the enumeration of composition (elemental identity and stoichiometries) and less so with the exploration of structural diversity, a less trivial variable to systematically explore.
+As such, there is a need for enabling the systematic exploration of structural diversity at target compositions to be able to quantitatively relate computational predictions with experimental measurements in materials applications.
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -58,21 +55,22 @@ As such, these efforts have been primarily concerned with the enumeration of com
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
+%
 % TODO All global optimization papers go here
 % TODO Add review paper for GO
 % Highly dimensional is also next sentence, but this sentence is a good spot for it though
-Historically, the most common approach to crystal structure prediction relied on classical global optimization schemes,
-in which the local and global minimum are found via numerical optimization routines that operate within the highly dimensional and continuous potential energy surface.
+In the past, the most common approaches to crystal structure prediction relied on global optimization routines,
+in which local and global minima are found via numerical optimization algorithms that operate within the highly dimensional potential energy surface.
+%
+Classical methods such as simulated annealing, etc. etc. and more recent advances utilizing evolutionary algorithms such as genetic algorithms, particle swarm optimization, and TEMP all fall under this umbrella.
 %
 % TODO Find solid example of shortcomings of classical GO schemes
-These approaches are computationally expensive, and are only tractable for simple systems, such as close-packed metallic crystals,
-as the number of potential polymorphs increases exponentially with systems size and degrees of freedom.
-\cite{Stillinger1999}
+These approaches are computationally expensive and become increasingly intractable as the number and types of elements considered increases, due to the number of potential polymorphs increasing exponentially with system size~\cite{Stillinger1999}.
 %
-The class of structurally diverse metal-oxides are a prime example of a chemical space for which structure prediction is non-trivial, as materials tend to organize into a variety of well-defined local coordination environments such as octahedra and tetrahedra.
-%
-These local coordination motifs can further assemble to form systems with long-range order.
-% \textbf{Trying to say that the infinite number of ways to pack octahedra lead to a very very large number of possible polymorphs}
+The class of structurally diverse metal-oxides are a prime example of a chemical space for which structural prediction is non-trivial,
+as these systems tend to configure into a variety of local coordination motiffs
+(octahedra, tetrahedra, cubic, etc.)
+whose packing arrangments can vary drastically.
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -86,28 +84,18 @@ These local coordination motifs can further assemble to form systems with long-r
 %
 % COMBAK NOTE \textbf{These references don't seem very balanced. I'm sure there are other papers outside of the Norskov group we can cite here}
 % TODO Find more papers of AL in materials pace to put here
-Alternatively, active learning (AL) frameworks utilizing surrogate models have been demonstrated to successfully speed up \latin{ab initio} calculations, including structural optimizations\cite{hansen2019atomistic}, transition-state searches \cite{torres2019low}, optimal alloy nano-particle compositions~\cite{Jennings2019} and fitting of inter-atomic potentials.\cite{podryabinkin2017active}
+% TODO Find references from Logan Ward's and Turab Lookman
+Active learning (AL) frameworks in conjuction with surrogate models have emerged as an effective approach to successfully speed up various problems in materials science,
+and hence have the potential to deliver an efficient alternative approache,
+complimentary to existing crystal structure methods.
+\cite{hansen2019atomistic,torres2019low,Jennings2019,podryabinkin2017active,Bassman2018}
 %
 % This sentence will be a dump for other recent GO papers that aren't necessarily just AL
-There have been numerous recent efforts in developing unique approaches to materials discovery, including a tight-binding model utilizing genetic algorithms~\cite{VanDenBossche2018}, and an image-based materials representation procedure from Noh \latin{et al.}~\cite{noh2019inverse}, which was used to find stable vanadium oxide polymorphs.
-%
-Here we report on a crystal structure discovery algorithm that leverages machine learning surrogate models and an active learning framework to accelerate the discovery of novel crystal structures.
-%
-The proposed method does not rely on large sets of generated DFT data, but instead sequentially generates the minimum amount of data to effectively search within a space of candidate structures.
-%
-%The algorithm avoids operating in the structural space by leveraging nature's propensity for symmetry by preparing data sets with a large degree of structural diversity at fixed composition.
-% this sounds little hand waving | RF Maybe it needs more exposition, I'm convoluting 2 points here, that we don't do traditional GO opt. in cont. PES and that we use the intuition of symmetry to our advantage
-%
-%As an alternative approach to GO,
-We first define a set of structurally diverse candidate crystal polymorphs, and secondly, search through the static list of candidates with a selection-type algorithm.
-%
-%This approach relies on being able to prepare candidate structures that are physically reasonable and likely low in energy.
-%
-%To date, there have been various techniques to prepare candidate structures, including generating structures randomly, enumerating space groups, etc. \textbf{Refs?}
-%
-% This looks  out of space. Consider moving up or eliminate. Also, this is more a discussion statement.
-%
-% Empirically, we know that nature tends to favor symmetric structures, and so we will leverage this intuition by building a dataset explicitly enumerating through space groups.
+There have been numerous recent efforts in developing unique approaches to materials discovery,
+including a tight-binding model utilizing genetic algorithms~\cite{VanDenBossche2018},
+agent-based rapid generation of phase diagrams in diverse chemistries~\cite{Montoya2020},
+and an image-based materials representation procedure from Noh \latin{et al.}~\cite{noh2019inverse},
+which was used to find stable vanadium oxide polymorphs.
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -118,8 +106,30 @@ We first define a set of structurally diverse candidate crystal polymorphs, and 
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
-We demonstrate this methodology in the space of iridium oxide polymorphs,
-an important class of materials with applications in electrochemistry.
+%
+Here we report on a rapid crystal structure discovery approach that leverages machine learning surrogate models and an active learning framework to accelerate the discovery of polymorphs at target chemical compositions.
+% ,and show specific applications in two important \IrOx compositions (x=2 and 3) relevant for electrocatalyst applications.
+%
+The method does not rely on existence of past DFT data,
+but instead sequentially generates the minimum amount of data to effectively search within a structurally diverse space of candidate structures generated from crystal structure prototypes.
+%
+%The algorithm avoids operating in the structural space by leveraging nature's propensity for symmetry by preparing data sets with a large degree of structural diversity at fixed composition.
+% this sounds little hand waving | RF Maybe it needs more exposition, I'm convoluting 2 points here, that we don't do traditional GO opt. in cont. PES and that we use the intuition of symmetry to our advantage
+%
+%As an alternative approach to GO,
+% We first define a set of structurally diverse candidate crystal polymorphs, and secondly, search through the static list of candidates with a selection-type algorithm.
+%
+%This approach relies on being able to prepare candidate structures that are physically reasonable and likely low in energy.
+%
+%To date, there have been various techniques to prepare candidate structures, including generating structures randomly, enumerating space groups, etc. \textbf{Refs?}
+%
+% This looks  out of space. Consider moving up or eliminate. Also, this is more a discussion statement.
+%
+% Empirically, we know that nature tends to favor symmetric structures, and so we will leverage this intuition by building a dataset explicitly enumerating through space groups.
+%
+We demonstrate the application of this methodology in the space of iridium oxide polymorphs,
+an important class of materials with applications in electrochemistry,
+but with unresolved structure-activity properties critical for understanding their catalytic activity.
 %
 % See following link for list of important IrO2 OER papers:
 % https://workflowy.com/#/e755141e2f66
@@ -152,14 +162,13 @@ For these reasons, we focused our search on stable polymorphs in the \IrOtwo sto
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - PARAGRAPH HEADER
-% Paragraph outlining the structure of the paper
+% | - Outlining the Structure of the Paper
+%
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-% \textbf{this needs a lead in sentence that transitions from the last paragraph}
-Here, we first outline the generation of our candidate structures for \IrOtwo and \IrOthree and introduce the AL accelerated surrogate model.
+In the remainder of this paper, we first outline the generation of our candidate structures for \IrOtwo and \IrOthree and introduce the AL accelerated surrogate model.
 %
 Next, we demonstrate the application of our AL scheme to the \IrOtwo and \IrOthree prototype spaces and show the performance of our routine at finding the most stable polymorphs in the candidate sets.
 %
