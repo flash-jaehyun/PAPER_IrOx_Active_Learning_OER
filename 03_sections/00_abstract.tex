@@ -4,42 +4,68 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%| - MY OLD VERSION
+% %
+% Machine learning (ML) based surrogate models have become an increasingly common tool in the field computational materials discovery to overcome the relative expense of \latin{ab-initio} density functional theory (DFT).
+% %
+% Training such models on expansive DFT data sets has been used to discover new materials in the vast space of material compositions.
+% %
+% % COMBAK This is probably too strong
+% However, surrogate model applications to the structural space of bulk crystals, \latin{i.e.} polymorphs, remain relatively unexplored.
+% %
+% Herein, we report on an active learning (AL) framework that searches for the most stable polymorph of a chemical space by utilizing a surrogate model which is sequentially updated on the fly with generated DFT data.
+% %
+% The model searches within a candidate data set of crystal motifs sourced from publicly available materials databases.
+% %
+% We demonstrate the efficacy of this AL-accelerated methodology by discovering the most stable polymorphs of \IrOtwo and \IrOthree within the candidate space with DFT calculations of only a fraction of the candidate space.
+% % 7 out of the 10 most stable crystal structures for \IrOtwo and \IrOthree with less than 50 DFT calculations.
+% %
+% % COMBAK TODO Update number of unique polymorphs discovered to something more meaningful
+% % Let's report how many meta-stable IrO2/3 we discovered, much better than how it is currently phrased
+% For \IrOtwo, we reaffirm the rutile phase as the globally stable polymorph, while also finding \mytilde200 polymorphs that are within the synthesizability limit.
+% %
+% For \IrOthree we discovered ~70 unique metastable polymorphs, with \mytilde20 that are more stable than anything previously reported.
+% %
+% The globally stable polymorph of \IrOthree is a FeF\textsubscript{3} structure type polymorph with a space group number of 167.
+% %
+% % There are 10 IrO3 polymorphs within 0.2 eV/atom of the lowest structure and 5 IrO3 polymorphs within 0.1 eV/atom of the lowest structure
+% % Of these 10, how many were unknown? Maybe 8ish? TODO double check
+% %
+% %For \IrOthree, we discover 10 previously unknown polymorphs, and the most stable
+% %$\alpha$-AlF\textsubscript{3} type and a rutile-like \IrOthree structure with stabilities lower than 0.2 per atom than anything known to date.
+% %
+% Based on the above results, we constructed a revised bulk Pourbaix diagram of the Ir-H\textsubscript{2}O system by including \IrOthree, and show that our \aIrOthree phase is the dominant and fully stable phase under acidic oxygen evolution reaction (OER) conditions.
+% %
+% % COMBAK "the OER" or just "OER"
+% Using a thermodynamic criteria for the activity towards the OER we find that the above stable \IrOthree polymorphs have significantly lower theoretical overpotentials than the rutile \IrOtwo phase.
+% %
+% This elevated catalytic activity is due to the weaker and more ideal binding of the OER intermediates on the more oxidized \IrOthree surfaces.
+% %
+% % TODO Less cheesy closing thoughts
+% This work opens up the possibility of drastically accelerating the discovery of novel crystal structure motifs and has implications towards high through-put catalyst discovery efforts.
+
+%__|
+
+
+
+
 
 %
-Machine learning (ML) based surrogate models have become an increasingly common tool in the field computational materials discovery to overcome the relative expense of \latin{ab-initio} density functional theory (DFT).
+Materials science primarily studies the relationship between the structure and functionality of materials,
+where the knowledge of viable polymorphic forms of crystals at a given chemical composition plays an indispensable role.
 %
-Training such models on expansive DFT data sets has been used to discover new materials in the vast space of material compositions.
+Machine-learning based surrogate models have the potential to accelerate this process of creating the knowledge-base for materials polymorphs for target applications in underexplored chemistries.
 %
-% COMBAK This is probably too strong
-However, surrogate model applications to the structural space of bulk crystals, \latin{i.e.} polymorphs, remain relatively unexplored.
+Herein, we report on a sequential, active-learning (AL) accelerated ab-initio study for the identification of novel and stable \IrOx (x=2 or 3) polymorphs,
+and the subsequent thermochemical analyses of the activity of these discovered structures towards the oxygen evolution reaction (OER).
 %
-Herein, we report on an active learning (AL) framework that searches for the most stable polymorph of a chemical space by utilizing a surrogate model which is sequentially updated on the fly with generated DFT data.
+We demonstrate that compared to a random search,
+the AL framework at more than doubles the efficiency of using DFT to find stable polymorphs out of a large array of prototypical structures.
 %
-The model searches within a candidate data set of crystal motifs sourced from publicly available materials databases.
+We find nearly \num{200} and \num{70} unique polymorphs within the thermodynamic synthesizability limits of \IrOtwo and \IrOthree, respectively,
+while validating the rutile ground state for the former and finding a new \ce{FeF_{3}}-like ground state for the latter (\aIrOthree).
 %
-We demonstrate the efficacy of this AL-accelerated methodology by discovering the most stable polymorphs of \IrOtwo and \IrOthree within the candidate space with DFT calculations of only a fraction of the candidate space.
-% 7 out of the 10 most stable crystal structures for \IrOtwo and \IrOthree with less than 50 DFT calculations.
+An analysis of the structural properties of these metastable polymorphs reveals that octahedral local coordination environments are preferred for all low energy stuctures.
 %
-% COMBAK TODO Update number of unique polymorphs discovered to something more meaningful
-% Let's report how many meta-stable IrO2/3 we discovered, much better than how it is currently phrased
-For \IrOtwo, we reaffirm the rutile phase as the globally stable polymorph, while also finding \mytilde200 polymorphs that are within the synthesizability limit.
-%
-For \IrOthree we discovered ~70 unique metastable polymorphs, with \mytilde20 that are more stable than anything previously reported.
-%
-The globally stable polymorph of \IrOthree is a FeF\textsubscript{3} structure type polymorph with a space group number of 167.
-%
-% There are 10 IrO3 polymorphs within 0.2 eV/atom of the lowest structure and 5 IrO3 polymorphs within 0.1 eV/atom of the lowest structure
-% Of these 10, how many were unknown? Maybe 8ish? TODO double check
-%
-%For \IrOthree, we discover 10 previously unknown polymorphs, and the most stable
-%$\alpha$-AlF\textsubscript{3} type and a rutile-like \IrOthree structure with stabilities lower than 0.2 per atom than anything known to date.
-%
-Based on the above results, we constructed a revised bulk Pourbaix diagram of the Ir-H\textsubscript{2}O system by including \IrOthree, and show that our \aIrOthree phase is the dominant and fully stable phase under acidic oxygen evolution reaction (OER) conditions.
-%
-% COMBAK "the OER" or just "OER"
-Using a thermodynamic criteria for the activity towards the OER we find that the above stable \IrOthree polymorphs have significantly lower theoretical overpotentials than the rutile \IrOtwo phase.
-%
-This elevated catalytic activity is due to the weaker and more ideal binding of the OER intermediates on the more oxidized \IrOthree surfaces.
-%
-% TODO Less cheesy closing thoughts
-This work opens up the possibility of drastically accelerating the discovery of novel crystal structure motifs and has implications towards high through-put catalyst discovery efforts.
+Subsequent Pourbaix and thermochemical analyses with this \aIrOthree phase show that it is fully stable under acidic OER conditions,
+and delivers lower theoretical overpotentials compared to \rIrOtwo due to weaker and more ideal binding of the OER intermediates on its oxidized surfaces.

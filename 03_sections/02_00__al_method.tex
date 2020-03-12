@@ -38,10 +38,13 @@ whereby a regression model is trained on a set of candidate materials by iterati
 % is presented in Figure~\ref{fig:all_diagram}.
 Figure~\ref{fig:all_diagram} shows a schematic overview of our AL methodology.
 %
-There are two primary components of the algorithm, the first (Figure~\ref{fig:all_diagram}a) is the generation of the candidate space,
+There are two primary components of the algorithm, the first is the generation of the candidate space,
 which defines the list of candidate crystal structures to be searched through.
 %
-The second component is the iterative search through candidate space via a continuously retrained surrogate model, (Figure~\ref{fig:all_diagram}.b).
+The second component is an iterative search through candidate space via a continuously retrained surrogate model based on Gaussian Processes,
+designed explicitly to be flexible and responsive to new DFT acquisitions in the targeted chemical space.
+%
+To this end, we do not provide any DFT training data prior to the start of the AL algorithm to minimize elimate any bias and to allow the model to quickly respond to new aquisitions.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -51,30 +54,25 @@ The second component is the iterative search through candidate space via a conti
 % | - Figure | Active Learning Algorithm ******************
 \begin{figure*}[!htb]
 \centering
-\makebox[\textwidth][c]{\includegraphics{
-  02_figures/al_diagram/Active_learning_diagram__v2.pdf}}
+\makebox[\textwidth][c]{\includegraphics{02_figures/al_diagram/Active_learning_diagram__v3.pdf}}
 \caption{\label{fig:all_diagram}
 %
 % Probably better to keep this caption really concise and refer to the text
-Process flow diagram for the active learning accelerated algorithm.
+Active learning accelerated polymorph discovery algorithm diagram.
 %
-The procedure is composed of two distinct steps.
+% , which is constructed through data mining the unique structural motiffs in the OQMD and MP materials databases.
+The procedure proceeds through two distinct steps,
+first the generation of the hypothetical crystal structure data set (candidate space) and second,
+the iterative active learning (AL) algorithm.
 %
-The first step is the generation of the hypothetical crystal structure data set (candidate space), which is constructed through data mining the unique structural motiffs in the OQMD and MP materials databases.
+The AL algorithm proceeds iteratively through:
+(1) candidate selection in which a subset of structures in the candidate space are selected based on an aquisition function,
+(2) structural relaxtion into local energy minima (formation enthalpy computed),
+(3) structure featurization to produce numerical vector for input into ML model,
+(4) Machine learning (ML) model training based on acquired structures and \DHf,
+(5) Prediction of candidate space's \DHf distribution via ML model.
 %
-The second component is the active learning algorithm,
-which proceeds through iterative steps of 
-candidate selection in which a subset of structures in the candidate space are selected based on an aquisition function,
-these structures are then relaxed to a local energy minima via a DFT bulk optimization routine to obtain the DFT formation enthalpy (\DHf) and are then featurized via a Voronoi tesselation fingerprinting methodology.
-%
-The resultant formation energies and structural fingerprints are then used to train a Gaussian Process (GP) machine learning model, which in turn is used to predict the formation energy of the remaining systems in the candidate space.
-%
-This predicted energy landscape is then used to inform the aquisition function at which point the loop has completed a full generation.
-%
-This iterative loop proceeds until all low energy polymorphs have been acquired or in practice until the alloted DFT budget has been exhausted.
-%
-% (a) generation of the candidate set of considered crystal structures constructed from DFT materials databases and
-% (b) iterative active learning surrogate search of the candidate space.
+This predicted energy landscape is then used to inform the next generation's aquisition step.
 }
 \end{figure*}
 % __|
@@ -107,9 +105,9 @@ Structures that share these properties are considered identical.
 %
 For example, the \num{300000} entry dataset of \ABOthree style perovskites in OQMD, which only differ by the choice of elements for A, B, and C, all belong to the same structural prototype, and are thus structurally equivalent.
 %
-Eliminating these redundant systems from the materials databases reduces the number of entries to \num{697} and \num{259} structures for the \ABtwo and \ABthree stoichiometries, respectively.
+Eliminating these redundant systems from the materials databases reduces the number of entries to \num{697} and \num{259} unique structures for the \ABtwo and \ABthree stoichiometries, respectively.
 %
-%The orders of magnitude reduction between all structures and unique structures highlights the lack of structural diversity in the OQMD and MP databases.
+% The orders of magnitude reduction between all structures and unique structures highlights the lack of structural diversity in the OQMD and MP databases.
 This reduction leads to orders of magnitude reduction of the search space, as opposed to full utilization of the OQMD and Materials Project databases.
 %
 Finally, only structures containing $\leq\num{75}$ atoms
@@ -142,13 +140,15 @@ The active learning algorithm proceeds through a structure featurization scheme 
 These fingerprints encode both chemical and structural information by constructing attributes from elemental properties which are weighted by the local environment of the structure via the construction of the Wigner-Seitz cell.
 \cite{Wigner1933}
 %
-We applied the active learning model to the \IrOtwo and \IrOthree spaces separately, i.e. at fixed stoichiometry, which further reduces the \num{271} length fingerprint vector to \num{101} non-zero variance features.
-%significantly reducing the dimensionality of the features.
+Since our AL framework focuses on fixed compositions, the dimensionality of the features are reduced to \num{101} non-zero varieance features.
 %
 % TODO Create cross-validation plot
-Further dimensionality reduction was achieved via a principle component analysis (PCA) \cite{Tipping1999}, which was used to reduce the remaining \num{101} fingerprints to \num{10}.
+We further reduce the dimensionality if this set to 10 features via principal component analysis (PCA)~\cite{Tipping1999},
+which we found to capture 80\% of the variance in the original feature set while also demonstrating an optimal cross-validation mean absolute error (MAE) (see Figure \ref{fig:cv_anal}).
 %
-\num{10} PCA components demonstrated the optimal cross-validation mean absolute error (MAE), although only capturing 80\% of the fingerprint's variance (see \ref{fig:cv_anal}).
+% Further dimensionality reduction was achieved via a principle component analysis (PCA) \cite{Tipping1999}, which was used to reduce the remaining \num{101} fingerprints to \num{10}.
+%
+% \num{10} PCA components demonstrated the optimal cross-validation mean absolute error (MAE), although only capturing 80\% of the fingerprint's variance (see \ref{fig:cv_anal}).
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -162,14 +162,21 @@ Further dimensionality reduction was achieved via a principle component analysis
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-The active learning algorithm proceeds through iterative generations of ML training, prediction, and acquisition steps that are visualized in Figure~\ref{fig:all_diagram}b.
+The active learning algorithm proceeds through iterative generations of ML training, prediction, and acquisition steps that are visualized in Figure~\ref{fig:all_diagram}.
 %
 % COMBAK Did I get all of the important features of GP here? @Jose
-To start, we utilized Gaussian process (GP) regression with an RBF kernel as implemented in CatLearn~\cite{hansen2019atomistic,CatLearn_Repo} due to their highly flexible fits and built-in uncertainty quantification.
+To meet our primary goal of being able to explore and identify the most stable polymorphs within the candidate space,
+we construct the AL framework to be
+(i) flexible and responsive in improving itself by learning from small batches of newly acquired DFT data,
+and (ii) aware of limitations in its surrogate model by incorporating uncertainty estimates into the acquisition decision criteria.
+%
+GP regressors naturally satisfy both requirements,
+and hence we use them with an RBF kernel as implemented in CatLearn.
+\cite{hansen2019atomistic,CatLearn_Repo}
 %
 % NOTE I've introduced the aquis. crit. with the GP uncertainty before talking about aquis. in more detail, need to restructure
 %
-At the first generation, the model is trained on randomly sampled candidates,
+At the first generation (generation 0), the model is trained on a set of randomly sampled candidates,
 and is then used to predict the formation enthalpy (\DHf) of all structures in the candidate space.
 %
 This predicted energy landscape is then used to choose the next systems to acquire (calculate via DFT) by selecting systems that minimize the GP-UCB (Gaussian process lower confidence bound) acquisition function,
@@ -178,11 +185,10 @@ $U = \mu - \kappa \sigma$~\cite{Cox1992}.
 Here, $\mu$ and $\sigma$ are the predicted \DHf mean and uncertainty, respectively,
 and $\kappa$ is a parameter that weights exploitation vs exploration of the search-space (set to 1).
 %
-At every generation of the AL loop, $N$ systems that minimize the acquisition function are acquired for DFT optimization and are subsequently added to the training data set, where $N$ is AL bin size (here set to 5).
+At every generation of the AL loop, $N$ structures that minimize the acquisition function are acquired for DFT optimization and are subsequently added to the training data set, where $N$ is AL bin size (here set to 5).
 %
 % TODO N is used into mean number of atoms (FIX)
-The value of $N$ determines how many structures are selected for DFT calculations,
-and as such, determines the degree of parallelization of the routine.
+The value of $N$, in effect, determines the degree of parallelization of the routine.
 %
 % The optimal value of $N$ depends on the computational resources available, as small values can result in slow down the discovery rate of the AL algorithm,
 % as every DFT calculation needs to be performed more serially.
