@@ -58,25 +58,21 @@ To this end, we do not provide any DFT training data prior to the start of the A
 \caption{\label{fig:all_diagram}
 %
 % Probably better to keep this caption really concise and refer to the text
-Process flow diagram for the active learning accelerated algorithm.
+Active learning accelerated polymorph discovery algorithm diagram.
 %
-The procedure is composed of two distinct steps.
+% , which is constructed through data mining the unique structural motiffs in the OQMD and MP materials databases.
+The procedure proceeds through two distinct steps,
+first the generation of the hypothetical crystal structure data set (candidate space) and second,
+the iterative active learning (AL) algorithm.
 %
-The first step is the generation of the hypothetical crystal structure data set (candidate space), which is constructed through data mining the unique structural motiffs in the OQMD and MP materials databases.
+The AL algorithm proceeds iteratively through:
+(1) candidate selection in which a subset of structures in the candidate space are selected based on an aquisition function,
+(2) structural relaxtion into local energy minima (formation enthalpy computed),
+(3) structure featurization to produce numerical vector for input into ML model,
+(4) Machine learning (ML) model training based on acquired structures and \DHf,
+(5) Prediction of candidate space's \DHf distribution via ML model.
 %
-The second component is the active learning algorithm,
-which proceeds through iterative steps of
-candidate selection in which a subset of structures in the candidate space are selected based on an aquisition function,
-these structures are then relaxed to a local energy minima via a DFT bulk optimization routine to obtain the DFT formation enthalpy (\DHf) and are then featurized via a Voronoi tesselation fingerprinting methodology.
-%
-The resultant formation energies and structural fingerprints are then used to train a Gaussian Process (GP) machine learning model, which in turn is used to predict the formation energy of the remaining systems in the candidate space.
-%
-This predicted energy landscape is then used to inform the aquisition function at which point the loop has completed a full generation.
-%
-This iterative loop proceeds until all low energy polymorphs have been acquired or in practice until the alloted DFT budget has been exhausted.
-%
-% (a) generation of the candidate set of considered crystal structures constructed from DFT materials databases and
-% (b) iterative active learning surrogate search of the candidate space.
+This predicted energy landscape is then used to inform the next generation's aquisition step.
 }
 \end{figure*}
 % __|
