@@ -57,26 +57,22 @@ As such, there is a need for enabling the systematic exploration of structural d
 %
 % TODO All global optimization papers go here
 % TODO Add review paper for GO
-% Highly dimensional is also next sentence, but this sentence is a good spot for it though
-In the past, the most common approaches to crystal structure prediction relied on global optimization routines,
-in which local and global minima are found via numerical optimization algorithms that operate within the highly dimensional potential energy surface.
-%
-Classical methods such as simulated annealing, etc. etc. and more recent advances utilizing evolutionary algorithms such as genetic algorithms, particle swarm optimization, and TEMP all fall under this umbrella.
+Common contemporary approaches to inorganice crystal structures prediction involve a variety of different strategies of exploring the high-dimensional potential energy landscape to find local or global minima,
+with methods ranging from simulated annealing to evolutionary algorithms to particle swarm optimization
+\cite{Oganov2006,Lyakhov2010,Glass2006,Wang2012,Pickard2011,Pickard2006,Avery2019,Lonie2011}
 %
 % TODO Find solid example of shortcomings of classical GO schemes
-These approaches are computationally expensive and become increasingly intractable as the number and types of elements considered increases, due to the number of potential polymorphs increasing exponentially with system size~\cite{Stillinger1999}.
+These approaches provide comprehensive,
+and often successful searches for stable polymorphs but tend to hit a tractability wall with increasing system size as the number of polymorphic configurations increases exponentially with the number and types of elements considered~\cite{Stillinger1999}.
 %
-The class of structurally diverse metal-oxides are a prime example of a chemical space for which structural prediction is non-trivial,
-as these systems tend to configure into a variety of local coordination motiffs
-(octahedra, tetrahedra, cubic, etc.)
-whose packing arrangments can vary drastically.
+As such, there is a need for crystal structure prediction algorithms that are as generalizable as previously reported methods while reducing the computational cost associated with uncovering new novel polymorphic phases.
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - PARAGRAPH HEADER
-% Start talking about AL background
+% | - Introduce Active Learning Papers
+%
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
@@ -85,7 +81,7 @@ whose packing arrangments can vary drastically.
 % TODO Find more papers of AL in materials pace to put here
 % TODO Find references from Logan Ward's and Turab Lookman
 Active learning (AL) frameworks in conjuction with surrogate models have emerged as an effective approach to successfully speed up various problems in materials science,
-and hence have the potential to deliver an efficient alternative approache,
+and hence have the potential to deliver an efficient alternative approach,
 complimentary to existing crystal structure methods.
 \cite{hansen2019atomistic,torres2019low,Jennings2019,podryabinkin2017active,Bassman2018}
 %
