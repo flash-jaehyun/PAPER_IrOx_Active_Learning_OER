@@ -81,8 +81,7 @@ As such, there is a need for crystal structure prediction algorithms that are as
 % TODO Find more papers of AL in materials pace to put here
 % TODO Find references from Logan Ward's and Turab Lookman
 Active learning (AL) frameworks in conjuction with surrogate models have emerged as an effective approach to successfully speed up various problems in materials science,
-and hence have the potential to deliver an efficient alternative approach,
-complimentary to existing crystal structure methods.
+and hence have the potential to deliver an efficient alternative and complimentary approach to established crystal structure prediction (CSP) methods.
 \cite{hansen2019atomistic,torres2019low,Jennings2019,podryabinkin2017active,Bassman2018}
 %
 % This sentence will be a dump for other recent GO papers that aren't necessarily just AL
@@ -105,8 +104,8 @@ which was used to find stable vanadium oxide polymorphs.
 Here we report on a rapid crystal structure discovery approach that leverages machine learning surrogate models and an active learning framework to accelerate the discovery of polymorphs at target chemical compositions.
 % ,and show specific applications in two important \IrOx compositions (x=2 and 3) relevant for electrocatalyst applications.
 %
-The method does not rely on existence of past DFT data,
-but instead sequentially generates the minimum amount of data to effectively search within a structurally diverse space of candidate structures generated from crystal structure prototypes.
+Our method does not rely on the existence of past DFT data,
+but instead sequentially generates the minimum sized data set to effectively search within a structurally diverse space of candidate structures generated from crystal structure prototypes.
 %
 %The algorithm avoids operating in the structural space by leveraging nature's propensity for symmetry by preparing data sets with a large degree of structural diversity at fixed composition.
 % this sounds little hand waving | RF Maybe it needs more exposition, I'm convoluting 2 points here, that we don't do traditional GO opt. in cont. PES and that we use the intuition of symmetry to our advantage
@@ -122,23 +121,24 @@ but instead sequentially generates the minimum amount of data to effectively sea
 %
 % Empirically, we know that nature tends to favor symmetric structures, and so we will leverage this intuition by building a dataset explicitly enumerating through space groups.
 %
+% TODO COMBAK Battery applications?
 We demonstrate the application of this methodology in the space of iridium oxide polymorphs,
 an important class of materials with applications in electrochemistry,
 but with unresolved structure-activity properties critical for understanding their catalytic activity.
 %
 % See following link for list of important IrO2 OER papers:
 % https://workflowy.com/#/e755141e2f66
-In particular, \rIrOtwo (\ce{Ir^{4+}} oxidation state), is the most stable form of iridium-oxide at standard conditions,
-and is a well studied electrocatalyst for the oxygen evolution reaction (OER).
+In particular, \rIrOtwo (\ce{Ir^{4+}} oxidation state), the most stable form of iridium-oxide at standard conditions,
+is a well studied electrocatalyst for the oxygen evolution reaction (OER).
 \cite{Seitz2016,Lee2012a,McCrory2015,Trotochaud2012,Danilovic2014,Carmo2013,Miles1978,Beni1979}
 %
 % \textbf{Need refer to the Schloegl work in this section}
 % Which Schloegl papers are you all referring to?
-Previous studies on SrIrO\textsubscript{3} electrocatalyst for the OER demonstrated that Sr leaching might leave behind a highly oxidized \ce{Ir^{6+}} species which was argued to be responsible for the observed OER activity.
+Previous studies on a SrIrO\textsubscript{3} OER electrocatalyst demonstrated that Sr leaching might leave behind a highly oxidized \ce{Ir^{6+}} species which was argued to be responsible for the observed OER activity.
 \cite{Seitz2016}
 %
 % @Michal wants a Schlogl paper here, not sure which TODO
-Other groups also observed reconstruction of \IrOx catalysts under reaction conditions and subsequent formation of an unknown structure. \cite{Pearce2017}
+Other groups also observed reconstruction of \IrOx catalysts under reaction conditions and subsequent formation of an unknown structure.~\cite{Pearce2017}
 %
 % COMBAK More references here (Chris)
 Highly oxidized \IrOthree phases are also formed as the terminal structure of Li\textsubscript{x}IrO\textsubscript{3} anodes.\cite{Pearce2017}

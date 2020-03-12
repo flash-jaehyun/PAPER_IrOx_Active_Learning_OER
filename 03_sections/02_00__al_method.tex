@@ -33,7 +33,7 @@
 % | - PARAGRAPH BODY
 %
 Our approach utilizes an active learning framework and surrogate models,
-whereby a regression model is trained on a set of candidate materials by iteratively and intelligently sampling structures from a candidate set.
+whereby a regression model is trained on a set of potential polymorphs by iteratively and intelligently sampling structures from a set of candidates.
 %
 % is presented in Figure~\ref{fig:all_diagram}.
 Figure~\ref{fig:all_diagram} shows a schematic overview of our AL methodology.
@@ -44,7 +44,7 @@ which defines the list of candidate crystal structures to be searched through.
 The second component is an iterative search through candidate space via a continuously retrained surrogate model based on Gaussian Processes,
 designed explicitly to be flexible and responsive to new DFT acquisitions in the targeted chemical space.
 %
-To this end, we do not provide any DFT training data prior to the start of the AL algorithm to minimize elimate any bias and to allow the model to quickly respond to new aquisitions.
+To this end, we do not provide any DFT training data prior to the start of the algorithm to eliminate any bias and to allow the model to quickly respond to new aquisitions.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -80,8 +80,7 @@ This predicted energy landscape is then used to inform the next generation's aqu
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - PARAGRAPH HEADER
-% CANDIDATE SPACE GENERATION
+% | - Candidate Space Generation
 %
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -101,7 +100,7 @@ To reduce the size of the candidate space while maintaining maximum structural d
 In short, a materials structural identity is defined by a unique combination of the element-nonspecific stoichiometry (\ABtwo, \ABthree, etc.), space group symmetry and Wyckoff positions, and are referred to as a materials structural prototype.
 %
 % This is my attempt to further clarify the previous sentence
-Structures that share these properties are considered identical.
+Materials that share these properties are considered to be structurally identical.
 %
 For example, the \num{300000} entry dataset of \ABOthree style perovskites in OQMD, which only differ by the choice of elements for A, B, and C, all belong to the same structural prototype, and are thus structurally equivalent.
 %
