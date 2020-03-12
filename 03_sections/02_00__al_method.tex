@@ -44,7 +44,11 @@ which defines the list of candidate crystal structures to be searched through.
 The second component is an iterative search through candidate space via a continuously retrained surrogate model based on Gaussian Processes,
 designed explicitly to be flexible and responsive to new DFT acquisitions in the targeted chemical space.
 %
+<<<<<<< HEAD
 To this end, we do not provide any DFT training data prior to the start of the algorithm to eliminate any bias and to allow the model to quickly respond to new aquisitions.
+=======
+To this end, we do not provide any DFT training data prior to the start of the AL algorithm to minimize eliminate any bias and to allow the model to quickly respond to new acquisitions.
+>>>>>>> 0274649403fbaa7f3e93c8fc72d02f650c9cea34
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -66,13 +70,13 @@ first the generation of the hypothetical crystal structure data set (candidate s
 the iterative active learning (AL) algorithm.
 %
 The AL algorithm proceeds iteratively through:
-(1) candidate selection in which a subset of structures in the candidate space are selected based on an aquisition function,
-(2) structural relaxtion into local energy minima (formation enthalpy computed),
+(1) candidate selection in which a subset of structures in the candidate space are selected based on an acquisition function,
+(2) structural relaxation into local energy minima (formation enthalpy computed),
 (3) structure featurization to produce numerical vector for input into ML model,
 (4) Machine learning (ML) model training based on acquired structures and \DHf,
 (5) Prediction of candidate space's \DHf distribution via ML model.
 %
-This predicted energy landscape is then used to inform the next generation's aquisition step.
+This predicted energy landscape is then used to inform the next generation's acquisition step.
 }
 \end{figure*}
 % __|
@@ -139,7 +143,7 @@ The active learning algorithm proceeds through a structure featurization scheme 
 These fingerprints encode both chemical and structural information by constructing attributes from elemental properties which are weighted by the local environment of the structure via the construction of the Wigner-Seitz cell.
 \cite{Wigner1933}
 %
-Since our AL framework focuses on fixed compositions, the dimensionality of the features are reduced to \num{101} non-zero varieance features.
+Since our AL framework focuses on fixed compositions, the dimensionality of the features are reduced to \num{101} non-zero variance features.
 %
 % TODO Create cross-validation plot
 We further reduce the dimensionality if this set to 10 features via principal component analysis (PCA)~\cite{Tipping1999},
