@@ -97,7 +97,7 @@ The candidate structure datasets for \IrOtwo and \IrOthree were constructed by f
 %
 To reduce the size of the candidate space while maintaining maximum structural diversity, structurally redundant systems were removed via a space group based structural classification scheme developed by Jain \latin{et al.} \cite{Jain2018}.
 %
-In short, a materials structural identity is defined by a unique combination of the element-nonspecific stoichiometry (\ABtwo, \ABthree, etc.), space group symmetry and Wyckoff positions, and are referred to as a materials structural prototype.
+In short, a material's structural identity is defined by a unique combination of the element-nonspecific stoichiometry (\ABtwo, \ABthree, etc.), space group symmetry and Wyckoff positions, and are referred to as a materials structural prototype.
 %
 % This is my attempt to further clarify the previous sentence
 Materials that share these properties are considered to be structurally identical.
@@ -110,15 +110,15 @@ Eliminating these redundant systems from the materials databases reduces the num
 This reduction leads to orders of magnitude reduction of the search space, as opposed to full utilization of the OQMD and Materials Project databases.
 %
 Finally, only structures containing $\leq\num{75}$ atoms
-(\num{567} and \num{256} \ABtwo and \ABthree structures respectively)
+(\num{566} and \num{256} \ABtwo and \ABthree structures respectively)
 were included to the reduce the computational expense of subsequent DFT calculations.
 %
 We next substituted iridium and oxygen for the A and B sites, and these Ir-O adapted polymorphs were isotropically relaxed to accommodate their atomic radii.
 %
 A full bulk DFT optimization recipe was performed on these systems,
-yielding a data set of \num{736} relaxed bulk \IrOx polymorphs
-(\num{487} and \num{249} structures for \IrOtwo and \IrOthree, respectively),
-after discarding 87 non-converged structures.
+yielding a data set of \num{714} relaxed bulk \IrOx polymorphs
+(\num{487} and \num{248} structures for \IrOtwo and \IrOthree, respectively),
+after discarding \mytilde100 non-converged structures.
 %
 While not particularly large, our candidate space's size allows us to tractably compute all DFT optimized structures, thus allowing us to benchmark the performance of our methodology.
 %
@@ -134,7 +134,7 @@ The full details of the candidate space generation and DFT calculations are in t
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-The active learning algorithm proceeds through a structure featurization scheme based on Voronoi tessellation developed by Ward \latin{et al.} \cite{Ward2017} which produces a \num{271} length fingerprint vector that is invariant to isotropic lattice changes and somewhat insensitive to the precise atomic coordinates.
+The active learning algorithm proceeds through a structure featurization scheme based on Voronoi tessellation developed by Ward \latin{et al.} \cite{Ward2017} which produces a \num{271}-length fingerprint vector that is invariant to isotropic lattice changes and somewhat insensitive to the precise atomic coordinates.
 %
 These fingerprints encode both chemical and structural information by constructing attributes from elemental properties which are weighted by the local environment of the structure via the construction of the Wigner-Seitz cell.
 \cite{Wigner1933}
