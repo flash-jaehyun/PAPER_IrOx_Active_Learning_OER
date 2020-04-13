@@ -101,12 +101,12 @@ Additionally, the second most stable polymorph is only 2 meV/atom less stable th
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-Figure~\ref{fig:iro3_al}c reports the number of the ten most stable systems acquired against the number of DFT calculations for the AL algorithm with the GP-UCB acquisition described previously and a random acquisition scheme to serve as a baseline.
+Figure~\ref{fig:iro3_al}c reports the number of the ten most stable systems acquired against the number of DFT calculations for the AL algorithm with the GP-LCB acquisition described previously and a random acquisition scheme to serve as a baseline.
 %
 The results of Figure~\ref{fig:iro3_al}c are averaged over 100 independent runs of AL algorithms with the one sigma standard deviation between these runs indicated.
 %
 % COMBAK Pick better point to compare
-Overall, the GP-UCB runs outperform the random acquisition runs, with only \num{100} DFT calculations needed on average to discover the ten most stable structures.
+Overall, the GP-LCB runs outperform the random acquisition runs, with only \num{100} DFT calculations needed on average to discover the ten most stable structures.
 %
 This demonstrates over a factor of two improvement in performance compared to the random acquisition, which requires \mytilde\num{250} DFT calculations to acquire the ten most stable polymorphs.
 % __|
@@ -144,7 +144,7 @@ The top ten most stable systems are colored and labeled (i-vii) to indicate thei
 %
 % (c) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-(c) The number of most stable \num{10} polymorphs of \IrOthree discovered vs the number of DFT calculations for the GP-UCB (blue) and random (grey) acquisition methods.
+(c) The number of most stable \num{10} polymorphs of \IrOthree discovered vs the number of DFT calculations for the GP-LCB (blue) and random (grey) acquisition methods.
 %
 The results are averaged over \num{100} independent runs and the 1 $\sigma$ standard deviation between these runs are displayed.
 %

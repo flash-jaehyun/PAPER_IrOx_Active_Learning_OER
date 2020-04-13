@@ -66,7 +66,7 @@ first the generation of the hypothetical crystal structure data set (candidate s
 the iterative active learning (AL) algorithm.
 %
 The AL algorithm proceeds iteratively through:
-(1) candidate selection in which a subset of structures in the candidate space are selected based on an acquisition function,
+(1) candidate selection in which a subset of structures in the candidate space are selected based on an acquisition function (in lieu of training data, the initial candidates are randomly sampled),
 (2) structural relaxation into local energy minima (formation enthalpy computed),
 (3) structure featurization to produce numerical vector for input into ML model,
 (4) Machine learning (ML) model training based on acquired structures and \DHf,
@@ -175,10 +175,10 @@ and hence we use them with an RBF kernel as implemented in CatLearn.
 %
 % NOTE I've introduced the aquis. crit. with the GP uncertainty before talking about aquis. in more detail, need to restructure
 %
-At the first generation (generation 0), the model is trained on a set of randomly sampled candidates,
+In the initial generation (generation 0), the model is trained on a set of randomly sampled candidates (unbiased sampling),
 and is then used to predict the formation enthalpy (\DHf) of all structures in the candidate space.
 %
-This predicted energy landscape is then used to choose the next systems to acquire (calculate via DFT) by selecting systems that minimize the GP-UCB (Gaussian process lower confidence bound) acquisition function,
+This predicted energy landscape is then used to choose the next systems to acquire (calculate via DFT) by selecting systems that minimize the GP-LCB (Gaussian process lower confidence bound) acquisition function,
 $U = \mu - \kappa \sigma$~\cite{Cox1992}.
 %
 Here, $\mu$ and $\sigma$ are the predicted \DHf mean and uncertainty, respectively,
