@@ -10,6 +10,13 @@ https://github.com/raulf2012/PAPER_IrOx_Active_Learning_OER
 Paper Dropbox Folder:
 https://www.dropbox.com/sh/02d6ysvy6o2pgsb/AABtNQCE5PXXNL2nP1c0MHz1a?dl=0
 
+### Public Data Upload
+CatHub:
+https://www.catalysis-hub.org/publications/FloresActive2020
+
+MPContribs:
+https://portal.mpcontribs.org/active_learned_irox_polymorphs/
+
 ### Project scripts/analysis
 
 Project Analysis Github Repo:

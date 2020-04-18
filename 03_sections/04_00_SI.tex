@@ -150,7 +150,7 @@ Combining the MP and OQMD data sets ultimately results in a dataset of \num{688}
 % __|
 
 
-% ################################# Paragraph #############
+% ###################### Paragraph #######################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Structural classification scheme
 %
@@ -164,7 +164,7 @@ This structural classification scheme can directly serve as a structural fingerp
 
 
 
-% ################################# Paragraph #############
+% ###################### Paragraph #######################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Pre-optimization
 %
@@ -217,10 +217,15 @@ Structures are featurized using the Voronoi tessellation method developed by TEM
 \begin{figure*}[!htb]
 \centering
 \makebox[\textwidth][c]{\includegraphics
-  {02_figures/SI_figures/cv_analysis.png}
+  {02_figures/SI_figures/00_mae_pca_plot__v0__1500dpi.png}
   }
 \caption{\label{fig:cv_anal}
-TEMP Caption
+%
+20-fold cross validation mean absolute error (MAE) as a function of the number of PCA components used for the GP-regression for \IrOthree.
+%
+Only post-relaxation fingerprints were used for both training and testing to avoid issues with structural drift.
+%
+All structural duplicates in the post-relaxation dataset were removed.
 }
 \end{figure*}
 % __|
@@ -287,6 +292,33 @@ The final ISIF \num{2} step is run with an electronic energy SCF convergence cri
 % __|
 
 
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{\IrOtwo Active Learning Results} %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Here are the analogous IrO2 results that were presented for IrO3 in the main text
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - TEMP
+%
+TEMP section about IrO2 active learning results.
+% __|
+
+% =========================================================
+% FIGURE ==================================================
+% =========================================================
+% | - Figure | IrO3 Convergence Plot
+\begin{figure*}[!htb]
+\centering
+\makebox[\textwidth][c]{\includegraphics{02_figures/SI_figures/00_ml_plot_iro2_al__v5__downsampled_0800x0800.pdf}}
+\caption{\label{fig:iro2_al}
+TEMP CAPTION
+}
+\end{figure*}
+% __| =====================================================
+% =========================================================
+
+
+
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Structural coordination motif identification} %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -299,7 +331,6 @@ legitimate structural motifs not characterized by the scheme of Waroquiers et. a
 - unassociated oxygen atoms
 - molecular oxygens in the unit cell
 % __|
-
 
 % __|
 
@@ -361,8 +392,6 @@ TEMP CAPTION
 % __|
 
 
-
-
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{OER Thermodynamic Methodology}  % %%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -386,29 +415,6 @@ This elucidates the coverage under operating conditions (> \SI{1.23}{\volt vs. R
 %
 % COMBAK
 Finally we conducted a thermodynamic/limiting potential analysis of the OER mechanistic pathway (Volcano plot, limiting potentials, etc.).
-% __|
-
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Simulated XRD Patterns}  % %%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Simulated XRD Patters
-%
-The simulated XRD spectra for \aIrOthree, \bIrOthree, and \rIrOtwo were computed using the VESTA software package.
-% TODO Insert the paramters for the XRD spectra
-We used a TEMP wavelength source thing.
-
-
-% | - Figure | OER Scaling Relations
-\begin{figure*}[!htb]
-\centering
-\makebox[\textwidth][c]{\includegraphics{02_figures/xrd_plots/xrd_plots.pdf}}
-\caption{\label{fig:xrd_patterns}
-TEMP CAPTION
-}
-\end{figure*}
 % __|
 
 
@@ -441,7 +447,6 @@ The equation for is as follows:
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{OER Scaling Relations}  % %%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TODO We will make a O(2p) vs. O-OH plot showing that this descriptor correlates with oxidation state like that some of the structures are close to ideal
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -500,66 +505,36 @@ The \DGOH line is  shown as guide to eye.
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Table of OER energetics
+%
+Table \ref{table:oer_data} contains the adsorbate binding energetics for the intermediates of the OER
+oxygen evolution reaction (*O, *OOH, *OH).
 
-\begin{table}[!htb]
 
-  \caption{\label{table:oer_table}
-    %
-    (a) TEMP
-    }
-  %
-  % | - Subtable a
-  \begin{subtable}{.5\linewidth}
-  \centering
-  \caption{}
-  %
-   %
-    %
-    \begin{tabular}{cccc}
-    \textbf{}         & \textbf{}        & \multicolumn{2}{c}{\textbf{Entries}} \\
-    \textbf{Database} & \textbf{Stoich.} & \textbf{Total}   & \textbf{Unique}   \\
-    OQMD              &                  & 61,471           &                   \\
-                      & \ABtwo           & 4,736            & 397               \\
-                      & \ABthree         & 28,883           & 194               \\
-    \hline
-    MP                &                  & 435,583          &                   \\
-                      & \ABtwo           & 2,424            & 620               \\
-                      & \ABthree         & 2,341            & 219
-    \end{tabular}
-    %
-   %
-  %
-  \end{subtable}
-  % __|
-  %
-  %
-  \newline
-  \vspace*{0.8 cm}
-  \newline
-  %
-  %
-  % | - Subtable b
-  \begin{subtable}{.5\linewidth}
-  \centering
-  \caption{}
-  %
-   %
-    %
-    \begin{tabular}{cc}
-    \multicolumn{2}{c}{\textbf{Final Candidate Set}} \\
-    \textbf{Stoich.}   & \textbf{Unique Structures}  \\
-    \ABtwo             & 688                         \\
-    \ABthree           & 254
-    \end{tabular}
-    %
-   %
-  %
-  \end{subtable}
-  % __|
-  %
+\newpage  % request a new page.
+\begin{landscape}
+\renewcommand{\arraystretch}{1.5} % <--------------
+\begin{table}
+\resizebox{\linewidth}{!}{%
+\centering
+\caption{\label{table:oer_data}
+%
+OER adsorbation energies for slabs of \IrOtwo and \IrOthree polymorphs studied here.
+%
+Included quantities are electronic adsorption energies
+($\Delta E_{*O_{x}H_{y}}$),
+adsorption free energies
+($\Delta G_{*O_{x}H_{y}}$),
+as well as the \DGOmOH OER descriptor.
+%
+Coverage indicates the electrochemical coverage of either *O or *OH species.
+%
+The limiting potential and corresponding overpotential ($\eta$) as well as the rate determining step (RDS) for the OER mechanism are shown.
+}
+\input{04_data_tables/oer_energetics/oer_table.tex}
+}
 \end{table}
+
+\end{landscape}
 % __|
-
-
 
 % __|

@@ -15,7 +15,13 @@
 
 \usepackage[version=3]{mhchem}  % Formula subscripts using \ce{}
 \usepackage{xspace}  % To add space after macros
+
 \usepackage{subcaption}  % Used to create tables
+\usepackage{booktabs}  % Need for tables created from pandas
+% \usepackage{adjustbox}
+\usepackage{rotating}  % Used for sideways tables
+\usepackage{lscape}  % Turn pages landscape for long tables
+
 \captionsetup{justification=raggedright,singlelinecheck=false}  % Trying to get the tables a bit more centered
 \usepackage[group-separator={,},group-minimum-digits={3}]{siunitx}  % Format numbers (with commas)
 
