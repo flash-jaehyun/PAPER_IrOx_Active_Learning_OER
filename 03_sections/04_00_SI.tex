@@ -304,12 +304,15 @@ TEMP section about IrO2 active learning results.
 % =========================================================
 % FIGURE ==================================================
 % =========================================================
-% | - Figure | IrO3 Convergence Plot
+% | - Figure | IrO2 Active Learning Results
 \begin{figure*}[!htb]
 \centering
 \makebox[\textwidth][c]{\includegraphics{02_figures/SI_figures/00_ml_plot_iro2_al__v5__downsampled_0800x0800.pdf}}
 \caption{\label{fig:iro2_al}
-TEMP CAPTION
+%
+Results for the active learning algorithm applied to the \IrOtwo space.
+%
+Analogous to Figure \ref{fig:iro3_al}, see Figure \ref{fig:iro3_al} for description of all subplots.
 }
 \end{figure*}
 % __| =====================================================
@@ -335,7 +338,10 @@ TEMP section
 \centering
 \makebox[\textwidth][c]{\includegraphics{02_figures/SI_figures/00_disc_vs_dft__v1.pdf}}
 \caption{\label{fig:disc_rate}
-TEMP CAPTION
+%
+Quantity of top ten most stable \IrOtwo and \IrOthree polymorphs discovered ($N_{disc}$) as a function of the number of DFT bulk optimizations performed for the GP-LCB acquisition and the baseline random acquisition methods.
+%
+Red lines indicate the specific runs used for Figures \ref{fig:iro3_al} and Figure \ref{fig:iro2_al}.
 }
 \end{figure*}
 % __| =====================================================
@@ -400,19 +406,35 @@ The simulation stop criteria used was that all atoms must satisfy a maximum forc
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Bulk Pourbaix Diagram
+%
 The electrochemical bulk Pourbaix diagrams were constructed using the TEMP module from pymatgen.
+% __|
 
-% | - Figure | OER Scaling Relations
+% =========================================================
+% FIGURE ==================================================
+% =========================================================
+% | - Figure | Bulk Pourbaix Diagram
 \begin{figure*}[!htb]
 \centering
 \makebox[\textwidth][c]{\includegraphics{02_figures/SI_figures/bulk_pourbaix_wo_alpha.pdf}}
 \caption{\label{fig:bulk_pourbaix_wo_alpha}
-TEMP CAPTION
+%
+Bulk Pourbaix diagram of the \ce{Ir}-\ce{H2O} system as a function of the applied potential and pH.
+%
+The diagram was constructed using all of the same species as Figure \ref{fig:bulk_pourbaix} with the exception of the globally stable \IrOthree (\aIrOthree) polymorph.
+%
+%
+% Revised bulk Pourbaix diagram of the \ce{Ir}-\ce{H2O} system as a function of applied potential and pH.
+% %
+% The diagram was constructed with Ir(s) (blue), \rIrOtwo (green), various \IrOthree polymorphs and a dissolved \ce{IrO^{4-}} ion species (dark grey).
+% %
+% The stability regions corresponding to the metastable \rIrOthree and \bIrOthree polymorphs, in the absence of any competing \IrOthree phase, are displayed as yellow and pink lines, respectively.
+% %
+% The thermodynamic onset of OER (water equilibrium at 1.23 V vs. RHE) is also shown.
 }
 \end{figure*}
-% __|
-
-% __|
+% __| =====================================================
+% =========================================================
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
