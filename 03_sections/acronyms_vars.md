@@ -7,7 +7,7 @@ AL | Active Learning
 ALL | Active Learning Loop
 GP | Gaussian Process
 RBF | Radial basis function
-GP-UCB | Gaussian Process - Upper Confidence Bound
+GP-LCB | Gaussian Process - Lower Confidence Bound
 SCF | Self-consistent field
 CCF | Coordination Characterization Function
 CHE | Computational Hydrogen Electrode
