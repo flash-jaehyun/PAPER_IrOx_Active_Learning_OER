@@ -20,16 +20,16 @@
 % | - Candidate space generation
 
 
-% ################################# Paragraph #############
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - Candidate Generation Intro
 % Basic intro into candidate generation
 % High-level overview again
 %   * Data mining OQMD MP fro AB2/3 entries
 %   * Reduce data set by eliminating structurally redundant systems
 %     * This is done with Ankit's scheme
-%   *
+% __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Paragraph start
+% | - PARAGRAPH BODY
 %
 Here we describe in more detail the methodology to construct the set of structural candidates that were considered.
 %
@@ -44,13 +44,16 @@ And finally, the structures are isotropically expanded or contracted to accommod
 %
 Below we go into more detail for each of these steps.
 % __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-% ################################# Paragraph #############
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - TEMP
 % Data-mining OQMD and MP
+% __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Paragraph start
+% | - PARAGRAPH BODY
+%
 Herein, we take advantage of the structural diversity already present in materials databases to construct our candidates.
 %
 We utilized two materials databases, the Open Quantum Materials (OQMD) and the Materials Project (MP) databases because of their large and diverse datasets of crystalline inorganic materials.
@@ -81,12 +84,14 @@ This process reduces the data set to \num{620} and \num{219} unique structures o
 %
 % COMBAK
 Combining the MP and OQMD data sets ultimately results in a dataset of \num{688} \ABtwo and \num{254} \ABthree structurally unique candidates.
-%
 % __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
-% | - Table of OQMD MP Structures
+% =========================================================
+% TABLE ===================================================
+% =========================================================
+% | - Table | OQMD MP Structures
 \begin{table}[!htb]
 
   \caption{\label{table:database_structures}
@@ -146,35 +151,38 @@ Combining the MP and OQMD data sets ultimately results in a dataset of \num{688}
   % __|
   %
 \end{table}
-% __|
+% __| =====================================================
+% =========================================================
 
 
-% ###################### Paragraph #######################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - TEMP
 % Structural classification scheme
 %
 % TODO Should this be its own section?
 % Might be a good idea to have Ankit write an overview of the method here
+% __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Paragraph start
+% | - PARAGRAPH BODY
 %
 This structural classification scheme can directly serve as a structural fingerprint and has successfully been applied towards the prediction of formation energies of inorganic compounds \cite{Jain2018}.
 % __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
-% ###################### Paragraph #######################
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - TEMP
 % Pre-optimization
 %
 % * We use a simple isotropic expansion/contraction for this paper
 % * I also tried Kirsten's more robust pre-optimizer, but had minimal impacts on the results (performance of AL/ML models)
 % * Pre-optimization is an important step because it determines how "physical" the structure is, which affects it's fingerprint and ultimately how well the ML surrogate model can learn and predict the energy of these structures
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Paragraph start
-% until all interatomic pair-wise distances are above the summation of the atoms atomic radii.
-
 % __|
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
+% until all interatomic pair-wise distances are above the summation of the atoms atomic radii.
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
@@ -195,20 +203,25 @@ This structural classification scheme can directly serve as a structural fingerp
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Structure featurization and data processing
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - TEMP
+%
+% __|
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
 % TODO Cite Wolverton paper
 Structures are featurized using the Voronoi tessellation method developed by TEMP.
 %
 0-variance features that don't encode for any information within a set of structures with constant composition and stoichiometry are then removed (\num{271} to \num{101} feature columns).
 % TODO Add all of the feature engineering steps here
 % __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Structure featurization and data processing}  %
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Structure featurization and data processing
+% __|
+
 
 % =========================================================
 % FIGURE ==================================================
@@ -238,6 +251,14 @@ All structural duplicates in the post-relaxation dataset were removed.
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Gaussian process regression model
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - TEMP
+%
+% __|
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
 %
 Gaussian process machine learning regression models were picked due to their highly flexible fits and high performance in situations with small data sets.
 %
@@ -259,9 +280,13 @@ These initial value for the hyper-parameters of the GP kernel are then optimized
 which occurs onece per active learning loop,
 and is done by maximizing the log marginal likelihood of the model and training data.
 % __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% __|
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Bulk polymorph DFT optimization}  % %%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % VASP
@@ -270,6 +295,14 @@ and is done by maximizing the log marginal likelihood of the model and training 
 % plane-wave cutoff of 600 eV
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Bulk polymorph DFT optimization
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - TEMP
+%
+% __|
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
 %
 A variable k-point mesh is used such that a k-point density of at least \num{20} k-points per reciprocal space dimension.
 %
@@ -285,6 +318,10 @@ The recipe has \num{3} distinct phases, and structures are only advanced to the 
 %
 The final ISIF \num{2} step is run with an electronic energy SCF convergence criteria of \SI{1e-6} eV and the ionic relaxation has a tight force convergence criteria of \SI{1e-3}{\electronvolt\per\angstrom}.
 % __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% __|
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -293,9 +330,22 @@ The final ISIF \num{2} step is run with an electronic energy SCF convergence cri
 % Here are the analogous IrO2 results that were presented for IrO3 in the main text
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - IrO2 Active Learning Results
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - TEMP
+%
+% __|
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
 %
 TEMP section about IrO2 active learning results.
 % __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% __|
+
 
 % =========================================================
 % FIGURE ==================================================
@@ -321,8 +371,20 @@ Analogous to Figure \ref{fig:iro3_al}, see Figure \ref{fig:iro3_al} for descript
 % TEMP
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Discovery rate of all runs of AL algorithms
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - TEMP
+%
+% __|
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
 %
 TEMP section
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 % __|
 
 
@@ -350,12 +412,26 @@ Red lines indicate the specific runs used for Figures \ref{fig:iro3_al} and Figu
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Structural coordination motif identification
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - TEMP
+%
+% __|
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
 Several esoteric structural features were found in the DFT optimized structures and can be categorized as one of two types,
 legitimate structural motifs not characterized by the scheme of Waroquiers et. al. \cite{Waroquiers2017}, and arguably non-physical structural artifacts, including:
 % TODO Add more of these
 - unassociated oxygen atoms
 - molecular oxygens in the unit cell
+
 % __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% __|
+
 
 % __|
 
@@ -405,6 +481,7 @@ The simulation stop criteria used was that all atoms must satisfy a maximum forc
 %
 The electrochemical bulk Pourbaix diagrams were constructed using the TEMP module from pymatgen.
 % __|
+
 
 % =========================================================
 % FIGURE ==================================================
@@ -493,10 +570,14 @@ The equation for is as follows:
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - OER Scaling Relations
 
-% ################################# Paragraph #############
+
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - TEMP
 %
+% __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
+%
 Figure~\ref{fig:scaling_relations} shows the scaling relations between the adsorption free energies of the OER intermediate species for the studied \IrOx slabs.
 %
 It can be seen clearly that the data points corresponding to the three \IrOthree polymorphs are roughly \SI{1}{\electronvolt} weaker binding than the \rIrOtwo points.
@@ -505,7 +586,16 @@ This generally weaker binding of the \IrOthree stoichiometry is responsible for 
 %
 The \DGOOH vs.\DGOH relationship is very close to the traditional ``universal scaling relations'', demonstrating that our materials do not break the infamous \DGOOH vs. \DGOH scaling.
 
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+% __|
+
+
+% =========================================================
+% FIGURE ==================================================
+% =========================================================
 % | - Figure | OER Scaling Relations
 \begin{figure*}[!htb]
 \centering
@@ -522,9 +612,8 @@ The \DGOH line is  shown as guide to eye.
 % TODO Do I have to redefine the color convention every caption?
 }
 \end{figure*}
-% __|
-
-% __|
+% __| =====================================================
+% =========================================================
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -534,7 +623,18 @@ The \DGOH line is  shown as guide to eye.
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Bulk Systems
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - TEMP
+%
+% __|
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
 % Formation energies of 4 polymorphs
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 % __|
 
@@ -546,11 +646,28 @@ The \DGOH line is  shown as guide to eye.
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Table of OER energetics
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - TEMP
+%
+% __|
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
 %
 Table \ref{table:oer_data} contains the adsorbate binding energetics for the intermediates of the OER
 oxygen evolution reaction (*O, *OOH, *OH).
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+% __|
+
+
+% =========================================================
+% TABLE ===================================================
+% =========================================================
+% | - Table | OER energetics
 \newpage  % request a new page.
 \begin{landscape}
 \renewcommand{\arraystretch}{1.5} % <--------------
@@ -576,6 +693,8 @@ The limiting potential and corresponding overpotential ($\eta$) as well as the r
 \end{table}
 
 \end{landscape}
-% __|
+% __| =====================================================
+% =========================================================
+
 
 % __|
