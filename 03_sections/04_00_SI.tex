@@ -230,44 +230,40 @@ All structural duplicates in the post-relaxation dataset were removed.
 % __|
 % =========================================================
 
-% __|
-
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Gaussian process regression model}  % %%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Relevant details about the ML Gaussian process here  % @Chris
+% Relevant details about the ML Gaussian process here
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Gaussian process regression model
 %
-The Gaussian Process model utilized two isotropic Gaussian (RBF) kernels, with one kernel having a larger length scale parameter and the other one having a length scale parameter that operates on shorter length scales.
+Gaussian process machine learning regression models were picked due to their highly flexible fits and high performance in situations with small data sets.
+%
+We utilized the Gaussan Process regression module as implemented in CatLearn.
+\cite{hansen2019atomistic,CatLearn_Repo}
+%
+The Gaussian Process recipe we developed utilized two isotropic Guassian kernels which differe only in the value of the initial length scale parameter.
+%
+Here, isotropic refers to keeping the dimensionality of the kernel equal to one instead of an anisotropic kernel which was found to be difficult to optimize.
+%
+The first GP kernel was constructed with a length scale paramter of 1 while for the second kernel the lengthscale was reduced by a factor of ten (0.1).
+%
+This was done with the aim of producing a model that is responsive to both long- and short-range features in the input space.
+%
+Additionally, the noise parameter was set to a value of \num{0.025}, the scaling parameter was set to \num{5.2} and $\alpha$ was set to 5.2.
 %
 % TODO Double check that I said it correctly, might be minimizing the LML
-The hyperparameters of the GP kernel are optimized every time the GP is trained such that the log marginal likelihood of the model and training data is maximized.
-%
-The initial values of the hyper parameters are as follows:
-
-% | - Table of GP Hyper parameters
-\begin{table}[htbp]
-\centering
-\begin{tabular}{cc}
-  GP Hyper Paramter & Initial Value \\
-  noise & 0.02542 \\
-  sigmaL & 1.0049 \\
-  sigmaF & 5.19 \\
-  alpha & 0.018
-\end{tabular}
-\end{table}
-% __|
-
+These initial value for the hyper-parameters of the GP kernel are then optimized during every training round,
+which occurs onece per active learning loop,
+and is done by maximizing the log marginal likelihood of the model and training data.
 % __|
 
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Bulk polymorph DFT optimization}  % %%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
 % VASP
 % PBE exchange correlation functional
 % spin-polarized calculations
