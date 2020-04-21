@@ -31,18 +31,7 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-Here we describe in more detail the methodology to construct the set of structural candidates that were considered.
-%
-At a high-level, the procedure is to mine materials databases for entries with the desired non-element specific stoichiometry (\latin{i.e.} \ABtwo and \ABthree).
-%
-Since many of the entries in these databases are structurally redundant with one another,
-we used a structure classification scheme to reduce the data set to a structurally unique set.
-%
-Once this is accomplished, the elements of interest were then substituted into the database structures, which at this point had their original elemental composition from their database.
-%
-And finally, the structures are isotropically expanded or contracted to accommodate the difference between the atomic radii of the original elements in the structure and the user defined elements.
-%
-Below we go into more detail for each of these steps.
+Here we describe the methodology to construct the set of structural candidates in more detail. The first step of the procedure is to mine materials databases for entries with the desired non-element specific stoichiometry (\latin{i.e.} \ABtwo and \ABthree). Since many of the entries in these databases are structurally redundant, we used a structure classification scheme to reduce the data set to a structurally unique set. Once this is accomplished, the elements of interest were then substituted into the database structures, which at this point had their original elemental composition from their database. Finally, the structures are isotropically expanded or contracted to accommodate the difference between the atomic radii of the original elements in the structure and the user defined elements.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -53,37 +42,35 @@ Below we go into more detail for each of these steps.
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
-%
-Herein, we take advantage of the structural diversity already present in materials databases to construct our candidates.
+%Herein, we take advantage of the structural diversity already present in materials databases to construct our candidates.
 %
 We utilized two materials databases, the Open Quantum Materials (OQMD) and the Materials Project (MP) databases because of their large and diverse datasets of crystalline inorganic materials.
 %
 % TODO Approx. when did Ankit parse these databases
-At the time that we originally mined these databases (TEMP 2018? TEMP), there were \num{61471} inorganic compounds in the MP database and \num{435583} entries in the OQMD database.
+At the time that we originally mined these databases (2018), there were \num{61471} inorganic compounds in the MP database and \num{435583} entries in the OQMD database. We note that the databases have expanded the number of entries considerably since we originally parsed them, although the number of unique crystal polymorphs is not expected to have increase significantly.
+
 %
-The databases have expanded the number of entries considerably since we originally parsed them, so we'd like to caution the reader that these exact numbers are out of date.
-%
-Herein, for simplicity we'll refer to the quantitative figures of these databases in the present, instead of past, tense.
-%
-The structural classification scheme of Jain \latin{et al.} \cite{Jain2018} was then used to classify the structure and element-nonspecific stoichiometry of each structure (\num{497054} in total).
+The structural classification scheme of Jain \latin{et al.} was used to classify the structure and element-nonspecific stoichiometry of each structure (\num{497054} in total). This structural classification scheme can directly serve as a structural fingerprint and has successfully been applied towards the prediction of formation energies of inorganic compounds \cite{Jain2018}.
 %
 % COMBAK Revise if Ankit's scheme becomes it's own section
-See section TEMP for more details on the symmetry based structural classification scheme.
+% If it's not ready now, let's not include it.
+%See section TEMP for more details on the symmetry based structural classification scheme.
 %
 Once classified, we selected all entries with the desired stoichiometry of \ABtwo and \ABthree,
 for which MP has \num{2424} and \num{2341} \ABtwo and \ABthree entries, respectively,
 and OQMD has \num{4736} and \num{28,883} \ABtwo and \ABthree entries, respectively.
-%
-% COMBAK double check, is this the right reason?
-The reason that there are considerably more \ABthree compounds in OQMD is due to the extensive compositional permutation of the cubic Perovskite structure (ABO\textsubscript{3} ABO3) with the A cation removed.
-%
-% TODO
-Within each stoichiometry, the structural classification was used to eliminate structurally redundant systems, \latin{i.e.} systems that share their stoichiometry, space-group, and Wyckoff positions.
-%
-This process reduces the data set to \num{620} and \num{219} unique structures of \ABtwo and \ABthree for MP and \num{397} and \num{194} structurally unique \ABtwo and \ABthree OQMD entries.
+
+The reason that there are considerably more \ABthree compounds in OQMD is due to the extensive compositional permutation of the binary alloys in a cubic  \ABthree structure.
+
+
+%The reason that there are considerably more \ABthree compounds in OQMD is due to the extensive compositional permutation of the cubic Perovskite structure (ABO\textsubscript{3} ABO3) with the A cation removed.
+
+
+Within each stoichiometry, the structural classification was used to eliminate structurally redundant systems, \latin{i.e.} systems that share their stoichiometry, space-group, and Wyckoff positions. This process reduces the data set to \num{620} and \num{219} unique structures of \ABtwo and \ABthree for MP and \num{397} and \num{194} structurally unique \ABtwo and \ABthree OQMD entries.
 %
 % COMBAK
 Combining the MP and OQMD data sets ultimately results in a dataset of \num{688} \ABtwo and \num{254} \ABthree structurally unique candidates.
+%
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -164,8 +151,8 @@ Combining the MP and OQMD data sets ultimately results in a dataset of \num{688}
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
-%
-This structural classification scheme can directly serve as a structural fingerprint and has successfully been applied towards the prediction of formation energies of inorganic compounds \cite{Jain2018}.
+% %
+% This structural classification scheme can directly serve as a structural fingerprint and has successfully been applied towards the prediction of formation energies of inorganic compounds \cite{Jain2018}.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -211,10 +198,12 @@ This structural classification scheme can directly serve as a structural fingerp
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
-% TODO Cite Wolverton paper
-Structures are featurized using the Voronoi tessellation method developed by TEMP.
-%
-0-variance features that don't encode for any information within a set of structures with constant composition and stoichiometry are then removed (\num{271} to \num{101} feature columns).
+
+
+Structures are featurized using the Voronoi tessellation method developed by Ward et al. \cite{Ward2017}. Zero-variance features that don't encode for any information within a set of structures with constant composition and stoichiometry are removed before model training, reducing the number of feature columns from \num{271} to \num{101}.
+
+The number of features are further reduced to TEMP by performing a principal component analysis (PCA), using only post-relaxation fingerprints training and testing, the result shown in Figure \ref{fig:cv_anal}.
+
 % TODO Add all of the feature engineering steps here
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -231,12 +220,7 @@ Structures are featurized using the Voronoi tessellation method developed by TEM
 \makebox[\textwidth][c]{\includegraphics
 {02_figures/SI_figures/00_mae_pca_plot__v0__1500dpi.png}}
 \caption{\label{fig:cv_anal}
-%
-20-fold cross validation mean absolute error (MAE) as a function of the number of PCA components used for the GP-regression for \IrOthree.
-%
-Only post-relaxation fingerprints were used for both training and testing to avoid issues with structural drift.
-%
-All structural duplicates in the post-relaxation dataset were removed.
+20-fold cross validation mean absolute error (MAE) as a function of the number of PCA components used for the GP-regression for \IrOthree. Only post-relaxation fingerprints were used for both training and testing to avoid issues with structural drift. All structural duplicates in the post-relaxation dataset were removed.
 }
 \end{figure*}
 % __|
@@ -282,6 +266,13 @@ and is done by maximizing the log marginal likelihood of the model and training 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+RAUL - PLEASE EDIT! "What are the length scale hyperparameters (width parameter in CatLearn)? and what is noise and alpha in the table? They should be part of the kernel expression."
+
+\begin{equation}
+    k(x,x') = \sigma_1^ 2 e^{\frac{-|x-x'|^2}{2l_1^2}} + \sigma_2^ 2 e^{\frac{-|x-x'|^2}{2l_2^2}} + NOISE-kernel?
+\end{equation}
+
+
 % __|
 
 
@@ -303,18 +294,16 @@ and is done by maximizing the log marginal likelihood of the model and training 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-A variable k-point mesh is used such that a k-point density of at least \num{20} k-points per reciprocal space dimension.
+All DFT calculations were performed using density functional theory (DFT) implemented via the Vienna \latin{ab-initio} simulation package (VASP) \cite{Kresse1995,Kresse1996_0,Kresse1996_1} and utilizing the PBE exchange-correlation functional\cite{Perdew1996}. A cutoff plane-wave cutoff of 600 eV was used, and calculations were spin-polarized. A variable k-point mesh was used such that a k-point density of at least \num{20} k-points per reciprocal space dimension.
 %
-All bulk systems were run through the following computational recipe to converge the equilibrium structure.
-%
-The recipe has \num{3} distinct phases, and structures are only advanced to the next phase when the previous phase completes without error.
-%
-1. A ISIF \num{7} calculation to optimize only the volume (initial volume of cell may be really off).
-%
-2. \num{3} consecutive ISIF \num{3} relaxations to fully converge the lattice and atomic positions.
-%
-3. A final ISIF \num{2}, calculation to relax the atomic coordinates only to avoid errors associated with changing the cell volume with a fixed plane-wave cutoff basis.
-%
+All bulk systems were run through the following computational recipe to converge the equilibrium structure, with \num{3} distinct phases. structures are only advanced to the next phase when the previous phase completes without error.
+\\
+1. An ISIF \num{7} calculation to optimize only the volume (initial volume of cell may be really off).
+\\
+2. Three consecutive ISIF \num{3} relaxations to fully converge the lattice and atomic positions.
+\\
+3. A final ISIF \num{2} calculation to relax the atomic coordinates only to avoid errors associated with changing the cell volume with a fixed plane-wave cutoff basis.
+\\
 The final ISIF \num{2} step is run with an electronic energy SCF convergence criteria of \SI{1e-6} eV and the ionic relaxation has a tight force convergence criteria of \SI{1e-3}{\electronvolt\per\angstrom}.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
