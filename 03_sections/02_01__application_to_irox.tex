@@ -16,12 +16,12 @@
 %
 The AL algorithm is now applied to the discovery of stable and unique polymorphs of \IrOtwo and \IrOthree.
 %
-Since the algorithm is applied to each stoichiometry individually,
-we will only illustrate the results for \IrOthree,
-a comparatively unstudied oxide system.
+The algorithm is applied to each stoichiometry individually,
+but here we will illustrate the results for \IrOthree only,
+since it is a comparitively unstudied oxide system.
 %
 % TODO I don't talk about IrO2 enough
-We will briefly touch on the results for \IrOtwo at the end and refer the reader to the Supporting Information for further details.
+We will briefly touch on the results for \IrOtwo at the end and refer the reader to the Supporting Information for further details (Figure \ref{fig:iro2_al}).
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -37,9 +37,9 @@ We will briefly touch on the results for \IrOtwo at the end and refer the reader
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-Figure~\ref{fig:iro3_al}a, shows a sequence of snapshots of the AL algorithm at different generations for \IrOthree.
+Figure~\ref{fig:iro3_al}a, shows a sequence of snapshots of the AL algorithm applied to \IrOthree at different generations.
 %
-Each subplot reports the predicted (hollow grey) and DFT-derived (solid red) formation enthalpies (\DHf) for each structure, sorted by stability.
+Each subplot reports the predicted (grey) and DFT-derived (filled red) formation enthalpies (\DHf) for each structure, sorted by stability such that structures more likely to be selected by the acquisition criteria are farther left.
 %
 As the algorithm acquires DFT data, the GP model's accuracy increases,
 as evidenced by the decreasing uncertainties when comparing the initial and latter generations (\ref{fig:iro3_al}a.i-v).
@@ -51,11 +51,11 @@ Initially, these ten structures are randomly distributed across the entire candi
 But, after only three generations (Figure~\ref{fig:iro3_al}a.ii) the GP model is sufficiently accurate to predict the most stable polymorphs as being low energy.
 %
 By the fifth generation (\num{30} DFT relaxations) \num{4/10} of the most stable polymorphs have been acquired,
-including the globally stable phase of \IrOthree, which on average over 100 independent runs was found after only 4 generations.
+including the globally stable phase of \IrOthree, which
+was found on average in only 4 generations (averaged over 100 independent runs).
 %
-% COMBAK Does this syntax work with num?
 By the 14th generation of the AL,
-all but one of the top ten most stable structures have been acquired.
+all but one of the top ten most stable structures has been acquired.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -67,28 +67,18 @@ all but one of the top ten most stable structures have been acquired.
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-% TEMP PARAGRAPH ON STRUCTURES FOUND
-% COMBAK Change number after updating figure
-The eight most stable polymorphs of \IrOthree found during the AL algorithm are shown in Figure~\ref{fig:iro3_al}b (with the exception of the third most stable polymorph).
+Seven of the most stable \IrOthree polymorphs discovered are shown in Figure~\ref{fig:iro3_al}b.
 %
 All of the low energy \IrOthree structures are constructed from octahedrally coordinated units, with a variety of symmetries and packing modes.
 %
 The globally stable crystal structure consists of a six-atom primitive cell with a space group of \num{167} in the rhombohedral crystal system and features completely corner-sharing octahedra connectivity and is isomorphic to \ce{FeF_{3}}~\cite{Hepworth1957}.
- % has a space group number of 167 (R3c), a rhombohedral primitive cell with a formula unit of \ce{Ir_{2}O_{6}} (The extended standardized cell is displayed), and a completely corner-sharing octahedra network.
 %
-Herein, this structure will be referred to as \aIrOthree, where $\alpha$ indicates that it is the most stable \IrOthree polymorph.
+Herein, this structure will be referred to as \aIrOthree.
 %
-% TODO Fill in references
-The structure is isomorphic to that of \ce{TeO_{3}} and \ce{FeF_{3}}.
+The second most stable polymorph (Figure~\ref{fig:iro3_al}b.ii) is structurally similar to \aIrOthree,
+only differing by the stacking of the alternating layers orthogonal to the \textbf{c} lattice vector.
 %
-The second most stable polymorph
-(Figure~\ref{fig:iro3_al}b.ii)
-is structurally similar to
-\aIrOthree (Figure~\ref{fig:iro3_al}b.i),
-only differing by the stacking of the alternating layers orthogonal to the c lattice vector,
-which increases the symmetry to a hexagonal symmetry space group (182) and reveals hexagonal pores through the c-axis.
-%
-Additionally, the second most stable polymorph is only 2 meV/atom less stable than the first, well within the margin of error for DFT.
+This structure is labeled as $\alpha_{2}$-\ce{IrO_3} in Figure~\ref{fig:iro3_al}b and is only 2 meV/atom less stable than \aIrOthree, well within the margin of error for DFT.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -100,14 +90,19 @@ Additionally, the second most stable polymorph is only 2 meV/atom less stable th
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-Figure~\ref{fig:iro3_al}c reports the number of the ten most stable systems acquired against the number of DFT calculations for the AL algorithm with the GP-LCB acquisition described previously and a random acquisition scheme to serve as a baseline.
+Figure~\ref{fig:iro3_al}c reports the discovery rate of the AL algorithm by plotting
+the number of the ten most stable systems acquired against the number of DFT calculations with the GP-LCB acquisition and a random acquisition scheme to serve as a baseline.
 %
-The results of Figure~\ref{fig:iro3_al}c are averaged over 100 independent runs of AL algorithms with the one sigma standard deviation between these runs indicated.
+The results of Figure~\ref{fig:iro3_al}c are averaged over \num{100} independent runs of the AL algorithms with the standard deviation shown.
 %
-% COMBAK Pick better point to compare
-Overall, the GP-LCB runs outperform the random acquisition runs, with only \num{100} DFT calculations needed on average to discover the ten most stable structures.
+Overall, the GP-LCB runs outperform the random acquisition runs, with on average only \num{100} DFT calculations needed to discover the ten most stable structures.
 %
-This demonstrates over a factor of two improvement in performance compared to the random acquisition, which requires \mytilde\num{250} DFT calculations to acquire the ten most stable polymorphs.
+This demonstrates over a factor of two improvement in performance compared to the random acquisition, which does not acquire the most stable structures until all candidates are computed.
+%
+The results for \IrOtwo (Figure \ref{fig:iro2_al}) show a higher discovery rate for GP-LCB compared to the random acquisition method,
+although the GP-LCB method ''saturated'' at \num{9/10} and was unable to acquire the last structure until the candidate space was exhausted.
+%
+It should be noted that the performance of GP-LCB relative to random is expected to increase with the size of the candidate space, since the probability of selecting stable structures is inversly proportional to the size of the candidate pool.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -170,7 +165,7 @@ Case 2) shows the prediction of the same GP model using the post-DFT optimized f
 It is evident that using the pre-optimization fingerprints results in the GP model being inaccurate in quantitatively predicting the post-relaxation DFT formation energy of the candidate space,
 with a seemingly large MAE of \mytilde\num{1.5} eV/atom.
 %
-The same GP model does comparatively much better at predicting the formation energies of post-DFT optimized structures with an MAE of \mytilde\num{0.2} eV/atom.
+In contrast, the same GP model does comparatively much better at predicting the formation energies of post-DFT optimized structures with an MAE of \mytilde\num{0.2} eV/atom.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -201,30 +196,10 @@ meaning favored acquisitions are likely to perform even better,
 and (ii) the pre-optimized structures that are similar enough to the most stable final equilibrium structures will not restructure considerably,
 meaning that their predicted formation energies will be close enough (and low enough) to be quickly picked up by the acquisition criteria.
 %
-Additionally, the number of duplicates produced during the AL is also a factor.
+Additionally, the number of duplicates produced during the AL is also a factor in increasing the effective performance of the algorithm.
 %
-For example, there are \num{8} duplicates of the \aIrOthree polymorph produced throughout the AL algorithm due to structures relaxing into the same energy basin,
-and this over representation of the \aIrOthree phase effectively increases the chance of it being acquired by a factor of eight.
-% __|
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Out Model's Accuracy vs. MP Models
-% COMBAK Fix this paragraph and include
-% __|
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - PARAGRAPH BODY
-% The same GP model does comparatively much better at predicting the formation energies of post-DFT optimized structures with an MAE of \mytilde\num{0.2} eV/atom,
-% roughly 120 meV/atom larger than model reported by Ward \latin{et al.}, which was trained on hundreds of thousands of DFT bulk calculations and reached an MAE of 0.8 eV/atom.
-% %
-% The fact that our models,
-% trained on orders of magnitude less data than those of Ward \latin{et al.},
-% achieve errors on par with them,
-% is due to the fact that we are training and predicting on a space whose properties are very narrowly constrained, while Ward \latin{et al.} is predicting on structures whose elements span the entire periodic table.
+For example, there are \num{8} duplicates of \aIrOthree produced during the full AL routine due to distinct pre-DFT candidates relaxing into the same energy basin,
+and this over representation of \aIrOthree phase effectively increases the chance of it being acquired by a factor of eight.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
