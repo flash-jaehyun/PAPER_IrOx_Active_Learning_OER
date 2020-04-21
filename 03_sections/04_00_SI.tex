@@ -31,7 +31,19 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-Here we describe the methodology to construct the set of structural candidates in more detail. The first step of the procedure is to mine materials databases for entries with the desired non-element specific stoichiometry (\latin{i.e.} \ABtwo and \ABthree). Since many of the entries in these databases are structurally redundant, we used a structure classification scheme to reduce the data set to a structurally unique set. Once this is accomplished, the elements of interest were then substituted into the database structures, which at this point had their original elemental composition from their database. Finally, the structures are isotropically expanded or contracted to accommodate the difference between the atomic radii of the original elements in the structure and the user defined elements.
+Here we describe the methodology to construct the set of structural candidates in more detail.
+%
+The first step of the procedure is to mine materials databases for entries with the desired non-element specific stoichiometry (\latin{i.e.} \ABtwo and \ABthree).
+%
+Since many of the entries in these databases are structurally redundant,
+we used a structure classification scheme to reduce the data set to a structurally unique set.
+%
+Once this is accomplished, the elements of interest were then substituted into the database structures,
+which at this point had their original elemental composition from their database.
+%
+Finally, the structures are isotropically expanded or contracted to accommodate the difference between the atomic radii of the original elements in the structure and the user defined elements.
+%
+This procedure of ``pre-optimization'' is an important because it generates reasonable initial geometries which would otherwise produce poor fingerprint representations and lead to a large degree of structural shift during the course of DFT optimization.s
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -47,10 +59,24 @@ Here we describe the methodology to construct the set of structural candidates i
 We utilized two materials databases, the Open Quantum Materials (OQMD) and the Materials Project (MP) databases because of their large and diverse datasets of crystalline inorganic materials.
 %
 % TODO Approx. when did Ankit parse these databases
-At the time that we originally mined these databases (2018), there were \num{61471} inorganic compounds in the MP database and \num{435583} entries in the OQMD database. We note that the databases have expanded the number of entries considerably since we originally parsed them, although the number of unique crystal polymorphs is not expected to have increase significantly.
-
+At the time that we originally mined these databases (2018), there were \num{61471} inorganic compounds in the MP database and \num{435583} entries in the OQMD database.
 %
-The structural classification scheme of Jain \latin{et al.} was used to classify the structure and element-nonspecific stoichiometry of each structure (\num{497054} in total). This structural classification scheme can directly serve as a structural fingerprint and has successfully been applied towards the prediction of formation energies of inorganic compounds \cite{Jain2018}.
+We note that the databases have expanded the number of entries considerably since we originally parsed them,
+although the number of unique crystal polymorphs is not expected to have increase significantly.
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - TEMP
+%
+% __|
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
+%
+The structural classification scheme of Jain \latin{et al.} was used to classify the structure and element-nonspecific stoichiometry of each structure (\num{497054} in total).
+%
+This structural classification scheme can directly serve as a structural fingerprint and has successfully been applied towards the prediction of formation energies of inorganic compounds \cite{Jain2018}.
 %
 % COMBAK Revise if Ankit's scheme becomes it's own section
 % If it's not ready now, let's not include it.
@@ -59,18 +85,18 @@ The structural classification scheme of Jain \latin{et al.} was used to classify
 Once classified, we selected all entries with the desired stoichiometry of \ABtwo and \ABthree,
 for which MP has \num{2424} and \num{2341} \ABtwo and \ABthree entries, respectively,
 and OQMD has \num{4736} and \num{28,883} \ABtwo and \ABthree entries, respectively.
-
-The reason that there are considerably more \ABthree compounds in OQMD is due to the extensive compositional permutation of the binary alloys in a cubic  \ABthree structure.
-
-
+%
+The reason that there are considerably more \ABthree compounds in OQMD is due to the extensive compositional permutation of the binary alloys in a cubic \ABthree structure.
+%
 %The reason that there are considerably more \ABthree compounds in OQMD is due to the extensive compositional permutation of the cubic Perovskite structure (ABO\textsubscript{3} ABO3) with the A cation removed.
-
-
-Within each stoichiometry, the structural classification was used to eliminate structurally redundant systems, \latin{i.e.} systems that share their stoichiometry, space-group, and Wyckoff positions. This process reduces the data set to \num{620} and \num{219} unique structures of \ABtwo and \ABthree for MP and \num{397} and \num{194} structurally unique \ABtwo and \ABthree OQMD entries.
+%
+Within each stoichiometry, the structural classification was used to eliminate structurally redundant systems,
+\latin{i.e.} systems that share their stoichiometry, space-group, and Wyckoff positions.
+%
+This process reduces the data set to \num{620} and \num{219} unique structures of \ABtwo and \ABthree for MP and \num{397} and \num{194} structurally unique \ABtwo and \ABthree OQMD entries.
 %
 % COMBAK
 Combining the MP and OQMD data sets ultimately results in a dataset of \num{688} \ABtwo and \num{254} \ABthree structurally unique candidates.
-%
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -141,46 +167,6 @@ Combining the MP and OQMD data sets ultimately results in a dataset of \num{688}
 % __| =====================================================
 % =========================================================
 
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - TEMP
-% Structural classification scheme
-%
-% TODO Should this be its own section?
-% Might be a good idea to have Ankit write an overview of the method here
-% __|
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - PARAGRAPH BODY
-% %
-% This structural classification scheme can directly serve as a structural fingerprint and has successfully been applied towards the prediction of formation energies of inorganic compounds \cite{Jain2018}.
-% __|
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - TEMP
-% Pre-optimization
-%
-% * We use a simple isotropic expansion/contraction for this paper
-% * I also tried Kirsten's more robust pre-optimizer, but had minimal impacts on the results (performance of AL/ML models)
-% * Pre-optimization is an important step because it determines how "physical" the structure is, which affects it's fingerprint and ultimately how well the ML surrogate model can learn and predict the energy of these structures
-% __|
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - PARAGRAPH BODY
-% until all interatomic pair-wise distances are above the summation of the atoms atomic radii.
-% __|
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-% | - __old__
-%
-% The candidate for \IrOtwo and \IrOthree were generated from existing experimental structures in the OQMD and Materials Project databases by considering only structurally unique systems, where structural uniqueness.
-%
-% This was done by parsing for structurally unique systems based on the crystal symmetry classification scheme of Ankit.
-%
-% __|
-
 % __|
 
 
@@ -198,12 +184,15 @@ Combining the MP and OQMD data sets ultimately results in a dataset of \num{688}
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
-
-
-Structures are featurized using the Voronoi tessellation method developed by Ward et al. \cite{Ward2017}. Zero-variance features that don't encode for any information within a set of structures with constant composition and stoichiometry are removed before model training, reducing the number of feature columns from \num{271} to \num{101}.
-
-The number of features are further reduced to TEMP by performing a principal component analysis (PCA), using only post-relaxation fingerprints training and testing, the result shown in Figure \ref{fig:cv_anal}.
-
+%
+Structures are featurized using the Voronoi tessellation method developed by Ward et al. \cite{Ward2017}.
+%
+Zero-variance features that don't encode for any information within a set of structures with constant composition and stoichiometry are removed before model training, reducing the number of feature columns from \num{271} to \num{101}.
+%
+The number of features are further reduced to \num{10} by performing a principal component analysis (PCA)
+%
+The optimal number of principle components was found by computing the cross-validation MAE on the post-relaxation fingerprints as a function of PCA components (Figure \ref{fig:cv_anal}),
+where it was found that 10 PCA components is sufficient to minimize the error.
 % TODO Add all of the feature engineering steps here
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -410,12 +399,7 @@ Red lines indicate the specific runs used for Figures \ref{fig:iro3_al} and Figu
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
-Several esoteric structural features were found in the DFT optimized structures and can be categorized as one of two types,
-legitimate structural motifs not characterized by the scheme of Waroquiers et. al. \cite{Waroquiers2017}, and arguably non-physical structural artifacts, including:
-% TODO Add more of these
-- unassociated oxygen atoms
-- molecular oxygens in the unit cell
-
+TEMP section about doing the structural motiff analysis. Maybe not needed.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
