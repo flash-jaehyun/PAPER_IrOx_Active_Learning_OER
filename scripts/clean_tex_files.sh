@@ -23,6 +23,8 @@ rm ../00_main_manuscript.synctex\(busy\)
 
 rm ../00_main_manuscript.fff
 rm ../00_main_manuscript.lof
+rm ../00_main_manuscript.ttt
+rm ../00_main_manuscript.lot
 
 # currentDate=`date +"%Y%m%d_%H-%m"`
 # filename="_00_main_manuscript.pdf"
