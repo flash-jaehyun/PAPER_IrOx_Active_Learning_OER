@@ -14,6 +14,7 @@ ChemEnv
 SCF
 UVA
 UCB
+LCB
 NERSC
 CatHub
 pymatgen

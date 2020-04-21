@@ -26,7 +26,7 @@ In addition, we computed the OER activity of a delithiated form of a recently re
 as it is a notable example of a well characterized experimental \IrOthree OER catalyst with exceptional activity.
 \cite{Pearce2017,Pearce2019}
 %
-The OER activity was computed assuming the associative OER mechanism and utilizing the limiting potential analysis and computatinoal hydrogen electrode (see Supplementary Information).
+The OER activity was computed assuming the associative OER mechanism and utilizing the limiting potential analysis and computatinoal hydrogen electrode (see Supporting Information).
 \cite{Man2011,Rossmeisl2007,Kitchin2004}
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -46,9 +46,9 @@ The bulk Pourbaix diagram of the Ir-H\textsubscript{2}O system is shown in Figur
 The diagram was constructed by considering the equilibrium between the following species: Ir, \rIrOtwo, \aIrOthree, \rIrOthree, \bIrOthree, and an aqueous dissolved \ce{IrO^{4-}} species.
 %
 We utilized a free energy correction scheme to reproduce the experimental free energy of \IrOtwo relative to the \ce{Ir} reference state
-(see the Supplementary Information for further details).
+(see the Supporting Information for further details).
 %
-While Ir and \rIrOtwo are most stable at low bias, \aIrOthree becomes the thermodynamically dominant phase under the relevant conditions for the OER (potentials around \mytilde1.23 V vs. RHE and an acidic environment)
+While Ir and \rIrOtwo are most stable at low bias, \aIrOthree becomes the thermodynamically dominant phase under the relevant conditions for the OER (potentials around \mytilde1.23 \VRHE and an acidic environment)
 %
 % I want to be careful about how I talk about the metastable structures in the bulk Pourbaix, they strictly speaking shouldn't be there at all
 The stability regions of the metastable \rIrOthree and \bIrOthree phases (In the absence of any other \IrOthree polymorph) are indicated by unfilled solid lines, and show that these phases also have a large stability window relative to \IrOtwo and the Ir ion.
@@ -67,7 +67,8 @@ There are twenty-one unique \IrOthree polymorphs discovered in our search which 
 % | - Figure | Bulk Pourbaix Diagram
 \begin{figure*}[!htb]
 \centering
-\makebox[\textwidth][c]{\includegraphics{02_figures/oer_activity_stability/bulk_pourbaix.pdf}}
+\makebox[\textwidth][c]{\includegraphics
+{02_figures/oer_activity_stability/bulk_pourbaix.pdf}}
 \caption{\label{fig:bulk_pourbaix}
 %
 Revised bulk Pourbaix diagram of the \ce{Ir}-\ce{H2O} system as a function of applied potential and pH.
@@ -76,7 +77,7 @@ The diagram was constructed with Ir(s) (blue), \rIrOtwo (green), various \IrOthr
 %
 The stability regions corresponding to the metastable \rIrOthree and \bIrOthree polymorphs, in the absence of any competing \IrOthree phase, are displayed as yellow and pink lines, respectively.
 %
-The thermodynamic onset of OER (water equilibrium at 1.23 V vs. RHE) is also shown.
+The thermodynamic onset of OER (water equilibrium at \num{1.23} \VRHE) is also shown.
 %
 % The most stable system studied (see Table XX in SI for a full list) are Ir-metal Ir(s) (blue), a \rIrOtwo (green), and a dissolved \ce{IrO4[4-]} (grey).
 %
@@ -118,7 +119,7 @@ Figure~\ref{fig:oer_volcano}a reports the surface energy Pourbaix plots as a fun
 %
 For each facet we computed the surface free energy for three coverages, bare, *OH, and *O.
 %
-At modest overpotentials ($\eta$ \mytilde\num{0.3} or equivalently potentials of \mytilde\num{1.5} V vs. RHE) the convex hull is populated solely by oxygen terminated surfaces.
+At modest overpotentials ($\eta$ \mytilde\num{0.3} or equivalently potentials of \mytilde\num{1.5} \VRHE) the convex hull is populated solely by oxygen terminated surfaces.
 %
 % COMBAK, Revise "mainly" if we include some different coverages
 Consequently, we consider mainly oxygen terminated surfaces for the OER analysis.
@@ -135,13 +136,14 @@ but without considering highly reconstructed facets such as (101).
 % | - Figure | OER Volcano/Surface Pourbaix
 \begin{figure*}
 \centering
-\makebox[\textwidth][c]{\includegraphics{02_figures/oer_activity_stability/oer_volc_surf_pourb.pdf}}
+\makebox[\textwidth][c]{\includegraphics
+{02_figures/oer_activity_stability/00_oer_plot_v10__downsampled_0900x0900.pdf}}
 \caption{\label{fig:oer_volcano}
 % TODO Insert green band into figure, insert experimental references for this
 %
 Summary of OER results for the following four bulk structures of \IrOx: \rIrOtwo (green), \aIrOthree (purple), \rIrOthree (orange), and \bIrOthree (pink).
 %
-(a) Surface energy Pourbaix diagrams for each structure, with the surface energy of various facets and coverages shown as a function of applied potential (V vs. RHE).
+(a) Surface energy Pourbaix diagrams for each structure, with the surface energy of various facets and coverages shown as a function of applied potential (\VRHE).
 %
 Surfaces with coverages of bare surfaces (light lines), *OH covered surfaces (medium lines) and *O terminated surfaces (thick lines) are shown.
 %
@@ -177,7 +179,7 @@ Color legend: oxygen (red), purple (iridium), coordination motif (white).
 % Replace G_O and G_OH with my custom macros for consistency
 The OER activity (in terms of the limiting potential) for select oxygen terminated surfaces are shown in Figure \ref{fig:oer_volcano}b plotted against the \DGOmOH thermodynamic descriptor.
 %
-We display both thermodynamic limiting potential volcanos 
+We display both thermodynamic limiting potential volcanos
 (one assuming universal scaling relations and the other constructed from our fitted scaling lines)
 and the kinetic OER volcano from Dickens \latin{et al.}~\cite{Dickens2019},
 which tracks the required potential to reach \SI[mode=text]{10}{\mA\per\cm\squared} for a detailed microkinetic model of the OER associative pathway.
@@ -187,7 +189,7 @@ The thermodynamic and kinetic volcanos agree remarkably well in the strong bindi
 The corresponding surface structures for select systems are visualized in Figure \ref{fig:oer_volcano}c.
 %
 The \rIrOtwo surfaces bind the OER intermediates relatively strongly,
-with theoretical limiting potentials of \mytilde\num{1.8} V vs. RHE (overpotential of 0.57 V vs. RHE) with a *O to *OOH potential limiting step.
+with theoretical limiting potentials of \mytilde\num{1.8} \VRHE (overpotential of \num{0.57} \VRHE) with a *O to *OOH potential limiting step.
 %
 % Cite Cr-IrO2 paper (ours) and something else here
 These results are in agreement with previous experimental, and the latest theoretical studies.
@@ -204,8 +206,8 @@ On average, the binding for *OH is weakened by 0.7 eV relative to \IrOtwo.
 %
 The highest performing systems include the (100), (110), and (211) facets of \aIrOthree, \bIrOthree (101), and \rIrOthree (110).
 %
-These surfaces have overpotentials of \mytilde\num{0.4} V vs. RHE,
-which represents a \mytilde\num{0.2} V vs. RHE improvement over \rIrOtwo.
+These surfaces have overpotentials of \mytilde\num{0.4} \VRHE,
+which represents a \mytilde\num{0.2} \VRHE improvement over \rIrOtwo.
 %
 The primary driver for the improved OER activity is the higher oxidation state of \IrOthree compared to \IrOtwo
 (\ce{Ir^{6+}} and \ce{Ir^{4+}}, respectively)

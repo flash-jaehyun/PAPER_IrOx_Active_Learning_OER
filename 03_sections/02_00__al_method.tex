@@ -53,7 +53,8 @@ To this end, we do not provide any DFT training data prior to the start of the A
 % | - Figure | Active Learning Algorithm ******************
 \begin{figure*}[!htb]
 \centering
-\makebox[\textwidth][c]{\includegraphics{02_figures/al_diagram/Active_learning_diagram__v3.pdf}}
+\makebox[\textwidth][c]{\includegraphics
+{02_figures/al_diagram/Active_learning_diagram__v3.pdf}}
 \caption{\label{fig:all_diagram}
 %
 % Probably better to keep this caption really concise and refer to the text
@@ -121,7 +122,7 @@ after discarding \mytilde100 non-converged structures.
 %
 While not particularly large, our candidate space's size allows us to tractably compute all DFT optimized structures, thus allowing us to benchmark the performance of our methodology.
 %
-The full details of the candidate space generation and DFT calculations are in the Supplementary Information.
+The full details of the candidate space generation and DFT calculations are in the Supporting Information.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -168,7 +169,7 @@ we construct the AL framework to be
 and (ii) aware of limitations in its surrogate model by incorporating uncertainty estimates into the acquisition decision criteria.
 %
 GP regressors naturally satisfy both requirements,
-and hence we use them with an RBF kernel as implemented in CatLearn.
+and hence we use them with an Gaussian kernel as implemented in CatLearn.
 \cite{hansen2019atomistic,CatLearn_Repo}
 %
 % NOTE I've introduced the aquis. crit. with the GP uncertainty before talking about aquis. in more detail, need to restructure
@@ -180,7 +181,7 @@ This predicted energy landscape is then used to choose the next systems to acqui
 $U = \mu - \kappa \sigma$~\cite{Cox1992}.
 %
 Here, $\mu$ and $\sigma$ are the predicted \DHf mean and uncertainty, respectively,
-and $\kappa$ is a parameter that weights exploitation vs exploration of the search-space (set to 1).
+and $\kappa$ is a parameter that weights exploitation vs. exploration of the search-space (set to 1).
 %
 At every generation of the AL loop, $N$ structures that minimize the acquisition function are acquired for DFT optimization and are subsequently added to the training data set, where $N$ is AL bin size (here set to 5).
 %

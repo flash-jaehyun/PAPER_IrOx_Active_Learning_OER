@@ -16,12 +16,14 @@
 \usepackage[version=3]{mhchem}  % Formula subscripts using \ce{}
 \usepackage{xspace}  % To add space after macros
 
+\usepackage{xcolor}  % For colored text
+
+% Table packages and settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{subcaption}  % Used to create tables
 \usepackage{booktabs}  % Need for tables created from pandas
 % \usepackage{adjustbox}
 \usepackage{rotating}  % Used for sideways tables
 \usepackage{lscape}  % Turn pages landscape for long tables
-
 \captionsetup{justification=raggedright,singlelinecheck=false}  % Trying to get the tables a bit more centered
 \usepackage[group-separator={,},group-minimum-digits={3}]{siunitx}  % Format numbers (with commas)
 
@@ -60,7 +62,7 @@ Active Learning Accelerated Discovery of Stable \IrOx Polymorphs for the Oxygen 
 % | - TOC Figure
 \begin{tocentry}
 \begin{center}
-\includegraphics[height=3.5cm]{02_figures/al_diagram/Surrogate_model}
+\includegraphics[height=3.5cm]{02_figures/toc_figure}
 \end{center}
 \end{tocentry}
 % __|
@@ -70,15 +72,12 @@ Active Learning Accelerated Discovery of Stable \IrOx Polymorphs for the Oxygen 
 % | - MAIN DOCUMENT ***************************************
 % - 00 | Abstract *****************************************
 
-% TEMP
-\newpage  % request a new page.
-
+% Keep abstract on its own page
+\newpage
 \begin{abstract}
 \input{03_sections/00_abstract}
 \end{abstract}
-
-% TEMP
-\newpage  % request a new page.
+\newpage
 
 % - 01 | Introduction *************************************
 \section{Introduction}
@@ -116,7 +115,7 @@ Active Learning Accelerated Discovery of Stable \IrOx Polymorphs for the Oxygen 
 % #########################################################
 
 
-% | - Supplementary Information ***************************
+% | - Supporting Information *****************************
 
 % | - __latex_setup__
 \clearpage
@@ -130,6 +129,7 @@ Active Learning Accelerated Discovery of Stable \IrOx Polymorphs for the Oxygen 
 \input{03_sections/04_00_SI}
 \end{suppinfo}
 % __|
+
 
 % | - Bibliography ****************************************
 \bibliography{%
