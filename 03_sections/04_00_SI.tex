@@ -189,9 +189,7 @@ Structures are featurized using the Voronoi tessellation method developed by War
 %
 Zero-variance features that don't encode for any information within a set of structures with constant composition and stoichiometry are removed before model training, reducing the number of feature columns from \num{271} to \num{101}.
 %
-The number of features are further reduced to \num{10} by performing a principal component analysis (PCA)
-%
-The optimal number of principle components was found by computing the cross-validation MAE on the post-relaxation fingerprints as a function of PCA components (Figure \ref{fig:cv_anal}),
+The number of features are further reduced to \num{10} by performing a principal component analysis (PCA). The optimal number of principle components was found by computing the cross-validation MAE on the post-relaxation fingerprints as a function of PCA components (Figure \ref{fig:cv_anal}),
 where it was found that 10 PCA components is sufficient to minimize the error.
 % TODO Add all of the feature engineering steps here
 % __|
@@ -234,14 +232,14 @@ where it was found that 10 PCA components is sufficient to minimize the error.
 %
 Gaussian process machine learning regression models were picked due to their highly flexible fits and high performance in situations with small data sets.
 %
-We utilized the Gaussan Process regression module as implemented in CatLearn.
+We utilized the Gaussian Process regression module as implemented in CatLearn.
 \cite{hansen2019atomistic,CatLearn_Repo}
 %
-The Gaussian Process recipe we developed utilized two isotropic Guassian kernels which differe only in the value of the initial length scale parameter.
+The Gaussian Process recipe we developed utilized two isotropic Gaussian kernels which differ only in the value of the initial length scale parameter.
 %
 Here, isotropic refers to keeping the dimensionality of the kernel equal to one instead of an anisotropic kernel which was found to be difficult to optimize.
 %
-The first GP kernel was constructed with a length scale paramter of 1 while for the second kernel the lengthscale was reduced by a factor of ten (0.1).
+The first GP kernel was constructed with a length scale parameter of 1 while for the second kernel the length scale was reduced by a factor of ten (0.1).
 %
 This was done with the aim of producing a model that is responsive to both long- and short-range features in the input space.
 %
@@ -249,7 +247,7 @@ Additionally, the noise parameter was set to a value of \num{0.025}, the scaling
 %
 % TODO Double check that I said it correctly, might be minimizing the LML
 These initial value for the hyper-parameters of the GP kernel are then optimized during every training round,
-which occurs onece per active learning loop,
+which occurs once per active learning loop,
 and is done by maximizing the log marginal likelihood of the model and training data.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -514,7 +512,7 @@ Here we will outline the procedure used to carry out OER simulations on the vari
 %
 The procedure was as follows:
 %
-Stable stoichiometric terminations were cut from the bulk
+Stable stoichiometric terminations were cut from the bulk. 
 %
 % COMBAK
 % TODO Add Vesta reference
