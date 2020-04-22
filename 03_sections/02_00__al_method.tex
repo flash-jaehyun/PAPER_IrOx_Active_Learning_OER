@@ -37,13 +37,11 @@ whereby a regression model is trained on a set of potential polymorphs by iterat
 %
 Figure~\ref{fig:all_diagram} shows a schematic overview of our AL methodology.
 %
-There are two primary components of the algorithm, the first is the generation of the candidate space,
-which defines the list of candidate crystal structures to be searched through.
-%
-The second component is an iterative search through candidate space via a continuously retrained surrogate model based on Gaussian Processes,
+There are two primary components of the algorithm. The first is the generation of the candidate space,
+which defines the list of candidate crystal structures to be searched through. The second component is an iterative search through candidate space via a continuously retrained surrogate model based on Gaussian Processes,
 designed explicitly to be flexible and responsive to new DFT acquisitions in the targeted chemical space.
 %
-To this end, we do not provide any DFT training data prior to the start of the AL algorithm to eliminate any bias and to allow the model to quickly respond to new acquisitions.
+To this end, we do not provide any DFT training data prior to the start of the AL algorithm, since this eliminates any bias and allows the model to quickly respond to new acquisitions.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -99,7 +97,7 @@ In short, a material's structural identity is defined by a unique combination of
 % This is my attempt to further clarify the previous sentence
 Materials that share these properties are considered to be structurally identical.
 %
-For example, the \num{300000} entry dataset of \ABOthree style perovskites in OQMD, which only differ by the choice of elements for A, B, and C, all belong to the same structural prototype, and are thus structurally equivalent.
+%For example, the \num{300000} entry dataset of \ABOthree style perovskites in OQMD, which only differ by the choice of elements for A, B, and C, all belong to the same structural prototype, and are thus structurally equivalent. I don't think this is correct. Let's omit. 
 %
 Eliminating these redundant systems from the materials databases reduces the number of entries to \num{697} and \num{259} unique structures for the \ABtwo and \ABthree stoichiometries, respectively.
 %
@@ -180,7 +178,7 @@ $U = \mu - \kappa \sigma$~\cite{Cox1992}.
 Here, $\mu$ and $\sigma$ are the predicted \DHf mean and uncertainty, respectively,
 and $\kappa$ is a parameter that weights exploitation vs. exploration of the search-space (set to 1).
 %
-At every generation of the AL loop, $N$ structures that minimize the acquisition function are acquired for DFT optimization and are subsequently added to the training data set, where $N$ is AL bin size (here set to 5).
+At every generation of the AL loop, $N$ structures that minimize the acquisition function are acquired for DFT optimization and are subsequently added to the training data set, where $N$ is the AL bin size (here set to 5).
 %
 % TODO N is used into mean number of atoms (FIX)
 The value of $N$, in effect, determines the degree of parallelization of the routine.
