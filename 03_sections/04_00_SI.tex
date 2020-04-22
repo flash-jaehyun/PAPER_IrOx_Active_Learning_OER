@@ -74,9 +74,9 @@ although the number of unique crystal polymorphs is not expected to have increas
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-The structural classification scheme of Jain \latin{et al.} was used to classify the structure and element-nonspecific stoichiometry of each structure (\num{497054} in total).
-%
-This structural classification scheme can directly serve as a structural fingerprint and has successfully been applied towards the prediction of formation energies of inorganic compounds \cite{Jain2018}.
+The structural classification scheme of Jain \latin{et al.} was used assign the crystal prototype, consisting of standardized spacegroup and Wyckoff positions, as well as the element-nonspecific stoichiometry of each structure (\num{497054} in total). This prototype designation can serve as a structural fingerprint and has successfully been applied towards the prediction of formation energies of inorganic compounds \cite{Jain2018}.
+
+
 %
 % COMBAK Revise if Ankit's scheme becomes it's own section
 % If it's not ready now, let's not include it.
@@ -84,19 +84,10 @@ This structural classification scheme can directly serve as a structural fingerp
 %
 Once classified, we selected all entries with the desired stoichiometry of \ABtwo and \ABthree,
 for which MP has \num{2424} and \num{2341} \ABtwo and \ABthree entries, respectively,
-and OQMD has \num{4736} and \num{28,883} \ABtwo and \ABthree entries, respectively.
-%
-The reason that there are considerably more \ABthree compounds in OQMD is due to the extensive compositional permutation of the binary alloys in a cubic \ABthree structure.
-%
-%The reason that there are considerably more \ABthree compounds in OQMD is due to the extensive compositional permutation of the cubic Perovskite structure (ABO\textsubscript{3} ABO3) with the A cation removed.
-%
+and OQMD has \num{4736} and \num{28,883} \ABtwo and \ABthree entries, respectively. The reason that there are considerably more \ABthree compounds in OQMD is due to the extensive compositional permutation of the binary alloys in a cubic \ABthree structure.
+
 Within each stoichiometry, the structural classification was used to eliminate structurally redundant systems,
-\latin{i.e.} systems that share their stoichiometry, space-group, and Wyckoff positions.
-%
-This process reduces the data set to \num{620} and \num{219} unique structures of \ABtwo and \ABthree for MP and \num{397} and \num{194} structurally unique \ABtwo and \ABthree OQMD entries.
-%
-% COMBAK
-Combining the MP and OQMD data sets ultimately results in a dataset of \num{688} \ABtwo and \num{254} \ABthree structurally unique candidates.
+\latin{i.e.} systems that share their stoichiometry, space-group, and Wyckoff positions. This process reduces the data set to \num{620} and \num{219} unique structures of \ABtwo and \ABthree for MP and \num{397} and \num{194} structurally unique \ABtwo and \ABthree OQMD entries. Combining the MP and OQMD data sets ultimately results in a dataset of \num{688} \ABtwo and \num{254} \ABthree structurally unique candidates.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -186,7 +177,6 @@ Combining the MP and OQMD data sets ultimately results in a dataset of \num{688}
 % | - PARAGRAPH BODY
 %
 Structures are featurized using the Voronoi tessellation method developed by Ward et al. \cite{Ward2017}.
-%
 Zero-variance features that don't encode for any information within a set of structures with constant composition and stoichiometry are removed before model training, reducing the number of feature columns from \num{271} to \num{101}.
 %
 The number of features are further reduced to \num{10} by performing a principal component analysis (PCA). The optimal number of principle components was found by computing the cross-validation MAE on the post-relaxation fingerprints as a function of PCA components (Figure \ref{fig:cv_anal}),
@@ -230,20 +220,16 @@ where it was found that 10 PCA components is sufficient to minimize the error.
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-Gaussian process machine learning regression models were picked due to their highly flexible fits and high performance in situations with small data sets.
+Gaussian process machine learning regression models were picked due to their highly flexible fits and high performance in situations with small data sets. We utilized the Gaussian Process regression module as implemented in CatLearn.\cite{hansen2019atomistic,CatLearn_Repo} The Gaussian Process recipe we developed utilized two isotropic Gaussian kernels which differ only in the value of the initial length scale parameter, $l$: \textbf{Raul:isn't the scaling optimized for each of them, so that $s$ is also different? Also please add noise kernel in equation below.}
+
+\begin{equation}
+    k(x,x') = s_1 exp \Bigl ( \frac{-|x-x'|^2}{2l_1^2}\Bigr) + s_2 exp\Bigl(\frac{-|x-x'|^2}{2l_2^2}\Bigr) + NOISE-kernel?
+\end{equation}
+
+
+Here, isotropic refers to keeping the dimensionality of the kernel equal to one instead of an anisotropic kernel which was found to be difficult to optimize. 
 %
-We utilized the Gaussian Process regression module as implemented in CatLearn.
-\cite{hansen2019atomistic,CatLearn_Repo}
-%
-The Gaussian Process recipe we developed utilized two isotropic Gaussian kernels which differ only in the value of the initial length scale parameter.
-%
-Here, isotropic refers to keeping the dimensionality of the kernel equal to one instead of an anisotropic kernel which was found to be difficult to optimize.
-%
-The first GP kernel was constructed with a length scale parameter of 1 while for the second kernel the length scale was reduced by a factor of ten (0.1).
-%
-This was done with the aim of producing a model that is responsive to both long- and short-range features in the input space.
-%
-Additionally, the noise parameter was set to a value of \num{0.025}, the scaling parameter was set to \num{5.2} and $\alpha$ was set to 5.2.
+The first GP kernel was constructed with a length scale parameter of 1 while for the second kernel the length scale was reduced by a factor of ten (0.1). This was done with the aim of producing a model that is responsive to both long- and short-range features in the input space. Additionally, the noise parameter, $TEMP$, was set to a value of \num{0.025}, the scaling parameters, $s_1$, $s_2$ and $\alpha$ was set to 5.2. 
 %
 % TODO Double check that I said it correctly, might be minimizing the LML
 These initial value for the hyper-parameters of the GP kernel are then optimized during every training round,
@@ -253,11 +239,7 @@ and is done by maximizing the log marginal likelihood of the model and training 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-RAUL - PLEASE EDIT! "What are the length scale hyperparameters (width parameter in CatLearn)? and what is noise and alpha in the table? They should be part of the kernel expression."
 
-\begin{equation}
-    k(x,x') = \sigma_1^ 2 e^{\frac{-|x-x'|^2}{2l_1^2}} + \sigma_2^ 2 e^{\frac{-|x-x'|^2}{2l_2^2}} + NOISE-kernel?
-\end{equation}
 
 
 % __|
