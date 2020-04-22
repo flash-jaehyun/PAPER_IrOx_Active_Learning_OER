@@ -58,7 +58,7 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-As a next step we assess the stability as well as the structural variety of the DFT optimized structures, consisting of 384 \IrOtwo and 191 \IrOthree unique polymorphs.
+As a next step we assess the stability as well as the structural variety of the DFT optimized structures, consisting of 384 and 191 unique \IrOtwo and \IrOthree polymorphs.
 %
 Figure~\ref{fig:E_vs_V}a,b shows the DFT computed \DHf for \IrOtwo and \IrOthree plotted against the inverse density,
 an important quantity that is sensitive to crystal porosity and connectivity.
@@ -67,7 +67,7 @@ To obtain a physically meaningful cutoff for \DHf, we computed the metastability
 %
 The metastability limit for both \IrOtwo and \IrOthree were computed to occur at a \DHf of -0.34 eV/atom and are displayed as horizontal lines in Figure~\ref{fig:E_vs_V}a,b.
 %
-There are \num{196} and \num{75} polymorphs for \IrOtwo and \IrOthree, respectively, that are within the meta-stability line, and can therefore, in principle be synthesized.
+There are \num{196} and \num{75} polymorphs for \IrOtwo and \IrOthree, respectively, that are within the meta-stability limit, and can therefore, in principle be synthesized.
 %
 % These last two sentences can be removed
 %These values are almost identical, possibly indicating that the energy of the amorphous phases are insensitive to the exact stoichiometry.
@@ -108,18 +108,14 @@ For \IrOtwo (c) and \IrOthree (d) we highlight the structures of select polymorp
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
-To increase the likelihood of discovering novel material types it is desirable that our candidate space be structurally diverse, with materials that span a large range of densities and coordination environments.
+To increase the likelihood of discovering novel material types it is desirable that our candidate space is structurally diverse. Here we demonstrate that this is the case for out dataset, with materials that span a large range of densities and coordination environments.
 %
-We note that for both compositions, there is a large variety in density such that both low volume (dense) and high volume (porous) structures are contained in the data set.
+Firstly there is a large variety in density for both compositions, such that both low volume (dense) and high volume (porous) structures are contained in the data set.
 %
-The highest density structures correspond to an atomic packing factor of roughly 0.50, and are where the most stable structures are found.
+The lowest volume (highest density) structures correspond to an atomic packing factor of roughly 0.50, which is where the most stable structures are found.
 %
-On the other end, the lowest density systems sampled have atomic packing factors as low as 0.15.
-%where the shape of envelope curve (lowest energy for a given volume) is analogous to the shape of the Lennard-Jones potential. \textbf{is this important or expected?}
-%
-% NOTE Can make a comment about the fact that these porous species may be over-stabilized with PBE DFT
-However, for \IrOthree there is a comparatively weaker relationship between the energy and volume,
-such that even highly porous structures are within 0.1 eV/atom of the most stable phase.
+On the other end, the highest volume (lowest density) systems sampled have atomic packing factors close to 0.15.
+However, for \IrOthree there is a comparatively weaker relationship between the energy and volume, such that even highly porous structures are within 0.1 eV/atom of the most stable phase.
 %
 % COMBAK Explain this point better, this has to do with the oxidation state, coordination preservation rules that I've been playing around with
 %
@@ -143,9 +139,10 @@ All structures have been classified with respect to the Ir-O coordination enviro
 (such as octahedral, square pyramidal, tetrahedral, cubic, etc.)
 by using the chemEnv package, developed by Waroquiers et. al. \cite{Waroquiers2017} as implemented in the Pymatgen software \cite{Ong2013}.
 %
-Although the dataset was found to contain a large range of coordination environments ranging from 2 to 10,
+Although the dataset was found to contain a large range of coordination environments with a coordination number ranging from 2 to 10,
 structures with a coordination number of 6 (octahedral) or 4 (tetrahedral) were found to be most prevalent and have been highlighted in blue and red respectively in Figure~\ref{fig:E_vs_V}a,b.
-%
+
+
 For \IrOtwo and \IrOthree the vast majority of the most stable (within \num{0.1} eV/atom) structures adopt an octahedral coordination environment,
 a common coordination motif found to be favorable in many other transition metal oxides.\cite{Waroquiers2017}
 %
