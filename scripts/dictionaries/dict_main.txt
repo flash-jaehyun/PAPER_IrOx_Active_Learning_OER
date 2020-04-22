@@ -1,5 +1,7 @@
 personal_ws-1.1 en 34
 parallelization
+synthesizable
+generalizable
 unrelaxed
 meV
 delithiated
