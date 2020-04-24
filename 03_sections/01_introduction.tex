@@ -39,7 +39,8 @@ have enabled approaching many problems in materials research with machine-learni
 \cite{Kirklin2015}
 but these datasets are systematically biased towards known materials or hypothetical materials derived from common crystal prototypes.
 %
-As such, there is a need for enabling the systematic exploration of structural diversity at target compositions to be able to quantitatively relate computational predictions with experimental measurements in materials applications.
+Thus, there is a need for the systematic exploration of structural diversity at target elemental compositions.
+%to be able to quantitatively relate computational predictions with experimental measurements in materials applications.
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -57,19 +58,21 @@ As such, there is a need for enabling the systematic exploration of structural d
 %
 % TODO All global optimization papers go here
 % TODO Add review paper for GO
-Common contemporary approaches to inorganic crystal structure prediction involve a variety of different strategies of exploring the high-dimensional potential energy landscape to find local or global minima,
-with methods ranging from simulated annealing to evolutionary algorithms to particle swarm optimization
+Contemporary approaches to inorganic crystal structure prediction %involve a variety of different strategies of exploring the high-dimensional potential energy landscape to find local or global minima,
+%with methods ranging from 
+include simulated annealing, evolutionary algorithms, and particle swarm optimization
 \cite{Oganov2006,Lyakhov2010,Glass2006,Wang2012,Pickard2011,Pickard2006,Avery2019,Lonie2011}
 %
 % TODO Find solid example of shortcomings of classical GO schemes
-These approaches provide comprehensive,
-and often successful searches for stable polymorphs but tend to hit a tractability wall with increasing system size as the number of polymorphic configurations increases exponentially with the number and types of elements considered~\cite{Stillinger1999}.
+These approaches are comprehensive, but become intractable as  %provide comprehensive,
+%and often successful searches for stable polymorphs but tend to hit a tractability wall with 
+%increasing system size as the number of 
+polymorphic configurations increase exponentially with the number and types of elements considered~\cite{Stillinger1999}.
 %
-As such, there is a need for crystal structure prediction algorithms that are as generalizable as previously reported methods while reducing the computational cost associated with uncovering new novel polymorphic phases.
+%Thus, there is a need for 
+%Generalizable crystal structure prediction algorithms with low computational cost.% and are generalizable. as previously reported methods while reducing the computational cost associated with uncovering new novel polymorphic phases.
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Introduce Active Learning Papers
 %
@@ -80,16 +83,18 @@ As such, there is a need for crystal structure prediction algorithms that are as
 % COMBAK NOTE \textbf{These references don't seem very balanced. I'm sure there are other papers outside of the Norskov group we can cite here}
 % TODO Find more papers of AL in materials pace to put here
 % TODO Find references from Logan Ward's and Turab Lookman
-Active learning (AL) frameworks in conjunction with surrogate models have emerged as an effective approach to successfully speed up various problems in materials science,
-and hence have the potential to deliver an efficient alternative and complimentary approach to established crystal structure prediction (CSP) methods.
-\cite{hansen2019atomistic,torres2019low,Jennings2019,podryabinkin2017active,Bassman2018}
-%
-% This sentence will be a dump for other recent GO papers that aren't necessarily just AL
-There have been numerous recent efforts in developing unique approaches to materials discovery,
-including a tight-binding model utilizing genetic algorithms~\cite{VanDenBossche2018},
+Recent materials discovery approaches employing surrogate models in lieu of Density Functional Theory (DFT) calculations
+include a tight-binding model utilizing genetic algorithms~\cite{VanDenBossche2018},
 agent-based rapid generation of phase diagrams in diverse chemistries~\cite{Montoya2020},
 and an image-based materials representation procedure from Noh \latin{et al.}~\cite{noh2019inverse},
 which was used to find stable vanadium oxide polymorphs.
+Active learning (AL) frameworks in conjunction with surrogate models have emerged as a computationally efficient approach for problems in materials science, and a potential alternative to established crystal structure prediction (CSP) methods.
+%an effective approach to successfully speed up various problems in materials science,
+%and hence have the potential to deliver an efficient alternative and complimentary approach to established crystal structure prediction (CSP) methods.
+\cite{hansen2019atomistic,torres2019low,Jennings2019,podryabinkin2017active,Bassman2018}
+%
+% This sentence will be a dump for other recent GO papers that aren't necessarily just AL
+
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -101,11 +106,11 @@ which was used to find stable vanadium oxide polymorphs.
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-Here we report on a rapid crystal structure discovery approach that leverages machine learning surrogate models and an active learning framework to accelerate the discovery of polymorphs at target chemical compositions.
+In this manuscript we report a rapid crystal structure discovery approach that leverages machine learning surrogate models and an AL framework to accelerate the discovery of polymorphs at target chemical compositions.
 % ,and show specific applications in two important \IrOx compositions (x=2 and 3) relevant for electrocatalyst applications.
 %
 Our method does not rely on the existence of past DFT data,
-but instead sequentially generates the minimum sized data set to effectively search within a structurally diverse space of candidate structures generated from crystal structure prototypes.
+but instead sequentially generates the minimum sized data set to effectively search within a structurally diverse space of candidates generated from crystal structure prototypes.
 %
 %The algorithm avoids operating in the structural space by leveraging nature's propensity for symmetry by preparing data sets with a large degree of structural diversity at fixed composition.
 % this sounds little hand waving | RF Maybe it needs more exposition, I'm convoluting 2 points here, that we don't do traditional GO opt. in cont. PES and that we use the intuition of symmetry to our advantage
@@ -128,7 +133,7 @@ but with unresolved structure-activity properties critical for understanding the
 %
 % See following link for list of important IrO2 OER papers:
 % https://workflowy.com/#/e755141e2f66
-In particular, Rutile-\ce{IrO_2} (\rIrOtwo) (\ce{Ir^{4+}} oxidation state), the most stable form of iridium-oxide at standard conditions,
+In particular, Rutile-\ce{IrO_2} (\rIrOtwo) (\ce{Ir^{4+}}), the most stable form of iridium-oxide at standard conditions,
 is a well-studied electrocatalyst for the oxygen evolution reaction (OER).
 \cite{Seitz2016,Lee2012a,McCrory2015,Trotochaud2012,Danilovic2014,Carmo2013,Miles1978,Beni1979}
 %
@@ -159,13 +164,14 @@ For these reasons, we focused our search on stable polymorphs in the \IrOtwo sto
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-In the remainder of this paper, we first outline the generation of our candidate structures for \IrOtwo and \IrOthree and introduce the AL accelerated surrogate model.
+Here, we first detail the generation of our candidate structures for \IrOtwo and \IrOthree and introduce the AL accelerated surrogate model.
 %
-Next, we demonstrate the application of our AL scheme to the \IrOtwo and \IrOthree prototype spaces and show the performance of our routine at finding the most stable polymorphs in the candidate sets.
+Next, we demonstrate the application of our AL scheme to the \IrOtwo and \IrOthree prototype spaces and evaluate model performance for acquisition of the most stable polymorphs.
+%show the performance of our routine at finding the most stable polymorphs in the candidate sets.
 %
-Next, we analyze the crystallographic structural motifs of the DFT relaxed structures and discuss the trends between the most stable polymorphs.
+We analyze the crystallographic motifs of the DFT-relaxed structures and identify structural trends within the most stable polymorphs.
 %
-Lastly, we construct a revised bulk Pourbaix diagram of the Ir-H$_2$O systems, and evaluate the OER performance for the most stable phases.
+Lastly, we incorporate discovered structures into bulk and surface Pourbaix diagrams, and evaluate their catalytic OER performance.% for the most stable phases.
 %
 %highlighting the importance of the \IrOthree phases under OER.
 % __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
