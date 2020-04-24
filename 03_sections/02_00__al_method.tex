@@ -33,15 +33,14 @@
 % | - PARAGRAPH BODY
 %
 Our approach utilizes an active learning framework and surrogate models,
-whereby a regression model is trained on a set of potential polymorphs by iteratively and intelligently sampling structures from a set of candidates.
+whereby a regression model is trained to compute enthalpies of formation by iteratively sampling structures from a set of polymorph candidates.
 %
-Figure~\ref{fig:all_diagram} shows a schematic overview of our AL methodology.
+Figure~\ref{fig:all_diagram} shows a schematic overview of the AL loop.
 %
-There are two primary components of the algorithm. The first is the generation of the candidate space,
-which defines the list of candidate crystal structures to be searched through. The second component is an iterative search through candidate space via a continuously retrained surrogate model based on Gaussian Processes,
-designed explicitly to be flexible and responsive to new DFT acquisitions in the targeted chemical space.
+We first generate the structure candidate space, followed by an iterative search through the space via a continuously retrained surrogate model using Gaussian Processes Regression (GPR),
+which acquires structures for subsequent DFT calculations. % in the target chemical space (enthalpy of formation).
 %
-To this end, we do not provide any DFT training data prior to the start of the AL algorithm, since this eliminates any bias and allows the model to quickly respond to new acquisitions.
+We do not provide any DFT training data prior to the start of the AL algorithm, since this eliminates any bias and allows the model to quickly respond to new acquisitions.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -56,21 +55,21 @@ To this end, we do not provide any DFT training data prior to the start of the A
 \caption{\label{fig:all_diagram}
 %
 % Probably better to keep this caption really concise and refer to the text
-Active learning accelerated polymorph discovery algorithm diagram.
+AL accelerated polymorph discovery algorithm diagram.
 %
 % , which is constructed through data mining the unique structural motiffs in the OQMD and MP materials databases.
-The procedure proceeds through two distinct steps,
-first the generation of the hypothetical crystal structure data set (candidate space) and second,
-the iterative active learning (AL) algorithm.
+%The procedure proceeds through two distinct steps,
+%first the generation of the hypothetical crystal structure data set (candidate space) and second,
+%the iterative active learning (AL) algorithm.
 %
-The AL algorithm proceeds iteratively through:
+Following generation of the hypothetical crystal structure data set (candidate space) and the AL algorithm proceeds iteratively through:
 (1) candidate selection in which a subset of structures in the candidate space are selected based on an acquisition function (in lieu of training data, the initial candidates are randomly sampled),
 (2) structural relaxation into local energy minima (formation enthalpy computed),
 (3) structure featurization to produce numerical vector for input into ML model,
 (4) Machine learning (ML) model training based on acquired structures and \DHf,
 (5) Prediction of candidate space's \DHf distribution via ML model.
 %
-This predicted energy landscape is then used to inform the next generation's acquisition step.
+%This predicted energy landscape is then used to inform the next generation's acquisition step.
 }
 \end{figure*}
 % __|
@@ -92,32 +91,32 @@ The candidate structure datasets for \IrOtwo and \IrOthree were constructed by f
 %
 To reduce the size of the candidate space while maintaining maximum structural diversity, structurally redundant systems were removed via a space group based structural classification scheme developed by Jain \latin{et al.}~\cite{Jain2018}.
 %
-In short, a material's structural identity is defined by a unique combination of the element-nonspecific stoichiometry (\ABtwo, \ABthree, etc.), space group symmetry and Wyckoff positions, and are referred to as a materials structural prototype.
+In short, a material's structural identity is defined by a unique combination of the element-nonspecific stoichiometry (\ABtwo, \ABthree, etc.), space group symmetry, and Wyckoff positions, collectively referred to as a materials structural prototype.
 %
 % This is my attempt to further clarify the previous sentence
-Materials that share these properties are considered to be structurally identical.
+Materials of the same prototype are considered to be structurally equivalent.
 %
 %For example, the \num{300000} entry dataset of \ABOthree style perovskites in OQMD, which only differ by the choice of elements for A, B, and C, all belong to the same structural prototype, and are thus structurally equivalent. I don't think this is correct. Let's omit. 
 %
-Eliminating these redundant systems from the materials databases reduces the number of entries to \num{697} and \num{259} unique structures for the \ABtwo and \ABthree stoichiometries, respectively.
+Eliminating these redundant materials results in orders of magnitude reduction of the search space to \num{697} and \num{259} unique prototypes for the \ABtwo and \ABthree stoichiometries, respectively.
 %
 % The orders of magnitude reduction between all structures and unique structures highlights the lack of structural diversity in the OQMD and MP databases.
-This reduction leads to orders of magnitude reduction of the search space, as opposed to full utilization of the OQMD and Materials Project databases.
+%This reduction leads to orders of magnitude reduction of the search space, as opposed to full utilization of the OQMD and Materials Project databases.
 %
 Finally, only structures containing $\leq\num{75}$ atoms
-(\num{566} and \num{256} \ABtwo and \ABthree structures respectively)
+(\num{566} \ABtwo and \num{256} \ABthree)
 were included to reduce the computational expense of subsequent DFT calculations.
 %
 We next substituted iridium and oxygen for the A and B sites, and these Ir-O adapted polymorphs were isotropically relaxed to accommodate their atomic radii.
 %
-A full bulk DFT optimization recipe was performed on these systems,
-yielding a data set of \num{714} relaxed bulk \IrOx polymorphs
+Bulk DFT optimizations were performed on these systems,
+yielding \num{714} relaxed bulk \IrOx polymorphs
 (\num{487} and \num{248} structures for \IrOtwo and \IrOthree, respectively),
 after discarding \mytilde100 non-converged structures.
 %
-While not particularly large, our candidate space's size allows us to tractably compute all DFT optimized structures, thus allowing us to benchmark the performance of our methodology.
+The candidate space's size allows us to tractably optimize all structures with DFT for benchmarking the performance of our algorithm.
 %
-The full details of the candidate space generation and DFT calculations are in the Supporting Information.
+Full details of the candidate space generation and DFT calculations can be found in the Supporting Information.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -129,16 +128,16 @@ The full details of the candidate space generation and DFT calculations are in t
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-The active learning algorithm proceeds through a structure featurization scheme based on Voronoi tessellation developed by Ward \latin{et al.} \cite{Ward2017} which produces a \num{271}-length fingerprint vector that is invariant to isotropic lattice changes and somewhat insensitive to the precise atomic coordinates.
+The active learning algorithm proceeds through a structure featurization scheme based on Voronoi tessellation developed by Ward \latin{et al.} \cite{Ward2017} which produces a \num{271}-length fingerprint vector that is invariant to isotropic lattice changes and insensitive to the precise atomic coordinates.
 %
 These fingerprints encode both chemical and structural information by constructing attributes from elemental properties which are weighted by the local environment of the structure via the construction of the Wigner-Seitz cell.
 \cite{Wigner1933}
 %
-Since our AL framework focuses on fixed compositions, the dimensionality of the features are reduced to \num{101} non-zero variance features.
+Since our AL framework focuses on fixed compositions, the dimensionality is reduced to \num{101} non-zero variance features.
 %
 % TODO Create cross-validation plot
-We further reduce the dimensionality if this set to 10 features via principal component analysis (PCA)~\cite{Tipping1999},
-which we found to capture 80\% of the variance in the original feature set while also demonstrating an optimal cross-validation mean absolute error (MAE) (see Figure \ref{fig:cv_anal}).
+We further reduce the dimensionality to 10 features via principal component analysis (PCA)~\cite{Tipping1999},
+which we found to capture 80\% of the variance in the full feature set while also demonstrating an optimal cross-validation mean absolute error (MAE) (see Figure \ref{fig:cv_anal}).
 %
 % Further dimensionality reduction was achieved via a principle component analysis (PCA) \cite{Tipping1999}, which was used to reduce the remaining \num{101} fingerprints to \num{10}.
 %
@@ -158,13 +157,13 @@ which we found to capture 80\% of the variance in the original feature set while
 The active learning algorithm proceeds through iterative generations of ML training, prediction, and acquisition steps that are visualized in Figure~\ref{fig:all_diagram}.
 %
 % COMBAK Did I get all of the important features of GP here? @Jose
-To meet our primary goal of being able to explore and identify the most stable polymorphs within the candidate space,
+To meet our primary goal of identifying the most stable polymorphs within the candidate space,
 we construct the AL framework to be
-(i) flexible and responsive in improving itself by learning from small batches of newly acquired DFT data,
+(i) responsive in improving itself by learning from small batches of newly acquired DFT data,
 and (ii) aware of limitations in its surrogate model by incorporating uncertainty estimates into the acquisition decision criteria.
 %
-GP regressors naturally satisfy both requirements,
-and hence we use them with an Gaussian kernel as implemented in CatLearn.
+GPR satisfies both requirements,
+and we use them here with a Gaussian kernel as implemented in CatLearn.
 \cite{hansen2019atomistic,CatLearn_Repo}
 %
 % NOTE I've introduced the aquis. crit. with the GP uncertainty before talking about aquis. in more detail, need to restructure
@@ -172,7 +171,7 @@ and hence we use them with an Gaussian kernel as implemented in CatLearn.
 In the initial generation (generation 0), the model is trained on a set of randomly sampled candidates (unbiased sampling),
 and is then used to predict the formation enthalpy (\DHf) of all structures in the candidate space.
 %
-This predicted energy landscape is then used to choose the next systems to acquire (calculate via DFT) by selecting systems that minimize the GP-LCB (Gaussian process lower confidence bound) acquisition function,
+The predicted energy landscape is then used to choose the next polymorphs to acquire (calculate via DFT) by selecting systems that minimize the GP-LCB (Gaussian process lower confidence bound) acquisition function,
 $U = \mu - \kappa \sigma$~\cite{Cox1992}.
 %
 Here, $\mu$ and $\sigma$ are the predicted \DHf mean and uncertainty, respectively,
@@ -181,7 +180,7 @@ and $\kappa$ is a parameter that weights exploitation vs. exploration of the sea
 At every generation of the AL loop, $N$ structures that minimize the acquisition function are acquired for DFT optimization and are subsequently added to the training data set, where $N$ is the AL bin size (here set to 5).
 %
 % TODO N is used into mean number of atoms (FIX)
-The value of $N$, in effect, determines the degree of parallelization of the routine.
+The value of $N$ determines the degree of parallelization of the routine.
 %
 % The optimal value of $N$ depends on the computational resources available, as small values can result in slow down the discovery rate of the AL algorithm,
 % as every DFT calculation needs to be performed more serially.
@@ -191,7 +190,7 @@ The value of $N$, in effect, determines the degree of parallelization of the rou
 %
 % COMBAK We are discussing alternative convergence criteria, or whether to even have convergence criteria here
 % I think this is fine, just mention a few possible convergence criteria and leave at that
-In practice, the AL algorithm proceeds until no more stable polymorphs are found, or after the allocated computational budget is exhausted.
+The AL algorithm proceeds until no more stable polymorphs are found, or after the allocated computational budget is exhausted.
 % convergence is achieved, which here is chosen to be the generation at which the structures within the range of metastability, here taken as \num{0.1} eV/atom, are unchanging over three consecutive generations.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
