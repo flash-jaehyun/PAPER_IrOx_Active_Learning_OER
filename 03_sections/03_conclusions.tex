@@ -15,34 +15,9 @@
 % | - PARAGRAPH BODY
 %
 % \textbf{Generation of structurally diverse search space and efficient sampling of it.}
-Our results evidence a cogent procedure for generating a structurally diverse candidate space and adapting it to elemental composition.
-%
-Once this space is enumerated, we show it can be efficiently sampled using an AL loop without knowledge of precise atomic coordinates from ab initio simulations, identifying the most stable polymorphs in the candidate set after only computing a fraction of them via DFT.
-%
-In particular, this approach is well-suited for discovery in structurally diverse systems, such as metal oxides, demonstrated by the large degree of structural diversity in our dataset with octahedral, tetrahedral,  square-pyramidal,  cubic,  and  square-planar Ir-O conformers all represented.
-% % __|
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - PARAGRAPH HEADER
-% __|
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - PARAGRAPH BODY
-%
-% \textbf{Discovery of stable new and existing IrO2/IrO3 polymorphs.}
-%
-Algorithm results include rapid acquisition of experimentally characterized \IrOtwo and \IrOthree polymorphs, including \rIrOtwo, and several layered \IrOthree phases utilized for Li intercalation.
-%
-We identified a number of novel \IrOthree polymorphs below the metastability limit, including a new globally stable phase, \aIrOthree.
-%
-This high valency Ir$^{6+}$ phase is stable under OER relevant conditions and has an ideal 100\% corner-sharing octahedral structure with maximum coverage of oxygen atoms.
-%
-Surface and kinetic analyses reveal this structure and other OER stable \IrOthree phases have much higher OER activity relative to rutile \IrOtwo.
-%
-The thermodynamic stability and high OER activity of the \aIrOthree phase may provide clues as to the nature of the yet uncharacterized structures reported after reconstruction of \ce{SrIrO_{3}} and \IrOx precursors under OER reaction conditions.
-%
-Methods combining diverse structural generation, AL-enabled accelerated searches, and ab initio simulation of material performance, could open up new avenues for in silico material design with application tailored structural properties.
+We have described a cogent procedure for generating and searching a  structurally diverse candidate space of bulk structural prototypes with a desired composition. Once this space is enumerated, we show how it can can be efficiently searched using an algorithm with an active learning loop without a prior knowledge of accurate atomic positions. In most cases, the DFT optimization of only a fraction of the candidates leads to identification of the most stable polymorphs. In particular, this approach is well-suited for discovery in structurally diverse structures, such as metal oxides and other metal-ligand bulk systems, where there exits a large degree of structural diversity. The current dataset includes octahedral, tetrahedral,  square-pyramidal,  cubic,  and  square-planar Ir-O conformers. 
+We also note, that our AL algorithm is capable of discovering  experimentally known phases such as pyrite, columbite and layered  \IrOtwo and several recently discovered layered \IrOthree phases formed by Li$^+$ deintercalation. In particular, we have identified a number of previously unknown \IrOthree polymorphs below the metastability limit, including a new globally stable \aIrOthree phase. This high valency Ir$^{6+}$ phase is stable under OER relevant conditions and has an ideal 100\% corner-sharing octahedral structure, a short Ir-O bond length of 1.93 \angstrom, and also has a very high surface coverage of active oxygens. Calculations of surface thermdynamics reveal this structure and other OER stable \IrOthree phases have much higher theoretical OER activity than a benchmark rutile \IrOtwo. The thermodynamic stability and high OER activity of the \aIrOthree phase may provide clues as to the nature of the yet uncharacterized structures reported after reconstruction of \ce{SrIrO_{3}} and \IrOx precursors under OER reaction conditions.
+Methods combining diverse structural generation, AL-enabled accelerated searches, and \mbox{ab-initio} simulation of material performance could open up new avenues for in silico material design with application tailored structural properties.
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
