@@ -75,8 +75,6 @@ although the number of unique crystal polymorphs is not expected to have increas
 % | - PARAGRAPH BODY
 %
 The structural classification scheme of Jain \latin{et al.} was used assign the crystal prototype, consisting of standardized spacegroup and Wyckoff positions, as well as the element-nonspecific stoichiometry of each structure (\num{497054} in total). This prototype designation can serve as a structural fingerprint and has successfully been applied towards the prediction of formation energies of inorganic compounds \cite{Jain2018}.
-
-
 %
 % COMBAK Revise if Ankit's scheme becomes it's own section
 % If it's not ready now, let's not include it.
@@ -84,10 +82,16 @@ The structural classification scheme of Jain \latin{et al.} was used assign the 
 %
 Once classified, we selected all entries with the desired stoichiometry of \ABtwo and \ABthree,
 for which MP has \num{2424} and \num{2341} \ABtwo and \ABthree entries, respectively,
-and OQMD has \num{4736} and \num{28,883} \ABtwo and \ABthree entries, respectively. The reason that there are considerably more \ABthree compounds in OQMD is due to the extensive compositional permutation of the binary alloys in a cubic \ABthree structure.
-
+and OQMD has \num{4736} and \num{28883} \ABtwo and \ABthree entries, respectively.
+%
+The reason that there are considerably more \ABthree compounds in OQMD is due to the extensive compositional permutation of the binary alloys in a cubic \ABthree structure.
+%
 Within each stoichiometry, the structural classification was used to eliminate structurally redundant systems,
-\latin{i.e.} systems that share their stoichiometry, space-group, and Wyckoff positions. This process reduces the data set to \num{620} and \num{219} unique structures of \ABtwo and \ABthree for MP and \num{397} and \num{194} structurally unique \ABtwo and \ABthree OQMD entries. Combining the MP and OQMD data sets ultimately results in a dataset of \num{688} \ABtwo and \num{254} \ABthree structurally unique candidates.
+\latin{i.e.} systems that share their stoichiometry, space-group, and Wyckoff positions.
+%
+This process reduces the data set to \num{620} and \num{219} unique structures of \ABtwo and \ABthree for MP and \num{397} and \num{194} structurally unique \ABtwo and \ABthree OQMD entries.
+%
+Combining the MP and OQMD data sets ultimately results in a dataset of \num{688} \ABtwo and \num{254} \ABthree structurally unique candidates.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -227,9 +231,9 @@ Gaussian process machine learning regression models were picked due to their hig
 \end{equation}
 
 
-Here, isotropic refers to keeping the dimensionality of the kernel equal to one instead of an anisotropic kernel which was found to be difficult to optimize. 
+Here, isotropic refers to keeping the dimensionality of the kernel equal to one instead of an anisotropic kernel which was found to be difficult to optimize.
 %
-The first GP kernel was constructed with a length scale parameter of 1 while for the second kernel the length scale was reduced by a factor of ten (0.1). This was done with the aim of producing a model that is responsive to both long- and short-range features in the input space. Additionally, the noise parameter, $TEMP$, was set to a value of \num{0.025}, the scaling parameters, $s_1$, $s_2$ and $\alpha$ was set to 5.2. 
+The first GP kernel was constructed with a length scale parameter of 1 while for the second kernel the length scale was reduced by a factor of ten (0.1). This was done with the aim of producing a model that is responsive to both long- and short-range features in the input space. Additionally, the noise parameter, $TEMP$, was set to a value of \num{0.025}, the scaling parameters, $s_1$, $s_2$ and $\alpha$ was set to 5.2.
 %
 % TODO Double check that I said it correctly, might be minimizing the LML
 These initial value for the hyper-parameters of the GP kernel are then optimized during every training round,
