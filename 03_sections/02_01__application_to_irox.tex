@@ -47,7 +47,7 @@ as evidenced by the decreasing uncertainties when comparing the initial and latt
 %
 At the top of each subplot of Figure~\ref{fig:iro3_al}a the x-axis positioning of the ten most stable polymorphs is tracked.
 %
-Initially, these ten structures are randomly distributed across the entire candidate space due to the insufficiently trained GP model.
+Initially, these ten structures are randomly distributed across the entire candidate space due to the lack of training data for the GP model.
 %
 However, after only three generations (Figure~\ref{fig:iro3_al}a.ii) the GP model is sufficiently accurate to predict the most stable polymorphs as low energy structures.
 %
@@ -56,7 +56,7 @@ including the globally stable phase of \IrOthree, which
 was found on average in only 4 generations (averaged over 100 independent runs).
 %
 By the 14th generation of the AL,
-all but one of the top ten most stable structures has been acquired.
+\num{9/10} of the most stable structures were acquired.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -72,16 +72,16 @@ Seven of the most stable \IrOthree polymorphs discovered are shown in Figure~\re
 %
 All of the low energy \IrOthree structures are constructed from octahedrally coordinated units, with a variety of symmetries and packing modes.
 %
-The globally stable crystal structure consists of a six-atom primitive cell with a space group number of \num{167} (R$\overline{3}$c) in the rhombohedral crystal system, and features completely corner-sharing octahedra connectivity and is isomorphic to \ce{FeF_{3}}~\cite{Hepworth1957}.
+The globally stable crystal structure consists of a six-atom primitive cell with a space group number of \num{167} (R$\overline{3}$c) in the rhombohedral crystal system, has exclusively corner-sharing octahedra, and is isomorphic to \ce{FeF_{3}}~\cite{Hepworth1957}.
 %
 Herein, this structure will be referred to as \aIrOthree.
 %
-The second most stable polymorph (Figure~\ref{fig:iro3_al}b.ii) is structurally similar to \aIrOthree,
+The second most stable polymorph (Figure~\ref{fig:iro3_al}b.ii) is similar to \aIrOthree,
 only differing by the stacking of the alternating layers orthogonal to the \textbf{c} lattice vector.
 %
-This structure is labeled as $\alpha_{2}$-\ce{IrO_3} in Figure~\ref{fig:iro3_al}b and is only 2 meV/atom less stable than \aIrOthree, well within the margin of error for DFT.
+We label this structure $\alpha_{2}$-\ce{IrO_3} in Figure~\ref{fig:iro3_al}b and is only 2 meV/atom less stable than \aIrOthree, well within the margin of error for DFT.
 %
-The fourth most stable structure (\rIOthree) is notable for being the first in the series to have mixed edge- and corner-sharing octahedra and is structurally similar to \rIrOtwo.
+The fourth most stable structure (\rIrOthree) is notable for being the first in the series to have mixed edge- and corner-sharing octahedra and is structurally similar to rutile (\rIrOtwo).
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -105,7 +105,7 @@ This demonstrates over a factor of two improvement in performance compared to th
 The results for \IrOtwo (Figure \ref{fig:iro2_al}) show a higher discovery rate for GP-LCB compared to the random acquisition method,
 although the GP-LCB method ''saturated'' at \num{9/10} and was unable to acquire the last structure until the candidate space was exhausted.
 %
-It should be noted that the performance of GP-LCB relative to random is expected to increase with the size of the candidate space, since the probability of selecting stable structures is inversely proportional to the size of the candidate pool.
+The performance of GP-LCB relative to random is expected to increase with the size of the candidate space, since the probability of selecting stable structures is inversely proportional to the size of the candidate pool.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
