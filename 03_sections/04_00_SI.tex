@@ -43,7 +43,7 @@ which at this point had their original elemental composition from their database
 %
 Finally, the structures are isotropically expanded or contracted to accommodate the difference between the atomic radii of the original elements in the structure and the user defined elements.
 %
-This procedure of ``pre-optimization'' is an important because it generates reasonable initial geometries which would otherwise produce poor fingerprint representations and lead to a large degree of structural shift during the course of DFT optimization.s
+This procedure of ``pre-optimization'' is an important because it generates reasonable initial geometries which would otherwise produce poor fingerprint representations and lead to a large degree of structural shift during the course of DFT optimization.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -181,9 +181,12 @@ Combining the MP and OQMD data sets ultimately results in a dataset of \num{688}
 % | - PARAGRAPH BODY
 %
 Structures are featurized using the Voronoi tessellation method developed by Ward et al. \cite{Ward2017}.
+%
 Zero-variance features that don't encode for any information within a set of structures with constant composition and stoichiometry are removed before model training, reducing the number of feature columns from \num{271} to \num{101}.
 %
-The number of features are further reduced to \num{10} by performing a principal component analysis (PCA). The optimal number of principle components was found by computing the cross-validation MAE on the post-relaxation fingerprints as a function of PCA components (Figure \ref{fig:cv_anal}),
+The number of features are further reduced to \num{10} by performing a principal component analysis (PCA).
+%
+The optimal number of principle components was found by computing the cross-validation MAE on the post-relaxation fingerprints as a function of PCA components (Figure \ref{fig:cv_anal}),
 where it was found that 10 PCA components is sufficient to minimize the error.
 % TODO Add all of the feature engineering steps here
 % __|
@@ -201,7 +204,11 @@ where it was found that 10 PCA components is sufficient to minimize the error.
 \makebox[\textwidth][c]{\includegraphics
 {02_figures/SI_figures/00_mae_pca_plot__v0.pdf}}
 \caption{\label{fig:cv_anal}
-20-fold cross validation mean absolute error (MAE) as a function of the number of PCA components used for the GP-regression for \IrOthree. Only post-relaxation fingerprints were used for both training and testing to avoid issues with structural drift. All structural duplicates in the post-relaxation dataset were removed.
+20-fold cross validation mean absolute error (MAE) as a function of the number of PCA components used for the GP-regression for \IrOthree.
+%
+Only post-relaxation fingerprints were used for both training and testing to avoid issues with structural drift.
+%
+All structural duplicates in the post-relaxation dataset were removed.
 }
 \end{figure*}
 % __|
@@ -224,7 +231,11 @@ where it was found that 10 PCA components is sufficient to minimize the error.
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-Gaussian process machine learning regression models were picked due to their highly flexible fits and high performance in situations with small data sets. We utilized the Gaussian Process regression module as implemented in CatLearn.\cite{hansen2019atomistic,CatLearn_Repo} The Gaussian Process recipe we developed utilized two isotropic Gaussian kernels which differ only in the value of the initial length scale parameter, $l$: \textbf{Raul:isn't the scaling optimized for each of them, so that $s$ is also different? Also please add noise kernel in equation below.}
+Gaussian process machine learning regression models were picked due to their highly flexible fits and high performance in situations with small data sets.
+%
+We utilized the Gaussian Process regression module as implemented in CatLearn.\cite{hansen2019atomistic,CatLearn_Repo}
+%
+The Gaussian Process recipe we developed utilized two isotropic Gaussian kernels which differ only in the value of the initial length scale parameter, $l$: \textbf{Raul:isn't the scaling optimized for each of them, so that $s$ is also different? Also please add noise kernel in equation below.}
 
 \begin{equation}
     k(x,x') = s_1 exp \Bigl ( \frac{-|x-x'|^2}{2l_1^2}\Bigr) + s_2 exp\Bigl(\frac{-|x-x'|^2}{2l_2^2}\Bigr) + NOISE-kernel?
@@ -233,7 +244,9 @@ Gaussian process machine learning regression models were picked due to their hig
 
 Here, isotropic refers to keeping the dimensionality of the kernel equal to one instead of an anisotropic kernel which was found to be difficult to optimize.
 %
-The first GP kernel was constructed with a length scale parameter of 1 while for the second kernel the length scale was reduced by a factor of ten (0.1). This was done with the aim of producing a model that is responsive to both long- and short-range features in the input space. Additionally, the noise parameter, $TEMP$, was set to a value of \num{0.025}, the scaling parameters, $s_1$, $s_2$ and $\alpha$ was set to 5.2.
+The first GP kernel was constructed with a length scale parameter of 1 while for the second kernel the length scale was reduced by a factor of ten (0.1). This was done with the aim of producing a model that is responsive to both long- and short-range features in the input space.
+%
+Additionally, the noise parameter, $TEMP$, was set to a value of \num{0.025}, the scaling parameters, $s_1$, $s_2$ and $\alpha$ was set to 5.2.
 %
 % TODO Double check that I said it correctly, might be minimizing the LML
 These initial value for the hyper-parameters of the GP kernel are then optimized during every training round,
@@ -267,9 +280,15 @@ and is done by maximizing the log marginal likelihood of the model and training 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-All DFT calculations were performed using density functional theory (DFT) implemented via the Vienna \latin{ab-initio} simulation package (VASP) \cite{Kresse1995,Kresse1996_0,Kresse1996_1} and utilizing the PBE exchange-correlation functional\cite{Perdew1996}. A cutoff plane-wave cutoff of 600 eV was used, and calculations were spin-polarized. A variable k-point mesh was used such that a k-point density of at least \num{20} k-points per reciprocal space dimension.
+All DFT calculations were performed using density functional theory (DFT) implemented via the Vienna \latin{ab-initio} simulation package (VASP) \cite{Kresse1995,Kresse1996_0,Kresse1996_1} and utilizing the PBE exchange-correlation functional\cite{Perdew1996}.
 %
-All bulk systems were run through the following computational recipe to converge the equilibrium structure, with \num{3} distinct phases. structures are only advanced to the next phase when the previous phase completes without error.
+A cutoff plane-wave cutoff of 600 eV was used, and calculations were spin-polarized.
+%
+A variable k-point mesh was used such that a k-point density of at least \num{20} k-points per reciprocal space dimension.
+%
+All bulk systems were run through the following computational recipe to converge the equilibrium structure, with \num{3} distinct phases.
+%
+structures are only advanced to the next phase when the previous phase completes without error.
 \\
 1. An ISIF \num{7} calculation to optimize only the volume (initial volume of cell may be really off).
 \\
