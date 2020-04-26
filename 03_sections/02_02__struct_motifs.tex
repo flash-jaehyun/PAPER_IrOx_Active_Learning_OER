@@ -58,21 +58,17 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-As a next step we assess the stability as well as the structural variety of the DFT optimized structures, consisting of 384 and 191 unique \IrOtwo and \IrOthree polymorphs.
+As a next step we assess the stability as well as the structural variety of the DFT optimized structures, consisting of \num{384} and \num{191} unique \IrOtwo and \IrOthree polymorphs.
 %
 Figure~\ref{fig:E_vs_V}a,b shows the DFT computed \DHf for \IrOtwo and \IrOthree plotted against the inverse density,
-an important quantity that is sensitive to crystal porosity and connectivity.
+a quantity that is sensitive to crystal porosity and connectivity.
 %
 To obtain a physically meaningful cutoff for \DHf, we computed the metastability limits for \IrOtwo and \IrOthree relative to their amorphous phases using the methodology of Persson \latin{et. al.}~\cite{Aykol2018}.
 %
 The metastability limit for both \IrOtwo and \IrOthree were computed to occur at a \DHf of \num{-0.34} eV/atom and are displayed as horizontal lines in Figure~\ref{fig:E_vs_V}a,b.
 %
 There are \num{196} and \num{75} polymorphs for \IrOtwo and \IrOthree, respectively, that are within the meta-stability limit, and can therefore, in principle be synthesized.
-%
-% These last two sentences can be removed
-%These values are almost identical, possibly indicating that the energy of the amorphous phases are insensitive to the exact stoichiometry.
-%
-%Measuring the metastability relative to the hull for each stoichiometry yields a metastability window of 0.5 and 0.3 eV/atom for \IrOtwo and \IrOthree, respectively.
+
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -91,7 +87,7 @@ There are \num{196} and \num{75} polymorphs for \IrOtwo and \IrOthree, respectiv
 %
 Insets in the low energy region for (a) and (b) are shown.
 %
-The color bar represents the average coordination number between Ir and O, with the most common, 6 (octahedra) and 4 (tetrahedral) coordinations, highlighted.
+The color bar represents the average coordination number between Ir and O, with the most common, \num{6} (octahedra) and \num{4} (tetrahedral) coordinations, highlighted.
 %
 For \IrOtwo (c) and \IrOthree (d) we highlight the structures of select polymorphs.
 }
@@ -121,10 +117,6 @@ However, for \IrOthree there is a comparatively weaker relationship between the 
 % COMBAK Explain this point better, this has to do with the oxidation state, coordination preservation rules that I've been playing around with
 %
 %This property is likely due to the fact that \IrOthree's oxidation state can more can form readily form layered or porous structures.
-%
-% \textbf{unclear what you mean here, vdw is attractive so shouldn't it just make them more stable?}
-%
-%Although formation energies for highly porous systems tend to be over stabilized at the DFT+GGA level of theory because of the improper description of van der Walls interactions, the magnitude of these errors \textbf{don't severely impact the results or something}
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -141,7 +133,7 @@ All structures have been classified with respect to the Ir-O coordination enviro
 by using the chemEnv package, developed by Waroquiers et. al. \cite{Waroquiers2017} as implemented in the Pymatgen software \cite{Ong2013}.
 %
 Although the dataset was found to contain a large range of coordination environments with a coordination number ranging from 2 to 10,
-structures with a coordination number of 6 (octahedral) or 4 (tetrahedral) were found to be most prevalent and have been highlighted in blue and red respectively in Figure~\ref{fig:E_vs_V}a,b.
+structures with a coordination number of \num{6} (octahedral) or \num{4} (tetrahedral) were found to be most prevalent and have been highlighted in blue and red respectively in Figure~\ref{fig:E_vs_V}a,b.
 %
 For \IrOtwo and \IrOthree the vast majority of the most stable (within \num{0.1} eV/atom) structures adopt an octahedral coordination environment,
 a common coordination motif found to be favorable in many other transition metal oxides.\cite{Waroquiers2017}
@@ -154,7 +146,7 @@ can furthermore be used to classify the structures,
 which typically have a combination of the two.
 %
 % Look into this deeper, there is probably a difference in fraction of mixed corner+edge between IrO2 and IrO3
-Of the top ten \IrOtwo and \IrOthree structures, 9/10 of \IrOtwo and 5/10 of \IrOthree have a mixed corner- and edge-sharing octahedral packing.
+Of the top ten \IrOtwo and \IrOthree structures, \num{9/10} of \IrOtwo and \num{5/10} of \IrOthree have a mixed corner- and edge-sharing octahedral packing.
 %
 This demonstrates that \IrOtwo prefers to form edge-sharing octahedra as a result of having to share more oxygens to maintain its stoichiometry.
 %
@@ -175,7 +167,8 @@ For \IrOtwo, we found the rutile structure to be the most stable,
 in agreement with experimental and known crystallographic data.
 %
 % TODO Put in references for other pyrite formation enthalpies and confirm that these references cover experimental DHf values
-Additionally, the experimentally synthesized high-pressure pyrite phase of \IrOtwo was found in our dataset and has a \DHf \mytilde\num{0.1} eV/atom greater than rutile, in agreement with theoretical and experimental calorimetric data.~\cite{bolzan1997structural, shirako2014synthesis}
+Additionally, the experimentally synthesized high-pressure pyrite phase of \IrOtwo was found in our dataset and has a \DHf \mytilde\num{0.1} eV/atom greater than rutile,
+in agreement with theoretical and experimental calorimetric data.~\cite{bolzan1997structural, shirako2014synthesis}
 %
 % where only the rutile and pyrite phases are reported to have been synthesized \cite{bolzan1997structural, shirako2014synthesis}, the pyrite phase also predicted to be metastable in this work.
 %
