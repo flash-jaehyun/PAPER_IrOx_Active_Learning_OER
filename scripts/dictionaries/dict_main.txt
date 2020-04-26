@@ -1,4 +1,27 @@
 personal_ws-1.1 en 34
+chemistries
+overbind
+compositional
+Stoich
+rhombohedral
+brookite
+overbinding
+calorimetric
+calorimetry
+ligand
+octahedrally
+microkinetic
+benchmarking
+perovskite
+Perovskite
+datasets
+electrochemically
+volcanos
+uncharacterized
+deintercalation
+featurization
+anisotropic
+adsorbate
 parallelization
 synthesizable
 generalizable

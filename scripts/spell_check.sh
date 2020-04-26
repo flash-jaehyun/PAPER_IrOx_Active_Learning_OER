@@ -14,7 +14,10 @@ declare -a StringArray=(
     "../03_sections/01_introduction.tex"
     "../03_sections/02_00__al_method.tex"
     "../03_sections/02_01__application_to_irox.tex"
-    "../03_sections/02_02__struct_motiffs.tex"
+
+    # "../03_sections/02_02__struct_motiffs.tex"
+    "../03_sections/02_02__struct_motifs.tex"
+
     "../03_sections/02_03__echem_oer.tex"
     "../03_sections/03_conclusions.tex"
     "../03_sections/04_00_SI.tex"
@@ -43,11 +46,12 @@ declare -a StringArray=(
 main_dict_file="./dictionaries/dict_main.txt"
 names_dict_file="./dictionaries/dict_names.txt"
 acro_dict_file="./dictionaries/dict_acronyms.txt"
+misc_dict_file="./dictionaries/dict_misc.txt"
 #__|
 
 #| - Flags
 tmp0="--personal=$main_dict_file --add-extra-dicts=$names_dict_file"
-tmp1=" --add-extra-dicts=$acro_dict_file -t -c"
+tmp1=" --add-extra-dicts=$acro_dict_file --add-extra-dicts=$misc_dict_file -t -c"
 flags=$tmp0$tmp1
 #__|
 
