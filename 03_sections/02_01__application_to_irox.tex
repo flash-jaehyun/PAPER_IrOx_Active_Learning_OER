@@ -80,7 +80,7 @@ Herein, this structure will be referred to as \aIrOthree.
 The second most stable polymorph (Figure~\ref{fig:iro3_al}b.ii) is similar to \aIrOthree,
 only differing by the stacking of the alternating layers orthogonal to the \textbf{c} lattice vector.
 %
-We label this structure $\alpha_{2}$-\ce{IrO_3} in Figure~\ref{fig:iro3_al}b and is only 2 meV/atom less stable than \aIrOthree, well within the margin of error for DFT.
+We label this structure $\alpha_{2}$-\ce{IrO_3} in Figure~\ref{fig:iro3_al}b and it is only 2 meV/atom less stable than \aIrOthree, well within the margin of error for DFT.
 %
 The fourth most stable structure (\rIrOthree) is notable for being the first in the series to have mixed edge- and corner-sharing octahedra and is structurally similar to rutile (\rIrOtwo).
 % __|
@@ -101,10 +101,10 @@ The results of Figure~\ref{fig:iro3_al}c are averaged over \num{100} independent
 %
 Overall, the GP-LCB runs outperform the random acquisition runs, with on average only \num{100} DFT calculations needed to discover the ten most stable structures.
 %
-This demonstrates over a factor of two improvement in performance compared to the random acquisition, which does not acquire the most stable structures until all candidates are computed.
+This demonstrates over a factor of two improvement in performance compared to random acquisition, which does not acquire the most stable structures until all candidates are computed.
 %
 The results for \IrOtwo (Figure \ref{fig:iro2_al}) show a higher discovery rate for GP-LCB compared to the random acquisition method,
-although the GP-LCB method ''saturated'' at \num{9/10} and was unable to acquire the last structure until the candidate space was exhausted.
+although the GP-LCB method ``saturated'' at \num{9/10} and was unable to acquire the last structure until the candidate space was exhausted.
 %
 The performance of GP-LCB relative to random is expected to increase with the size of the candidate space, since the probability of selecting stable structures is inversely proportional to the size of the candidate pool.
 % __|
@@ -160,7 +160,7 @@ We next evaluate the prediction accuracy of the \IrOtwo and \IrOthree GP regress
 %
 This dataset corresponds to the final generation of the AL algorithm in which all structures have been acquired.
 %
-Figure~\ref{fig:parity} plots the GP model predicted \DHf against the DFT-computed values for two special cases.
+Figure~\ref{fig:parity} plots the GP model predicted \DHf against the DFT-computed values for two cases.
 %
 Case 1) shows the predictions on the structural fingerprints prior to DFT-optimization (grey), as is done in the regular operation of the algorithm.
 %
@@ -181,19 +181,20 @@ In contrast, the same GP model does comparatively much better at predicting the 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-The apparent discrepancy between the predictive capability on structures fingerprinted before and after relaxation is intriguing in terms of the general utility of AL in DFT datasets,
-and has implications on the effectiveness of our approach.
+%The apparent discrepancy between the predictive capability on structures fingerprinted before and after relaxation is intriguing in terms of the general utility of AL in DFT datasets,
+%and has implications on the effectiveness of our approach.
 %
-Additionally, the drastic decrease in prediction error is not surprising,
+%Additionally, 
+The drastic decrease in prediction error is not surprising,
 since the post-DFT fingerprints directly correspond to the target \DHf values,
 and is primarily due to the large degree of structural drift that occurs during DFT relaxation,
 the extent of which is not known \latin{a priori}.
 %
-In fact, we observe that most of the predictions from pre-DFT features over-predict the formation energy (i.e. less stable than their DFT analogous) and lie above the x=y line.
+In fact, we observe that most of the predictions from pre-DFT features over-predict the formation energy (i.e. less stable than their DFT analogous) and lie above the parity line.
 %
 This behavior is consistent with what one would expect thermodynamically:
 structures that are initialized in high energy configurations will  naturally reconfigure into a more stable local configuration,
-resulting in a large discrepancy between the pre-DFT predicted and final formation energies.
+resulting in discrepancies between the pre-DFT predicted and final formation energies.
 %
 In practice, the approach still performs notably well by discovering 7 out of the 10 most stable structures with only 35 DFT calculations, because (i) the energy tends to decrease post-DFT relaxation,
 meaning favored acquisitions are likely to perform even better,
