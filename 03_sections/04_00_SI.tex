@@ -68,13 +68,44 @@ although the number of unique crystal polymorphs is not expected to have increas
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - TEMP
+% | - Ankit's paragraph on details on structural classification scheme
 %
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-The structural classification scheme of Jain \latin{et al.} was used assign the crystal prototype, consisting of standardized space group and Wyckoff positions, as well as the element-nonspecific stoichiometry of each structure (\num{497054} in total). This prototype designation can serve as a structural fingerprint and has successfully been applied towards the prediction of formation energies of inorganic compounds \cite{Jain2018}.
+The structural classification scheme of Jain \latin{et al.}~\cite{Jain2018} was used assign the crystal prototype,
+consisting of standardized space group and Wyckoff positions,
+as well as the element-nonspecific stoichiometry of each structure (\num{497054} in total).
+%
+This prototype designation can serve as a structural fingerprint and has successfully been applied towards the prediction of formation energies of inorganic compounds \cite{Jain2018}.
+%
+We identified unique structure types by grouping materials according to participating Wyckoff sites.
+%
+The Wyckoff sites of crystallographic space groups are a collection of fractional coordinates within the unit cell where atoms are allowed to sit in order to satisfy the symmetry of the underlying space group.
+%
+The 'standard' setting of materials unit cell are identified and atomic positions are mapped to Wyckoff sites using the openly available, crystal symmetry library Spglib~\cite{spglib}.
+%
+The structures belonging to same crystallographic space group and having the same participating Wyckoff sites have identical crystal symmetry and are grouped together.
+%
+These groups are referred to as structure-type in this work.
+%
+Note that the reported participating Wyckoff sites by Spglib are sometimes different for the same crystal due to crystal translation/rotation.
+%
+We mapped all such related Wyckoff sites to the same structure-type by looping through all allowed crystal symmetry operations of the crystal.
+%
+Further mathematical details of these operations are available in TEMP.
+% ; Ref []
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - TEMP
+%
+% __|
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
 %
 % COMBAK Revise if Ankit's scheme becomes it's own section
 % If it's not ready now, let's not include it.
