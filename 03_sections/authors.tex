@@ -1,13 +1,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Authors List %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
+% \alsoaffiliation{lab 2}
+% Chris, Ankit, Jose, and maybe Thomas should have dual affil.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-% | - Raul Flores
-\author{Raul A. Flores}
-\affiliation[SUNCAT]{
+%| - Affiliations
+\def \SUNCATxxSTANFORDxxaffil {
   SUNCAT Center for Interface Science and Catalysis,
   Department of Chemical Engineering,
   Stanford University,
@@ -15,108 +14,109 @@
   California,
   USA
   }
-% \email{flores12@stanford.edu}
-% __|
 
-% | - Christopher Paolucci
-\author{Christopher Paolucci}
-\affiliation[UVA]
-{
-  Department of Chemical Engineering,
-  University of Virginia,
-  Charlottesville,
-  Virginia 22903,
-  United States
-  }
-% __|
-
-% | - Kirsten  Winther
-\author{Kirsten T. Winther}
-\affiliation[SUNCAT]{
-  SUNCAT Center for Interface Science and Catalysis,
-  Department of Chemical Engineering,
-  Stanford University,
-  Stanford 94305,
-  California,
-  USA
-  }
-% __|
-
-% | - Ankit Jain
-\author{Ankit Jain}
-\affiliation[IIT]
-{
-  Department of Mechanical Engineering,
-  Indian Institute of Technology Bombay,
-  Powai,
-  India
-  }
-% __|
-
-% | - Jose Antonio Garrido Torres
-\author{Jose Antonio Garrido Torres}
-\affiliation[SUNCAT]{
-  SUNCAT Center for Interface Science and Catalysis,
-  Department of Chemical Engineering,
-  Stanford University,
-  Stanford 94305,
-  California,
-  USA
-  }
-% __|
-
-% | - Muratahan Aykol
-\author{Muratahan Aykol}
-\affiliation[TRI]
-{
-  Toyota Research Institute,
-  Los Altos,
-  CA 94022,
-  USA
-  }
-% __|
-
-% | - Joseph Montoya
-\author{Joseph Montoya}
-\affiliation[TRI]
-{
-  Toyota Research Institute,
-  Los Altos,
-  CA 94022,
-  USA
-  }
-% __|
-
-% | - Jens Norskov
-\author{Jens K. N{\o}rskov}
-\affiliation[DTU]
-{
-  Department of Physics,
-  Technical University of Denmark,
-  2800 Kongens Lyngby,
-  Denmark
-  }
-% __|
-
-% | - Michal Bajdich
-\author{Michal Bajdich}
-\affiliation[SLAC]{
+\def \SUNCATxxSLACxxaffil {
   SUNCAT Center for Interface Science and Catalysis,
   SLAC National Accelerator Laboratory,
   Menlo Park,
   CA 94025,
   USA
   }
-\email{bajdich@slac.stanford.edu}
-% __|
 
-% | - Thomas Bligaard
-\author{Thomas Bligaard}
-\affiliation[DTU]{
+\def \UVAxxaffil {
+  Department of Chemical Engineering,
+  University of Virginia,
+  Charlottesville,
+  Virginia 22903,
+  United States
+  }
+
+\def \TRIxxaffil {
+  Toyota Research Institute,
+  Los Altos,
+  CA 94022,
+  USA
+  }
+
+\def \ITTxxaffil {
+  Department of Mechanical Engineering,
+  Indian Institute of Technology Bombay,
+  Powai,
+  India
+  }
+
+\def \DTUxxPHYSICSxxaffil {
+  Department of Physics,
+  Technical University of Denmark,
+  2800 Kongens Lyngby,
+  Denmark
+  }
+
+\def \DTUxxECSxxaffil {
   Department of Energy Conversion and Storage,
   Technical University of Denmark,
   2800 Kongens Lyngby,
   Denmark
   }
+
+%__|
+
+
+% | - Raul Flores
+\author{Raul A. Flores}
+\affiliation[SUNCAT]{\SUNCATxxSTANFORDxxaffil}
+\alsoaffiliation{\SUNCATxxSLACxxaffil}
+% __|
+
+% | - Christopher Paolucci
+\author{Christopher Paolucci}
+\affiliation[UVA]{\UVAxxaffil}
+\alsoaffiliation{\SUNCATxxSTANFORDxxaffil}
+\alsoaffiliation{\SUNCATxxSLACxxaffil}
+% __|
+
+% | - Kirsten  Winther
+\author{Kirsten T. Winther}
+\affiliation[SUNCAT]{\SUNCATxxSTANFORDxxaffil}
+\alsoaffiliation{\SUNCATxxSLACxxaffil}
+% __|
+
+% | - Ankit Jain
+\author{Ankit Jain}
+\affiliation[IIT]{\ITTxxaffil}
+\alsoaffiliation{\SUNCATxxSTANFORDxxaffil}
+\alsoaffiliation{\SUNCATxxSLACxxaffil}
+% __|
+
+% | - Jose Antonio Garrido Torres
+\author{Jose Antonio Garrido Torres}
+\affiliation[SUNCAT]{\SUNCATxxSTANFORDxxaffil}
+\alsoaffiliation{\SUNCATxxSLACxxaffil}
+% __|
+
+% | - Muratahan Aykol
+\author{Muratahan Aykol}
+\affiliation[TRI]{\TRIxxaffil}
+% __|
+
+% | - Joseph Montoya
+\author{Joseph Montoya}
+\affiliation[TRI]{\TRIxxaffil}
+% __|
+
+% | - Jens Norskov
+\author{Jens K. N{\o}rskov}
+\affiliation[DTUxxPhysics]{\DTUxxPHYSICSxxaffil}
+% __|
+
+% | - Michal Bajdich
+\author{Michal Bajdich}
+\affiliation[SLAC]{\SUNCATxxSLACxxaffil}
+\email{bajdich@slac.stanford.edu}
+% __|
+
+% | - Thomas Bligaard
+\author{Thomas Bligaard}
+\affiliation[DTUxxECS]{\DTUxxECSxxaffil}
 \email{tbli@dtu.dk}
 % __|
