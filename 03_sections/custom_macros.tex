@@ -1,20 +1,20 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Why do I include at the end of all of these macros?
+% Latex Macros
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Chris commenting command
 \newcommand{\chris}[1]{\textcolor{red}{#1}}
 \newcommand{\comment}[1]{\textcolor{red}{\textbf{#1}}}
 
-% \mytilde
-\newcommand{\mytilde}{\raise.17ex\hbox{$\scriptstyle\mathtt{\sim}$}}
 
-
+% #########################################################
+% Chemical formulas #######################################
 % IrOx, IrO3, IrO2
 \def \IrOx {IrO\textsubscript{x}\xspace}
 \def \IrOthree {IrO\textsubscript{3}\xspace}
 \def \IrOtwo {IrO\textsubscript{2}\xspace}
 
+% RhO2
 \def \RhOtwo {RhO\textsubscript{2}\xspace}
 
 % rutile-IrO2, alpha-IrO3, rutile-IrO3, beta-IrO3
@@ -23,18 +23,20 @@
 \def \rIrOthree {R-\ce{IrO_3}\xspace}
 \def \bIrOthree {$\beta$-\ce{IrO_3}\xspace}
 
-\newcommand{\angstrom}{\textup{\AA}}
-
 % AB2 and AB3 (ABO3 too)
 \def \ABtwo {AB\textsubscript{2}\xspace}
 \def \ABthree {AB\textsubscript{3}\xspace}
 \def \ABOthree {AB\textsubscript{3}\xspace}
 
-% Adsorption energies
+% #########################################################
+% Adsorption energies #####################################
+
+% ΔE_OH, ΔE_O, ΔE_OOH
 \def \DEOH {$\Delta$E\textsubscript{OH}\xspace}
 \def \DEO {$\Delta$E\textsubscript{O}\xspace}
 \def \DEOOH {$\Delta$E\textsubscript{OOH}\xspace}
 
+% ΔG_OH, ΔG_O, ΔG_OOH
 \def \DGOH {$\Delta$G\textsubscript{OH}\xspace}
 \def \DGO {$\Delta$G\textsubscript{O}\xspace}
 \def \DGOOH {$\Delta$G\textsubscript{OOH}\xspace}
@@ -42,10 +44,18 @@
 % ΔG_O-ΔG_OH
 \def \DGOmOH {$\Delta$G\textsubscript{O}-$\Delta$G\textsubscript{OH}}
 
-% Enthalpy of formation
+
+% #########################################################
+% Enthalpy of formation ΔH_f ##############################
 \def \DHf {$\Delta$H\textsubscript{f}\xspace}
 
-% V vs RHE notation
-% \def \VRHE {V vs. RHE\xspace}
+
+% #########################################################
+% V vs RHE notation #######################################
 \def \VRHE {$V\textsubscript{RHE}$\xspace}
- % (> \num{1.23}{\volt vs. RHE})
+
+% Angstrom
+\newcommand{\angstrom}{\textup{\AA}}
+
+% Tilde ~
+\newcommand{\mytilde}{\raise.17ex\hbox{$\scriptstyle\mathtt{\sim}$}}
