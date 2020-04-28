@@ -7,7 +7,6 @@
 # #########################################################
 
 #| - Help message
-
 help_message () {
   echo "***********************************************************"
   echo "Usage:"
@@ -30,15 +29,6 @@ if [ "$1" == "-h" ] ; then
     exit 0
 fi
 #__|
-
-
-# CWD should always be root git dir
-cd "$(dirname "$0")"
-cd ..
-
-# So that lines aren't auto-lined breaked in the output
-export max_print_line=1048576
-# export max_print_line=80
 
 #| - Bash Functions
 print_stars () {
@@ -77,11 +67,21 @@ full_scheme () {
 }
 #__|
 
+# #########################################################
+# CWD should always be root git dir
+cd "$(dirname "$0")"
+cd ..
+
+# So that lines aren't auto-lined breaked in the output
+export max_print_line=1048576
+
+
+#| - Processing arguments
 echo "Printing arguments"
 echo $1
 echo $2
 
-#| - Processing arguments
+
 if [ "$1" == "00_main_manuscript.tex" ]; then
   tex_file="00_main_manuscript"
 elif [ "$1" == "00_SI.tex" ]; then
@@ -126,8 +126,7 @@ elif [ "$1" == "separate_full" ]; then
   full_scheme 00_main_manuscript
   full_scheme 00_SI
 
-  echo $PWD
-  ./scripts/clean_tex_files.sh
+  # ./scripts/clean_tex_files.sh
 
   print_stars
   #__|
