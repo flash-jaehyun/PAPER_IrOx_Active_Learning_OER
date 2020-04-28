@@ -36,10 +36,9 @@
 
 % #########################################################
 % | - MAIN DOCUMENT ***************************************
-% - 00 | Abstract *****************************************
 
-% Keep abstract on its own page
-\newpage
+% - 00 | Abstract *****************************************
+\newpage  % Keep abstract on its own page
 \begin{abstract}
 \input{03_sections/00_abstract}
 \end{abstract}
@@ -82,15 +81,15 @@
 
 
 % | - Supporting Information *****************************
-% \clearpage
-% \renewcommand{\thefigure}{S\arabic{figure}}
-% \setcounter{figure}{0}
-% \renewcommand{\thetable}{S\arabic{table}}
-% \setcounter{table}{0}
-%
-% \begin{suppinfo}
-% \input{03_sections/04_00_SI}
-% \end{suppinfo}
+\clearpage
+\renewcommand{\thefigure}{S\arabic{figure}}
+\setcounter{figure}{0}
+\renewcommand{\thetable}{S\arabic{table}}
+\setcounter{table}{0}
+
+\begin{suppinfo}
+\input{03_sections/04_00_SI}
+\end{suppinfo}
 % __|
 
 
