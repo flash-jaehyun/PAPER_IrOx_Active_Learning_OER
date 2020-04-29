@@ -570,49 +570,30 @@ Red lines indicate the specific runs used for Figures \ref{fig:iro3_al} and Figu
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Amorphous Phase Synthesizability Limit and Amorphous Limit}
+\subsection{Amorphous limit as a thermodynamic upperbound for synthesizability of Ir-O polymorphs}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Amorphous Phase Synthesizability Limit and Amorphous Limit
+% | - Amorphous limit
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Motivation/Intro to Amorphous Limit
-%
-% __|
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - PARAGRAPH BODY
-To provide a physically motivated energy cut-off for the synthesizability of our polymorphs we employed the procedure from Aykol \latin{et al} for determining the thermodynamic metastability cutoff for crystalline materials based on the amorphous phase limit (amorphous limit).~\cite{Aykol2018}
-%
-We refer the reader to the full text for a complete explaination of the method,
-but briefly, the method uses the formation enthalpy of the most stable amorphous phase as a hard upper limit on the energy of any crystalline polymorph.
-%
-To obtain the minimum reference energy for the amorphous phase it is necessary to variationally sample low energy amorphous phases,
-which was done by sampling low energy configurations from molecular dynamics simulations.
-% __|
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Discussion of Out Data
+% | - TEMP
 %
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-This procedure was carried out for both \IrOtwo and \IrOthree (see Table \ref{table:amorph_limit}) and resulted in a amorphous limit (relative to each stoichiometries hull) of
-\SI{0.506}{\electronvolt}/atom and \SI{0.307}{\electronvolt}/atom,
-respectively.
+To provide a physically motivated energy cut-off for the synthesizability of the polymorphs we identify, we employed the procedure from Aykol et al. for determining the amorphous limit.~\cite{Aykol2018}
 %
-In terms of the formation enthalpy energy scale,
-these values convert to
-\SI{-0.33}{\electronvolt}/atom and \SI{-0.34}{\electronvolt}/atom
-for \IrOtwo and \IrOthree, respectively.
+In this method, several amorphous configurations are sampled to find a relatively low energy configuration to use as a reasonble approximation to the amorphous limit.
 %
-It should be stressed, that these values are upper bounds for synthesizability,
-and are based on the argument that no ordered crystal structure can exist if its \DHf is less stable than a nearby non-ordered region in phase space.
+We followed the computational procedure used by Aykol et al. to generate such sample amorphous phases for \IrOtwo and \IrOthree
+(each amorphous phase comprising around 100 atoms),
+and obtained 0.51 eV/atom and 0.31 eV/atom, respectively
+(See Table \ref{table:amorph_limit}) for total and formation energies of sampled configurations).
 %
-As such, the amorphous limit is stringint boundary on the allowed formation enthalpies of solids but it does not necessarily imply that all structures witin this limit can be physically realized.
+It should be stressed that amorphous limits provide an stringent energetic upper-bound for the synthesis of a crystalline polymorph at a given composition (i.e. polymorphs above the limit are inaccessible),
+but they do not imply that polymorphs below the limits are necessarily physically realizable.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
