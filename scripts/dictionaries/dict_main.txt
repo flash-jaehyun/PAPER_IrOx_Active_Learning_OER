@@ -1,4 +1,8 @@
 personal_ws-1.1 en 34
+pseudopotentials
+pseudopotential
+convoluting
+monolayer
 chemistries
 overbind
 compositional
