@@ -26,11 +26,9 @@ Here we describe the density functional theory (DFT) methodology used for both t
 All calculations were performed using DFT at the generalized gradient approximation (GGA) level of theory as implemented in the Vienna \latin{ab-initio} simulation package (VASP)~\cite{Kresse1995,Kresse1996_0,Kresse1996_1},
 and utilizing the PBE exchange-correlation functional~\cite{Perdew1996}.
 %
-% TODO Cite PAW paper
-All calculations were performed with the inclusion of spin-polarization and utilized the projector-augmented wave pseudopotentials (PAW) TEMP.
+All calculations were performed with the inclusion of spin-polarization and utilized the projector-augmented wave pseudopotentials (PAW)~\cite{Blochl1994}.
 %
-% TODO Cite ASE
-Calculations were carried out through the atomic simulation environment (ASE) python interface TEMP.
+Calculations were carried out through the atomic simulation environment (ASE) python interface.~\cite{HjorthLarsen2017}
 %
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -173,8 +171,7 @@ Note that the reported participating Wyckoff sites by Spglib are sometimes diffe
 %
 We mapped all such related Wyckoff sites to the same structure-type by looping through all allowed crystal symmetry operations of the crystal.
 %
-Further mathematical details of these operations are available in TEMP.
-% ; Ref []
+Further mathematical details of these operations are available in Jain \latin{et al.}~\cite{Jain2018}.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -699,7 +696,7 @@ Surface energy Pourbaix plots were constructed by calculating the surface energy
 Surface energy calculations were performed for various facets for slabs of increasing thickness.
 %
 % TODO Insert reference for surface E calcs
-The bulk energy was then extracted by fitting the total energy of the slabs against the number of layers as explained in TEMP.
+The bulk energy was then extracted by fitting the total energy of the slabs against the number of layers as explained in Fiorentini \latin{et. al}~\cite{Boettger1998}.
 %
 This was done to avoid common issues of surface energy divergence associated with using a separate bulk energy calculation.
 %
