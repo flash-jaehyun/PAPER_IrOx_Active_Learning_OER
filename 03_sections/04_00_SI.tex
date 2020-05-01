@@ -7,7 +7,7 @@
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{DFT Computational Details}  % %%%%%%%%%%%%%%%%%
+\subsection{Density functional thoery (DFT) computational details}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Force convergence was 1e-3 for final final bulk opt, and 0.02 for slabs
 % Energy SCF convergence was 1e-6 for bulk opt and 1e-5 for slabs
@@ -26,11 +26,9 @@ Here we describe the density functional theory (DFT) methodology used for both t
 All calculations were performed using DFT at the generalized gradient approximation (GGA) level of theory as implemented in the Vienna \latin{ab-initio} simulation package (VASP)~\cite{Kresse1995,Kresse1996_0,Kresse1996_1},
 and utilizing the PBE exchange-correlation functional~\cite{Perdew1996}.
 %
-% TODO Cite PAW paper
-All calculations were performed with the inclusion of spin-polarization and utilized the projector-augmented wave pseudopotentials (PAW) TEMP.
+All calculations were performed with the inclusion of spin-polarization and utilized the projector-augmented wave pseudopotentials (PAW)~\cite{Blochl1994}.
 %
-% TODO Cite ASE
-Calculations were carried out through the atomic simulation environment (ASE) python interface TEMP.
+Calculations were carried out through the atomic simulation environment (ASE) python interface.~\cite{HjorthLarsen2017}
 %
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -77,8 +75,7 @@ A 4x4x1 k-point mesh with $\Gamma$-centered Monkshort-packing~\cite{Monkhorst197
 %
 The plane-wave energy cutoff was \SI{500}{\electronvolt}.
 %
-% COMBAK Figure out how much spacing was used for all slabs
-All slab calculations maintained a vacuum spacing in between TEMP and \SI{15}{\angstrom}.
+All slab calculations maintained a vacuum spacing of approximately \SI{15}{\angstrom} on average.
 %
 Dipole corrections were imposed on all non-symmetric slabs to counteract spurious dipole interactions between the periodic cells.~\cite{Neugebauer1992}
 %
@@ -94,7 +91,7 @@ The simulation stop criteria used was that all atoms must satisfy a maximum forc
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Generation of Structural Candidates}  % %%%%%%%
+\subsection{Structural candidate generation methodology}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -129,7 +126,7 @@ This procedure of ``pre-optimization'' is an important because it generates reas
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - TEMP
+% | -
 % Data-mining OQMD and MP
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -158,7 +155,7 @@ The structural classification scheme of Jain \latin{et al.}~\cite{Jain2018} was 
 consisting of standardized space group and Wyckoff positions,
 as well as the element-nonspecific stoichiometry of each structure (\num{497054} in total).
 %
-This prototype designation can serve as a structural fingerprint and has successfully been applied towards the prediction of formation energies of inorganic compounds \cite{Jain2018}.
+This prototype designation can serve as a structural fingerprint and has successfully been applied towards the prediction of formation energies of inorganic compounds~\cite{Jain2018}.
 %
 We identified unique structure types by grouping materials according to participating Wyckoff sites.
 %
@@ -174,22 +171,17 @@ Note that the reported participating Wyckoff sites by Spglib are sometimes diffe
 %
 We mapped all such related Wyckoff sites to the same structure-type by looping through all allowed crystal symmetry operations of the crystal.
 %
-Further mathematical details of these operations are available in TEMP.
-% ; Ref []
+Further mathematical details of these operations are available in Jain \latin{et al.}~\cite{Jain2018}.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - TEMP
+% | -
 %
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
-%
-% COMBAK Revise if Ankit's scheme becomes it's own section
-% If it's not ready now, let's not include it.
-%See section TEMP for more details on the symmetry based structural classification scheme.
 %
 Once classified, we selected all entries with the desired stoichiometry of \ABtwo and \ABthree,
 for which MP has \num{2424} and \num{2341} \ABtwo and \ABthree entries, respectively,
@@ -277,7 +269,7 @@ Combining the MP and OQMD data sets ultimately results in a dataset of \num{688}
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Structure Featurization and Feature Engineering}
+\subsection{Structure featurization and feature engineering}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -312,7 +304,7 @@ This included removing highly skewed data points, removing 0-variance features, 
 %
 We expect that most of the remaining features are not linearly independent so we next chose to employ an additional feature reduction step by performing a principle-component analysis (PCA).
 %
-This allowed us to reduce the number of features to \num{10} while still capturing TEMP of the total variance and minimizing the cross-validated prediction MAE (Figure \ref{fig:cv_anal}).
+This allowed us to reduce the number of features to \num{10} while still capturing 99\% of the total variance and minimizing the cross-validated prediction MAE (Figure \ref{fig:cv_anal}).
 %
 This step is also crucial in reducing the computational expense of running the Gaussian Process training procedure.
 % __|
@@ -341,7 +333,7 @@ All structural duplicates in the post-relaxation dataset were removed.
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Gaussian Process Regression and Kernel Selection}  % %%%%%%%%%
+\subsection{Gaussian process regression and kernel selection}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Relevant details about the ML Gaussian process here
 %
@@ -349,7 +341,7 @@ All structural duplicates in the post-relaxation dataset were removed.
 % | - Gaussian Process Regression and Kernel Selection
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - TEMP
+% | -
 %
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -402,7 +394,7 @@ and is done by maximizing the log marginal likelihood of the model and training 
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Active Learning Results For \IrOtwo} %
+\subsection{Active learning results for \IrOtwo}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Here are the analogous IrO2 results that were presented for IrO3 in the main text
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -498,14 +490,14 @@ Analogous to Figure \ref{fig:iro3_al}, see Figure \ref{fig:iro3_al} for descript
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Discovery Rate for All Active Learning Runs} %%
+\subsection{Discovery rate for all active learning runs}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TEMP
+%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Discovery rate of all runs of AL algorithms
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - TEMP
+% | -
 %
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -556,7 +548,7 @@ Red lines indicate the specific runs used for Figures \ref{fig:iro3_al} and Figu
 %
 %
 % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% % | - TEMP
+% % | -
 % %
 % % __|
 % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -570,49 +562,30 @@ Red lines indicate the specific runs used for Figures \ref{fig:iro3_al} and Figu
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Amorphous Phase Synthesizability Limit and Amorphous Limit}
+\subsection{Amorphous limit as a thermodynamic upperbound for synthesizability of Ir-O polymorphs}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Amorphous Phase Synthesizability Limit and Amorphous Limit
+% | - Amorphous limit
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Motivation/Intro to Amorphous Limit
-%
-% __|
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - PARAGRAPH BODY
-To provide a physically motivated energy cut-off for the synthesizability of our polymorphs we employed the procedure from Aykol \latin{et al} for determining the thermodynamic metastability cutoff for crystalline materials based on the amorphous phase limit (amorphous limit).~\cite{Aykol2018}
-%
-We refer the reader to the full text for a complete explaination of the method,
-but briefly, the method uses the formation enthalpy of the most stable amorphous phase as a hard upper limit on the energy of any crystalline polymorph.
-%
-To obtain the minimum reference energy for the amorphous phase it is necessary to variationally sample low energy amorphous phases,
-which was done by sampling low energy configurations from molecular dynamics simulations.
-% __|
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - Discussion of Out Data
+% | -
 %
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-This procedure was carried out for both \IrOtwo and \IrOthree (see Table \ref{table:amorph_limit}) and resulted in a amorphous limit (relative to each stoichiometries hull) of
-\SI{0.506}{\electronvolt}/atom and \SI{0.307}{\electronvolt}/atom,
-respectively.
+To provide a physically motivated energy cut-off for the synthesizability of the polymorphs we identify, we employed the procedure from Aykol et al. for determining the amorphous limit.~\cite{Aykol2018}
 %
-In terms of the formation enthalpy energy scale,
-these values convert to
-\SI{-0.33}{\electronvolt}/atom and \SI{-0.34}{\electronvolt}/atom
-for \IrOtwo and \IrOthree, respectively.
+In this method, several amorphous configurations are sampled to find a relatively low energy configuration to use as a reasonble approximation to the amorphous limit.
 %
-It should be stressed, that these values are upper bounds for synthesizability,
-and are based on the argument that no ordered crystal structure can exist if its \DHf is less stable than a nearby non-ordered region in phase space.
+We followed the computational procedure used by Aykol et al. to generate such sample amorphous phases for \IrOtwo and \IrOthree
+(each amorphous phase comprising around 100 atoms),
+and obtained 0.51 eV/atom and 0.31 eV/atom, respectively
+(See Table \ref{table:amorph_limit}) for total and formation energies of sampled configurations).
 %
-As such, the amorphous limit is stringint boundary on the allowed formation enthalpies of solids but it does not necessarily imply that all structures witin this limit can be physically realized.
+It should be stressed that amorphous limits provide an stringent energetic upper-bound for the synthesis of a crystalline polymorph at a given composition (i.e. polymorphs above the limit are inaccessible),
+but they do not imply that polymorphs below the limits are necessarily physically realizable.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -655,25 +628,6 @@ The most stable amorphous phase for each stoichiometry is bolded.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsection{Bulk Pourbaix Diagram}  % %%%%%%%%%%%%%%%%%%%%%
 % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -705,7 +659,7 @@ The diagram was constructed using all of the same species as Figure \ref{fig:bul
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{OER Thermodynamic Methodology}  % %%%%%%%%%%%%%
+\subsection{Computational methodology for OER thermochemical analysis}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -731,7 +685,7 @@ Finally we conducted a thermodynamic/limiting potential analysis of the OER mech
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Surface Energy Pourbaix Methodology}  % %%%%%%%
+\subsection{Computational methodology for surface energy Pourbaix diagrams}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -742,7 +696,7 @@ Surface energy Pourbaix plots were constructed by calculating the surface energy
 Surface energy calculations were performed for various facets for slabs of increasing thickness.
 %
 % TODO Insert reference for surface E calcs
-The bulk energy was then extracted by fitting the total energy of the slabs against the number of layers as explained in TEMP.
+The bulk energy was then extracted by fitting the total energy of the slabs against the number of layers as explained in Fiorentini \latin{et. al}~\cite{Boettger1998}.
 %
 This was done to avoid common issues of surface energy divergence associated with using a separate bulk energy calculation.
 %
@@ -757,7 +711,7 @@ The equation for is as follows:
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{OER Scaling Relations}  % %%%%%%%%%%%%%%%%%%%%%
+\subsection{Scaling relations between OER intermediates}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -766,7 +720,7 @@ The equation for is as follows:
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - TEMP
+% | -
 %
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -812,7 +766,7 @@ The \DGOH line is shown as guide to eye.
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Table of OER energetics}  % %%%%%%%%%%%%%%%%%%%
+\subsection{Tabulated OER adsorption energies}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -821,7 +775,7 @@ The \DGOH line is shown as guide to eye.
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - TEMP
+% | -
 %
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -870,6 +824,18 @@ The limiting potential and corresponding overpotential ($\eta$) as well as the r
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 % | - WORK IN PROGRESS
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -891,7 +857,7 @@ The limiting potential and corresponding overpotential ($\eta$) as well as the r
 %
 %
 % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% % | - TEMP
+% % | -
 % %
 % % __|
 % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

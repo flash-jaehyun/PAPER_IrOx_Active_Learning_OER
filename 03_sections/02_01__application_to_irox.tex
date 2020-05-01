@@ -18,12 +18,6 @@ We next applied the AL algorithm to the discovery of stable and unique polymorph
 %
 Results for \IrOtwo are provided in the supporting information (Figure \ref{fig:iro2_al}), here we focus on \IrOthree,
 since it is a comparatively unexplored oxide system.
-
-%and here we will illustrate the results for \IrOthree only,
-%since it is a comparatively unexplored oxide system.
-%
-% TODO I don't talk about IrO2 enough
-%We will briefly touch on the results for \IrOtwo at the end and refer the reader to the Supporting Information for further details (Figure \ref{fig:iro2_al}).
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -52,12 +46,11 @@ Initially, these ten structures are randomly distributed across the entire candi
 %
 However, after only three generations (Figure~\ref{fig:iro3_al}a.ii) the GP model is sufficiently accurate to predict the most stable polymorphs as low energy structures.
 %
-By the fifth generation (\num{30} DFT relaxations) \num{4/10} of the most stable polymorphs have been acquired,
+By the sixth generation (\num{35} DFT relaxations) \num{4/10} of the most stable polymorphs have been acquired,
 including the globally stable phase of \IrOthree, which
-was found on average in only 4 generations (averaged over 100 independent runs).
+was found on average in only 4.3 generations (averaged over 100 independent runs).
 %
-By the 14th generation of the AL,
-\num{9/10} of the most stable structures were acquired.
+By the 13th generation of the algorithm \num{10/10} of the most stable structures were acquired.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -100,9 +93,10 @@ the number of the ten most stable systems acquired against the number of DFT cal
 %
 The results of Figure~\ref{fig:iro3_al}c are averaged over \num{100} independent runs of the AL algorithms with the standard deviation shown.
 %
-Overall, the GP-LCB runs outperform the random acquisition runs, with on average only \num{100} DFT calculations needed to discover the ten most stable structures.
+Overall, the GP-LCB runs outperform the random acquisition runs, with on average \mytilde\num{100} DFT calculations needed to discover the ten most stable structures.
 %
-This demonstrates over a factor of two improvement in performance compared to random acquisition, which does not acquire the most stable structures until all candidates are computed.
+This demonstrates over a factor of two improvement in performance compared to random acquisition,
+which does not acquire the most stable structures until all \mytilde250 candidates are computed.
 %
 The results for \IrOtwo (Figure \ref{fig:iro2_al}) show a higher discovery rate for GP-LCB compared to the random acquisition method,
 although the GP-LCB method ``saturated'' at \num{9/10} and was unable to acquire the last structure until the candidate space was exhausted.
@@ -200,12 +194,12 @@ This behavior is consistent with what one would expect thermodynamically:
 structures that are initialized in high energy configurations will  naturally reconfigure into a more stable local configuration,
 resulting in discrepancies between the pre-DFT predicted and final formation energies.
 %
-In practice, the approach still performs notably well by discovering \num{7} out of the \num{10} most stable structures with only \num{35} DFT calculations, because (i) the energy tends to decrease post-DFT relaxation,
+In practice, the approach still performs notably well by discovering \num{6} out of the \num{10} most stable structures with only \num{40} DFT calculations, because (i) the energy tends to decrease post-DFT relaxation,
 meaning favored acquisitions are likely to perform even better,
 and (ii) the pre-optimized structures that are similar enough to the most stable final equilibrium structures will not restructure considerably,
 meaning that their predicted formation energies will be close enough (and low enough) to be quickly picked up by the acquisition criteria.
 %
-Additionally, the number of duplicates produced during the AL is also a factor in increasing the effective performance of the algorithm.
+Additionally, the number of duplicates produced during AL is also a factor in increasing the effective performance.
 %
 For example, there are \num{8} duplicates of \aIrOthree produced during the full AL routine due to distinct pre-DFT candidates relaxing into the same energy basin,
 and this over representation of \aIrOthree phase effectively increases the chance of it being acquired by a factor of eight.
