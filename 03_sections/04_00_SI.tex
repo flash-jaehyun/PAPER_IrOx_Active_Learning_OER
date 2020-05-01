@@ -77,8 +77,7 @@ A 4x4x1 k-point mesh with $\Gamma$-centered Monkshort-packing~\cite{Monkhorst197
 %
 The plane-wave energy cutoff was \SI{500}{\electronvolt}.
 %
-% COMBAK Figure out how much spacing was used for all slabs
-All slab calculations maintained a vacuum spacing in between TEMP and \SI{15}{\angstrom}.
+All slab calculations maintained a vacuum spacing of approximately \SI{15}{\angstrom} on average.
 %
 Dipole corrections were imposed on all non-symmetric slabs to counteract spurious dipole interactions between the periodic cells.~\cite{Neugebauer1992}
 %
@@ -312,7 +311,7 @@ This included removing highly skewed data points, removing 0-variance features, 
 %
 We expect that most of the remaining features are not linearly independent so we next chose to employ an additional feature reduction step by performing a principle-component analysis (PCA).
 %
-This allowed us to reduce the number of features to \num{10} while still capturing TEMP of the total variance and minimizing the cross-validated prediction MAE (Figure \ref{fig:cv_anal}).
+This allowed us to reduce the number of features to \num{10} while still capturing 99\% of the total variance and minimizing the cross-validated prediction MAE (Figure \ref{fig:cv_anal}).
 %
 This step is also crucial in reducing the computational expense of running the Gaussian Process training procedure.
 % __|
