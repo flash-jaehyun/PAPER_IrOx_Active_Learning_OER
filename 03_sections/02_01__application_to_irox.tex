@@ -46,7 +46,7 @@ Initially, these ten structures are randomly distributed across the entire candi
 %
 However, after only three generations (Figure~\ref{fig:iro3_al}a.ii) the GP model is sufficiently accurate to predict the most stable polymorphs as low energy structures.
 %
-By the sixth generation (\num{35} DFT relaxations) \num{4/10} of the most stable polymorphs have been acquired,
+By the sixth generation (\num{40} DFT relaxations) \num{4/10} of the most stable polymorphs have been acquired,
 including the globally stable phase of \IrOthree, which
 was found on average in only 4.3 generations (averaged over 100 independent runs).
 %
@@ -217,7 +217,9 @@ and this over representation of \aIrOthree phase effectively increases the chanc
 {02_figures/parity_plot/00_al_perf_plot__v1.pdf}}
 \caption{\label{fig:parity}
 %
-Parity plot of the final ML models for \IrOtwo and \IrOthree predicting on either the pre-optimized (grey) or the post-optimized structures of \IrOtwo and \IrOthree.
+Parity plot of the predicted and actual formation enthalpy (\DHf) for the final Gaussian regression ML models for \IrOtwo and \IrOthree predicting on either the pre-optimized (grey) or the post-optimized (blue) fingerprints of \IrOtwo and \IrOthree.
+%
+The final ML regresion models are trained on the DFT formation enthalpies for all structurally unique polymorphs and correspond to the final generation of the AL algorithm.
 }
 \end{figure*}
 % __|
