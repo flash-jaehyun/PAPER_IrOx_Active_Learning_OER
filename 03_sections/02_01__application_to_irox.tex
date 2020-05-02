@@ -194,9 +194,10 @@ This behavior is consistent with what one would expect thermodynamically:
 structures that are initialized in high energy configurations will  naturally reconfigure into a more stable local configuration,
 resulting in discrepancies between the pre-DFT predicted and final formation energies.
 %
-In practice, the approach still performs notably well by discovering \num{6} out of the \num{10} most stable structures with only \num{40} DFT calculations, because (i) the energy tends to decrease post-DFT relaxation,
-meaning favored acquisitions are likely to perform even better,
-and (ii) the pre-optimized structures that are similar enough to the most stable final equilibrium structures will not restructure considerably,
+In practice, the approach still performs notably well because
+(1) the energy tends to decrease post-DFT relaxation,
+meaning favored acquisitions are likely to perform even better, and
+(2) the pre-optimized structures that are similar enough to the most stable final equilibrium structures will not restructure considerably,
 meaning that their predicted formation energies will be close enough (and low enough) to be quickly picked up by the acquisition criteria.
 %
 Additionally, the number of duplicates produced during AL is also a factor in increasing the effective performance.
