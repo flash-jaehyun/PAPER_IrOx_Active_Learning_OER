@@ -609,9 +609,6 @@ but they do not imply that polymorphs below the limits are necessarily physicall
 
 
 
-
-
-
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -631,14 +628,17 @@ but they do not imply that polymorphs below the limits are necessarily physicall
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Bulk Pourbaix Diagram
 %
-The electrochemical bulk Pourbaix diagrams were constructed using the TEMP module from pymatgen.
+The electrochemical bulk Pourbaix diagrams were constructed using the \texttt{pourbaix\_diagram} modules from pymatgen with manually inputed entries.~\cite{Ong2013}.
+%
+The \DGf of metallic Ir(s) was set to 0, while the \DGf of \rIrOtwo was set to experimental values.~\cite{Barin1995}
+%
+The aqueous ion ($IrO{4}^{-}$) corresponds to an experimental value from Douglas (1988)~\cite{Adams1988} and was retreived by the pymatgen MPRester API interface.
+%
+The \DGf values for all species used to construct both Figure \ref{fig:bulk_pourbaix} and \ref{fig:bulk_pourbaix_wo_alpha} are included in Table \ref{table:bulk_pourb}.
 
-
-
+% Ir(s), \rIrOtwo, \aIrOthree, \rIrOthree, \bIrOthree and
 % Douglas G. Brookins, Eh-pH Diagrams for Geochemistry, Springer-Verlag Berlin Heidelberg 2059
-
 % IrO4[-]  Ir1 O4 -1 -2.038081775
-
 % __|
 
 
@@ -693,14 +693,16 @@ Here we will outline the procedure used to carry out OER simulations on the vari
 %
 The procedure was as follows:
 %
-Stable stoichiometric terminations were cut from the bulk by cleaving along the Miller indices with the highest calculated diffraction peaks, corresponding to planes with higher density of atoms. The location of the cutting plane was further chosen to minimize number of severed bonds in the terminating octahedra. 
+Stable stoichiometric terminations were cut from the bulk by cleaving along the Miller indices with the highest calculated diffraction peaks, corresponding to planes with higher density of atoms. The location of the cutting plane was further chosen to minimize number of severed bonds in the terminating octahedra.
 %
-Next, electrochemical surface coverage was predicted via a surface Pourbaix analysis,~\cite{Lu2017} which is based on relative free energies of OH* and O* coverages as described in the next section. 
+Next, electrochemical surface coverage was predicted via a surface Pourbaix analysis,~\cite{Lu2017} which is based on relative free energies of OH* and O* coverages as described in the next section.
 %
 This elucidates the coverage under operating conditions ($>$\num{1.23} \VRHE) for each slab.
 %
 % COMBAK
-Finally, we conducted a thermodynamic limiting potential analysis of the acidic OER single-site associative pathway.~\cite{Rossmeisl2007, Man2011, Friebel2015,  Seitz2016, Strickler2019} The method to construct the OER volcano plot, limiting potentials and free-energy corrections is identical to our most recent works on \IrOtwo systems~\cite{Strickler2019,KHLee2020}.
+Finally, we conducted a thermodynamic limiting potential analysis of the acidic OER single-site associative pathway.~\cite{Rossmeisl2007, Man2011, Friebel2015,  Seitz2016, Strickler2019}
+%
+The method to construct the OER volcano plot, limiting potentials and free-energy corrections is identical to our most recent works on \IrOtwo systems~\cite{Strickler2019,Lee2020}.
 % __|
 
 
@@ -723,8 +725,8 @@ This was done to avoid common issues of surface energy divergence associated wit
 The sensitivity of a given slab to an applied bias is dependent on the composition of the surface,
 in particular, the effect of coverage of electrolyte species which can deposit oxygen, hydrogen, and hydroxide species on the surface layers.
 %
-These additional \ce{O} and \ce{H} atoms are not referenced to the atoms in the slab, but are instead referenced to the computational hydrogen electrode and water-splitting reaction as is commonly done for Surface Pourbiax diagrams~\cite{Lu2017}. 
-
+These additional \ce{O} and \ce{H} atoms are not referenced to the atoms in the slab, but are instead referenced to the computational hydrogen electrode and water-splitting reaction as is commonly done for Surface Pourbiax diagrams~\cite{Lu2017}.
+% __|
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Scaling relations between OER intermediates}
@@ -733,7 +735,6 @@ These additional \ce{O} and \ce{H} atoms are not referenced to the atoms in the 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - OER Scaling Relations
-
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | -
@@ -748,11 +749,10 @@ It can be seen clearly that the data points corresponding to the three \IrOthree
 %
 This generally weaker binding of the \IrOthree stoichiometry is responsible for the observed improvement in theoretical activity.
 %
-The \DGOOH vs.\DGOH relationship is very close to the universal scaling relations,~\cite{Man2011} demonstrating that our materials do not break the infamous \DGOOH vs. \DGOH scaling.
-
+The \DGOOH vs.\DGOH relationship is very close to the universal scaling relations,~\cite{Man2011}
+demonstrating that our materials do not break the infamous \DGOOH vs. \DGOH scaling.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 % __|
 
@@ -764,19 +764,18 @@ The \DGOOH vs.\DGOH relationship is very close to the universal scaling relation
 \begin{figure*}[!htb]
 \centering
 \makebox[\textwidth][c]{\includegraphics
-{02_figures/SI_figures/00_master__oer_scaling__main_v3.pdf}}
+{02_figures/SI_figures/00_master__oer_scaling__main_v4.pdf}}
 \caption{\label{fig:scaling_relations}
 %
 Relationship between the adsorption free energies of the three key OER intermediates (*OH, *O, *OOH), with \DGOH chosen as the dependent variable.
 %
-Best fit lines are provided for \DGOOH vs. \DGOH and \DGO vs. \DGOH.
+Best fit lines (solid grey) are provided for \DGOOH vs. \DGOH and \DGO vs. \DGOH.
 %
 The meaning of symbols is identical to Figure~\ref{fig:oer_volcano}, main text.
 %
-Additionally, ``universal scaling relations'' for \DGOOH vs. \DGOH and \DGO vs. \DGOH are shown (black dotted lines) to emphasize our deviation from the traditionally reported scaling fits.
+The standard ``universal scaling relations'' for \DGOOH vs. \DGOH and \DGO vs. \DGOH are shown (black dotted lines) to emphasize our deviation from the traditionally reported scaling fits.
 %
 The \DGOH line is shown as guide to eye.
-% TODO Do I have to redefine the color convention every caption?    
 }
 \end{figure*}
 % __| =====================================================
@@ -829,9 +828,9 @@ adsorption free energies
 as well as the \DGOmOH{} OER descriptor.
 %
 Coverage indicates the electrochemical coverage of either *O or *OH species.
-%
+% %
 The limiting potential and corresponding overpotential ($\eta$) as well as the rate determining step (RDS) for the OER mechanism are shown.
-
+%
 All optimized slab models and corresponding DFT energies are freely available under the ``FloresActive2020''~\cite{upload_CatHub} dataset at Catalysis-hub.org~\cite{Winther2019}.
 }
 \input{04_data_tables/oer_energetics/oer_table.tex}
