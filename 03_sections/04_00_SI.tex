@@ -23,10 +23,10 @@
 %
 Here we describe the density functional theory (DFT) methodology used for both the active learning bulk structure prototype optimization and the OER slab calculations.
 %
-All calculations were performed using DFT at the generalized gradient approximation (GGA) level of theory as implemented in the Vienna \latin{ab-initio} simulation package (VASP)~\cite{Kresse1995,Kresse1996_0,Kresse1996_1},
+The calculations were performed using DFT at the generalized gradient approximation (GGA) level of theory as implemented in the Vienna \latin{ab-initio} simulation package (VASP)~\cite{Kresse1995,Kresse1996_0,Kresse1996_1},
 and utilizing the PBE exchange-correlation functional~\cite{Perdew1996}.
 %
-All calculations were performed with the inclusion of spin-polarization and utilized the projector-augmented wave pseudopotentials (PAW)~\cite{Blochl1994}.
+All calculations were performed with the inclusion of spin-polarization which is important for surface calculations of Ir-oxides~\cite{Briquet2017,Strickler2019} and utilized the projector-augmented wave pseudopotentials (PAW)~\cite{Blochl1994}.
 %
 Calculations were carried out through the atomic simulation environment (ASE) python interface.~\cite{HjorthLarsen2017}
 %
@@ -43,12 +43,9 @@ Calculations were carried out through the atomic simulation environment (ASE) py
 %
 A higher plane-wave cutoff of \SI{600}{\electronvolt} was used for bulk relaxation compared to OER slab calculations (\SI{500}{\electronvolt}).
 %
-A variable k-point mesh was used such that a k-point density of at least \num{20} k-points per reciprocal space dimension.
+A variable k-point mesh was used, with a k-point density of at least \num{20} k-points per \AA$^{-1}$ reciprocal space dimension.
 %
-All bulk systems were run through the following computational recipe to converge the equilibrium structure, with \num{3} distinct phases.
-%
-structures are only advanced to the next phase when the previous phase completes without error.
-
+All bulk systems were run through the following computational recipe to converge the equilibrium structure, with \num{3} distinct phases. Structures are only advanced to the next phase when the previous phase completes without error.
 
 \begin{enumerate}
   %
@@ -62,8 +59,6 @@ structures are only advanced to the next phase when the previous phase completes
 \end{enumerate}
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - OER Specific Settings
 %
@@ -71,19 +66,19 @@ structures are only advanced to the next phase when the previous phase completes
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-A 4x4x1 k-point mesh with $\Gamma$-centered Monkshort-packing~\cite{Monkhorst1976} was used for all OER slabs.
+A 4$\times$4$\times$1 k-point mesh with $\Gamma$-centered Monkhorst-pack mesh~\cite{Monkhorst1976} was used for all OER slabs.
 %
-The plane-wave energy cutoff was \SI{500}{\electronvolt}.
+%The plane-wave energy cutoff was \SI{500}{\electronvolt}.
 %
 All slab calculations maintained a vacuum spacing of approximately \SI{15}{\angstrom} on average.
 %
-Dipole corrections were imposed on all non-symmetric slabs to counteract spurious dipole interactions between the periodic cells.~\cite{Neugebauer1992}
+Dipole corrections were imposed on all non-symmetric slabs to counteract the effects of density dipole interactions.~\cite{Neugebauer1992}
 %
-Roughly \num{3/4} of the bottom layers were kept fixed to simulate the bulk crystal while the surface atoms were allowed to fully relax.
+Roughly \num{3/4} of the bottom layers were kept fixed to simulate the bulk crystal while the top two surface layers were allowed to fully relax.
 %
 All structures were relaxed with utilizing the conjugate gradient algorithm as implemented in VASP (IBRION\num{=2}).
 %
-The simulation stop criteria used was that all atoms must satisfy a maximum force threshold of \SI{0.02}{\electronvolt\per\angstrom}.
+The simulation criteria used was that all atoms must satisfy a maximum force threshold of \SI{0.02}{\electronvolt\per\angstrom}.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -133,7 +128,7 @@ This procedure of ``pre-optimization'' is an important because it generates reas
 % | - PARAGRAPH BODY
 %Herein, we take advantage of the structural diversity already present in materials databases to construct our candidates.
 %
-We utilized two materials databases, the Open Quantum Materials (OQMD) and the Materials Project (MP) databases because of their large and diverse datasets of crystalline inorganic materials.
+We utilized two materials databases, the Open Quantum Materials (OQMD)\cite{Saal2013} and the Materials Project (MP) databases\cite{Jain2013} because of their large and diverse sets of crystalline inorganic materials.
 %
 % TODO Approx. when did Ankit parse these databases
 At the time that we originally mined these databases (2018), there were \num{61471} inorganic compounds in the MP database and \num{435583} entries in the OQMD database.
@@ -151,27 +146,22 @@ although the number of unique crystal polymorphs is not expected to have increas
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-The structural classification scheme of Jain \latin{et al.}~\cite{Jain2018} was used assign the crystal prototype,
+The structural classification scheme of Jain \latin{et al.}~\cite{Jain2018} was used to assign the crystal prototype,
 consisting of standardized space group and Wyckoff positions,
 as well as the element-nonspecific stoichiometry of each structure (\num{497054} in total).
 %
 This prototype designation can serve as a structural fingerprint and has successfully been applied towards the prediction of formation energies of inorganic compounds~\cite{Jain2018}.
 %
-We identified unique structure types by grouping materials according to participating Wyckoff sites.
+%We identified unique structure types by grouping materials according to participating Wyckoff sites.
 %
+
 The Wyckoff sites of crystallographic space groups are a collection of fractional coordinates within the unit cell where atoms are allowed to sit in order to satisfy the symmetry of the underlying space group.
 %
-The 'standard' setting of materials unit cell are identified and atomic positions are mapped to Wyckoff sites using the openly available, crystal symmetry library Spglib~\cite{spglib}.
-%
-The structures belonging to same crystallographic space group and having the same participating Wyckoff sites have identical crystal symmetry and are grouped together.
-%
-These groups are referred to as structure-type in this work.
-%
-Note that the reported participating Wyckoff sites by Spglib are sometimes different for the same crystal due to crystal translation/rotation.
-%
-We mapped all such related Wyckoff sites to the same structure-type by looping through all allowed crystal symmetry operations of the crystal.
-%
-Further mathematical details of these operations are available in Jain \latin{et al.}~\cite{Jain2018}.
+The spacegroup and standard setting of a unit cell is identified, and atomic positions are mapped to Wyckoff sites using the openly available, crystal symmetry library Spglib~\cite{spglib}. The Wyckoff sites are subsequently mapped to unique Wyckoff-pair combinations, to obtain a unique classification which is independent of crystal translation and rotation. The related Wyckoff sites are found by looping through all allowed crystal symmetry operations of the crystal.
+
+%We mapped all such related Wyckoff sites to the same structure-type by looping through all allowed crystal symmetry operations of the crystal.
+
+The structures belonging to same crystallographic space group and having the same participating Wyckoff sites have identical crystal symmetry and are grouped together. These groups are referred to as structure-type in this work. Further mathematical details of these operations are available in Jain \latin{et al.}~\cite{Jain2018}.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -482,7 +472,7 @@ This result highlights the importance of creating reasonable initial candidates.
 %
 Results for the active learning algorithm applied to the \IrOtwo space.
 %
-Analogous to Figure \ref{fig:iro3_al}, see Figure \ref{fig:iro3_al} for description of all subplots.
+This figure is analogous to Figure \ref{fig:iro3_al}, main text, which shows results for \IrOthree including the meaning of all symbols and labels.
 }
 \end{figure*}
 % __| =====================================================
@@ -579,6 +569,26 @@ To provide a physically motivated energy cut-off for the synthesizability of the
 %
 In this method, several amorphous configurations are sampled to find a relatively low energy configuration to use as a reasonble approximation to the amorphous limit.
 %
+% =========================================================
+% TABLE ===================================================
+% =========================================================
+% | - Table | Amorphous Limit Data
+\begin{table}
+\centering
+\caption{\label{table:amorph_limit}
+%
+Density functional theory computed energetics of sampled amorphous phases for \IrOtwo and \IrOthree as per the procedure of Aykol \latin{et al}~\cite{Aykol2018}.
+%
+Here we report the raw DFT electronic energy per atom ($E_{DFT}$),
+the enthalpy of formation (\DHf),
+and the energy above the hull relative to the most stable polymorph of each stoichiometry (\rIrOtwo and \aIrOthree).
+%
+The most stable amorphous phase for each stoichiometry is bolded.
+}
+\input{04_data_tables/amorphous_limit_data/amorphous_lim_table.tex}
+\end{table}
+% __| =====================================================
+% =========================================================
 We followed the computational procedure used by Aykol et al. to generate such sample amorphous phases for \IrOtwo and \IrOthree
 (each amorphous phase comprising around 100 atoms),
 and obtained 0.51 eV/atom and 0.31 eV/atom, respectively
@@ -592,26 +602,7 @@ but they do not imply that polymorphs below the limits are necessarily physicall
 % __|
 
 
-% =========================================================
-% TABLE ===================================================
-% =========================================================
-% | - Table | Amorphous Limit Data
-\begin{table}
-\centering
-\caption{\label{table:amorph_limit}
-%
-Density functional thoery computed energetics of sampled amorphous phases for \IrOtwo and \IrOthree as per the procedure of Aykol \latin{et al}~\cite{Aykol2018}.
-%
-Here we report the raw DFT electronic energy per atom ($E_{DFT}$),
-the enthalpy of formation (\DHf),
-and the energy above the hull relative to the most stable polymorph of each stoichiometry (\rIrOtwo and \aIrOthree).
-%
-The most stable amorphous phase for each stoichiometry is bolded.
-}
-\input{04_data_tables/amorphous_limit_data/amorphous_lim_table.tex}
-\end{table}
-% __| =====================================================
-% =========================================================
+
 
 
 
@@ -659,7 +650,7 @@ The diagram was constructed using all of the same species as Figure \ref{fig:bul
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Computational methodology for OER thermochemical analysis}
+\subsection{Computational methodology for bulk and surface stability, and OER thermodynamics}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -669,18 +660,14 @@ Here we will outline the procedure used to carry out OER simulations on the vari
 %
 The procedure was as follows:
 %
-Stable stoichiometric terminations were cut from the bulk.
+Stable stoichiometric terminations were cut from the bulk by cleaving along the Miller indices with the highest calculated diffraction peaks, corresponding to planes with higher density of atoms. The location of the cutting plane was further chosen to minimize number of severed bonds in the terminating octahedra. 
 %
-% COMBAK
-% TODO Add Vesta reference
-Stable termination planes were guesstimated via intuition, and the x-ray diffraction pattern tool from Vesta.
-%
-Next, electrochemical surface coverage was elucidated via a surface Pourbaix analysis.
+Next, electrochemical surface coverage was predicted via a surface Pourbaix analysis,~\cite{Lu2017} which is based on relative free energies of OH* and O* coverages as described in the next section. 
 %
 This elucidates the coverage under operating conditions ($>$\num{1.23} \VRHE) for each slab.
 %
 % COMBAK
-Finally we conducted a thermodynamic/limiting potential analysis of the OER mechanistic pathway (Volcano plot, limiting potentials, etc.).
+Finally, we conducted a thermodynamic limiting potential analysis of the acidic OER single-site associative pathway.~\cite{Rossmeisl2007, Man2011, Friebel2015,  Seitz2016, Strickler2019} The method to construct the OER volcano plot, limiting potentials and free-energy corrections is identical to our most recent works on \IrOtwo systems~\cite{Strickler2019,KHLee2020}.
 % __|
 
 
@@ -703,11 +690,7 @@ This was done to avoid common issues of surface energy divergence associated wit
 The sensitivity of a given slab to an applied bias is dependent on the composition of the surface,
 in particular, the effect of coverage of electrolyte species which can deposit oxygen, hydrogen, and hydroxide species on the surface layers.
 %
-These additional \ce{O} and \ce{H} atoms are not referenced to the atoms in the slab, but are instead referenced to the computational hydrogen electrode and water-splitting reaction.
-%
-% TODO Type out equations for surface energy calculation
-The equation for is as follows:
-% __|
+These additional \ce{O} and \ce{H} atoms are not referenced to the atoms in the slab, but are instead referenced to the computational hydrogen electrode and water-splitting reaction as is commonly done for Surface Pourbiax diagrams~\cite{Lu2017}. 
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -732,7 +715,7 @@ It can be seen clearly that the data points corresponding to the three \IrOthree
 %
 This generally weaker binding of the \IrOthree stoichiometry is responsible for the observed improvement in theoretical activity.
 %
-The \DGOOH vs.\DGOH relationship is very close to the traditional ``universal scaling relations'', demonstrating that our materials do not break the infamous \DGOOH vs. \DGOH scaling.
+The \DGOOH vs.\DGOH relationship is very close to the universal scaling relations,~\cite{Man2011} demonstrating that our materials do not break the infamous \DGOOH vs. \DGOH scaling.
 
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -755,10 +738,12 @@ Relationship between the adsorption free energies of the three key OER intermedi
 %
 Best fit lines are provided for \DGOOH vs. \DGOH and \DGO vs. \DGOH.
 %
+The meaning of symbols is identical to Figure~\ref{fig:oer_volcano}, main text.
+%
 Additionally, ``universal scaling relations'' for \DGOOH vs. \DGOH and \DGO vs. \DGOH are shown (black dotted lines) to emphasize our deviation from the traditionally reported scaling fits.
 %
 The \DGOH line is shown as guide to eye.
-% TODO Do I have to redefine the color convention every caption?
+% TODO Do I have to redefine the color convention every caption?    
 }
 \end{figure*}
 % __| =====================================================
@@ -813,6 +798,8 @@ as well as the \DGOmOH{} OER descriptor.
 Coverage indicates the electrochemical coverage of either *O or *OH species.
 %
 The limiting potential and corresponding overpotential ($\eta$) as well as the rate determining step (RDS) for the OER mechanism are shown.
+
+All optimized slab models and corresponding DFT energies are freely available under the ``FloresActive2020''~\cite{upload_CatHub} dataset at Catalysis-hub.org~\cite{Winther2019}.
 }
 \input{04_data_tables/oer_energetics/oer_table.tex}
 }
