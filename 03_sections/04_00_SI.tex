@@ -628,15 +628,43 @@ The most stable amorphous phase for each stoichiometry is bolded.
 
 
 
-% % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \subsection{Bulk Pourbaix Diagram}  % %%%%%%%%%%%%%%%%%%%%%
-% % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %
-% % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% % | - Bulk Pourbaix Diagram
-% %
-% The electrochemical bulk Pourbaix diagrams were constructed using the TEMP module from pymatgen.
-% % __|
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Thermodynamic construction of bulk Pourbaix diagram}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - Bulk Pourbaix Diagram
+%
+The electrochemical bulk Pourbaix diagrams were constructed using the TEMP module from pymatgen.
+
+
+
+% Douglas G. Brookins, Eh-pH Diagrams for Geochemistry, Springer-Verlag Berlin Heidelberg 2059
+
+% IrO4[-]  Ir1 O4 -1 -2.038081775
+
+% __|
+
+
+% =========================================================
+% TABLE ===================================================
+% =========================================================
+% | - Table | Bulk Pourbaix Data
+\begin{table}
+\centering
+\caption{\label{table:bulk_pourb}
+%
+Enthalpy (\DHf) and free energies (\DGf) of formation per formula unit (f.u.) for the species that make up the bulk Pourbaix diagrams
+(see Figures \ref{fig:bulk_pourbaix} and \ref{fig:bulk_pourbaix_wo_alpha}).
+%
+The Ir metal reference is fitted such that the experimental \DHf of \rIrOtwo is reproduced.~\cite{Barin1995}
+%
+The $IrO_{4}^{-}$ ion species energy is taken from Douglas (1988)~\cite{Adams1988}.
+}
+\input{04_data_tables/bulk_pourb_energy/bulk_pourb_table.tex}
+\end{table}
+% __| =====================================================
+% =========================================================
 
 
 % =========================================================
