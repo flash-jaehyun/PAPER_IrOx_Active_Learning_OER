@@ -38,9 +38,9 @@ whereby a regression model is trained to compute enthalpies of formation by iter
 Figure~\ref{fig:all_diagram} shows a schematic overview of the AL loop.
 %
 We first generate the structure candidate space, followed by an iterative search through the space via a continuously retrained surrogate model using Gaussian Processes Regression (GPR),
-which acquires structures for subsequent DFT calculations. % in the target chemical space (enthalpy of formation).
+which is then used to acquire subsequent structures for DFT optimization.
 %
-We do not provide any DFT training data prior to the start of the AL algorithm, since this eliminates any bias and allows the model to quickly respond to new acquisitions.
+No proir DFT training data is required to start the algorithm, thereby eliminating any built-in bias in the model which can instead quickly respond to new acquisitions.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -188,10 +188,7 @@ The value of $N$ determines the degree of parallelization of the routine.
 % TODO: Is this statement true?
 % Larger values of $N$ speed up the active-learning algorithm, but leads to a higher number of DFT calculations performed before convergence.
 %
-% COMBAK We are discussing alternative convergence criteria, or whether to even have convergence criteria here
-% I think this is fine, just mention a few possible convergence criteria and leave at that
-The AL algorithm proceeds until no more stable polymorphs are found, or after the allocated computational budget is exhausted.
-% convergence is achieved, which here is chosen to be the generation at which the structures within the range of metastability, here taken as \num{0.1} eV/atom, are unchanging over three consecutive generations.
+In practice the algorithm can proceed until no more stable polymorphs are found, or after an allocated computational budget is exhausted.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
