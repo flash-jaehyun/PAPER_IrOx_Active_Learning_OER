@@ -8,7 +8,7 @@
 
 % Trying to make SI into separate document
 \usepackage{xr}
-\externaldocument{00_SI}
+% \externaldocument{00_SI}
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Author List %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -81,15 +81,15 @@
 
 
 % | - Supporting Information *****************************
-% \clearpage
-% \renewcommand{\thefigure}{S\arabic{figure}}
-% \setcounter{figure}{0}
-% \renewcommand{\thetable}{S\arabic{table}}
-% \setcounter{table}{0}
-%
-% \begin{suppinfo}
-% \input{03_sections/04_00_SI}
-% \end{suppinfo}
+\clearpage
+\renewcommand{\thefigure}{S\arabic{figure}}
+\setcounter{figure}{0}
+\renewcommand{\thetable}{S\arabic{table}}
+\setcounter{table}{0}
+
+\begin{suppinfo}
+\input{03_sections/04_00_SI}
+\end{suppinfo}
 % __|
 
 
