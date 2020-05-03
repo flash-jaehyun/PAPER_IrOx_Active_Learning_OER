@@ -2,13 +2,6 @@
 % | - Introduction
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Key points:
-%   * Materials are composed of their "stoichiometry" and their "structure"
-%   * 3N dimensional Cartesian space of coordinates is prohibitively large
-%   * Our candidate space generation leverages symmetry to produce a set of structurally unique and well distributed (across the high dim. 3N space) polymorphs
-%   * Mention other methods for bulk crystal structure Discovery
-    %     - simulated annealing
-%     - paper that Hammer put out (R58)
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -102,20 +95,6 @@ In this manuscript we report a rapid crystal structure discovery approach that l
 Our method does not rely on the existence of past DFT data,
 but instead sequentially generates the minimum sized data set to effectively search within a structurally diverse space of candidates generated from crystal structure prototypes.
 %
-%The algorithm avoids operating in the structural space by leveraging nature's propensity for symmetry by preparing data sets with a large degree of structural diversity at fixed composition.
-% this sounds little hand waving | RF Maybe it needs more exposition, I'm convoluting 2 points here, that we don't do traditional GO opt. in cont. PES and that we use the intuition of symmetry to our advantage
-%
-%As an alternative approach to GO,
-% We first define a set of structurally diverse candidate crystal polymorphs, and secondly, search through the static list of candidates with a selection-type algorithm.
-%
-%This approach relies on being able to prepare candidate structures that are physically reasonable and likely low in energy.
-%
-%To date, there have been various techniques to prepare candidate structures, including generating structures randomly, enumerating space groups, etc. \textbf{Refs?}
-%
-% This looks out of space. Consider moving up or eliminate. Also, this is more a discussion statement.
-%
-% Empirically, we know that nature tends to favor symmetric structures, and so we will leverage this intuition by building a dataset explicitly enumerating through space groups.
-%
 We demonstrate the application of this methodology in the space of iridium oxide polymorphs,
 an important class of materials with applications in electrochemistry,
 but with unresolved structure-activity properties critical for understanding their catalytic activity.
@@ -137,10 +116,7 @@ Other groups also observed reconstruction of \IrOx catalysts under reaction cond
 Highly oxidized \IrOthree phases are also formed as the terminal structure of Li\textsubscript{x}IrO\textsubscript{3} anodes.\cite{Pearce2017}
 %
 % TODO Find reference for IrOxHy phases and their importance
-For these reasons, we focused our search on stable polymorphs in the \IrOtwo stoichiometry and oxidized \IrOthree stoichiometry.
-%
-% TODO Add references to octahedra literature
-%Furthermore, such pure corner sharing octahedral crystals are known from in other systems such fluorites and chlorites.
+For these reasons, we focused our search on stable polymorphs in the \IrOtwo and oxidized \IrOthree stoichiometries.
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -154,10 +130,32 @@ For these reasons, we focused our search on stable polymorphs in the \IrOtwo sto
 %
 Here, we first detail the generation of our candidate structures for \IrOtwo and \IrOthree and introduce the AL accelerated surrogate model.
 %
-Next, we demonstrate the application of our AL scheme to the \IrOtwo and \IrOthree prototype spaces and evaluate model performance for acquisition of the most stable polymorphs.
+Next, we demonstrate the application of our AL scheme to the \IrOtwo and \IrOthree prototype spaces and evaluate
+the algorithm's performance towards acquiring of the most stable polymorphs.
 %
 We analyze the crystallographic motifs of the DFT-relaxed structures and identify structural trends within the most stable polymorphs.
 %
 Lastly, we incorporate discovered structures into bulk and surface Pourbaix diagrams, and evaluate their catalytic OER performance.
 % __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+% | - __old__
+
+%
+%The algorithm avoids operating in the structural space by leveraging nature's propensity for symmetry by preparing data sets with a large degree of structural diversity at fixed composition.
+% this sounds little hand waving | RF Maybe it needs more exposition, I'm convoluting 2 points here, that we don't do traditional GO opt. in cont. PES and that we use the intuition of symmetry to our advantage
+%
+%As an alternative approach to GO,
+% We first define a set of structurally diverse candidate crystal polymorphs, and secondly, search through the static list of candidates with a selection-type algorithm.
+%
+%This approach relies on being able to prepare candidate structures that are physically reasonable and likely low in energy.
+%
+%To date, there have been various techniques to prepare candidate structures, including generating structures randomly, enumerating space groups, etc. \textbf{Refs?}
+%
+% This looks out of space. Consider moving up or eliminate. Also, this is more a discussion statement.
+%
+% Empirically, we know that nature tends to favor symmetric structures, and so we will leverage this intuition by building a dataset explicitly enumerating through space groups.
+
+% __|

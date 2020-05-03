@@ -1,19 +1,6 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Active Learning Machine Learning Methodology
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Outline:
-%   * PARAGRAPH 00
-%     - General introduction and high-level overview of algorithm
-%   * PARAGRAPH 01
-%     - Candidate space generation methodology
-%   * PARAGRAPH 02
-%     - Quick paragraph about structure featurization
-%   * PARAGRAPH 03
-%     - Iterative AL algorithm procedure
-%   * PARAGRAPH 04
-%
-%
-%
 %   * There will not be much motivation for our general approach from the introduction, so this is a good place to more properly layout our arguments
 %
 % Points to mention:
@@ -25,22 +12,21 @@
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - PARAGRAPH HEADER
-% General intro to AL scheme
+% | - General intro to AL scheme
 %
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
 Our approach utilizes an active learning framework and surrogate models,
-whereby a regression model is trained to compute enthalpies of formation by iteratively sampling structures from a set of polymorph candidates.
+whereby a regression model is trained to compute enthalpies of formation (\DHf) by iteratively sampling structures from a set of polymorph candidates.
 %
 Figure~\ref{fig:all_diagram} shows a schematic overview of the AL loop.
 %
 We first generate the structure candidate space, followed by an iterative search through the space via a continuously retrained surrogate model using Gaussian Processes Regression (GPR),
 which is then used to acquire subsequent structures for DFT optimization.
 %
-No proir DFT training data is required to start the algorithm, thereby eliminating any built-in bias in the model which can instead quickly respond to new acquisitions.
+No proir DFT training data is required to start the algorithm, eliminating any initial built-in bias in the model and allowing it to quickly respond to new acquisitions.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -54,22 +40,17 @@ No proir DFT training data is required to start the algorithm, thereby eliminati
 {02_figures/al_diagram/Active_learning_diagram__v5.pdf}}
 \caption{\label{fig:all_diagram}
 %
-% Probably better to keep this caption really concise and refer to the text
 AL accelerated polymorph discovery algorithm diagram.
 %
-% , which is constructed through data mining the unique structural motifs in the OQMD and MP materials databases.
-%The procedure proceeds through two distinct steps,
-%first the generation of the hypothetical crystal structure data set (candidate space) and second,
-%the iterative active learning (AL) algorithm.
-%
-Following generation of the hypothetical crystal structure data set (candidate space) and the AL algorithm proceeds iteratively through:
+Following the generation of the hypothetical crystal structure data set (candidate space),
+the AL algorithm proceeds iteratively through:
 (1) candidate selection in which a subset of structures in the candidate space are selected based on an acquisition function (in lieu of training data, the initial candidates are randomly sampled),
-(2) structural relaxation into local energy minima (formation enthalpy computed),
+(2) structural relaxation into local energy minima (\DHf computed),
 (3) structure featurization to produce numerical vector for input into ML model,
 (4) Machine learning (ML) model training based on acquired structures and \DHf,
 (5) Prediction of candidate space's \DHf distribution via ML model.
 %
-%This predicted energy landscape is then used to inform the next generation's acquisition step.
+The algorithm repeats steps (1)-(5) until a suitable stop criteria is reached.
 }
 \end{figure*}
 % __|
@@ -98,12 +79,12 @@ Materials of the same prototype are considered to be structurally equivalent.
 %
 %For example, the \num{300000} entry dataset of \ABOthree style perovskites in OQMD, which only differ by the choice of elements for A, B, and C, all belong to the same structural prototype, and are thus structurally equivalent. I don't think this is correct. Let's omit.
 %
-Eliminating these redundant materials results in orders of magnitude reduction of the search space to \num{697} and \num{259} unique prototypes for the \ABtwo and \ABthree stoichiometries, respectively.
+Eliminating these redundant materials results in orders of magnitude reduction of the search space to \num{697} and \num{259} unique prototypes for \ABtwo and \ABthree, respectively.
 %
 % The orders of magnitude reduction between all structures and unique structures highlights the lack of structural diversity in the OQMD and MP databases.
 %This reduction leads to orders of magnitude reduction of the search space, as opposed to full utilization of the OQMD and Materials Project databases.
 %
-Finally, only structures containing $\leq\num{75}$ atoms
+Finally, only structures containing less than \num{75} atoms
 (\num{566} \ABtwo and \num{256} \ABthree)
 were included to reduce the computational expense of subsequent DFT calculations.
 %
@@ -114,11 +95,11 @@ yielding \num{714} relaxed bulk \IrOx polymorphs
 (\num{466} and \num{248} structures for \IrOtwo and \IrOthree, respectively),
 after discarding \num{108} non-converged structures.
 %
-The candidate space's size allows us to tractably optimize all structures with DFT for benchmarking the performance of our algorithm.
+The relitively small size of our candidate space allows us to tractably optimize all structures and allows us to readily benchmark the performance of our algorithm.
 %
 Full details of the candidate space generation and DFT calculations can be found in the Supporting Information.
 %
-All structurally unique \IrOx optimized structures (\num{575}) can be accessed through the MPcontribs platform.~\cite{upload_MPContribs}
+All structurally unique \IrOx optimized structures (\num{575} in total) can be accessed through the MPcontribs platform.~\cite{upload_MPContribs}
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -158,17 +139,14 @@ which we found to capture 80\% of the variance in the full feature set while als
 %
 The active learning algorithm proceeds through iterative generations of ML training, prediction, and acquisition steps that are visualized in Figure~\ref{fig:all_diagram}.
 %
-% COMBAK Did I get all of the important features of GP here? @Jose
 To meet our primary goal of identifying the most stable polymorphs within the candidate space,
 we construct the AL framework to be
-(i) responsive in improving itself by learning from small batches of newly acquired DFT data,
-and (ii) aware of limitations in its surrogate model by incorporating uncertainty estimates into the acquisition decision criteria.
+(1) responsive in improving itself by learning from small batches of newly acquired DFT data,
+and (2) aware of limitations in its surrogate model by incorporating uncertainty estimates into the acquisition decision criteria.
 %
 GPR satisfies both requirements,
 and we use them here with a Gaussian kernel as implemented in CatLearn.
 \cite{hansen2019atomistic,CatLearn_Repo}
-%
-% NOTE I've introduced the aquis. crit. with the GP uncertainty before talking about aquis. in more detail, need to restructure
 %
 In the initial generation (generation 0), the model is trained on a set of randomly sampled candidates (unbiased sampling),
 and is then used to predict the formation enthalpy (\DHf) of all structures in the candidate space.

@@ -76,7 +76,7 @@ only differing by the stacking of the alternating layers orthogonal to the \text
 We label this structure $\alpha_{2}$-\ce{IrO_3} in Figure~\ref{fig:iro3_al}b and it is only \SI{2}{\milli\electronvolt}/atom less stable than \aIrOthree,
 well within the margin of error for DFT.
 %
-The fourth most stable structure (\rIrOthree) is notable for being the first in the series to have mixed edge- and corner-sharing octahedra and is structurally similar to rutile (\rIrOtwo).
+The fourth most stable structure (\rIrOthree) is notable for being the first in the series to have mixed edge- and corner-sharing octahedra and is structurally similar to rutile-\IrOtwo (\rIrOtwo).
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -125,7 +125,7 @@ The number of DFT training points at each generation is displayed.
 %
 Hollow grey markers indicate a GP model predicted \DHf while red indicate a DFT-computed quantity.
 %
-At the top of subplots a.i - a.v, the x-axis positions of the ten most stable polymorphs are tracked at each generation by either red (acquired) or grey (not acquired) vertical lines.
+At the top of subplots a.i-v, the x-axis positions of the ten most stable polymorphs are tracked at each generation by either red (acquired) or grey (not acquired) vertical lines.
 %
 Insets of the low energy region for each generation is displayed below each subplot.
 %
@@ -160,11 +160,11 @@ This dataset corresponds to the final generation of the AL algorithm in which al
 %
 Figure~\ref{fig:parity} plots the GP model predicted \DHf against the DFT-computed values for two cases.
 %
-Case 1) shows the predictions on the structural fingerprints prior to DFT-optimization (grey), as is done in the regular operation of the algorithm.
+Case (1) shows the predictions on the structural fingerprints prior to DFT-optimization (grey), as is done in the regular operation of the algorithm.
 %
-Case 2) shows the prediction of the same GP model using the post-DFT optimized fingerprints (blue) with \num{10}-fold cross-validation.
+Case (2) shows the prediction of the same GP model using the post-DFT optimized fingerprints (blue) with \num{10}-fold cross-validation.
 %
-It is evident that using the pre-optimization fingerprints results in the GP model being inaccurate in quantitatively predicting the post-relaxation DFT formation energy of the candidate space,
+It is evident that using the pre-optimization fingerprints results in the GP model being highly inaccurate in predicting the post-relaxation \DHf's of the candidate space,
 with a seemingly large MAE of \mytilde\SI{1.5}{\electronvolt}/atom.
 %
 In contrast, the same GP model does comparatively much better at predicting the formation energies of post-DFT optimized structures with an MAE of \mytilde\SI{0.2}{\electronvolt}/atom.
@@ -194,7 +194,7 @@ This behavior is consistent with what one would expect thermodynamically:
 structures that are initialized in high energy configurations will  naturally reconfigure into a more stable local configuration,
 resulting in discrepancies between the pre-DFT predicted and final formation energies.
 %
-In practice, the approach still performs notably well because
+In practice, our approach still performs notably well because
 (1) the energy tends to decrease post-DFT relaxation,
 meaning favored acquisitions are likely to perform even better, and
 (2) the pre-optimized structures that are similar enough to the most stable final equilibrium structures will not restructure considerably,
@@ -217,9 +217,11 @@ and this over representation of \aIrOthree phase effectively increases the chanc
 {02_figures/parity_plot/00_al_perf_plot__v1.pdf}}
 \caption{\label{fig:parity}
 %
-Parity plot of the predicted and actual formation enthalpy (\DHf) for the final Gaussian regression ML models for \IrOtwo and \IrOthree predicting on either the pre-optimized (grey) or the post-optimized (blue) fingerprints of \IrOtwo and \IrOthree.
+Parity plot of the predicted and actual formation enthalpy (\DHf) for the final Gaussian regression ML models for \IrOtwo and \IrOthree,
+predicting on either the pre-optimized (grey) or the post-optimized (blue) fingerprints.
 %
-The final ML regresion models are trained on the DFT formation enthalpies for all structurally unique polymorphs and correspond to the final generation of the AL algorithm.
+The final ML regression models are trained on the DFT
+\DHf values for all structurally unique polymorphs and correspond to the final generation of the AL algorithm.
 }
 \end{figure*}
 % __|
