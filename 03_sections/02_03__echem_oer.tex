@@ -55,8 +55,7 @@ It can be seen that these phases have a reduced, but sufficiently large, stabili
 Removal of the \IrOthree phases from the bulk Pourbaix diagram results in a completely different thermodynamic picture of \IrOtwo stability (Figure~\ref{fig:bulk_pourbaix_wo_alpha}).
 In total, we have discovered 21 unique \IrOthree polymorphs with a non-zero bulk Pourbaix stability region.
 %
-% TODO Create energy table for main bulk systems in SI
-% The similar formation energies (see Table \ref{table:oer_table}) for all three \IrOthree species suggest some or all of these \IrOthree phases may be present and are stable under OER conditions.
+The thermodynamic driving force toward these \IrOthree phases under OER conditions suggests that these structures may form spontaneously under reaction conditions, especially for systems that undergo a large degree of surface reconstruction~\cite{Seitz2016}.
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -81,9 +80,7 @@ The thermodynamic onset of OER (water equilibrium at \num{1.23} \VRHE) is also s
 %
 To be compared to Figure~\ref{fig:bulk_pourbaix_wo_alpha} without \IrOthree phases.
 %
-% The most stable system studied (see Table XX in SI for a full list) are Ir-metal Ir(s) (blue), a \rIrOtwo (green), and a dissolved \ce{IrO4[4-]} (grey).
-%
-% These are compared to the \ce{IrO_3} polymorphs, \aIrOthree (purple), \rIrOthree (orange), and \bIrOthree (pink).
+See Table \ref{table:bulk_pourb} for the bulk formation energies (\DGf) used to construct to diagram.
 }
 \end{figure*}
 % __| =====================================================
@@ -138,7 +135,8 @@ The pseudo-stability regimes for the metastable \bIrOthree and \rIrOthree are in
 %
 (b) OER activity volcano for \IrOx systems considered utilizing the \DGOmOH{} descriptor.
 %
-The horizontal lines correspond to recent experimental OER limiting potentials for \IrOtwo and \IrOthree~\cite{Seitz2016}, and were taken at a current density of \SI[mode=text]{10}{\mA\per\cm\squared}.
+The horizontal lines correspond to recent experimental OER limiting potentials for \rIrOtwo (110)~\cite{Kuo2017} and SrIrO\textsubscript{3}~\cite{Seitz2016},
+at \SI[mode=text]{10}{\mA\per\cm\squared} (extrapolated values).
 %
 (c) Corresponding structural models for selected OER surfaces at one mono-layer O* coverage used for calculation of the overpotentials.
 %
@@ -155,16 +153,14 @@ All OER slab models and corresponding DFT energies are freely available under th
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - OER Volcano
-% TODO We don't mention new old/new scaling volcanos
+%
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-% Replace G_O and G_OH with my custom macros for consistency
 The calculated OER activities of relevant OER stable surfaces are plotted against the \DGOmOH{} OER descriptor are shown in Figure \ref{fig:oer_volcano}b.
 %
-We display thermodynamic limiting potential volcano based on both the universal~\cite{Man2011} and fitted scaling
-(Figure \ref{fig:scaling_relations}) between \DGOOH with \DGOH, shown as solid lines.
+We display thermodynamic limiting potential volcano based on both the universal~\cite{Man2011} (black) and fitted scaling (grey) relations between the OER intermediates (Figure \ref{fig:scaling_relations}).
 %
 Additionally, we have also added a kinetic OER volcano (dashed line) from Dickens \latin{et al.}~\cite{Dickens2019} based on the detailed microkinetic model developed for rutile systems.
 %

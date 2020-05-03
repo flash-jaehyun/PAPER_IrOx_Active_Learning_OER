@@ -428,7 +428,8 @@ The most stable phase corresponds to \rIrOtwo, the already established globally 
 which illustrates that our methodology can recover known phases readily.
 %
 Additionally, \rIrOtwo is quickly acquired by the AL algorithm,
-with only \num{3.7} generations needed on average to pick rutile out of the candidates.
+with only \num{3.7} generations needed on average to pick rutile out of the candidates,
+compared to 6.3 generations for the random acquisition.
 %
 This result is not totally suprising considering that \rIrOtwo is already present within the mined databases and so the initial candidate structure was already close to the final equilibrium geometry.
 %
@@ -632,7 +633,7 @@ The electrochemical bulk Pourbaix diagrams were constructed using the \texttt{po
 %
 The \DGf of metallic Ir(s) was set to 0, while the \DGf of \rIrOtwo was set to experimental values.~\cite{Barin1995}
 %
-The aqueous ion ($IrO{4}^{-}$) corresponds to an experimental value from Douglas (1988)~\cite{Adams1988} and was retreived by the pymatgen MPRester API interface.
+The aqueous ion ($IrO_{4}^{-}$) corresponds to an experimental value from Douglas (1988)~\cite{Adams1988} and was retreived by the pymatgen MPRester API interface.
 %
 The \DGf values for all species used to construct both Figure \ref{fig:bulk_pourbaix} and \ref{fig:bulk_pourbaix_wo_alpha} are included in Table \ref{table:bulk_pourb}.
 
@@ -695,7 +696,8 @@ The procedure was as follows:
 %
 Stable stoichiometric terminations were cut from the bulk by cleaving along the Miller indices with the highest calculated diffraction peaks, corresponding to planes with higher density of atoms. The location of the cutting plane was further chosen to minimize number of severed bonds in the terminating octahedra.
 %
-Next, electrochemical surface coverage was predicted via a surface Pourbaix analysis,~\cite{Lu2017} which is based on relative free energies of OH* and O* coverages as described in the next section.
+Next, electrochemical surface coverage was predicted via a surface Pourbaix analysis,~\cite{Lu2017}
+which is based on relative free energies of OH* and O* coverages as described in the next section.
 %
 This elucidates the coverage under operating conditions ($>$\num{1.23} \VRHE) for each slab.
 %
