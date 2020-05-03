@@ -1,3 +1,5 @@
+*.docx
+
 ~$ref_lst.xlsx
 
 00_SI.pdf
