@@ -1,13 +1,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Supporting Information
 %%
-%% TODO: Free energy corrections to OER intermediates, OER mechanism
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Density functional thoery (DFT) computational details}
+\subsection{Density functional theory (DFT) computational details}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Force convergence was 1e-3 for final final bulk opt, and 0.02 for slabs
 % Energy SCF convergence was 1e-6 for bulk opt and 1e-5 for slabs
@@ -157,7 +156,7 @@ This prototype designation can serve as a structural fingerprint and has success
 
 The Wyckoff sites of crystallographic space groups are a collection of fractional coordinates within the unit cell where atoms are allowed to sit in order to satisfy the symmetry of the underlying space group.
 %
-The spacegroup and standard setting of a unit cell is identified, and atomic positions are mapped to Wyckoff sites using the openly available, crystal symmetry library Spglib~\cite{spglib}. The Wyckoff sites are subsequently mapped to unique Wyckoff-pair combinations, to obtain a unique classification which is independent of crystal translation and rotation. The related Wyckoff sites are found by looping through all allowed crystal symmetry operations of the crystal.
+The space group and standard setting of a unit cell is identified, and atomic positions are mapped to Wyckoff sites using the openly available, crystal symmetry library Spglib~\cite{spglib}. The Wyckoff sites are subsequently mapped to unique Wyckoff-pair combinations, to obtain a unique classification which is independent of crystal translation and rotation. The related Wyckoff sites are found by looping through all allowed crystal symmetry operations of the crystal.
 
 %We mapped all such related Wyckoff sites to the same structure-type by looping through all allowed crystal symmetry operations of the crystal.
 
@@ -428,9 +427,10 @@ The most stable phase corresponds to \rIrOtwo, the already established globally 
 which illustrates that our methodology can recover known phases readily.
 %
 Additionally, \rIrOtwo is quickly acquired by the AL algorithm,
-with only \num{3.7} generations needed on average to pick rutile out of the candidates.
+with only \num{3.7} generations needed on average to pick rutile out of the candidates,
+compared to 6.3 generations for the random acquisition.
 %
-This result is not totally suprising considering that \rIrOtwo is already present within the mined databases and so the initial candidate structure was already close to the final equilibrium geometry.
+This result is not totally surprising considering that \rIrOtwo is already present within the mined databases and so the initial candidate structure was already close to the final equilibrium geometry.
 %
 Additionally, our AL algorithm recovered other known phases of \IrOtwo, including columbite (\ref{fig:iro2_al}b.vi), pyrite (\ref{fig:iro2_al}b.vii), and anatase (not shown).
 % __|
@@ -502,7 +502,7 @@ The entire AL algorithm was run a total of \num{100} times for both \IrOtwo and 
 %
 Each run was independent of the rest, with the only difference being the initial five candidates that were drawn.
 %
-Figures \ref{fig:iro3_al}c and \ref{fig:iro2_al}c show the results of the average discovery rate of these indpendent runs.
+Figures \ref{fig:iro3_al}c and \ref{fig:iro2_al}c show the results of the average discovery rate of these independent runs.
 %
 Figure \ref{fig:disc_rate} shows the same data, but with each individual run shown.
 %
@@ -557,7 +557,7 @@ Red lines indicate the specific runs used for Figures \ref{fig:iro3_al} and Figu
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Amorphous limit as a thermodynamic upperbound for synthesizability of Ir-O polymorphs}
+\subsection{Amorphous limit as a thermodynamic upper bound for synthesizability of Ir-O polymorphs}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -572,7 +572,7 @@ Red lines indicate the specific runs used for Figures \ref{fig:iro3_al} and Figu
 %
 To provide a physically motivated energy cut-off for the synthesizability of the polymorphs we identify, we employed the procedure from Aykol et al. for determining the amorphous limit.~\cite{Aykol2018}
 %
-In this method, several amorphous configurations are sampled to find a relatively low energy configuration to use as a reasonble approximation to the amorphous limit.
+In this method, several amorphous configurations are sampled to find a relatively low energy configuration to use as a reasonable approximation to the amorphous limit.
 %
 % =========================================================
 % TABLE ===================================================
@@ -599,7 +599,7 @@ We followed the computational procedure used by Aykol et al. to generate such sa
 and obtained 0.51 eV/atom and 0.31 eV/atom, respectively
 (See Table \ref{table:amorph_limit}) for total and formation energies of sampled configurations).
 %
-It should be stressed that amorphous limits provide an stringent energetic upper-bound for the synthesis of a crystalline polymorph at a given composition (i.e. polymorphs above the limit are inaccessible),
+It should be stressed that amorphous limits provide an stringent energetic upper bound for the synthesis of a crystalline polymorph at a given composition (i.e. polymorphs above the limit are inaccessible),
 but they do not imply that polymorphs below the limits are necessarily physically realizable.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -628,11 +628,11 @@ but they do not imply that polymorphs below the limits are necessarily physicall
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Bulk Pourbaix Diagram
 %
-The electrochemical bulk Pourbaix diagrams were constructed using the \texttt{pourbaix\_diagram} modules from pymatgen with manually inputed entries.~\cite{Ong2013}.
+The electrochemical bulk Pourbaix diagrams were constructed using the \texttt{pourbaix\_diagram} modules from pymatgen with manually inputted entries.~\cite{Ong2013}.
 %
 The \DGf of metallic Ir(s) was set to 0, while the \DGf of \rIrOtwo was set to experimental values.~\cite{Barin1995}
 %
-The aqueous ion ($IrO{4}^{-}$) corresponds to an experimental value from Douglas (1988)~\cite{Adams1988} and was retreived by the pymatgen MPRester API interface.
+The aqueous ion ($IrO_{4}^{-}$) corresponds to an experimental value from Douglas (1988)~\cite{Adams1988} and was retrieved by the pymatgen MPRester API interface.
 %
 The \DGf values for all species used to construct both Figure \ref{fig:bulk_pourbaix} and \ref{fig:bulk_pourbaix_wo_alpha} are included in Table \ref{table:bulk_pourb}.
 
@@ -695,7 +695,8 @@ The procedure was as follows:
 %
 Stable stoichiometric terminations were cut from the bulk by cleaving along the Miller indices with the highest calculated diffraction peaks, corresponding to planes with higher density of atoms. The location of the cutting plane was further chosen to minimize number of severed bonds in the terminating octahedra.
 %
-Next, electrochemical surface coverage was predicted via a surface Pourbaix analysis,~\cite{Lu2017} which is based on relative free energies of OH* and O* coverages as described in the next section.
+Next, electrochemical surface coverage was predicted via a surface Pourbaix analysis,~\cite{Lu2017}
+which is based on relative free energies of OH* and O* coverages as described in the next section.
 %
 This elucidates the coverage under operating conditions ($>$\num{1.23} \VRHE) for each slab.
 %
@@ -725,7 +726,7 @@ This was done to avoid common issues of surface energy divergence associated wit
 The sensitivity of a given slab to an applied bias is dependent on the composition of the surface,
 in particular, the effect of coverage of electrolyte species which can deposit oxygen, hydrogen, and hydroxide species on the surface layers.
 %
-These additional \ce{O} and \ce{H} atoms are not referenced to the atoms in the slab, but are instead referenced to the computational hydrogen electrode and water-splitting reaction as is commonly done for Surface Pourbiax diagrams~\cite{Lu2017}.
+These additional \ce{O} and \ce{H} atoms are not referenced to the atoms in the slab, but are instead referenced to the computational hydrogen electrode and water-splitting reaction as is commonly done for surface Pourbaix diagrams~\cite{Lu2017}.
 % __|
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

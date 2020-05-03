@@ -17,7 +17,7 @@
 % TODO In the previous sections make sure to highlight the alpha and rutile IrO3 phases explicitly so that this sentence makes sense here.
 We next performed \latin{ab-initio} thermodynamic analyses to test the OER electrochemical operational stability and activity of the most stable \IrOx in aqueous solution.
 %
-In particular, we compare the stability and activity of \rIrOtwo to our newly discovered \aIrOthree, and to the \rIrOthree polymorph.
+In particular, we compare the stability and activity of \rIrOtwo to our newly discovered \aIrOthree and \rIrOthree polymorphs.
 %
 In addition, we have also computed the stability and activity of a delithiated form of a recently reported $\beta$-Li\textsubscript{x}IrO\textsubscript{3} structure, referred here to as \bIrOthree.~\cite{Pearce2017,Pearce2019}
 %
@@ -30,15 +30,13 @@ The OER activity was computed assuming the most common single-site associative O
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Bulk Pourbaix Diagram
 %
-% Explain the Ir and IrO[4-] species
-% QUESTION Use E or U for potential variable
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
 The calculated bulk Pourbaix diagram of the Ir-H\textsubscript{2}O system is shown in Figure~\ref{fig:bulk_pourbaix}.
 %
-The diagram was constructed by considering the thermodynamic equilibrium between the following species: Ir, \rIrOtwo, \aIrOthree, \rIrOthree, \bIrOthree, and an aqueous dissolved \ce{IrO^{4-}} species.
+The diagram was constructed by considering the thermodynamic equilibrium between the following species: Ir, \rIrOtwo, \aIrOthree, \rIrOthree, \bIrOthree, and an aqueous dissolved \IrOfourm species.
 %
 %
 To obtain free energies, we utilized a free energy correction to our calculated values to reproduce the known experimental $\Delta H_f$ and $\Delta G_f$ of \rIrOtwo.~\cite{Barin1995}
@@ -46,17 +44,18 @@ To obtain free energies, we utilized a free energy correction to our calculated 
 While Ir and \rIrOtwo are most stable at low bias, \aIrOthree becomes the thermodynamically dominant phase under the relevant conditions for the OER (potentials $>$ \num{1.23} \VRHE and in an acidic environment).
 %
 % I want to be careful about how I talk about the metastable structures in the bulk Pourbaix, they strictly speaking shouldn't be there at all
-The stability regions for less stable \bIrOthree and \rIrOthree phases,
-in the absence of \aIrOthree, are also included,
-and are indicated by solid lines.
+The stability regions for the less stable \bIrOthree and \rIrOthree polymorphs (in the absence of other \IrOthree phases) are also included (unfilled solid lines).
 %
-It can be seen that these phases have a reduced, but sufficiently large, stability window relative to \IrOtwo and the \ce{IrO^{4-}}.
+It can be seen that these phases have a reduced, but sufficiently large, stability window relative to \IrOtwo and the \IrOfourm.
 %
 Removal of the \IrOthree phases from the bulk Pourbaix diagram results in a completely different thermodynamic picture of \IrOtwo stability (Figure~\ref{fig:bulk_pourbaix_wo_alpha}).
-In total, we have discovered 21 unique \IrOthree polymorphs with a non-zero bulk Pourbaix stability region.
+In total, we have discovered 21 unique \IrOthree polymorphs with a non-zero bulk Pourbaix stability region
+(0 $\leq$ pH $\leq$ 14).
 %
-% TODO Create energy table for main bulk systems in SI
-% The similar formation energies (see Table \ref{table:oer_table}) for all three \IrOthree species suggest some or all of these \IrOthree phases may be present and are stable under OER conditions.
+Interestingly, these 21 structures are more stable than the most stable \IrOthree structure in Materials Project~\cite{mp-1097041} (which is also present in our dataset, Figure~\ref{fig:E_vs_V}d.iv).
+%
+We note that thermodynamic driving force toward these \IrOthree phases under OER conditions suggests that these structures may spontaneously form under reaction conditions,
+especially for systems that undergo a large degree of surface reconstruction~\cite{Seitz2016}.
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -71,9 +70,9 @@ In total, we have discovered 21 unique \IrOthree polymorphs with a non-zero bulk
 {02_figures/oer_activity_stability/00_master__bulk-pourbaix__v6.pdf}}
 \caption{\label{fig:bulk_pourbaix}
 %
-Revised bulk Pourbaix diagram of the \ce{Ir}-\ce{H2O} system as a function of applied potential and pH.
+Revised bulk Pourbaix diagram of the \ce{Ir}-\ce{H2O} system as a function of applied potential ($U_{SHE}$) and pH.
 %
-The diagram was constructed with Ir(s) (blue), \rIrOtwo (green), various \IrOthree polymorphs and a dissolved \ce{IrO^{4-}} ion species (dark grey).
+The diagram was constructed with Ir(s) (blue), \rIrOtwo (green), various \IrOthree polymorphs and a dissolved \IrOfourm ion species (dark grey).
 %
 The stability regions corresponding to the metastable \rIrOthree and \bIrOthree polymorphs (see text), in the absence of any competing \IrOthree phase, are displayed as yellow and pink lines, respectively.
 %
@@ -81,9 +80,7 @@ The thermodynamic onset of OER (water equilibrium at \num{1.23} \VRHE) is also s
 %
 To be compared to Figure~\ref{fig:bulk_pourbaix_wo_alpha} without \IrOthree phases.
 %
-% The most stable system studied (see Table XX in SI for a full list) are Ir-metal Ir(s) (blue), a \rIrOtwo (green), and a dissolved \ce{IrO4[4-]} (grey).
-%
-% These are compared to the \ce{IrO_3} polymorphs, \aIrOthree (purple), \rIrOthree (orange), and \bIrOthree (pink).
+See Table \ref{table:bulk_pourb} for the bulk formation energies (\DGf) used to construct the diagram.
 }
 \end{figure*}
 % __| =====================================================
@@ -97,16 +94,14 @@ To be compared to Figure~\ref{fig:bulk_pourbaix_wo_alpha} without \IrOthree phas
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-We next computed the surface energy Pourbaix plots and OER activity for various surface facets at selected coverages (for simplicity we only choose bare and one monolayer of OH* and O*) of all four systems from Figure \ref{fig:bulk_pourbaix};
+We next computed the surface energy Pourbaix plots and OER activity for various surface facets at select coverages (for simplicity we only choose bare and one monolayer of OH* and O*) of all four systems from Figure \ref{fig:bulk_pourbaix};
 results are summarized in Figure~\ref{fig:oer_volcano}.
-%
-%There, in Figure~\ref{fig:oer_volcano}a, we report the surface energy Pourbaix plots and OER activity for various surface facets at selected coverages (for simplicity we only choose bare, 1ML OH* and 1ML O*) of all four systems from Figure \ref{fig:bulk_pourbaix}.
 %
 For each polymorph, surfaces were constructed by cleaving along the Miller indices with the highest calculated diffraction peaks, corresponding to planes with higher density of atoms.
 %
 The surface free energy Pourbaix plots identify which surface facets and surface coverage species are thermodynamically preferred under OER conditions.
 %
-Our results show, that most of the facets prefer to have a high surface coverage of O*, therefore we consider mainly oxygen terminated surfaces for the OER analysis.
+Our results show that most of the facets prefer to have a high surface coverage of O*, therefore we consider mainly oxygen terminated surfaces for the OER analysis.
 %
 Our results are comparable to previous studies on the electrochemical stability of \IrOtwo surfaces~\cite{Nattino2019,Raman2020},
 but without considering highly reconstructed facets such as (101).
@@ -130,7 +125,7 @@ Summary of OER results for the following four bulk structures of \IrOx: \rIrOtwo
 %
 (a) Surface energy Pourbaix diagrams for each structure, with the surface energy of various facets and coverages shown as a function of applied potential (\VRHE).
 %
-The coverage with bare surfaces (light lines), *OH covered (medium lines) and *O covered surfaces (thick lines) are shown.
+% The coverage with bare surfaces (light lines), *OH covered (medium lines) and *O covered surfaces (thick lines) are shown.
 %
 The bulk Pourbaix diagram's bounds of stability at pH \num{0} are superimposed as horizontal bars at the bottom of each subplot.
 %
@@ -138,7 +133,8 @@ The pseudo-stability regimes for the metastable \bIrOthree and \rIrOthree are in
 %
 (b) OER activity volcano for \IrOx systems considered utilizing the \DGOmOH{} descriptor.
 %
-The horizontal lines correspond to recent experimental OER limiting potentials for \IrOtwo and \IrOthree~\cite{Seitz2016}, and were taken at a current density of \SI[mode=text]{10}{\mA\per\cm\squared}.
+The horizontal lines correspond to recent experimental OER limiting potentials for \rIrOtwo (110)~\cite{Kuo2017} and SrIrO\textsubscript{3}~\cite{Seitz2016},
+at \SI[mode=text]{10}{\mA\per\cm\squared} (extrapolated values).
 %
 (c) Corresponding structural models for selected OER surfaces at one mono-layer O* coverage used for calculation of the overpotentials.
 %
@@ -155,16 +151,14 @@ All OER slab models and corresponding DFT energies are freely available under th
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - OER Volcano
-% TODO We don't mention new old/new scaling volcanos
+%
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-% Replace G_O and G_OH with my custom macros for consistency
-The calculated OER activities of relevant OER stable surfaces are plotted against the \DGOmOH{} OER descriptor are shown in Figure \ref{fig:oer_volcano}b.
+The calculated OER activities of relevant OER stable surfaces are plotted against the \DGOmOH{} descriptor and are shown in Figure \ref{fig:oer_volcano}b.
 %
-We display thermodynamic limiting potential volcano based on both the universal~\cite{Man2011} and fitted scaling
-(Figure \ref{fig:scaling_relations}) between \DGOOH with \DGOH, shown as solid lines.
+There, we display two thermodynamic limiting potential volcanos based on (1) the standard universal~\cite{Man2011} (black) and (2) fitted (grey) scaling relations between the OER intermediates (Figure \ref{fig:scaling_relations}).
 %
 Additionally, we have also added a kinetic OER volcano (dashed line) from Dickens \latin{et al.}~\cite{Dickens2019} based on the detailed microkinetic model developed for rutile systems.
 %
@@ -186,7 +180,7 @@ The corresponding surface structures for selected systems featuring high oxygen 
 %
 In general, the \rIrOtwo surfaces bind the OER intermediates relatively strongly, with theoretical limiting potentials of \mytilde\num{1.8} \VRHE (overpotential of \num{0.57} \VRHE) having the *O to *OOH potential limiting step, in agreement with previous theoretical studies.~\cite{Briquet2017,Strickler2019,Raman2020}
 %
-Based on the experimental values shown as horizontal line, the predicted overpotentials of our \rIrOtwo systems are also within the range of experimentally observed overpotentials.~\cite{Seitz2016, Kuo2017}.
+The predicted overpotentials of our \rIrOtwo systems are also within the range of experimentally observed values (horizontal lines).~\cite{Seitz2016, Kuo2017}.
 %
 The surfaces of the three \IrOthree polymorphs have \DGOmOH{} values shifted to higher energies, indicative of overall weaker binding energetics (see also Figure~\ref{fig:scaling_relations}).
 %

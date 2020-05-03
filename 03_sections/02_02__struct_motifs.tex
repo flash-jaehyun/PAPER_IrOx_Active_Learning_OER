@@ -63,12 +63,12 @@ We next assess stability trends and structural variety of the DFT optimized stru
 Figure~\ref{fig:E_vs_V}a,b shows the DFT computed \DHf for \IrOtwo and \IrOthree plotted against the inverse density,
 a quantity that is sensitive to crystal porosity and connectivity.
 %
-To obtain a physically meaningful cutoff for \DHf, we computed the metastability limits for \IrOtwo and \IrOthree relative to their amorphous phases using the methodology of Persson and coworkers.~\cite{Aykol2018}.
+To obtain a physically meaningful cutoff for \DHf, we computed the ``amorphous limit'' of Persson and coworkers for both \IrOtwo and \IrOthree,
+which provides a stringent upper bound to polymorph synthesizability.~\cite{Aykol2018}
 %
-The metastability limit for both \IrOtwo and \IrOthree were computed to occur at a \DHf of \SI{-0.34}{\electronvolt}/atom and are displayed as horizontal lines in Figure~\ref{fig:E_vs_V}a,b.
+We found the amorphous limit for both \IrOtwo and \IrOthree to occur at a \DHf of \SI{-0.34}{\electronvolt}/atom and are displayed as horizontal lines in Figure~\ref{fig:E_vs_V}a,b.
 %
-There are \num{196} and \num{75} polymorphs for \IrOtwo and \IrOthree, respectively, that are within the metastability limit, and can therefore, in principle be synthesized.
-
+There are \num{196} and \num{75} polymorphs for \IrOtwo and \IrOthree, respectively, that are within the amorphous synthesizability limit.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -83,7 +83,7 @@ There are \num{196} and \num{75} polymorphs for \IrOtwo and \IrOthree, respectiv
 {02_figures/E_vs_V_IrOx/00_e_vs_v_coord_motiffs__v6__downsampled_1200x1200.pdf}}
 \caption{\label{fig:E_vs_V}
 %
-\DHf for the \num{384} \IrOtwo (a) and \num{191} \IrOthree (b) DFT optimized structures in the candidate data set plotted against the volume per atom.
+\DHf for the \num{384} \IrOtwo (a) and \num{191} \IrOthree (b) structurally unique DFT optimized structures in the candidate data set plotted against the volume per atom.
 %
 Insets in the low energy region for (a) and (b) are shown.
 %
@@ -91,7 +91,7 @@ The color bar represents the average coordination number between Ir and O, with 
 %
 For \IrOtwo (c) and \IrOthree (d) we highlight the structures of select polymorphs.
 %
-The metastability limits for \IrOtwo and \IrOthree (Figure \ref{table:amorph_limit}) defining a strict upperbound for synthesizability are displayed in (a) and (b) as horizontal lines.
+The amorphous limits for \IrOtwo and \IrOthree (Figure \ref{table:amorph_limit}) defining a strict upper bound for synthesizability are displayed in (a) and (b) as horizontal lines.
 }
 \end{figure*}
 % __| =====================================================
@@ -117,6 +117,8 @@ The highest volume (lowest density) systems sampled have atomic packing factors 
 %
 However, for \IrOthree there is a comparatively weaker relationship between the energy and volume, such that even highly porous structures are within \SI{0.1}{\electronvolt}/atom of the most stable phase.
 %
+This is indicative of \IrOthree's high degree of polymorphism and ability to readily form layered and/or porous structures.
+%
 % COMBAK Explain this point better, this has to do with the oxidation state, coordination preservation rules that I've been playing around with
 %
 %This property is likely due to the fact that \IrOthree's oxidation state can more can form readily form layered or porous structures.
@@ -138,13 +140,13 @@ by using the chemEnv package, developed by Waroquiers et. al. \cite{Waroquiers20
 Our dataset contains structures with coordination numbers ranging from 2 to 10,
 with coordination numbers of six (octahedral, blue) and four (tetrahedral, red) being the most prevalent (see Figure~\ref{fig:E_vs_V}).
 %
-For \IrOtwo and \IrOthree the vast majority of the most stable (within \SI{0.1}{\electronvolt}/atom) structures adopt an octahedral coordination environment,
+The vast majority of the most stable (within \SI{0.1}{\electronvolt}/atom) structures adopt an octahedral coordination environment,
 a common coordination motif found to be favorable in many other transition metal oxides.\cite{Waroquiers2017}
 %
 % This has to be expanded upon or else maybe dropped, we can discuss
 % I don't understand the end of this sentence. Give some information of how this applies to your structures.
 % I've added a sentence at the end where we simply describe whether our most stable structures are corner vs. edge sharing
-The arrangement of the octahedral units, which are connected through either corner- or edge-sharing,
+The arrangement of the octahedral units, which are connected through either corner- or edge-sharing octahedra,
 can furthermore be used to classify the structures,
 which typically have a combination of the two.
 %
@@ -159,15 +161,14 @@ This demonstrates that \IrOtwo prefers to form edge-sharing octahedra as a resul
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | - PARAGRAPH HEADER
-% TEMP
+% | - Talking about different structures
+%
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 Figure~\ref{fig:E_vs_V}c,d shows a selection of metastable structures for \IrOtwo and \IrOthree, respectively.
 %
-For \IrOtwo, we found the rutile structure to be the most stable,
-in agreement with experimental and known crystallographic data.
+For \IrOtwo, we reaffirm the rutile ground state.
 %
 % TODO Put in references for other pyrite formation enthalpies and confirm that these references cover experimental DHf values
 Additionally, the experimentally synthesized high-pressure pyrite phase of \IrOtwo was found in our dataset and has a \DHf \mytilde\SI{0.1}{\electronvolt}/atom greater than rutile,
@@ -183,13 +184,8 @@ For \IrOthree the eight most stable systems are reported in Figure~\ref{fig:iro3
 In addition to the most thermodynamically stable systems,
 we have identified several interesting metastable structures,
 including two dimensional (i), highly porous (iii) and one dimensional (v) polymorphs with varying degrees of porosity and connectivity,
-which are important structural properties for applications as battery cathodes or ionic conductors.\cite{Pearce2017,Pearce2019}
+which are important structural properties for applications as battery cathodes and ionic conductors.~\cite{Pearce2017,Pearce2019}
 %
 % \textbf{the labeling scheme jumping between two figures is a little confusing here, and it obfuscates the point I think you are trying to make in this last sentence}
-%
-The most stable \IrOthree structure in the MP dataset~\cite{mp-1097041} corresponds to the twenty second most stable \IrOthree polymorph in our dataset
-(iv in Figure~\ref{fig:E_vs_V}d with a Cmcm space group).
-%
-Thus, our polymorph search has uncovered twenty-one \IrOthree polymorphs more stable than any previously known structures.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
