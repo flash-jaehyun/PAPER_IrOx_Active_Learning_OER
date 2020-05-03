@@ -52,11 +52,11 @@ All bulk systems were run through the following computational recipe to converge
   %
   A unit cell volume relaxation that constrains the relative values for the cell lattice parameters to keep the unit cell volume shape constant (ISIF 7).
   %
-  This optimization is the most coarse and least suseptible for failure to account for initial geometries being far from physical.
+  This optimization is the coarsest and least susceptible for failure to account for initial geometries being far from physical and hard to converge.
   % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \item
   %
-  A series of three successfull bulk optimizations that relax all degrees of freedom (atom positions, cell shape, and cell volume),
+  A series of three successful bulk optimizations that relax all degrees of freedom (atom positions, cell shape, and cell volume),
   and corresponds to a ISIF \num{3} flag in VASP.
   %
   The reason we run three consecutive ISIF \num{3} runs is to ensure that the unit cell dimensions are unaffected by the well known basis errors associated with changing the unit cell size during optimization.
@@ -77,7 +77,7 @@ All bulk systems were run through the following computational recipe to converge
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
-Here we briefly desribe the DFT computational details for slab calculations.
+Here we briefly describe the DFT computational details for slab calculations.
 %
 For a more thorough description of the OER methodology, including surface energies and determination of OER activity refer to sections below.
 %
@@ -168,7 +168,7 @@ This prototype designation can serve as a structural fingerprint and has success
 %
 Structures belonging to the same crystallographic space group and having the same participating Wyckoff sites have identical crystal symmetry and are grouped together into what we refer to as a ``structure prototype''.
 %
-Each unique structure prototype will contribute one structure to the final candidate set, thereby eliminating structurally redundany systems.
+Each unique structure prototype will contribute one structure to the final candidate set, thereby eliminating structurally redundant systems.
 %
 %We identified unique structure types by grouping materials according to participating Wyckoff sites.
 %
@@ -804,7 +804,7 @@ The weaker binding of \IrOthree relative to \IrOtwo is easily rationalized in te
 %
 \IrOthree has a $6+$ oxidation state compared to $4+$ for \IrOtwo due to the larger number of oxygens per formula unit.
 %
-The propensity for \IrOthree to adsorb oxygenatetd OER intermediates is lessened because it is essentially oversaturated in oxygen compared to \IrOtwo.
+The propensity for \IrOthree to adsorb oxygenated OER intermediates is lessened because it is essentially oversaturated in oxygen compared to \IrOtwo.
 %
 Thus the stoichiometry of an oxide is a straightforward way to modulate the oxidation state and binding trends in a material system.
 % __|
@@ -829,11 +829,12 @@ We have
 Fixing the slope in our data fit to \num{1} to compare the intercepts results in an intercept of \num{2.99} eV for our dataset,
 0.2 eV more stable than standard scaling.
 %
-This stabalization of *OOH relative to *OH is beneficial to the activity and is the reason that the fit volcano (grey) in Figure \ref{fig:oer_volcano}b has a higher activity than the volcano constructed from standard scaling (black).
+This stabilization of *OOH relative to *OH is beneficial to the activity and is the reason that the fit volcano (grey) in Figure \ref{fig:oer_volcano}b has a higher activity than the volcano constructed from standard scaling (black).
 %
-It should be noted that quantity of OER data we are fitting to is relitively small, and so our confidence in our fit is not robust.
+It should be noted that quantity of OER data we are fitting to is relatively small,
+and so our confidence in our fit is not robust.
 %
-Thus it is unclear whether \IrOthree surfaces truly exhibit enhanced scaling or whether the observed inhancement is due to numerical noise.
+Thus it is unclear whether \IrOthree surfaces truly exhibit enhanced scaling or whether the observed enhancement is due to numerical noise.
 %
 Further studies exploring the OER binding trends in a larger number of \IrOtwo and \IrOthree systems are needed to address this question.
 
