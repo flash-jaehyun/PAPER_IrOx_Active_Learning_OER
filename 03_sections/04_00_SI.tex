@@ -8,8 +8,7 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Density functional theory (DFT) computational details}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Force convergence was 1e-3 for final final bulk opt, and 0.02 for slabs
-% Energy SCF convergence was 1e-6 for bulk opt and 1e-5 for slabs
+%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - DFT Computational Details
 
@@ -39,22 +38,36 @@ Calculations were carried out through the atomic simulation environment (ASE) py
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
+Here we describe the DFT methodology and workflow for optimizing the candidate structures for the AL algorithm.
 %
-A higher plane-wave cutoff of \SI{600}{\electronvolt} was used for bulk relaxation compared to OER slab calculations (\SI{500}{\electronvolt}).
+We employed a higher plane-wave cutoff of \SI{600}{\electronvolt} for bulk relaxation compared to OER slab calculations (\SI{500}{\electronvolt}).
 %
 A variable k-point mesh was used, with a k-point density of at least \num{20} k-points per \AA$^{-1}$ reciprocal space dimension.
 %
 All bulk systems were run through the following computational recipe to converge the equilibrium structure, with \num{3} distinct phases. Structures are only advanced to the next phase when the previous phase completes without error.
 
 \begin{enumerate}
+  % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item
   %
-  \item An ISIF \num{7} calculation to optimize only the volume (initial volume of cell may be really off).
+  A unit cell volume relaxation that constrains the relative values for the cell lattice parameters to keep the unit cell volume shape constant (ISIF 7).
   %
-  \item Three consecutive ISIF \num{3} relaxations to fully converge the lattice and atomic positions.
+  This optimization is the most coarse and least suseptible for failure to account for initial geometries being far from physical.
+  % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item
   %
-  \item A final ISIF \num{2} (fixed unit cell) calculation to relax the atomic coordinates to avoid errors associated with changing the cell volume with a fixed plane-wave cutoff basis.
+  A series of three successfull bulk optimizations that relax all degrees of freedom (atom positions, cell shape, and cell volume),
+  and corresponds to a ISIF \num{3} flag in VASP.
   %
-  This step employs a more stringent SCF convergence criteria of \SI{1e-6}{\electronvolt} and force convergence of \SI{1e-3}{\electronvolt\per\angstrom}
+  The reason we run three consecutive ISIF \num{3} runs is to ensure that the unit cell dimensions are unaffected by the well known basis errors associated with changing the unit cell size during optimization.
+  % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item
+  %
+  For good measure, a final optimization was performed keeping the unit cell constrained (ISIF \num{2}).
+  %
+  These energies typically differ by less than \SI{10}{\milli\electronvolt} compared to the previous ISIF 3 optimization.
+  %
+  This step employs a more stringent self-consistent field (SCF) energy convergence criteria of \SI{1e-6}{\electronvolt} and force convergence of \SI{1e-3}{\electronvolt\per\angstrom}
 \end{enumerate}
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -64,10 +77,11 @@ All bulk systems were run through the following computational recipe to converge
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
+Here we briefly desribe the DFT computational details for slab calculations.
+%
+For a more thorough description of the OER methodology, including surface energies and determination of OER activity refer to sections below.
 %
 A 4$\times$4$\times$1 k-point mesh with $\Gamma$-centered Monkhorst-pack mesh~\cite{Monkhorst1976} was used for all OER slabs.
-%
-%The plane-wave energy cutoff was \SI{500}{\electronvolt}.
 %
 All slab calculations maintained a vacuum spacing of approximately \SI{15}{\angstrom} on average.
 %
@@ -75,9 +89,9 @@ Dipole corrections were imposed on all non-symmetric slabs to counteract the eff
 %
 Roughly \num{3/4} of the bottom layers were kept fixed to simulate the bulk crystal while the top two surface layers were allowed to fully relax.
 %
-All structures were relaxed with utilizing the conjugate gradient algorithm as implemented in VASP (IBRION\num{=2}).
+All structures were relaxed utilizing the conjugate gradient algorithm as implemented in VASP (IBRION\num{=2}).
 %
-The simulation criteria used was that all atoms must satisfy a maximum force threshold of \SI{0.02}{\electronvolt\per\angstrom}.
+The slab optimization was run until the maximum force on all atoms was below the force threshold of \SI{0.02}{\electronvolt\per\angstrom}.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -110,11 +124,12 @@ Since many of the entries in these databases are structurally redundant,
 we used a structure classification scheme to reduce the data set to a structurally unique set.
 %
 Once this is accomplished, the elements of interest were then substituted into the database structures,
-which at this point had their original elemental composition from their database.
+which at this point had their original elemental composition from their database entries.
 %
 Finally, the structures are isotropically expanded or contracted to accommodate the difference between the atomic radii of the original elements in the structure and the user defined elements.
 %
-This procedure of ``pre-optimization'' is an important because it generates reasonable initial geometries which would otherwise produce poor fingerprint representations and lead to a large degree of structural shift during the course of DFT optimization.
+This procedure of ``pre-optimization'' is an important step because
+it is necessary to generate reasonable initial geometries which would otherwise produce poor fingerprint representations and lead to a large degree of structural drift during the course of DFT optimization.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -130,10 +145,10 @@ This procedure of ``pre-optimization'' is an important because it generates reas
 We utilized two materials databases, the Open Quantum Materials (OQMD)\cite{Saal2013} and the Materials Project (MP) databases\cite{Jain2013} because of their large and diverse sets of crystalline inorganic materials.
 %
 % TODO Approx. when did Ankit parse these databases
-At the time that we originally mined these databases (2018), there were \num{61471} inorganic compounds in the MP database and \num{435583} entries in the OQMD database.
+At the time that we originally mined these databases (2018) there were \num{61471} inorganic compounds in the MP database and \num{435583} entries in the OQMD database.
 %
 We note that the databases have expanded the number of entries considerably since we originally parsed them,
-although the number of unique crystal polymorphs is not expected to have increase significantly.
+but we don't expect that the number of unique structural prototypes has increased significantly.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -151,16 +166,22 @@ as well as the element-nonspecific stoichiometry of each structure (\num{497054}
 %
 This prototype designation can serve as a structural fingerprint and has successfully been applied towards the prediction of formation energies of inorganic compounds~\cite{Jain2018}.
 %
+Structures belonging to the same crystallographic space group and having the same participating Wyckoff sites have identical crystal symmetry and are grouped together into what we refer to as a ``structure prototype''.
+%
+Each unique structure prototype will contribute one structure to the final candidate set, thereby eliminating structurally redundany systems.
+%
 %We identified unique structure types by grouping materials according to participating Wyckoff sites.
 %
-
 The Wyckoff sites of crystallographic space groups are a collection of fractional coordinates within the unit cell where atoms are allowed to sit in order to satisfy the symmetry of the underlying space group.
 %
-The space group and standard setting of a unit cell is identified, and atomic positions are mapped to Wyckoff sites using the openly available, crystal symmetry library Spglib~\cite{spglib}. The Wyckoff sites are subsequently mapped to unique Wyckoff-pair combinations, to obtain a unique classification which is independent of crystal translation and rotation. The related Wyckoff sites are found by looping through all allowed crystal symmetry operations of the crystal.
-
-%We mapped all such related Wyckoff sites to the same structure-type by looping through all allowed crystal symmetry operations of the crystal.
-
-The structures belonging to same crystallographic space group and having the same participating Wyckoff sites have identical crystal symmetry and are grouped together. These groups are referred to as structure-type in this work. Further mathematical details of these operations are available in Jain \latin{et al.}~\cite{Jain2018}.
+The space group and standard setting of a unit cell is identified, and atomic positions are mapped to Wyckoff sites using the openly available, crystal symmetry library Spglib~\cite{spglib}.
+%
+The Wyckoff sites are subsequently mapped to unique Wyckoff-pair combinations, to obtain a unique classification which is independent of crystal translation and rotation.
+%
+The related Wyckoff sites are found by looping through all allowed crystal symmetry operations of the crystal.
+%We mapped all such related Wyckoff sites to the same structure-type by looping through all allowed crystal symmetry operations of the crystal.=
+%
+Further mathematical details of these operations are available in Jain \latin{et al.}~\cite{Jain2018}.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -172,18 +193,21 @@ The structures belonging to same crystallographic space group and having the sam
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-Once classified, we selected all entries with the desired stoichiometry of \ABtwo and \ABthree,
-for which MP has \num{2424} and \num{2341} \ABtwo and \ABthree entries, respectively,
+Once the structural prototypes are classified,
+we selected all entries with the desired stoichiometry of \ABtwo and \ABthree from MP and OQMD.
+%
+Materials Project (MP) has \num{2424} and \num{2341} \ABtwo and \ABthree entries, respectively,
 and OQMD has \num{4736} and \num{28883} \ABtwo and \ABthree entries, respectively.
 %
 The reason that there are considerably more \ABthree compounds in OQMD is due to the extensive compositional permutation of binary alloys in a cubic \ABthree structure.
 %
-Within each stoichiometry, the structural classification was used to eliminate structurally redundant systems,
-\latin{i.e.} systems that share their stoichiometry, space group, and Wyckoff positions.
+Within each stoichiometry, the structural classification was used to eliminate structurally redundant systems using the structural classification scheme above.
 %
 This process reduces the data set to \num{620} and \num{219} unique structures of \ABtwo and \ABthree for MP and \num{397} and \num{194} structurally unique \ABtwo and \ABthree OQMD entries.
 %
-Combining the MP and OQMD data sets ultimately results in a dataset of \num{688} \ABtwo and \num{254} \ABthree structurally unique candidates.
+Combining the MP and OQMD data sets ultimately results in a dataset of \num{697} \ABtwo and \num{259} \ABthree structurally unique candidates.
+%
+A table summary of the number of entries in MP and OQMD at each step is outlined in Table \ref{table:database_structures}.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -274,9 +298,10 @@ The bulk crystal structures studied here,
 both the pre-optimized structural candidates and the post-DFT optimized systems,
 were converted into numerical fingerprint vectors via the Voronoi tessellation method developed by Ward et al.~\cite{Ward2017}
 %
-The method produces a \num{271} length fingerprint vector where the \num{271} features encode both for chemical and structural information by way of convoluting atomic properties with Voronoi neighbors.
+The method produces a \num{271} length fingerprint vector where the \num{271} features encode both for chemical and structural information by constructing quantities that convolute atomic properties with the Voronoi neighbor shells.
 %
-Since we are operating within the fixed composition of \IrOtwo and \IrOthree stoichiometries many of the \num{271} features become redundant (no variance) and thus we were able to immediately reduce the dimensionality of our feature space to \num{101}.
+Since we are applying the AL algorithm to each composition individually,
+many of the \num{271} features become redundant (no variance) and thus we were able to immediately reduce the dimensionality of our feature space to \num{101}.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -291,9 +316,12 @@ With the number of features reduced, it is then necessary to further process the
 %
 This included removing highly skewed data points, removing 0-variance features, and normalizing each feature by centering about the mean (mean of 0) and dividing by the features standard deviation (standard deviation of 0).
 %
-We expect that most of the remaining features are not linearly independent so we next chose to employ an additional feature reduction step by performing a principle-component analysis (PCA).
+We expect that most of the remaining features are not linearly independent,
+so that not all remaining features are crucial to retain,
 %
-This allowed us to reduce the number of features to \num{10} while still capturing 99\% of the total variance and minimizing the cross-validated prediction MAE (Figure \ref{fig:cv_anal}).
+For this reason, we chose to employ an additional feature reduction step by performing a principle-component analysis (PCA).
+%
+This allowed us to reduce the number of features to \num{10} while still capturing 99\% of the total variance and minimizing the cross-validated (CV) prediction MAE (Figure \ref{fig:cv_anal}).
 %
 This step is also crucial in reducing the computational expense of running the Gaussian Process training procedure.
 % __|
@@ -310,7 +338,7 @@ This step is also crucial in reducing the computational expense of running the G
 \makebox[\textwidth][c]{\includegraphics
 {02_figures/SI_figures/00_mae_pca_plot__v0.pdf}}
 \caption{\label{fig:cv_anal}
-20-fold cross validation mean absolute error (MAE) as a function of the number of PCA components used for the GP-regression for \IrOthree.
+20-fold cross validation (CV) mean absolute error (MAE) as a function of the number of PCA components used for the GP-regression for \IrOthree.
 %
 Only post-relaxation fingerprints were used for both training and testing to avoid issues with structural drift.
 %
@@ -335,14 +363,15 @@ All structural duplicates in the post-relaxation dataset were removed.
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
+The active learning algorithm (AL) described here utilizes a regression model which can be trained on generated DFT data to predict the \DHf of unsampled candidates.
 %
-Gaussian process machine learning regression models were picked due to their highly flexible fits and high performance in situations with small data sets.
+While almost any regression model would suffice, Gaussian process machine learning regression models were picked due to their highly flexible fits and high performance in situations with small data sets.
 %
 We utilized the Gaussian Process regression module as implemented in CatLearn.\cite{hansen2019atomistic,CatLearn_Repo}
 %
-The Gaussian Process recipe we developed utilized two isotropic Gaussian kernels which differ only in the values of the initial length scale parameter ($l$) and scaling parameter ($s$).
+The Gaussian Process recipe we developed utilized two isotropic Gaussian kernels which differ only in the values of the initial length scale parameter ($l$) and scaling parameter ($s$) (Eq. \ref{eq:gp_kernel}).
 %
-Here, isotropic refers to keeping the dimensionality of the kernel equal to one instead of an anisotropic kernel which was found to be difficult to optimize.
+Here, isotropic refers to keeping the dimensionality of the kernel equal to one instead of an anisotropic kernel which was found to be difficult to with respects to optimizing the hyper-parameters.
 %
 The first GP kernel was constructed with a length scale parameter of \num{1} ($l_1$) and a scaling factor of 5 ($s_1$),
 while for the second kernel the length scale and scaling factor were reduced by a factor of ten ($l_2$ and $s_2$).
@@ -355,15 +384,21 @@ Additionally, a regularization parameter ($\lambda$) which helps avoid over-fitt
 It should be stressed that these hyper-parameter values are only initial seed values, and that they will be optimized during every round of model training,
 which occurs once per active learning loop,
 and is done by maximizing the log marginal likelihood of the model and training data.
+%
+All hyper-parameter optimization is done internally in CatLearn.
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \begin{equation}
     k(x,x') =
     s_1 exp \Bigl ( \frac{-|x-x'|^2}{2l_1^2}\Bigr) +
     s_2 exp\Bigl (\frac{-|x-x'|^2}{2l_2^2}\Bigr) +
     \lambda \delta_{x,x'}
+    %
+    \label{eq:gp_kernel}
 \end{equation}
-% __|
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 % __|
 
@@ -398,7 +433,7 @@ and is done by maximizing the log marginal likelihood of the model and training 
 %
 Here we outline the results for the AL algorithm applied towards the space of all \IrOtwo candidates.
 %
-Interactive animations of the active learning loop can be found as supplemental files titled
+Interactive animations of the active learning algorithm for the runs shown in Figure \ref{fig:iro3_al} and \ref{fig:iro2_al} can be found as supplemental files titled
 \texttt{AL\_IrO2\_Anim.html}
 and
 \texttt{AL\_IrO3\_Anim.html},
@@ -418,8 +453,8 @@ which can be opened in any web browser.
 %
 Figure \ref{fig:iro2_al} shows the results of the active learning framework showcased here applied towards the space of \IrOtwo polymorphs.
 %
-The structure of Figure \ref{fig:iro2_al} is identical to \ref{fig:iro3_al},
-so the reader should refer to the main text for a more thorough explanation of all components.
+The structure of Figure \ref{fig:iro2_al} is identical to Figure \ref{fig:iro3_al},
+so the reader should refer to the main text for a more thorough explanation of all figure components.
 %
 In Figure \ref{fig:iro2_al}b six of the seven most stable \IrOtwo polymorphs are displayed.
 %
@@ -448,7 +483,7 @@ Figure \ref{fig:iro2_al}c presents the discovery rate of the AL loop as a functi
 The results are qualitatively similar to the case of \IrOthree,
 the GP-LCB method readily outperforms the random acquisition.
 %
-With only \num{200} DFT optimizations (\mytilde40\% of the entire candidate space) the algorithm has discovered \num{9/10}ths of most stable systems,
+With only \num{200} DFT optimizations (\mytilde40\% of the entire candidate space) the algorithm discovered \num{9/10}ths of most stable systems,
 while the random acquisition requires complete exhaustion of the candidates to find everything.
 %
 Interestingly the GP-LCB appears to saturate at nine structures, and is unable to find the tenth most stable structure until the candidate space is essentially exhausted.
@@ -498,9 +533,9 @@ This figure is analogous to Figure \ref{fig:iro3_al}, main text, which shows res
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-The entire AL algorithm was run a total of \num{100} times for both \IrOtwo and \IrOthree.
+The entire AL algorithm was run a total of \num{100} times for both \IrOtwo and \IrOthree utilizing both the random and GP-LCB acquisition criteria (a total of \num{400} runs).
 %
-Each run was independent of the rest, with the only difference being the initial five candidates that were drawn.
+Each run was independent from the rest, with the only difference being the initial five candidates that were drawn to seed the algorithm.
 %
 Figures \ref{fig:iro3_al}c and \ref{fig:iro2_al}c show the results of the average discovery rate of these independent runs.
 %
@@ -525,7 +560,7 @@ It is evident that the GP-LCB method has much less variability in its discovery 
 {02_figures/SI_figures/00_disc_vs_dft__v2.pdf}}
 \caption{\label{fig:disc_rate}
 %
-Quantity of top ten most stable \IrOtwo and \IrOthree polymorphs discovered ($N_{disc}$) as a function of the number of DFT bulk optimizations performed for the GP-LCB acquisition and the baseline random acquisition methods.
+Quantity of top ten most stable \IrOtwo and \IrOthree polymorphs discovered ($N_{discovered}$) as a function of the number of DFT bulk optimizations performed for the GP-LCB acquisition and the baseline random acquisition methods.
 %
 Red lines indicate the specific runs used for Figures \ref{fig:iro3_al} and Figure \ref{fig:iro2_al}.
 }
@@ -570,10 +605,27 @@ Red lines indicate the specific runs used for Figures \ref{fig:iro3_al} and Figu
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-To provide a physically motivated energy cut-off for the synthesizability of the polymorphs we identify, we employed the procedure from Aykol et al. for determining the amorphous limit.~\cite{Aykol2018}
+To provide a physically motivated energy cut-off for the potential synthesizability of the polymorphs we identify, we employed the procedure from Aykol et al. for determining the thermodynamic amorphous limit.~\cite{Aykol2018}
 %
 In this method, several amorphous configurations are sampled to find a relatively low energy configuration to use as a reasonable approximation to the amorphous limit.
 %
+We followed the computational procedure used by Aykol et al. to generate such sample amorphous phases for \IrOtwo and \IrOthree
+(each amorphous phase comprising around 100 atoms),
+and obtained 0.51 eV/atom and 0.31 eV/atom, respectively
+(See Table \ref{table:amorph_limit}) for total and formation energies of sampled configurations).
+%
+It should be stressed that amorphous limits provide an stringent energetic upper bound for the synthesis of a crystalline polymorph at a given composition (i.e. polymorphs above the limit are inaccessible),
+but they do not imply that polymorphs below the limits are necessarily physically realizable.
+%
+To expand, a crystal structure below the amorphous limit may still be kinetically inaccessible or simply restructure into another more stable configuration.
+%
+As such, being below the amorphous limit is a necessary but insufficient condition for a polymorph to be synthesizable.
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% __|
+
+
 % =========================================================
 % TABLE ===================================================
 % =========================================================
@@ -594,17 +646,6 @@ The most stable amorphous phase for each stoichiometry is bolded.
 \end{table}
 % __| =====================================================
 % =========================================================
-We followed the computational procedure used by Aykol et al. to generate such sample amorphous phases for \IrOtwo and \IrOthree
-(each amorphous phase comprising around 100 atoms),
-and obtained 0.51 eV/atom and 0.31 eV/atom, respectively
-(See Table \ref{table:amorph_limit}) for total and formation energies of sampled configurations).
-%
-It should be stressed that amorphous limits provide an stringent energetic upper bound for the synthesis of a crystalline polymorph at a given composition (i.e. polymorphs above the limit are inaccessible),
-but they do not imply that polymorphs below the limits are necessarily physically realizable.
-% __|
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% __|
 
 
 
@@ -675,7 +716,7 @@ The $IrO_{4}^{-}$ ion species energy is taken from Douglas (1988)~\cite{Adams198
 %
 Bulk Pourbaix diagram of the \ce{Ir}-\ce{H2O} system as a function of the applied potential and pH.
 %
-The diagram was constructed using all of the same species as Figure \ref{fig:bulk_pourbaix} with the exception of the globally stable \IrOthree (\aIrOthree) polymorph.
+The diagram was constructed using all of the same species as Figure \ref{fig:bulk_pourbaix} with the exception of any \IrOthree phase, including the globally stable \aIrOthree.
 }
 \end{figure*}
 % __| =====================================================
@@ -693,7 +734,9 @@ Here we will outline the procedure used to carry out OER simulations on the vari
 %
 The procedure was as follows:
 %
-Stable stoichiometric terminations were cut from the bulk by cleaving along the Miller indices with the highest calculated diffraction peaks, corresponding to planes with higher density of atoms. The location of the cutting plane was further chosen to minimize number of severed bonds in the terminating octahedra.
+Stable stoichiometric terminations were cut from the bulk by cleaving along the Miller indices with the highest calculated diffraction peaks, corresponding to planes with higher density of atoms.
+%
+The location of the cutting plane was further chosen to minimize number of severed bonds in the terminating octahedra.
 %
 Next, electrochemical surface coverage was predicted via a surface Pourbaix analysis,~\cite{Lu2017}
 which is based on relative free energies of OH* and O* coverages as described in the next section.
@@ -701,7 +744,8 @@ which is based on relative free energies of OH* and O* coverages as described in
 This elucidates the coverage under operating conditions ($>$\num{1.23} \VRHE) for each slab.
 %
 % COMBAK
-Finally, we conducted a thermodynamic limiting potential analysis of the acidic OER single-site associative pathway.~\cite{Rossmeisl2007, Man2011, Friebel2015,  Seitz2016, Strickler2019}
+Finally, we conducted a thermodynamic limiting potential analysis of the acidic OER single-site associative pathway.
+~\cite{Rossmeisl2007,Man2011,Friebel2015,Seitz2016,Strickler2019}
 %
 The method to construct the OER volcano plot, limiting potentials and free-energy corrections is identical to our most recent works on \IrOtwo systems~\cite{Strickler2019,Lee2020}.
 % __|
@@ -714,7 +758,7 @@ The method to construct the OER volcano plot, limiting potentials and free-energ
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Surface Energy Pourbaix Methodology
 %
-Surface energy Pourbaix plots were constructed by calculating the surface energy of each slab by under standard conditions (\si{\volt}\num{=0} and pH\num{=0}) and then utilizing the computational hydrogen electrode (CHE) to compute the potential dependence of the surfaces.
+Surface energy Pourbaix plots were constructed by calculating the surface energy of symmetric slabs under standard conditions (\si{\volt}\num{=0} and pH\num{=0}) and then utilizing the computational hydrogen electrode (CHE) to compute the potential dependence of the surfaces.
 %
 Surface energy calculations were performed for various facets for slabs of increasing thickness.
 %
@@ -726,7 +770,13 @@ This was done to avoid common issues of surface energy divergence associated wit
 The sensitivity of a given slab to an applied bias is dependent on the composition of the surface,
 in particular, the effect of coverage of electrolyte species which can deposit oxygen, hydrogen, and hydroxide species on the surface layers.
 %
-These additional \ce{O} and \ce{H} atoms are not referenced to the atoms in the slab, but are instead referenced to the computational hydrogen electrode and water-splitting reaction as is commonly done for surface Pourbaix diagrams~\cite{Lu2017}.
+These additional non-stoichiometric \ce{O} and \ce{H} atoms are not referenced to the atoms in the slab,
+but are instead referenced to the computational hydrogen electrode and water-splitting reaction as is commonly done for surface Pourbaix diagrams~\cite{Lu2017}.
+%
+As such our surface energies,
+at \si{\volt}\num{=0} and pH\num{=0},
+correspond not only to the energy it takes to cleave a surface (regular surface energy),
+but also with the energy associated with removing oxygen and hydrogen atoms from their \ce{H_{2}O} and \ce{H_{2}} references and adding them to the slab's surface.
 % __|
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -738,7 +788,7 @@ These additional \ce{O} and \ce{H} atoms are not referenced to the atoms in the 
 % | - OER Scaling Relations
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% | -
+% | - Highlight IrO3 is weaker binding
 %
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -748,12 +798,57 @@ Figure~\ref{fig:scaling_relations} shows the scaling relations between the adsor
 %
 It can be seen clearly that the data points corresponding to the three \IrOthree polymorphs are roughly \SI{1}{\electronvolt} weaker binding than the \rIrOtwo points.
 %
-This generally weaker binding of the \IrOthree stoichiometry is responsible for the observed improvement in theoretical activity.
+This weaker binding of the \IrOthree stoichiometry is responsible for the observed improvement in theoretical activity.
 %
-The \DGOOH vs.\DGOH relationship is very close to the universal scaling relations,~\cite{Man2011}
-demonstrating that our materials do not break the infamous \DGOOH vs. \DGOH scaling.
+The weaker binding of \IrOthree relative to \IrOtwo is easily rationalized in terms of the formal oxidation state of the Ir atoms.
+%
+\IrOthree has a $6+$ oxidation state compared to $4+$ for \IrOtwo due to the larger number of oxygens per formula unit.
+%
+The propensity for \IrOthree to adsorb oxygenatetd OER intermediates is lessened because it is essentially oversaturated in oxygen compared to \IrOtwo.
+%
+Thus the stoichiometry of an oxide is a straightforward way to modulate the oxidation state and binding trends in a material system.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | -
+%
+% __|
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - PARAGRAPH BODY
+%
+The scaling relations in our \IrOx data set exhibits deviations from standard scaling relations~\cite{Man2011}.
+%
+In particular, the adsorption energy of *OOH (\DGOOH) in our dataset is stabilized relative to standard scaling relations.
+%
+We have
+\DGOOH$=1.16$\DGOH$+2.8 eV$ while standard scaling is
+\DGOOH$=$\DGOH$+3.2 eV$.
+%
+Fixing the slope in our data fit to \num{1} to compare the intercepts results in an intercept of \num{2.99} eV for our dataset,
+0.2 eV more stable than standard scaling.
+%
+This stabalization of *OOH relative to *OH is beneficial to the activity and is the reason that the fit volcano (grey) in Figure \ref{fig:oer_volcano}b has a higher activity than the volcano constructed from standard scaling (black).
+%
+It should be noted that quantity of OER data we are fitting to is relitively small, and so our confidence in our fit is not robust.
+%
+Thus it is unclear whether \IrOthree surfaces truly exhibit enhanced scaling or whether the observed inhancement is due to numerical noise.
+%
+Further studies exploring the OER binding trends in a larger number of \IrOtwo and \IrOthree systems are needed to address this question.
+
+
+% The \DGOOH vs.\DGOH relationship is
+%
+%  close to the universal scaling relations,~\cite{Man2011}
+% although
+%
+% demonstrating that our materials do not break the infamous \DGOOH vs. \DGOH scaling.
+% __|
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 
 % __|
 
@@ -823,9 +918,9 @@ oxygen evolution reaction (*O, *OOH, *OH).
 OER adsorption energies for slabs of \IrOtwo and \IrOthree polymorphs studied here.
 %
 Included quantities are electronic adsorption energies
-($\Delta E_{*O_{x}H_{y}}$),
+($\Delta E_{O_{x}H_{y}}$),
 adsorption free energies
-($\Delta G_{*O_{x}H_{y}}$),
+($\Delta G_{O_{x}H_{y}}$),
 as well as the \DGOmOH{} OER descriptor.
 %
 Coverage indicates the electrochemical coverage of either *O or *OH species.
