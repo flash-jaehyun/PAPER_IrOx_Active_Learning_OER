@@ -56,18 +56,11 @@ Thus, there is a need for the systematic exploration of structural diversity at 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-% TODO All global optimization papers go here
-% TODO Add review paper for GO
-Contemporary approaches to inorganic crystal structure prediction %involve a variety of different strategies of exploring the high-dimensional potential energy landscape to find local or global minima,
-%with methods ranging from
-include simulated annealing, evolutionary algorithms, and particle swarm optimization.
+Contemporary approaches to inorganic crystal structure prediction include a variety of methods that explore the expansive potential energy landscape, and include simulated annealing, evolutionary algorithms, and particle swarm optimization.
 \cite{Oganov2006,Lyakhov2010,Glass2006,Wang2012,Pickard2011,Pickard2006,Avery2019,Lonie2011}
 %
 % TODO Find solid example of shortcomings of classical GO schemes
-These approaches are comprehensive, but become intractable as  %provide comprehensive,
-%and often successful searches for stable polymorphs but tend to hit a tractability wall with
-%increasing system size as the number of
-polymorphic configurations increase exponentially with the number and types of elements considered~\cite{Stillinger1999}.
+These approaches are comprehensive, but become intractable as the number of polymorphic configurations increases exponentially with the number and types of elements considered~\cite{Stillinger1999}.
 %
 %Thus, there is a need for
 %Generalizable crystal structure prediction algorithms with low computational cost.% and are generalizable. as previously reported methods while reducing the computational cost associated with uncovering new novel polymorphic phases.
@@ -80,21 +73,18 @@ polymorphic configurations increase exponentially with the number and types of e
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - PARAGRAPH BODY
 %
-% COMBAK NOTE \textbf{These references don't seem very balanced. I'm sure there are other papers outside of the Norskov group we can cite here}
-% TODO Find more papers of AL in materials pace to put here
-% TODO Find references from Logan Ward's and Turab Lookman
 Recent materials discovery approaches employing surrogate models in lieu of Density Functional Theory (DFT) calculations include a tight-binding model utilizing genetic algorithms~\cite{VanDenBossche2018},
 agent-based rapid generation of phase diagrams in diverse chemistries~\cite{Montoya2020},
 and an image-based materials representation procedure from Noh \latin{et al.}~\cite{noh2019inverse},
 which was used to find stable vanadium oxide polymorphs.
 %
 Active learning (AL) frameworks in conjunction with surrogate models have emerged as a computationally efficient approach for problems in materials science, and a potential alternative to established crystal structure prediction (CSP) methods.
+\cite{hansen2019atomistic,torres2019low,Jennings2019,podryabinkin2017active,Bassman2018}
+
+
 %an effective approach to successfully speed up various problems in materials science,
 %and hence have the potential to deliver an efficient alternative and complimentary approach to established crystal structure prediction (CSP) methods.
-\cite{hansen2019atomistic,torres2019low,Jennings2019,podryabinkin2017active,Bassman2018}
-%
 % This sentence will be a dump for other recent GO papers that aren't necessarily just AL
-
 % __|
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -126,7 +116,6 @@ but instead sequentially generates the minimum sized data set to effectively sea
 %
 % Empirically, we know that nature tends to favor symmetric structures, and so we will leverage this intuition by building a dataset explicitly enumerating through space groups.
 %
-% TODO COMBAK Battery applications?
 We demonstrate the application of this methodology in the space of iridium oxide polymorphs,
 an important class of materials with applications in electrochemistry,
 but with unresolved structure-activity properties critical for understanding their catalytic activity.
@@ -142,7 +131,6 @@ is a well-studied electrocatalyst for the oxygen evolution reaction (OER).
 Previous studies on a SrIrO\textsubscript{3} OER electrocatalyst demonstrated that Sr leaching might leave behind a highly oxidized \ce{Ir^{6+}} species which was argued to be responsible for the observed OER activity.
 \cite{Seitz2016}
 %
-% @Michal wants a Schlogl paper here, not sure which TODO
 Other groups also observed reconstruction of \IrOx catalysts under reaction conditions and subsequent formation of an unknown structure.~\cite{Pearce2017}
 %
 % COMBAK More references here (Chris)
@@ -167,12 +155,9 @@ For these reasons, we focused our search on stable polymorphs in the \IrOtwo sto
 Here, we first detail the generation of our candidate structures for \IrOtwo and \IrOthree and introduce the AL accelerated surrogate model.
 %
 Next, we demonstrate the application of our AL scheme to the \IrOtwo and \IrOthree prototype spaces and evaluate model performance for acquisition of the most stable polymorphs.
-%show the performance of our routine at finding the most stable polymorphs in the candidate sets.
 %
 We analyze the crystallographic motifs of the DFT-relaxed structures and identify structural trends within the most stable polymorphs.
 %
-Lastly, we incorporate discovered structures into bulk and surface Pourbaix diagrams, and evaluate their catalytic OER performance.% for the most stable phases.
-%
-%highlighting the importance of the \IrOthree phases under OER.
+Lastly, we incorporate discovered structures into bulk and surface Pourbaix diagrams, and evaluate their catalytic OER performance.
 % __| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
