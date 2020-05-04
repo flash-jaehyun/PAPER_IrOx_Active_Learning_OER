@@ -1,3 +1,6 @@
+*_collated.tex
+
+.ipynb_checkpoints
 *.docx
 
 ~$ref_lst.xlsx
