@@ -4,31 +4,37 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% | - Latex Setup
 \input{latex_setup}
+% __|
 
 % Trying to make SI into separate document
 \usepackage{xr}
 \externaldocument{00_SI}
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Author List %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - Author List %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{03_sections/authors}
+% __|
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Custom Macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - Custom Macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{03_sections/custom_macros}
+% __|
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Article Title %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% | - Article Title %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title[Active Learned IrOx Polymorphs]{
-\input{03_sections/title}}
+\input{03_sections/title}
+}
+% __|
 
 \begin{document}
 
 % | - TOC Figure
 \begin{tocentry}
 \begin{center}
-\includegraphics[height=3.5cm]{02_figures/toc_figure/Raul_TOC__v1__v0__1200dpi.png}
+\includegraphics[height=3.5cm]{02_figures/toc_figure/Raul_TOC__v1__v1__1200dpi.png}
 \end{center}
 \end{tocentry}
 % __|
@@ -37,45 +43,56 @@
 % #########################################################
 % | - MAIN DOCUMENT ***************************************
 
-% - 00 | Abstract *****************************************
+% | - 00 | Abstract ***************************************
 \newpage  % Keep abstract on its own page
 \begin{abstract}
 \input{03_sections/00_abstract}
 \end{abstract}
 \newpage
+% __|
 
-% - 01 | Introduction *************************************
+% | - 01 | Introduction ***********************************
 \section{Introduction}
 \input{03_sections/01_introduction}
+% __|
 
-% - 02 | Results and Discussion ***************************
+% | - 02 | Results and Discussion *************************
 \section{Results and discussion}
 
-  % - 02.00 | *********************************************
+  % | - 02.00 | *********************************************
   \subsection{I. Candidate Space Generation and Active Learning Methodology}
   \input{03_sections/02_00__al_method}
+  % __|
 
-  % - 02.01 | *********************************************
+  % | - 02.01 | *********************************************
   \subsection{II. Active Learning Algorithm Applied to the Discovery of Stable Iridium-oxide Polymorphs}
   \input{03_sections/02_01__application_to_irox}
+  % __|
 
-  % - 02.02 | *********************************************
+  % | - 02.02 | *********************************************
   \subsection{III. Crystal Coordination Analysis of Discovered Phases}
   \input{03_sections/02_02__struct_motifs}
+  % __|
 
-  % - 02.03 | *********************************************
+  % | - 02.03 | *********************************************
   \subsection{IV. Electrochemical OER Application}
   \input{03_sections/02_03__echem_oer}
+  % __|
 
-% - 03 | Conclusion ***************************************
+% __|
+
+% | - 03 | Conclusion ***************************************
 \section{Conclusion}
 \input{03_sections/03_conclusions}
+% __|
 
 % #########################################################
-% - Acknowledgment ****************************************
+% | - Acknowledgment ****************************************
 \begin{acknowledgement}
 \input{03_sections/acknowledgements}
 \end{acknowledgement}
+% __|
+
 % __|
 % #########################################################
 

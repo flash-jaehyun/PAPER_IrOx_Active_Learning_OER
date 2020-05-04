@@ -55,6 +55,49 @@ By the 13th generation of the algorithm \num{10/10} of the most stable structure
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+% =========================================================
+% FIGURE ==================================================
+% =========================================================
+% | - Figure | IrO3 Convergence Plot
+\begin{figure*}[!htb]
+\centering
+\makebox[\textwidth][c]{\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]
+% {02_figures/02_al_results_iro3/00_ml_plot_iro3_al__v19__downsampled_1200x1200.pdf}}
+{02_figures/02_al_results_iro3/00_ml_plot_iro3_al__v19__downsampled_1200x1200__600dpi.png}}
+\caption{\label{fig:iro3_al}
+% (a) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+(a) The state of the AL algorithm at five generations.
+%
+The enthalpy of formation per atom (\DHf) is plotted, ordered by stability, against all \IrOthree candidates, with the 1 $\sigma$ uncertainty estimate shown for each prediction.
+%
+The number of DFT training points at each generation is displayed.
+%
+Hollow grey markers indicate a GP model predicted \DHf while red indicate a DFT-computed quantity.
+%
+At the top of subplots a.i-v, the x-axis positions of the ten most stable polymorphs are tracked at each generation by either red (acquired) or grey (not acquired) vertical lines.
+%
+Insets of the low energy region for each generation is displayed below each subplot.
+%
+The top ten most stable systems are colored and labeled (i-vii) to indicate their identity.
+% (b) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+(b) Crystal structures of the \num{8} most stable \IrOthree polymorphs (structure iii not shown).
+%
+% (c) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+(c) The number of most stable \num{10} polymorphs of \IrOthree discovered ($N_{discovered}$) vs. the number of DFT calculations for the GP-LCB (blue) and random (grey) acquisition methods.
+%
+The results are averaged over \num{100} independent runs and the \num{1} $\sigma$ standard deviation between these runs are displayed.
+% MISC %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+All structurally unique \IrOx DFT optimized structures can be accessed through the MPcontribs platform.~\cite{upload_MPContribs}
+}
+\end{figure*}
+% __| =====================================================
+% =========================================================
+
+
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Paragraph About Structures Found
 % How to balance this with the next section that has more details on structural stuff?
@@ -106,48 +149,6 @@ The performance of GP-LCB relative to random is expected to increase with the si
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-% =========================================================
-% FIGURE ==================================================
-% =========================================================
-% | - Figure | IrO3 Convergence Plot
-\begin{figure*}[!htb]
-\centering
-\makebox[\textwidth][c]{\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]
-{02_figures/ml_convergence_plots/00_ml_plot_iro3_al__v18__downsampled_1200x1200.pdf}}
-\caption{\label{fig:iro3_al}
-% (a) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-(a) The state of the AL algorithm at five generations.
-%
-The enthalpy of formation per atom (\DHf) is plotted, ordered by stability, against all \IrOthree candidates, with the 1 $\sigma$ uncertainty estimate shown for each prediction.
-%
-The number of DFT training points at each generation is displayed.
-%
-Hollow grey markers indicate a GP model predicted \DHf while red indicate a DFT-computed quantity.
-%
-At the top of subplots a.i-v, the x-axis positions of the ten most stable polymorphs are tracked at each generation by either red (acquired) or grey (not acquired) vertical lines.
-%
-Insets of the low energy region for each generation is displayed below each subplot.
-%
-The top ten most stable systems are colored and labeled (i-vii) to indicate their identity.
-% (b) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-(b) Crystal structures of the \num{8} most stable \IrOthree polymorphs (structure iii. not shown).
-%
-% (c) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-(c) The number of most stable \num{10} polymorphs of \IrOthree discovered ($N_{discovered}$) vs. the number of DFT calculations for the GP-LCB (blue) and random (grey) acquisition methods.
-%
-The results are averaged over \num{100} independent runs and the 1 $\sigma$ standard deviation between these runs are displayed.
-% MISC %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-All structurally unique \IrOx DFT optimized structures can be accessed through the MPcontribs platform.~\cite{upload_MPContribs}
-}
-\end{figure*}
-% __| =====================================================
-% =========================================================
-
-
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % | - Parity Plot Discussion
 % Discussion on performance of the AL routine
@@ -170,6 +171,27 @@ with a seemingly large MAE of \mytilde\SI{1.5}{\electronvolt}/atom.
 In contrast, the same GP model does comparatively much better at predicting the formation energies of post-DFT optimized structures with an MAE of \mytilde\SI{0.2}{\electronvolt}/atom.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% =========================================================
+% FIGURE ==================================================
+% | - Figure | IrO2/3 Parity Plot
+\begin{figure*}[!htb]
+\centering
+\makebox[\textwidth][c]{\includegraphics[]
+% {02_figures/03_parity_plot/00_al_perf_plot__v1.pdf}}
+{02_figures/03_parity_plot/00_al_perf_plot__v1__1200dpi.png}}
+\caption{\label{fig:parity}
+%
+Parity plot of the predicted and actual formation enthalpy (\DHf) for the final Gaussian regression ML models for \IrOtwo and \IrOthree,
+predicting on either the pre-optimized (grey) or the post-optimized (blue) fingerprints.
+%
+The final ML regression models are trained on the DFT
+\DHf values for all structurally unique polymorphs and correspond to the final generation of the AL algorithm.
+}
+\end{figure*}
+% __|
+% =========================================================
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -206,23 +228,3 @@ For example, there are \num{8} duplicates of \aIrOthree produced during the full
 and this over representation of \aIrOthree phase effectively increases the chance of it being acquired by a factor of eight.
 % __|
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-% =========================================================
-% FIGURE ==================================================
-% | - Figure | IrO2/3 Parity Plot
-\begin{figure*}[!htb]
-\centering
-\makebox[\textwidth][c]{\includegraphics[]
-{02_figures/parity_plot/00_al_perf_plot__v1.pdf}}
-\caption{\label{fig:parity}
-%
-Parity plot of the predicted and actual formation enthalpy (\DHf) for the final Gaussian regression ML models for \IrOtwo and \IrOthree,
-predicting on either the pre-optimized (grey) or the post-optimized (blue) fingerprints.
-%
-The final ML regression models are trained on the DFT
-\DHf values for all structurally unique polymorphs and correspond to the final generation of the AL algorithm.
-}
-\end{figure*}
-% __|
-% =========================================================
