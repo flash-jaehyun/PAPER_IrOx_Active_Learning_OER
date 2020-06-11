@@ -42,7 +42,6 @@ Latex table generation: https://www.tablesgenerator.com/latex_tables
 
 ## TODO List:
   * Change name of algorithm to ALA and change references in text to this
-  * Reference the Catlearn paper and codebase
   * Be consistent about use of 'fingerprint' vs 'feature', just use 1
   * Give tables in SI that have more sig figs than numbers in text/plots
     * Or just make sure that the attached data (zip file or something) has the info available
@@ -53,6 +52,9 @@ Latex table generation: https://www.tablesgenerator.com/latex_tables
 I used the `git update-index --skip-worktree *pdf` on the output pdf file to ignore changes
 See the following link:
 https://stackoverflow.com/questions/6138076/git-assume-unchanged-vs-skip-worktree-ignoring-a-symbolic-link
+
+### Use latexdiff to create pdf document that shows changes
+latexdiff $gr/PAPER_IrOx_Active_Learning_OER-2.0/PAPER_IrOx_Active_Learning_OER-2_collated.tex 00_main_manuscript_collated.tex > diff.tex
 
 ### Code-folding syntax
 I use a custom syntax to fold code through out this repo (% | - CF start) and (% \_\_|).
