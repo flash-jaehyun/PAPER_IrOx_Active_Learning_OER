@@ -84,8 +84,14 @@ echo $2
 
 if [ "$1" == "00_main_manuscript.tex" ]; then
   tex_file="00_main_manuscript"
+elif [ "$1" == "00_main_manuscript_collated.tex" ]; then
+  tex_file="00_main_manuscript_collated"
+
 elif [ "$1" == "00_SI.tex" ]; then
   tex_file="00_SI"
+elif [ "$1" == "00_SI_collated.tex" ]; then
+  tex_file="00_SI_collated"
+
 else
   tex_file=$1
 fi
