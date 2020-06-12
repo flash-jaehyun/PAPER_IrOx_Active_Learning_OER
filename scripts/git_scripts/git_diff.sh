@@ -7,7 +7,8 @@
 # #############################################################################
 
 
-git difftool \
+# git difftool \
+git difftool v2.0 \
   03_sections/00_abstract.tex \
   03_sections/01_introduction.tex \
   03_sections/02_00__al_method.tex \

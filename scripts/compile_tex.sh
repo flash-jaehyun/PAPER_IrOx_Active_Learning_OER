@@ -81,6 +81,10 @@ echo "Printing arguments"
 echo $1
 echo $2
 
+if [ ${img:$length:1} == "*"] ;then
+   echo "yes"
+fi
+
 
 if [ "$1" == "00_main_manuscript.tex" ]; then
   tex_file="00_main_manuscript"
@@ -91,6 +95,9 @@ elif [ "$1" == "00_SI.tex" ]; then
   tex_file="00_SI"
 elif [ "$1" == "00_SI_collated.tex" ]; then
   tex_file="00_SI_collated"
+
+elif [ "$1" == "diff.tex" ]; then
+  tex_file="diff"
 
 else
   tex_file=$1
