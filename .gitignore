@@ -5,6 +5,16 @@
 
 ~$ref_lst.xlsx
 
+
+*.aux
+*.bbl
+*.lg
+*.log
+*.blg
+*.synctex.gz
+acs-*.bib
+
+
 00_SI.pdf
 00_SI.aux
 00_SI.bbl
