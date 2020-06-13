@@ -21,10 +21,12 @@ import sys
 
 # # Script Inputs
 
-exclude_SI = False
+# +
+exclude_SI = True
+
+replace_macros = True
 
 # +
-# root_dir = "."
 file_to_process = sys.argv[1]
 
 cwd = os.getcwd()
@@ -33,10 +35,8 @@ if cwd.split("/")[-1] == "scripts":
 
 if ".tex" not in file_to_process:
     file_to_process = "../00_main_manuscript.tex"
-    # file_to_process = "../../../00_main_manuscript.tex"
     
 if "/" in file_to_process:
-    # root_dir = file_to_process.split("/")[0:-1]
     root_dir = "/".join(file_to_process.split("/")[0:-1])
     file_to_process = file_to_process.split("/")[-1]
 else:
@@ -107,12 +107,78 @@ for i_cnt, line_i in enumerate(main_manu_list):
             composite_tex_lines_list.append(line_i)
 # -
 
+# # Replacing Macros
+
+# +
+macros_file_path = os.path.join(
+    root_dir,
+    "03_sections/custom_macros.tex")
+
+macro_replace_dict = dict()
+macros_lines_list = read_text_file(macros_file_path)
+for line_i in macros_lines_list:
+
+    if "\\def" in line_i:
+        str_to_replace = line_i.split(" ")[1]
+        replace_str = line_i.split(" ")[-1].replace("\\xspace", "")[1:][:-1]
+
+        macro_replace_dict[str_to_replace] = replace_str
+
+# line_i = '\\def \\ABtwo {AB\\textsubscript{2}\\xspace}'
+
+
+macro_replace_dict_new = dict()
+for key, val in macro_replace_dict.items():
+    
+    new_key = key + "{}"
+    macro_replace_dict_new[key] = val
+    macro_replace_dict_new[new_key] = val
+
+    # macro_replace_dict_new
+    # line_i = "The calculated OER activities of relevant OER stable surfaces are plotted against the \DGOmOH{} descriptor and are shown in Figure \ref{fig:oer_volcano}b."
+
+# +
+# composite_tex_lines_list = [    
+#     "Oxygen saturated IrO\textsubscript{3} systems thus bind OER intermediates more weakly, which leads to positive shift in \DGOmOH{}.",
+#     ]
+
+# + jupyter={"outputs_hidden": true}
+composite_tex_lines_list_2 = []
+for line_i in composite_tex_lines_list:
+
+    if "\\def " not in line_i:
+        for key, val in macro_replace_dict_new.items():
+            if key in line_i:
+                # line_i = line_i.replace(key, val)
+
+                for word_j in line_i.split(" "):
+                    # print(word_j)
+                    if len(word_j) > 0 and word_j[-1] == ".":
+                        word_j = word_j[:-1]
+
+                    for key, val in macro_replace_dict_new.items():
+                        if word_j == key:
+                            # macro_replace_dict_new[key]
+                            line_i = line_i.replace(key, val)
+
+        composite_tex_lines_list_2.append(line_i)
+
+    else:
+        composite_tex_lines_list_2.append(line_i)
+
+# +
+# tmp = [print(i) for i in composite_tex_lines_list_2]
+# -
+
 # # Write new collated file to disk
 
 # +
 out_path = os.path.join(
     root_dir,
     file_to_process.split(".")[0] + "_collated.tex")
+
+if replace_macros:
+    composite_tex_lines_list = composite_tex_lines_list_2
 
 print("Written file path:", "\n", out_path)
 with open(out_path, "w") as fle:
