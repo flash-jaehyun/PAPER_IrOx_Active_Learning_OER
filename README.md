@@ -56,6 +56,41 @@ https://stackoverflow.com/questions/6138076/git-assume-unchanged-vs-skip-worktre
 ### Use latexdiff to create pdf document that shows changes
 latexdiff $gr/PAPER_IrOx_Active_Learning_OER-2.0/PAPER_IrOx_Active_Learning_OER-2_collated.tex 00_main_manuscript_collated.tex > diff.tex
 
+### Steps to create the pdf diff files that show changes since submission
+
+Collating the v2.0 main text and SI tex documents to one file. The script also replaces all custom macro instances with literal text.
+
+`python scripts/collate_tex.py $gr/PAPER_IrOx_Active_Learning_OER-2.0/PAPER_IrOx_Active_Learning_OER-2.0/00_main_manuscript.tex`
+
+`python scripts/collate_tex.py $gr/PAPER_IrOx_Active_Learning_OER-2.0/PAPER_IrOx_Active_Learning_OER-2.0/00_SI.tex`
+
+Do the same thing with the most up to date version
+
+`python scripts/collate_tex.py 00_main_manuscript.tex`
+
+`python scripts/collate_tex.py 00_SI.tex`
+
+Now create the diff `.tex` files that highlight changes
+
+`bash scripts/create_latex_diff.sh`
+
+The generated diff files need to be processed a bit more, because `latexdiff` replaces path lines for figure generation.
+
+`python scripts/git_scripts/process_diff.py diff_main_manuscript.tex`
+
+`python scripts/git_scripts/process_diff.py diff_SI.tex `
+
+Now run the normal compilation script, needed to create proper tex data files.
+
+`./scripts/compile_tex.sh separate_full`
+
+Compiling diff latex files for main manuscript and SI
+
+`./scripts/compile_tex.sh diff_main_manuscript_processed full`
+
+`./scripts/compile_tex.sh diff_SI_processed full`
+
+
 ### Code-folding syntax
 I use a custom syntax to fold code through out this repo (% | - CF start) and (% \_\_|).
 I find this quite useful for navigation, and to achieve the same effect in your VIM editor put the following code into your `~/vimrc`:
