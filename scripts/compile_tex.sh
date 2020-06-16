@@ -81,9 +81,9 @@ echo "Printing arguments"
 echo $1
 echo $2
 
-if [ ${img:$length:1} == "*"] ;then
-   echo "yes"
-fi
+# if [ ${img:$length:1} == "*"] ;then
+#    echo "yes"
+# fi
 
 
 if [ "$1" == "00_main_manuscript.tex" ]; then
