@@ -31,6 +31,8 @@ rm ../*.lof
 rm ../*.ttt
 rm ../*.lot
 
+rm ../00_SI.out
+rm ../00_main_manuscript.out
 
 rm ../*_collated*
 
