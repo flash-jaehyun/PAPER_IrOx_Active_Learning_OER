@@ -61,10 +61,10 @@ By the 13th generation of the algorithm \num{10/10} of the most stable structure
 % | - Figure | IrO3 Convergence Plot
 \begin{figure*}[!htb]
 \centering
-\makebox[\textwidth][c]{\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]
-{02_figures/02_al_results_iro3/00_ml_plot_iro3_al__v20__downsampled_1500x1500.pdf}}
-% {02_figures/02_al_results_iro3/00_ml_plot_iro3_al__v19__downsampled_1200x1200__600dpi.png}}
+\includegraphics[width=\textwidth]
+{02_figures/02_al_results_iro3/00_ml_plot_iro3_al__v21__downsampled_1500x1500.pdf}
 \caption{\label{fig:iro3_al}
+% | - caption
 % (a) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 (a) The state of the AL algorithm at five generations.
@@ -92,6 +92,7 @@ The results are averaged over \num{100} independent runs and the \num{1} $\sigma
 % MISC %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 All structurally unique \IrOx DFT optimized structures can be accessed through the MPcontribs platform.~\cite{upload_MPContribs}
+% __|
 }
 \end{figure*}
 % __| =====================================================
@@ -176,19 +177,20 @@ In contrast, the same GP model does comparatively much better at predicting the 
 % =========================================================
 % FIGURE ==================================================
 % | - Figure | IrO2/3 Parity Plot
-\begin{figure*}[!htb]
+\begin{figure}[!htb]
 \centering
-\makebox[\textwidth][c]{\includegraphics[]
-{02_figures/03_parity_plot/00_al_perf_plot__v2__1200dpi.png}}
+\makebox{\includegraphics
+{02_figures/03_parity_plot/00_al_perf_plot__v3__1500dpi.png}}
 \caption{\label{fig:parity}
+% | - caption
 %
 Parity plot of the predicted and actual formation enthalpy (\DHf) for the final Gaussian regression ML models for \IrOtwo and \IrOthree,
 predicting on either the pre-optimized (grey) or the post-optimized (blue) fingerprints.
 %
-The final ML regression models are trained on the DFT
-\DHf values for all structurally unique polymorphs and correspond to the final generation of the AL algorithm.
+The final ML regression models are trained on the DFT \DHf values for all structurally unique polymorphs and correspond to the final generation of the AL algorithm.
+% __|
 }
-\end{figure*}
+\end{figure}
 % __|
 % =========================================================
 
